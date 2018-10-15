@@ -15,38 +15,49 @@ const instructions = {
         "<p></p><p>Press any key to begin.</p>"
 }
 
-const fixation1 = {
+const fixation = {
     type: "html-keyboard-response",
-    data: {fixation1: true, beginTrial: true},
     stimulus: '<div style="font-size: 60px;">+</div>',
     response_ends_trial: false,
     trial_duration: function() { return randomFromInterval(FIXATION_MIN, FIXATION_MAX) },
-    on_finish: function(data) {
-        data.presentation_duration = this.trial_duration
-    }
 }
 
-const fixation2 = {
-    type: "html-keyboard-response",
-    data: {fixation2: true},
-    stimulus: '<div style="font-size: 60px;">+</div>',
-    response_ends_trial: false,
-    trial_duration: function() { return randomFromInterval(FIXATION_MIN, FIXATION_MAX) },
-    on_finish: function(data) {
-        data.presentation_duration = this.trial_duration
-    }
-}
+// const fixation1 = {
+//     type: "html-keyboard-response",
+//     data: {fixation1: true, beginTrial: true},
+//     on_start: function(data) {
+//         keyLog = []
+//         document.addEventListener("keyup", keyLogger)
+//     },
+//     stimulus: '<div style="font-size: 60px;">+</div>',
+//     response_ends_trial: false,
+//     trial_duration: function() { return randomFromInterval(FIXATION_MIN, FIXATION_MAX) },
+//     on_finish: function(data) {
+//         data.presentation_duration = this.trial_duration
+//     }
+// }
+
+// const fixation2 = {
+//     type: "html-keyboard-response",
+//     data: {fixation2: true},
+//     on_start: function(data) {
+//         data.keylog = []
+//     },
+//     stimulus: '<div style="font-size: 60px;">+</div>',
+//     response_ends_trial: false,
+//     trial_duration: function() { return randomFromInterval(FIXATION_MIN, FIXATION_MAX) },
+//     on_finish: function(data) {
+//         data.presentation_duration = this.trial_duration
+//         document.removeEventListener("keyup", keyLogger)
+//         data.keylog = keyLog
+//     }
+// }
 
 const target = {
     type: "html-keyboard-response",
     stimulus: '<div style="display: block; height: 80px; width: 80px; background: #666; border-radius: 50%;"></div>',
-    trial_duration: function() { return 400 },
     choices: ['Enter', 'Space'],
     data: {target: true},
-    on_finish: function(data) {
-        console.log(data)
-        data.hit = data.rt ? true : false
-    }
 }
 
 const feedback = {
@@ -66,8 +77,7 @@ const feedback = {
 
 export {
     instructions,
-    fixation1,
+    fixation,
     target,
-    fixation2,
     feedback
 }
