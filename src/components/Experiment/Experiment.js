@@ -29,6 +29,16 @@ function closeFullscreen() {
 }
 
 class Experiment extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            displayResults: false,
+            trials: [],
+            trialData: null,
+            staircaseValues: null,
+        }
+    }
+
     getTimeline() {
         const timeline = []
         timeline.push({
@@ -90,31 +100,88 @@ class Experiment extends React.Component {
     }
 
     render() {
-        return (
-            <div id="experiment">Experiment here</div>
-        )
+        if (this.state.displayResults) {
+            const style = {
+                fontSize: '0.7rem',
+                background: '#eee',
+                textAlign: 'left'
+            }
+            return (
+                <div id="experiment-results">
+                    <h2>Practice Trial Results</h2>
+                    <pre style={style}>
+                        {JSON.stringify(this.state.staircaseValues)}
+                    </pre>
+                    <pre style={style}>
+                        {JSON.stringify(this.state.trials, null, 3)}
+                    </pre>
+                    <pre style={style}>
+                        {JSON.stringify(this.state.trialData, null, 3)}
+                    </pre>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div id="experiment">Experiment here</div>
+            )
+        }
     }
 
     componentDidMount() {
-
-        const advanceStep = this.props.advanceStep
-
         jsPsych.init({
             timeline: this.getTimeline(),
-            on_finish: function(var1) {
-                const trialData = JSON.parse(
-                    jsPsych.data.get().json()
-                )
-                console.log("td: ", trialData)
-                console.log("staircase values:", staircase.stairs.values)
-
-                console.log("staircase reversals:", staircase.stairs.numReversals)
-                // leave fullscreen
-
-                advanceStep()
-            },
+            on_finish: this.onExperimentFinish.bind(this),
             display_element: 'experiment'
         })
+    }
+
+    onExperimentFinish() {
+        const trialData = JSON.parse(
+            jsPsych.data.get().json()
+        )
+        const trials = this.collectTrials(trialData)
+
+        this.setState({
+            trialData,
+            trials,
+            staircaseValues: staircase.stairs.values,
+            displayResults: true
+        })
+    }
+
+    collectTrials(trialData) {
+        const trials = []
+        let currentTrial = null
+        let trialIndex = 1
+        trialData.forEach( (trialPart) => {
+            delete trialPart.stimulus
+
+            if (trialPart.beginTrial) {
+                if (currentTrial) {
+                    trials.push(currentTrial)
+                }
+                currentTrial = {index: trialIndex++}
+            }
+
+            if (trialPart.fixation1) {
+                currentTrial.responded_early = trialPart.rt || false
+            }
+
+            if (trialPart.target) {
+                currentTrial.hit = trialPart.hit
+                currentTrial.rt = trialPart.rt
+                currentTrial.target_presentation_duration = trialPart.presentation_duration
+            }
+
+            if (trialPart.fixation2) {
+                currentTrial.responded_late = trialPart.rt || false
+                currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
+                currentTrial.num_responses = trialPart.keylog.length
+            }
+        })
+        trials.push(currentTrial)
+        return trials
     }
 }
 
