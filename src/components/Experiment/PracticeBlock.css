@@ -1,0 +1,17 @@
+#experiment.fullscreen {
+    cursor: none;
+}
+
+#experiment-results {
+    margin: 2rem;
+    text-align: left;
+}
+
+#experiment-results h2 {
+    text-align: center;
+}
+
+#experiment-results pre {
+    font-size: 0.7rem;
+    background: #eee;
+}

@@ -5,6 +5,16 @@ import 'jspsych/plugins/jspsych-html-keyboard-response'
 import 'jspsych/plugins/jspsych-fullscreen'
 import { DbStaircase } from './staircase'
 import { instructions, fixation, target, feedback } from './stimuli'
+import './PracticeBlock.css'
+
+function getMeanForLast(arr, n) {
+    var data = arr.slice(-n);
+    var sum = 0;
+    for (var i = 0; i < data.length; i++) {
+      sum += data[i];
+    }
+    return Math.round(sum / n);
+}
 
 const jsPsych = window.jsPsych
 let keyLog = [];
@@ -14,7 +24,8 @@ const staircase = new DbStaircase({
     down: 2,
     stepSizes: [8, 4, 4, 2, 2, 1]
 })
-const NUM_REVERSALS = 3
+const NUM_REVERSALS = 9
+const NUM_STAIRCASE_VALUES = 5
 
 function closeFullscreen() {
     if (document.exitFullscreen) {
@@ -45,7 +56,9 @@ class Experiment extends React.Component {
             type: 'fullscreen',
             fullscreen_mode: true,
             on_finish: function(data) {
-                document.getElementById('experiment').focus()
+                const elem = document.getElementById('experiment')
+                elem.classList.add("fullscreen")
+                elem.focus()
             }
         })
 
@@ -101,21 +114,29 @@ class Experiment extends React.Component {
 
     render() {
         if (this.state.displayResults) {
-            const style = {
-                fontSize: '0.7rem',
-                background: '#eee',
-                textAlign: 'left'
-            }
+            let staircaseValues = this.state.staircaseValues
+            // Last value in staircase not used:
+            staircaseValues.splice(-1)
+            const calculatedPresentationDuration = getMeanForLast(staircaseValues, NUM_STAIRCASE_VALUES)
             return (
                 <div id="experiment-results">
-                    <h2>Practice Trial Results</h2>
-                    <pre style={style}>
-                        {JSON.stringify(this.state.staircaseValues)}
+                    <h2>Practice Block Results</h2>
+                    <p>The practice block is complete. Practice block data is displayed at the bottom of the page.</p>
+                    <p>After {this.state.trials.length} trials and {NUM_REVERSALS} reversals, the target presentation duration has been determined at {calculatedPresentationDuration}ms.</p>
+                    <p>Click below to begin the experiment.</p>
+                    <p>
+                        <button onClick={this.props.advanceStep}>Start Experiment</button>
+                    </p>
+                    <h3>Staircase Values:</h3>
+                    <pre>
+                        {JSON.stringify(staircaseValues, null, 1)}
                     </pre>
-                    <pre style={style}>
+                    <h3>Top level Trial Data:</h3>
+                    <pre>
                         {JSON.stringify(this.state.trials, null, 3)}
                     </pre>
-                    <pre style={style}>
+                    <h3>Fine Grained Trial Data:</h3>
+                    <pre>
                         {JSON.stringify(this.state.trialData, null, 3)}
                     </pre>
                 </div>
