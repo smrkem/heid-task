@@ -25,3 +25,9 @@
   left: 0;
   background: #fff;
 }
+
+pre {
+  text-align: left;
+  font-size: 0.7rem;
+  background: #eee;
+}
