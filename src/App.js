@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ExperimentManager from './components/ExperimentManager/ExperimentManager'
+import TaskManager from './components/TaskManager/TaskManager'
 import Header from './components/Header/Header';
 
 
@@ -10,7 +10,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="App-body">
-          <ExperimentManager />        
+          <TaskManager />        
         </div>
       </div>
     );

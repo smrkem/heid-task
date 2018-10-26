@@ -1,51 +1,58 @@
 import React from 'react'
-import ExperimentIntro from '../ExperimentIntro/ExperimentIntro'
-import ExperimentSurvey from '../ExperimentSurvey/ExperimentSurvey'
-import Experiment from '../Experiment/Experiment'
+import { shuffle } from '../../utils'
+import ExperimentBlock from '../ExperimentBlock/ExperimentBlock'
+
 
 class ExperimentManager extends React.Component {
-    constructor(props) {
-        super(props)
+  state = {
+    blocks: [],
+    blockIndex: 0
+  }
+  constructor(props) {
+      super(props)
 
-        this.steps = [
-            'intro',
-            'survey',
-            'practiceTrial',
-            'experiment'
-        ]
+      // create blocks here. need 8 total randomized. 2 self, 2 game, 2 anti-charity and 2 charity
+      // no 2 categories should ever repeat
+      console.log(props.socialIssue)
+      this.state.blocks = this.randomizeBlocks()
 
-        this.state = {
-            index: 0
-        }
+      this.showNextBlock = this.showNextBlock.bind(this)
+  }
 
-        this.showNextStep = this.showNextStep.bind(this)
+  randomizeBlocks() {
+    let conditions = shuffle(['self', 'anti-charity', 'charity', 'control'])
+    let newConditions = shuffle(['self', 'anti-charity', 'charity', 'control'])
+    while (newConditions[0] === conditions[conditions.length - 1]) {
+      newConditions = shuffle(['self', 'anti-charity', 'charity', 'control'])
     }
+    conditions = conditions.concat(newConditions)
 
-    showNextStep() {
+
+    let blocks = []
+    conditions.forEach(c => {
+      let condition = ['self', 'control'].includes(c) ? c : `${this.props.socialIssue}: ${c}`
+      blocks.push({ 
+        starting_duration: this.props.starting_duration,
+        condition: condition,
+        final_duration: null,
+        block_trial_data: {},
+        final_points: 0
+      })
+    })
+    return blocks
+  }
+
+    showNextBlock() {
         this.setState({
-            index: this.state.index + 1
+          blockIndex: this.state.blockIndex + 1
         })
     }
 
-    showing() {
-        return this.steps[this.state.index]
-    }
-
     render() {
+      console.log('conditions', this.state.blocks)
         return (
             <div id="exp-manager">
-                { (this.showing() === 'intro') && (
-                    <ExperimentIntro advanceStep={this.showNextStep} />
-                )}
-                { (this.showing() === 'survey') && (
-                    <ExperimentSurvey advanceStep={this.showNextStep} />
-                )}
-                { (this.showing() === 'practiceTrial') && (
-                    <Experiment advanceStep={this.showNextStep} />
-                )}
-                { (this.showing() === 'experiment') && (
-                    <div>actual exp</div>
-                )}
+              <ExperimentBlock />
             </div>
         )
     }

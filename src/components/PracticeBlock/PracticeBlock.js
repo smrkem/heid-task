@@ -39,7 +39,7 @@ function closeFullscreen() {
     }
 }
 
-class Experiment extends React.Component {
+class PracticeBlock extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -206,4 +206,4 @@ class Experiment extends React.Component {
     }
 }
 
-export default Experiment
+export default PracticeBlock
