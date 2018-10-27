@@ -46,7 +46,11 @@ const target = {
   stimulus: '<div style="display: block; height: 80px; width: 80px; background: #666; border-radius: 50%;"></div>',
   choices: ['Enter', 'Space'],
   data: {target: true},
-
+  trial_duration: function() { return 300 },
+  on_finish: function(data) {
+    data.presentation_duration = this.trial_duration
+    data.hit = data.rt ? true : false
+  }
 }
 
 const blank = {
@@ -103,6 +107,10 @@ const feedback1 = {
 // }
 
 class ExperimentBlock extends React.Component {
+    state = {
+      showResults: false,
+      results: {}
+    }
 
     getTimeline() {
         const timeline = []
@@ -144,6 +152,10 @@ class ExperimentBlock extends React.Component {
     }
 
     render() {
+      if (this.state.showResults) {
+        return <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
+      }
+      
       return (
           <div id="jspsych-experiment"
             ref={(exp) => { this.experiment = exp }}
@@ -166,8 +178,15 @@ class ExperimentBlock extends React.Component {
         const trialData = JSON.parse(
             jsPsych.data.get().json()
         )
-        console.log("DONE:", trialData)
-        console.log("ponts:", pointsTracker.values)
+        // console.log("DONE:", trialData)
+        this.setState({
+          showResults: true,
+          results: {
+            data: trialData,
+            points: pointsTracker.values
+          }
+        })
+        // console.log("ponts:", pointsTracker.values)
     }
 
 }
