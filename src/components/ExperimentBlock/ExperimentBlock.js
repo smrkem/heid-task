@@ -4,13 +4,84 @@ import 'jspsych/css/jspsych.css'
 import 'jspsych/plugins/jspsych-html-keyboard-response'
 import 'jspsych/plugins/jspsych-fullscreen'
 import { DbStaircase } from './staircase'
-import { instructions, fixation, target, feedback } from './stimuli'
+import { instructions } from './stimuli'
 import './ExperimentBlock.css'
-import { KeyLogger } from '../../utils'
+import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
 
 const jsPsych = window.jsPsych
-
 const keyLogger = new KeyLogger()
+const pointsTracker = new PointsTracker()
+
+
+const cue = {
+  type: "html-keyboard-response",
+  stimulus: function() {
+    const pointVal = pointsTracker.getNextValue()
+    return `<p>cue</p><p>${pointVal} point value</p>`
+  },
+  data: { cue: true },
+  response_ends_trial: false,
+  trial_duration: 1000
+}
+
+const fixation = {
+  type: "html-keyboard-response",
+  stimulus: '<div style="font-size: 60px;">+</div>',
+  response_ends_trial: false,
+  data: {fixation: true},
+  trial_duration: function() { 
+    return randomFromInterval(2000, 2500) 
+  },
+  on_start: function(data) {
+    keyLogger.keyLog = []
+    document.addEventListener("keyup", keyLogger.logger)
+  },
+  on_finish: function(data) {
+    data.presentation_duration = this.trial_duration
+  }
+}
+
+const target = {
+  type: "html-keyboard-response",
+  stimulus: '<div style="display: block; height: 80px; width: 80px; background: #666; border-radius: 50%;"></div>',
+  choices: ['Enter', 'Space'],
+  data: {target: true},
+
+}
+
+const blank = {
+  type: "html-keyboard-response",
+  stimulus: '<div></div>',
+  response_ends_trial: false,
+  trial_duration: function() { 
+    return randomFromInterval(1500, 3000) 
+  }
+}
+
+const blank1 = Object.assign({
+  data: {blank1: true},
+  on_finish: function(data) {
+    data.presentation_duration = this.trial_duration
+    data.keylog = keyLogger.keyLog
+    document.removeEventListener("keyup", keyLogger.logger)
+  }
+}, blank)
+
+const feedback1 = {
+  type: "html-keyboard-response",
+  stimulus: function(){
+    const targetData = JSON.parse(
+      jsPsych.data.getLastTimelineData().filter({target: true}).json()
+    ).pop();
+
+    const msg = targetData.hit ? 'You Win!!!' : 'Sorry. You Lose.';
+    return `<p>${pointsTracker.getCurrentValue()} points!</p><p>${msg}</p>`;
+  },
+  data: { feedback: true },
+  response_ends_trial: false,
+  trial_duration: 1650
+}
+
 // const staircase = new DbStaircase({
 //     firstVal: 400,
 //     down: 2,
@@ -35,61 +106,51 @@ class ExperimentBlock extends React.Component {
 
     getTimeline() {
         const timeline = []
-        timeline.push({
-            type: 'fullscreen',
-            fullscreen_mode: true,
-            on_finish: function(data) {
-                const elem = document.getElementById('jspsych-experiment')
-                elem.classList.add("fullscreen")
-                elem.focus()
-            }
-        })
+
+        // 
+        // timeline.push({
+        //     type: 'fullscreen',
+        //     fullscreen_mode: true,
+        //     on_finish: function(data) {
+        //         const elem = document.getElementById('jspsych-experiment')
+        //         elem.classList.add("fullscreen")
+        //         elem.focus()
+        //     }
+        // })
 
         timeline.push(instructions)
 
-        // fixation 1 begins trial. setup up keylogging.
-        let fixation1 = Object.assign({}, fixation)
-        fixation1.data = {fixation1: true, beginTrial: true}
-        fixation1.on_start = function(data) {
-          console.log('implement keylog')
-            // keyLog = []
-            // document.addEventListener("keyup", keyLogger)
-        }
-        fixation1.on_finish = function(data) {
-            data.presentation_duration = this.trial_duration
-        }
-
-        // target
-        // fixation 2 ends response part of trial. disable keylogging.
-        let fixation2 = Object.assign({}, fixation)
-        fixation2.data = {fixation2: true}
-        fixation2.on_finish = function(data) {
-            data.presentation_duration = this.trial_duration
-            // document.removeEventListener("keyup", keyLogger)
-            // data.keylog = keyLog
-            console.log('disable keylog')
-        }
-
+       
         const test_procedure = {
-            timeline: [fixation1, fixation2],
+            timeline: [
+              cue,
+              fixation,
+              target,
+              blank1,
+              feedback1,
+              // feedback2,
+              // blank2
+            ],
             repetitions: 3
         }
         timeline.push(test_procedure)
 
-        timeline.push({
-            type: 'fullscreen',
-            fullscreen_mode: false
-        })
+        // timeline.push({
+        //     type: 'fullscreen',
+        //     fullscreen_mode: false
+        // })
 
         return timeline
     }
 
     render() {
-        
       return (
-          <div id="jspsych-experiment">Experiment here</div>
+          <div id="jspsych-experiment"
+            ref={(exp) => { this.experiment = exp }}
+          >
+            Experiment here
+          </div>
       )
-        
     }
 
     componentDidMount() {
@@ -98,6 +159,7 @@ class ExperimentBlock extends React.Component {
             on_finish: this.onExperimentFinish.bind(this),
             display_element: 'jspsych-experiment'
         })
+        this.experiment.focus()
     }
 
     onExperimentFinish() {
@@ -105,6 +167,7 @@ class ExperimentBlock extends React.Component {
             jsPsych.data.get().json()
         )
         console.log("DONE:", trialData)
+        console.log("ponts:", pointsTracker.values)
     }
 
 }

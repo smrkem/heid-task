@@ -13,7 +13,7 @@ class ExperimentManager extends React.Component {
 
       // create blocks here. need 8 total randomized. 2 self, 2 game, 2 anti-charity and 2 charity
       // no 2 categories should ever repeat
-      console.log(props.socialIssue)
+      // console.log(props.socialIssue)
       this.state.blocks = this.randomizeBlocks()
 
       this.showNextBlock = this.showNextBlock.bind(this)
@@ -49,7 +49,7 @@ class ExperimentManager extends React.Component {
     }
 
     render() {
-      console.log('conditions', this.state.blocks)
+      // console.log('conditions', this.state.blocks)
         return (
             <div id="exp-manager">
               <ExperimentBlock />
