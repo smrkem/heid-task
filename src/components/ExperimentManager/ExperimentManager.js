@@ -30,10 +30,12 @@ class ExperimentManager extends React.Component {
 
     let blocks = []
     conditions.forEach(c => {
-      let condition = ['self', 'control'].includes(c) ? c : `${this.props.socialIssue}: ${c}`
+      if (["charity", "anti-charity"].includes(c)) {
+        c += `:${this.props.socialIssue}`
+      }
       blocks.push({ 
         starting_duration: this.props.starting_duration,
-        condition: condition,
+        condition: c,
         final_duration: null,
         block_trial_data: {},
         final_points: 0
@@ -49,10 +51,10 @@ class ExperimentManager extends React.Component {
     }
 
     render() {
-      // console.log('conditions', this.state.blocks)
+      console.log('conditions', this.state.blocks)
         return (
             <div id="exp-manager">
-              <ExperimentBlock />
+              <ExperimentBlock {...this.state.blocks[this.state.blockIndex] } />
             </div>
         )
     }
