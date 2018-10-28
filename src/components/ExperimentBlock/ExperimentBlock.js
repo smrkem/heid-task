@@ -38,13 +38,34 @@ class ExperimentBlock extends React.Component {
       results: {}
     }
 
+    instructions = {
+      type: "html-keyboard-response",
+      data: { instructions: true },
+      stimulus: () => {
+        let iconClass = this.props.condition.type
+        iconClass += this.props.condition.socialIssue ? 
+          ` ${this.props.condition.socialIssue}` : ''
+        let copy = ''
+        this.props.condition.copy.forEach(para => {
+          copy += `<p>${para}</p>`
+        })
+        return (
+          `<div class="instructions">` + 
+            `<div class="icon ${iconClass}"></div>` +
+            `<div class="copy">${copy}</div>` +
+            "<p>Press any key to continue.</p>" +
+          "</div>"
+        )
+      }
+    }
+
     cue = {
       type: "html-keyboard-response",
       stimulus: () => {
         const pointVal = pointsTracker.getCurrentValue()
         return (`
           <p>${pointVal} Points</p>
-          <p>${this.props.condition}</p>        
+          <p>${this.props.condition.type} ${this.props.condition.socialIssue}</p>        
         `)
       },
       data: { cue: true },
@@ -126,7 +147,7 @@ class ExperimentBlock extends React.Component {
         return (`
           <p>${msg}</p>
           <p>${sign}${targetData.point_value} Points</p>
-          <p>${this.props.condition}</p>   
+          <p>${this.props.condition.type} ${this.props.condition.socialIssue}</p>   
         `)
       },
       data: { feedback1: true },
@@ -140,7 +161,7 @@ class ExperimentBlock extends React.Component {
         const sign = (pointsTracker.currentTotal >= 0) ? '+' : ''
         return (`
           <p>Total: ${sign}${pointsTracker.currentTotal}</p>
-          <p>${this.props.condition}</p>     
+          <p>${this.props.condition.type} ${this.props.condition.socialIssue}</p>     
         `)
       },
       data: { feedback2: true },
@@ -150,8 +171,7 @@ class ExperimentBlock extends React.Component {
 
     constructor(props) {
       super(props)
-      this.isAnti = props.condition.includes("anti-charity")
-      console.log('isanti?', this.isAnti)
+      this.isAnti = props.condition.type === "anti-charity"
     }
 
     getTimeline() {
@@ -167,19 +187,8 @@ class ExperimentBlock extends React.Component {
         //         elem.focus()
         //     }
         // })
-        console.log(this.props.condition)
-        const instructions = {
-          type: "html-keyboard-response",
-          data: { instructions: true },
-          stimulus: () => {
-            return (
-              "<p>The fixation will appear followed by the target. Try to press the ENTER key as quickly as possible while the target is displayed.</p>" +
-              "<p></p><p>Press any key to begin.</p>"
-            )
-          }
-        }
 
-        timeline.push(instructions)
+        timeline.push(this.instructions)
 
        
         const test_procedure = {

@@ -31,3 +31,15 @@ pre {
   font-size: 0.7rem;
   background: #eee;
 }
+
+.icon.charity,
+.icon.anti-charity {
+  background-image: url('/images/protestor-icon.png');
+}
+.icon.game {
+  background-image: url('/images/game-icon.png');
+}
+.icon.self {
+  background-image: url('/images/self-icon.png');
+  border: 1px solid #aaa;
+}
