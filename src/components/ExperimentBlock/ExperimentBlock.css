@@ -10,12 +10,7 @@
 }
 
 .instructions .icon {
-  margin: 0 0 2rem;
-  width: 280px;
-  height: 200px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  
 }
 
 .instructions .copy p {

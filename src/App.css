@@ -32,9 +32,24 @@ pre {
   background: #eee;
 }
 
-.icon.charity,
-.icon.anti-charity {
+.icon {
+  margin: 0 0 2rem;
+  width: 180px;
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon.instructions {
+  width: 280px;
+}
+
+.icon.charity {
   background-image: url('/images/protestor-icon.png');
+}
+.icon.anti-charity {
+  background-image: url('/images/anti-protestor-icon.png');
 }
 .icon.game {
   background-image: url('/images/game-icon.png');

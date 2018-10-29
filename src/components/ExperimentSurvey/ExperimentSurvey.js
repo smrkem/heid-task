@@ -28,8 +28,6 @@ class ExperimentSurvey extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log('iss: ', issues)
-
         this.surveyNext = this.surveyNext.bind(this)
 
         this.state.participantId = makeid(7)
@@ -75,7 +73,6 @@ class ExperimentSurvey extends React.Component {
     }
 
     render() {
-        console.log("state: ", this.state)
         if (this.state.showing === 'intro') {
             return (
                 <div>

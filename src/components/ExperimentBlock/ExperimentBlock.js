@@ -42,16 +42,13 @@ class ExperimentBlock extends React.Component {
       type: "html-keyboard-response",
       data: { instructions: true },
       stimulus: () => {
-        let iconClass = this.props.condition.type
-        iconClass += this.props.condition.socialIssue ? 
-          ` ${this.props.condition.socialIssue}` : ''
         let copy = ''
         this.props.condition.copy.forEach(para => {
           copy += `<p>${para}</p>`
         })
         return (
           `<div class="instructions">` + 
-            `<div class="icon ${iconClass}"></div>` +
+            `<div class="instructions icon ${this.getIconClass()}"></div>` +
             `<div class="copy">${copy}</div>` +
             "<p>Press any key to continue.</p>" +
           "</div>"
@@ -65,7 +62,7 @@ class ExperimentBlock extends React.Component {
         const pointVal = pointsTracker.getCurrentValue()
         return (`
           <p>${pointVal} Points</p>
-          <p>${this.props.condition.type} ${this.props.condition.socialIssue}</p>        
+          <div class="cue icon ${this.getIconClass()}"></div>
         `)
       },
       data: { cue: true },
@@ -145,9 +142,9 @@ class ExperimentBlock extends React.Component {
         const msg = targetData.hit ? 'Win!' : 'Lose'
         const sign = incr ? '+' : '-'
         return (`
+          <div class="feedback icon ${this.getIconClass()}"></div>
           <p>${msg}</p>
           <p>${sign}${targetData.point_value} Points</p>
-          <p>${this.props.condition.type} ${this.props.condition.socialIssue}</p>   
         `)
       },
       data: { feedback1: true },
@@ -160,8 +157,8 @@ class ExperimentBlock extends React.Component {
       stimulus: () => {
         const sign = (pointsTracker.currentTotal >= 0) ? '+' : ''
         return (`
+          <div class="feedback icon ${this.getIconClass()}"></div>
           <p>Total: ${sign}${pointsTracker.currentTotal}</p>
-          <p>${this.props.condition.type} ${this.props.condition.socialIssue}</p>     
         `)
       },
       data: { feedback2: true },
@@ -172,6 +169,14 @@ class ExperimentBlock extends React.Component {
     constructor(props) {
       super(props)
       this.isAnti = props.condition.type === "anti-charity"
+    }
+
+    getIconClass() {
+      let iconClass = this.props.condition.type
+      iconClass += this.props.condition.socialIssue ? 
+        ` ${this.props.condition.socialIssue.name}  ${this.props.condition.socialIssue.position}`
+        : ''
+      return iconClass  
     }
 
     getTimeline() {
