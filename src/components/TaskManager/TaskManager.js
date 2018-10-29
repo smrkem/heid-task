@@ -11,7 +11,7 @@ class TaskManager extends React.Component {
 
         this.steps = [
             'intro',
-            // 'survey',
+            'survey',
             // 'practiceTrial',
             'experiment'
         ]
@@ -47,7 +47,10 @@ class TaskManager extends React.Component {
                 )}
                 { (this.showing() === 'experiment') && (
                     <ExperimentManager 
-                      socialIssue="for_gender_equality"
+                      socialIssue={{
+                        name: "Gender Equality",
+                        position: "for"
+                      }}
                       starting_duration={320}
                       advanceStep={this.showNextStep} />
                 )}
