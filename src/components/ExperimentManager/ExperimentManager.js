@@ -46,19 +46,24 @@ class ExperimentManager extends React.Component {
         final_points: 0
       })
     })
-    
-    // return blocks.splice(0,2)
-    return blocks
+
+    return blocks.splice(0,3)
+    // return blocks
   }
 
   updateBlock(blockData) {
     let blocks = this.state.blocks.slice()
     blocks[this.state.blockIndex] = {
       ...this.state.blocks[this.state.blockIndex],
+      final_duration: blockData.final_duration,
       final_points: blockData.points,
       block_trial_data: blockData.data
     }
     delete blocks[this.state.blockIndex].condition.copy
+    
+    if (this.state.blockIndex < this.state.blocks.length - 1) {
+      blocks[this.state.blockIndex + 1].starting_duration = blockData.final_duration
+    }
 
     this.setState({ blocks })
     this.showNextBlock()

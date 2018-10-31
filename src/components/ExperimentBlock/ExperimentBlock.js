@@ -10,6 +10,7 @@ import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
 const jsPsych = window.jsPsych
 let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
+let staircase = null
 
 
 // const staircase = new DbStaircase({
@@ -96,10 +97,11 @@ class ExperimentBlock extends React.Component {
     stimulus: '<div style="display: block; height: 80px; width: 80px; background: #666; border-radius: 50%;"></div>',
     choices: ['Enter', 'Space'],
     data: {target: true},
-    trial_duration: function() { return 300 },
+    trial_duration: function() { return staircase.getValue() },
     on_finish: function(data) {
       data.presentation_duration = this.trial_duration
       data.hit = data.rt ? true : false
+      staircase.addResponse(data.hit)
       data.point_value = pointsTracker.getCurrentValue()
     }
   }
@@ -173,6 +175,11 @@ class ExperimentBlock extends React.Component {
   constructor(props) {
     super(props)
     this.isAnti = props.condition.type === "anti-charity"
+    staircase = new DbStaircase({
+      firstVal: props.starting_duration,
+      down: 2,
+      stepSizes: [2, 2, 1]
+    })
   }
 
   getIconClass() {
@@ -210,7 +217,7 @@ class ExperimentBlock extends React.Component {
             this.feedback2,
             this.blank2
           ],
-          repetitions: 2
+          repetitions: 15
       }
       timeline.push(test_procedure)
 
@@ -242,6 +249,11 @@ class ExperimentBlock extends React.Component {
     pointsTracker = new PointsTracker()
     this.isAnti = this.props.condition.type === "anti-charity"
     this.setState({ results: {} })
+    staircase = new DbStaircase({
+      firstVal: this.props.starting_duration,
+      down: 2,
+      stepSizes: [2, 2, 1]
+    })
 
     jsPsych.init({
       timeline: this.getTimeline(),
@@ -265,10 +277,12 @@ class ExperimentBlock extends React.Component {
       const trialData = JSON.parse(
           jsPsych.data.get().json()
       )
+      const data = this.collectTrials(trialData)
       const results = {
         points: pointsTracker.currentTotal,
         point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
-        data: this.collectTrials(trialData),
+        final_duration: data[data.length - 1].target_presentation_duration,
+        data: data,
       }
 
 
