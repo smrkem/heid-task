@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import './ExperimentSurvey.css'
 import SurveyItem from '../SurveyItem/SurveyItem'
+import issues from '../../issues.json'
+
 
 const HEID_API_URL = "https://5rp983l6qc.execute-api.us-east-1.amazonaws.com/develop/survey-submissions"
 
@@ -18,60 +20,7 @@ function makeid(num) {
 class ExperimentSurvey extends React.Component {
     state = {
         showing: 'intro',
-        surveyItems: [
-            {
-                title: 'Animal Testing',
-                content: 'Do you beleive humans have the right to experiment on animals?'
-            },
-            {
-                title: 'Death Penalty',
-                content: 'How for or against the Death penalty are you?'
-            },
-            {
-                title: 'Gun Control',
-                content: 'Are you for or against Gun Control?'
-            },
-            {
-                title: 'Abortion',
-                content: 'Are you for or against Abortion?'
-            },
-            {
-                title: 'Climate Change',
-                content: 'Are you for or against Climate Change?'
-            },
-            {
-                title: 'Free Healthcare',
-                content: 'Are you for or against Free Healthcare?'
-            },
-            {
-                title: 'Marriage Equality',
-                content: 'Do you beleive in Marriage Equality?'
-            },
-            {
-                title: 'Gender Inequality',
-                content: 'Do you beleive in Gender Inequality?'
-            },
-            {
-                title: 'Legalization of Prostitution',
-                content: 'Do you beleive in Legalization of Prostitution?'
-            },
-            {
-                title: 'Hijab / Burqa',
-                content: 'Do you beleive in Hijab / Burqa?'
-            },
-            {
-                title: 'Marijuana Legalisation',
-                content: 'Do you beleive in Marijuana Legalisation?'
-            },
-            {
-                title: 'Euthanasia',
-                content: 'Do you beleive in Euthanasia?'
-            },
-            {
-                title: 'Vaccines',
-                content: 'Do you beleive in Vaccines?'
-            }
-        ],
+        surveyItems: issues,
         surveyResults: [],
         surveyFinished: false,
         submittedResults: false,
@@ -124,7 +73,6 @@ class ExperimentSurvey extends React.Component {
     }
 
     render() {
-        console.log("state: ", this.state)
         if (this.state.showing === 'intro') {
             return (
                 <div>

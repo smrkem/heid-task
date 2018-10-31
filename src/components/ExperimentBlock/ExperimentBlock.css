@@ -1,0 +1,23 @@
+#jspsych-experiment.fullscreen {
+    cursor: none;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.instructions .icon {
+  
+}
+
+.instructions .copy p {
+  max-width: 800px;
+  text-align: left;
+}
+
+.instructions .continue-btn {
+    margin-top: 4rem;
+}

@@ -48,7 +48,7 @@ class SurveyItem extends React.Component {
         return (
             <div className="card surveyItem">
                 { this.props.icon && (
-                    <div><img class="card-img-top" src={this.props.icon} /></div>
+                    <div><img class="card-img-top" alt="" src={this.props.icon} /></div>
                 )}
                 <h4 className="card-title">{this.props.title}</h4>
                 <p>{this.props.content}</p>
