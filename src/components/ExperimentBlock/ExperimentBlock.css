@@ -17,3 +17,7 @@
   max-width: 800px;
   text-align: left;
 }
+
+.instructions .continue-btn {
+    margin-top: 4rem;
+}

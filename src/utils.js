@@ -36,7 +36,6 @@ class PointsTracker {
   }
 
   setNextValue(incr=true) {
-    console.log('incr: ', incr)
     this.currentTotal += incr ? this.getCurrentValue() : -1 * this.getCurrentValue()
     const newVal = randomFromInterval(100, 1000, 10)
     this.values.push(newVal)

@@ -6,24 +6,27 @@ import ExperimentManager from '../ExperimentManager/ExperimentManager'
 
 
 class TaskManager extends React.Component {
+  state = {
+    index: 0,
+    blockData: []
+  }
+  steps = [
+    'intro',
+    // 'survey',
+    // 'practiceTrial',
+    'experiment',
+    'final'
+  ]
+
     constructor(props) {
         super(props)
-
-        this.steps = [
-            'intro',
-            // 'survey',
-            // 'practiceTrial',
-            'experiment'
-        ]
-
-        this.state = {
-            index: 0
-        }
-
         this.showNextStep = this.showNextStep.bind(this)
     }
 
-    showNextStep() {
+    showNextStep(blockData=false) {
+        if (blockData) {
+          this.setState({ blockData })
+        }
         this.setState({
             index: this.state.index + 1
         })
@@ -53,6 +56,14 @@ class TaskManager extends React.Component {
                       }}
                       starting_duration={320}
                       advanceStep={this.showNextStep} />
+                )}
+                { (this.showing() === 'final') && (
+                    <div className="exp-results">
+                      <h2>Experiment Over</h2>
+                      <p>This is placeholder. What do we want to display when the exp is over?</p>
+                      <p>This is also where we would send data to server for storage.</p>
+                      <pre>{ JSON.stringify(this.state.blockData, null, 2) }</pre>
+                    </div>
                 )}
             </div>
         )

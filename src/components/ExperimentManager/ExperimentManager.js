@@ -12,10 +12,10 @@ class ExperimentManager extends React.Component {
 
       // create blocks here. need 8 total randomized. 2 self, 2 game, 2 anti-charity and 2 charity
       // no 2 categories should ever repeat
-      // console.log(props.socialIssue)
       this.state.blocks = this.randomizeBlocks()
 
       this.showNextBlock = this.showNextBlock.bind(this)
+      this.updateBlock = this.updateBlock.bind(this)
   }
 
   randomizeBlocks() {
@@ -46,20 +46,43 @@ class ExperimentManager extends React.Component {
         final_points: 0
       })
     })
+    
+    // return blocks.splice(0,2)
     return blocks
   }
 
-    showNextBlock() {
-        this.setState({
-          blockIndex: this.state.blockIndex + 1
-        })
+  updateBlock(blockData) {
+    let blocks = this.state.blocks.slice()
+    blocks[this.state.blockIndex] = {
+      ...this.state.blocks[this.state.blockIndex],
+      final_points: blockData.points,
+      block_trial_data: blockData.data
     }
+    delete blocks[this.state.blockIndex].condition.copy
+
+    this.setState({ blocks })
+    this.showNextBlock()
+  }
+
+  showNextBlock() {
+    if (this.state.blockIndex === this.state.blocks.length - 1) {
+      // Showing last block. No more to show.
+      this.props.advanceStep(this.state.blocks)
+    }
+    else {
+      this.setState({
+        blockIndex: this.state.blockIndex + 1
+      })
+    }
+  }
 
     render() {
-      console.log('conditions', this.state.blocks)
         return (
             <div id="exp-manager">
-              <ExperimentBlock {...this.state.blocks[this.state.blockIndex] } />
+              <ExperimentBlock 
+                {...this.state.blocks[this.state.blockIndex] } 
+                onBlockFinish={this.updateBlock}
+                />
             </div>
         )
     }

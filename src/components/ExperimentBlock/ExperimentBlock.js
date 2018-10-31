@@ -8,8 +8,8 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
 
 const jsPsych = window.jsPsych
-const keyLogger = new KeyLogger()
-const pointsTracker = new PointsTracker()
+let keyLogger = new KeyLogger()
+let pointsTracker = new PointsTracker()
 
 
 // const staircase = new DbStaircase({
@@ -50,7 +50,7 @@ class ExperimentBlock extends React.Component {
         `<div class="instructions">` + 
           `<div class="instructions icon ${this.getIconClass()}"></div>` +
           `<div class="copy">${copy}</div>` +
-          "<p>Press any key to continue.</p>" +
+          `<p class="continue-btn">Press any key to continue.</p>` +
         "</div>"
       )
     }
@@ -210,7 +210,7 @@ class ExperimentBlock extends React.Component {
             this.feedback2,
             this.blank2
           ],
-          repetitions: 3
+          repetitions: 2
       }
       timeline.push(test_procedure)
 
@@ -223,7 +223,7 @@ class ExperimentBlock extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     if (this.state.showResults) {
       return <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
     }
@@ -237,31 +237,44 @@ class ExperimentBlock extends React.Component {
     )
   }
 
+  initExperiment() {
+    keyLogger = new KeyLogger()
+    pointsTracker = new PointsTracker()
+    this.isAnti = this.props.condition.type === "anti-charity"
+    this.setState({ results: {} })
+
+    jsPsych.init({
+      timeline: this.getTimeline(),
+      on_finish: this.onExperimentFinish.bind(this),
+      display_element: 'jspsych-experiment'
+    })
+    this.experiment.focus()
+  }
+
   componentDidMount() {
-      jsPsych.init({
-          timeline: this.getTimeline(),
-          on_finish: this.onExperimentFinish.bind(this),
-          display_element: 'jspsych-experiment'
-      })
-      this.experiment.focus()
+      this.initExperiment()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.condition !== prevProps.condition) {
+      this.initExperiment()
+    }
   }
 
   onExperimentFinish() {
       const trialData = JSON.parse(
           jsPsych.data.get().json()
       )
-      // console.log("DONE:", trialData)
+      const results = {
+        points: pointsTracker.currentTotal,
+        point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
+        data: this.collectTrials(trialData),
+      }
 
 
-      this.setState({
-        showResults: true,
-        results: {
-          points: pointsTracker.currentTotal,
-          point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
-          data: this.collectTrials(trialData),
-        }
-      })
-      // console.log("ponts:", pointsTracker.values)
+      this.setState({ results })
+
+      this.props.onBlockFinish(results)
   }
 
   collectTrials(trialData) {
@@ -269,12 +282,9 @@ class ExperimentBlock extends React.Component {
     let currentTrial = null
     let trialIndex = 1
     trialData.forEach( (trialPart) => {
-        console.log('tp: ', trialPart)
-
         delete trialPart.stimulus
 
         if (trialPart.beginTrial) {
-          console.log('>>>>>>>>>>>>>>BT tp: ', trialPart)
             if (currentTrial) {
                 trials.push(currentTrial)
             }
