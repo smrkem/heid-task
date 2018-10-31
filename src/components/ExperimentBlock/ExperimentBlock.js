@@ -33,230 +33,277 @@ const pointsTracker = new PointsTracker()
 // }
 
 class ExperimentBlock extends React.Component {
-    state = {
-      showResults: false,
-      results: {}
-    }
+  state = {
+    showResults: false,
+    results: {}
+  }
 
-    instructions = {
-      type: "html-keyboard-response",
-      data: { instructions: true },
-      stimulus: () => {
-        let copy = ''
-        this.props.condition.copy.forEach(para => {
-          copy += `<p>${para}</p>`
-        })
-        return (
-          `<div class="instructions">` + 
-            `<div class="instructions icon ${this.getIconClass()}"></div>` +
-            `<div class="copy">${copy}</div>` +
-            "<p>Press any key to continue.</p>" +
-          "</div>"
-        )
-      }
-    }
-
-    cue = {
-      type: "html-keyboard-response",
-      stimulus: () => {
-        const pointVal = pointsTracker.getCurrentValue()
-        return (`
-          <p>${pointVal} Points</p>
-          <div class="cue icon ${this.getIconClass()}"></div>
-        `)
-      },
-      data: { cue: true },
-      response_ends_trial: false,
-      trial_duration: 1000
-    }
-
-    fixation = {
-      type: "html-keyboard-response",
-      stimulus: '<div style="font-size: 60px;">+</div>',
-      response_ends_trial: false,
-      data: {fixation: true},
-      trial_duration: function() { 
-        return randomFromInterval(2000, 2500) 
-      },
-      on_start: function(data) {
-        keyLogger.keyLog = []
-        document.addEventListener("keyup", keyLogger.logger)
-      },
-      on_finish: function(data) {
-        data.presentation_duration = this.trial_duration
-      }
-    }
-
-    target = {
-      type: "html-keyboard-response",
-      stimulus: '<div style="display: block; height: 80px; width: 80px; background: #666; border-radius: 50%;"></div>',
-      choices: ['Enter', 'Space'],
-      data: {target: true},
-      trial_duration: function() { return 300 },
-      on_finish: function(data) {
-        data.presentation_duration = this.trial_duration
-        data.hit = data.rt ? true : false
-        data.point_value = pointsTracker.getCurrentValue()
-      }
-    }
-
-    blank1 = {
-      type: "html-keyboard-response",
-      stimulus: '<div></div>',
-      response_ends_trial: false,
-      trial_duration: function() { 
-        return randomFromInterval(1500, 3000) 
-      },
-      data: {blank1: true},
-      on_finish: function(data) {
-        data.presentation_duration = this.trial_duration
-        data.keylog = keyLogger.keyLog
-        document.removeEventListener("keyup", keyLogger.logger)
-      }
-    }
-
-    blank2 = {
-      type: "html-keyboard-response",
-      stimulus: '<div></div>',
-      response_ends_trial: false,
-      trial_duration: function() { 
-        return randomFromInterval(1500, 3000) 
-      },
-      data: {blank2: true},
-      on_finish: function(data) {
-        data.presentation_duration = this.trial_duration
-      }
-    }
-
-    feedback1 = {
-      type: "html-keyboard-response",
-      stimulus: () => {
-        const targetData = JSON.parse(
-          jsPsych.data.getLastTimelineData().filter({target: true}).json()
-        ).pop();
-
-        // increment if hit (decrement if anti-charity)
-        const incr = ( (targetData.hit && !this.isAnti) || (!targetData.hit && this.isAnti))
-        pointsTracker.setNextValue(incr)
-
-        const msg = targetData.hit ? 'Win!' : 'Lose'
-        const sign = incr ? '+' : '-'
-        return (`
-          <div class="feedback icon ${this.getIconClass()}"></div>
-          <p>${msg}</p>
-          <p>${sign}${targetData.point_value} Points</p>
-        `)
-      },
-      data: { feedback1: true },
-      response_ends_trial: false,
-      trial_duration: 1650
-    }
-
-    feedback2 = {
-      type: "html-keyboard-response",
-      stimulus: () => {
-        const sign = (pointsTracker.currentTotal >= 0) ? '+' : ''
-        return (`
-          <div class="feedback icon ${this.getIconClass()}"></div>
-          <p>Total: ${sign}${pointsTracker.currentTotal}</p>
-        `)
-      },
-      data: { feedback2: true },
-      response_ends_trial: false,
-      trial_duration: 1000
-    }
-
-    constructor(props) {
-      super(props)
-      this.isAnti = props.condition.type === "anti-charity"
-    }
-
-    getIconClass() {
-      let iconClass = this.props.condition.type
-      iconClass += this.props.condition.socialIssue ? 
-        ` ${this.props.condition.socialIssue.name}  ${this.props.condition.socialIssue.position}`
-        : ''
-      return iconClass  
-    }
-
-    getTimeline() {
-        const timeline = []
-
-        // 
-        // timeline.push({
-        //     type: 'fullscreen',
-        //     fullscreen_mode: true,
-        //     on_finish: function(data) {
-        //         const elem = document.getElementById('jspsych-experiment')
-        //         elem.classList.add("fullscreen")
-        //         elem.focus()
-        //     }
-        // })
-
-        timeline.push(this.instructions)
-
-       
-        const test_procedure = {
-            timeline: [
-              this.cue,
-              this.fixation,
-              this.target,
-              this.blank1,
-              this.feedback1,
-              this.feedback2,
-              this.blank2
-            ],
-            repetitions: 3
-        }
-        timeline.push(test_procedure)
-
-        // timeline.push({
-        //     type: 'fullscreen',
-        //     fullscreen_mode: false
-        // })
-
-        return timeline
-    }
-
-    render() {
-      console.log(this.props)
-      if (this.state.showResults) {
-        return <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
-      }
-
+  instructions = {
+    type: "html-keyboard-response",
+    data: { instructions: true},
+    stimulus: () => {
+      let copy = ''
+      this.props.condition.copy.forEach(para => {
+        copy += `<p>${para}</p>`
+      })
       return (
-          <div id="jspsych-experiment"
-            ref={(exp) => { this.experiment = exp }}
-          >
-            Experiment here
-          </div>
+        `<div class="instructions">` + 
+          `<div class="instructions icon ${this.getIconClass()}"></div>` +
+          `<div class="copy">${copy}</div>` +
+          "<p>Press any key to continue.</p>" +
+        "</div>"
       )
     }
+  }
 
-    componentDidMount() {
-        jsPsych.init({
-            timeline: this.getTimeline(),
-            on_finish: this.onExperimentFinish.bind(this),
-            display_element: 'jspsych-experiment'
-        })
-        this.experiment.focus()
+  cue = {
+    type: "html-keyboard-response",
+    stimulus: () => {
+      const pointVal = pointsTracker.getCurrentValue()
+      return (`
+        <p>${pointVal} Points</p>
+        <div class="cue icon ${this.getIconClass()}"></div>
+      `)
+    },
+    data: { 
+      cue: true,
+      beginTrial: true, 
+      point_value: () => pointsTracker.getCurrentValue() 
+    },
+    response_ends_trial: false,
+    trial_duration: 1000
+  }
+
+  fixation = {
+    type: "html-keyboard-response",
+    stimulus: '<div style="font-size: 60px;">+</div>',
+    response_ends_trial: false,
+    data: {fixation: true},
+    trial_duration: function() { 
+      return randomFromInterval(2000, 2500) 
+    },
+    on_start: function(data) {
+      keyLogger.keyLog = []
+      document.addEventListener("keyup", keyLogger.logger)
+    },
+    on_finish: function(data) {
+      data.presentation_duration = this.trial_duration
+    }
+  }
+
+  target = {
+    type: "html-keyboard-response",
+    stimulus: '<div style="display: block; height: 80px; width: 80px; background: #666; border-radius: 50%;"></div>',
+    choices: ['Enter', 'Space'],
+    data: {target: true},
+    trial_duration: function() { return 300 },
+    on_finish: function(data) {
+      data.presentation_duration = this.trial_duration
+      data.hit = data.rt ? true : false
+      data.point_value = pointsTracker.getCurrentValue()
+    }
+  }
+
+  blank1 = {
+    type: "html-keyboard-response",
+    stimulus: '<div></div>',
+    response_ends_trial: false,
+    trial_duration: function() { 
+      return randomFromInterval(1500, 3000) 
+    },
+    data: {blank1: true},
+    on_finish: function(data) {
+      data.presentation_duration = this.trial_duration
+      data.keylog = keyLogger.keyLog
+      document.removeEventListener("keyup", keyLogger.logger)
+    }
+  }
+
+  blank2 = {
+    type: "html-keyboard-response",
+    stimulus: '<div></div>',
+    response_ends_trial: false,
+    trial_duration: function() { 
+      return randomFromInterval(1500, 3000) 
+    },
+    data: {blank2: true},
+    on_finish: function(data) {
+      data.presentation_duration = this.trial_duration
+    }
+  }
+
+  feedback1 = {
+    type: "html-keyboard-response",
+    stimulus: () => {
+      const targetData = JSON.parse(
+        jsPsych.data.getLastTimelineData().filter({target: true}).json()
+      ).pop();
+
+      // increment if hit (decrement if anti-charity)
+      const incr = ( (targetData.hit && !this.isAnti) || (!targetData.hit && this.isAnti))
+      pointsTracker.setNextValue(incr)
+
+      const msg = targetData.hit ? 'Win!' : 'Lose'
+      const sign = incr ? '+' : '-'
+      return (`
+        <div class="feedback icon ${this.getIconClass()}"></div>
+        <p>${msg}</p>
+        <p>${sign}${targetData.point_value} Points</p>
+      `)
+    },
+    data: { feedback1: true },
+    response_ends_trial: false,
+    trial_duration: 1650
+  }
+
+  feedback2 = {
+    type: "html-keyboard-response",
+    stimulus: () => {
+      const sign = (pointsTracker.currentTotal >= 0) ? '+' : ''
+      return (`
+        <div class="feedback icon ${this.getIconClass()}"></div>
+        <p>Total: ${sign}${pointsTracker.currentTotal}</p>
+      `)
+    },
+    data: { feedback2: true },
+    response_ends_trial: false,
+    trial_duration: 1000
+  }
+
+  constructor(props) {
+    super(props)
+    this.isAnti = props.condition.type === "anti-charity"
+  }
+
+  getIconClass() {
+    let iconClass = this.props.condition.type
+    iconClass += this.props.condition.socialIssue ? 
+      ` ${this.props.condition.socialIssue.name}  ${this.props.condition.socialIssue.position}`
+      : ''
+    return iconClass  
+  }
+
+  getTimeline() {
+      const timeline = []
+
+      // 
+      // timeline.push({
+      //     type: 'fullscreen',
+      //     fullscreen_mode: true,
+      //     on_finish: function(data) {
+      //         const elem = document.getElementById('jspsych-experiment')
+      //         elem.classList.add("fullscreen")
+      //         elem.focus()
+      //     }
+      // })
+
+      timeline.push(this.instructions)
+
+      
+      const test_procedure = {
+          timeline: [
+            this.cue,
+            this.fixation,
+            this.target,
+            this.blank1,
+            this.feedback1,
+            this.feedback2,
+            this.blank2
+          ],
+          repetitions: 3
+      }
+      timeline.push(test_procedure)
+
+      // timeline.push({
+      //     type: 'fullscreen',
+      //     fullscreen_mode: false
+      // })
+
+      return timeline
+  }
+
+  render() {
+    console.log(this.props)
+    if (this.state.showResults) {
+      return <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
     }
 
-    onExperimentFinish() {
-        const trialData = JSON.parse(
-            jsPsych.data.get().json()
-        )
-        // console.log("DONE:", trialData)
-        this.setState({
-          showResults: true,
-          results: {
-            points: pointsTracker.currentTotal,
-            point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
-            data: trialData,
-          }
-        })
-        // console.log("ponts:", pointsTracker.values)
-    }
+    return (
+        <div id="jspsych-experiment"
+          ref={(exp) => { this.experiment = exp }}
+        >
+          Experiment here
+        </div>
+    )
+  }
+
+  componentDidMount() {
+      jsPsych.init({
+          timeline: this.getTimeline(),
+          on_finish: this.onExperimentFinish.bind(this),
+          display_element: 'jspsych-experiment'
+      })
+      this.experiment.focus()
+  }
+
+  onExperimentFinish() {
+      const trialData = JSON.parse(
+          jsPsych.data.get().json()
+      )
+      // console.log("DONE:", trialData)
+
+
+      this.setState({
+        showResults: true,
+        results: {
+          points: pointsTracker.currentTotal,
+          point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
+          data: this.collectTrials(trialData),
+        }
+      })
+      // console.log("ponts:", pointsTracker.values)
+  }
+
+  collectTrials(trialData) {
+    const trials = []
+    let currentTrial = null
+    let trialIndex = 1
+    trialData.forEach( (trialPart) => {
+        console.log('tp: ', trialPart)
+
+        delete trialPart.stimulus
+
+        if (trialPart.beginTrial) {
+          console.log('>>>>>>>>>>>>>>BT tp: ', trialPart)
+            if (currentTrial) {
+                trials.push(currentTrial)
+            }
+            currentTrial = {index: trialIndex++}
+        }
+
+        if (trialPart.fixation) {
+            currentTrial.responded_early = trialPart.rt || false
+        }
+
+        if (trialPart.target) {
+            currentTrial.hit = trialPart.hit
+            currentTrial.rt = trialPart.rt
+            currentTrial.target_presentation_duration = trialPart.presentation_duration
+        }
+
+        if (trialPart.blank1) {
+            currentTrial.responded_late = trialPart.rt || false
+            currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
+            currentTrial.num_responses = trialPart.keylog.length
+        }
+
+        if (trialPart.point_value) {
+          currentTrial.point_value = trialPart.point_value
+        }
+    })
+    trials.push(currentTrial)
+    return trials
+  }
 
 }
 
