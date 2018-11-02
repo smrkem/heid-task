@@ -8,7 +8,7 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker, closeFullscreen, getMeanForLast } from '../../utils'
 
 const jsPsych = window.jsPsych
-const NUM_REVERSALS = 5
+const NUM_REVERSALS = 3
 let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
 let staircase = null
@@ -20,9 +20,9 @@ class PracticeBlock extends React.Component {
   }
 
   instructions = {
-    type: "fullscreen",
+    type: "html-keyboard-response",
     data: { instructions: true},
-    message: () => {
+    stimuli: () => {
       return (
         `<div class="instructions">` + 
           `<div class="instructions icon game"></div>` +
@@ -31,11 +31,11 @@ class PracticeBlock extends React.Component {
       )
     },
     on_finish: function(data) {
-      const elem = document.getElementById('jspsych-experiment')
-      elem.classList.add("fullscreen")
-      elem.focus()
+      // const elem = document.getElementById('jspsych-experiment')
+      // elem.classList.add("fullscreen")
+      // elem.focus()
     },
-    fullscreen_mode: true,
+    fullscreen_mode: false,
     button_label: "Begin Practice"
   }
 
@@ -128,10 +128,10 @@ class PracticeBlock extends React.Component {
         jsPsych.data.getLastTimelineData().filter({target: true}).json()
       ).pop();
 
-      pointsTracker.setNextValue(true)
+      pointsTracker.setNextValue(targetData.hit)
 
       const msg = targetData.hit ? 'Win!' : 'Lose'
-      const sign = '+'
+      const sign = targetData.hit ? '+' : '-'
       return (`
         <div class="feedback icon game"></div>
         <p>${msg}</p>
@@ -180,21 +180,29 @@ class PracticeBlock extends React.Component {
           this.feedback2,
           this.blank2
         ],
-        repetitions: 30
+        repetitions: 4
     }
     timeline.push(test_procedure)
 
-    timeline.push({
-        type: 'fullscreen',
-        fullscreen_mode: false
-    })
+    // timeline.push({
+    //     type: 'fullscreen',
+    //     fullscreen_mode: false
+    // })
     
     return timeline
   }
 
   render() {
     if (this.state.showResults) {
-      return <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
+      return (
+        <div className="exp-results">
+          <button
+            className="btn btn-large btn-primary"
+            onClick={() => { alert('advance') }}
+            >Continue</button>
+          <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
+        </div>
+      )
     }
 
     return (
@@ -228,9 +236,9 @@ class PracticeBlock extends React.Component {
       data: data,
     }
 
-    this.setState({ results })
-    this.props.finishPractice(results)
-    this.props.advanceStep()
+    this.setState({ results, showResults: true })
+    // this.props.finishPractice(results)
+    // this.props.advanceStep()
   }
 
   collectTrials(trialData) {
