@@ -5,67 +5,29 @@ import 'jspsych/plugins/jspsych-html-keyboard-response'
 import 'jspsych/plugins/jspsych-fullscreen'
 import { DbStaircase } from './staircase'
 import './ExperimentBlock.css'
-import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
+import { KeyLogger, randomFromInterval, PointsTracker, closeFullscreen, getMeanForLast } from '../../utils'
 
 const jsPsych = window.jsPsych
+const NUM_REVERSALS = 5
 let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
 let staircase = null
 
-
-// const staircase = new DbStaircase({
-//     firstVal: 400,
-//     down: 2,
-//     stepSizes: [8, 4, 4, 2, 2, 1]
-// })
-// const NUM_REVERSALS = 9
-// const NUM_STAIRCASE_VALUES = 5
-
-// function closeFullscreen() {
-//     if (document.exitFullscreen) {
-//       document.exitFullscreen();
-//     } else if (document.mozCancelFullScreen) { /* Firefox */
-//       document.mozCancelFullScreen();
-//     } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-//       document.webkitExitFullscreen();
-//     } else if (document.msExitFullscreen) { /* IE/Edge */
-//       document.msExitFullscreen();
-//     }
-// }
-
-class ExperimentBlock extends React.Component {
+class PracticeBlock extends React.Component {
   state = {
     showResults: false,
     results: {}
   }
 
   instructions = {
-    type: "html-keyboard-response",
+    type: "fullscreen",
     data: { instructions: true},
-    stimulus: () => {
-      let copy = ''
-      this.props.condition.copy.forEach(para => {
-        copy += `<p>${para}</p>`
-      })
-      return (
-        `<div class="instructions">` + 
-          `<div class="instructions icon ${this.getIconClass()}"></div>` +
-          `<div class="copy">${copy}</div>` +
-          `<p class="continue-btn">Press any key to continue.</p>` +
-        "</div>"
-      )
-    },
     message: () => {
-      let copy = ''
-      this.props.condition.copy.forEach(para => {
-        copy += `<p>${para}</p>`
-      })
       return (
         `<div class="instructions">` + 
-          `<div class="instructions icon ${this.getIconClass()}"></div>` +
-          `<div class="copy">${copy}</div>` +
-          // `<p class="continue-btn">Press any key to continue.</p>` +
-        "</div>"
+          `<div class="instructions icon game"></div>` +
+          `<div class="copy"><p>Practice Block instructions placeholder</p></div>` +
+        `</div>`
       )
     },
     on_finish: function(data) {
@@ -73,7 +35,8 @@ class ExperimentBlock extends React.Component {
       elem.classList.add("fullscreen")
       elem.focus()
     },
-    button_label: "Begin"
+    fullscreen_mode: true,
+    button_label: "Begin Practice"
   }
 
   cue = {
@@ -82,7 +45,7 @@ class ExperimentBlock extends React.Component {
       const pointVal = pointsTracker.getCurrentValue()
       return (`
         <p>${pointVal} Points</p>
-        <div class="cue icon ${this.getIconClass()}"></div>
+        <div class="cue icon game"></div>
       `)
     },
     data: { 
@@ -122,6 +85,11 @@ class ExperimentBlock extends React.Component {
       data.hit = data.rt ? true : false
       staircase.addResponse(data.hit)
       data.point_value = pointsTracker.getCurrentValue()
+
+      if (staircase.stairs.numReversals >= NUM_REVERSALS) {
+        jsPsych.endExperiment("Hit max reversals: ", staircase.stairs.numReversals)
+        closeFullscreen()
+      }
     }
   }
 
@@ -160,14 +128,12 @@ class ExperimentBlock extends React.Component {
         jsPsych.data.getLastTimelineData().filter({target: true}).json()
       ).pop();
 
-      // increment if hit (decrement if anti-charity)
-      const incr = ( (targetData.hit && !this.isAnti) || (!targetData.hit && this.isAnti))
-      pointsTracker.setNextValue(incr)
+      pointsTracker.setNextValue(true)
 
       const msg = targetData.hit ? 'Win!' : 'Lose'
-      const sign = incr ? '+' : '-'
+      const sign = '+'
       return (`
-        <div class="feedback icon ${this.getIconClass()}"></div>
+        <div class="feedback icon game"></div>
         <p>${msg}</p>
         <p>${sign}${targetData.point_value} Points</p>
       `)
@@ -182,7 +148,7 @@ class ExperimentBlock extends React.Component {
     stimulus: () => {
       const sign = (pointsTracker.currentTotal >= 0) ? '+' : ''
       return (`
-        <div class="feedback icon ${this.getIconClass()}"></div>
+        <div class="feedback icon game"></div>
         <p>Total: ${sign}${pointsTracker.currentTotal}</p>
       `)
     },
@@ -193,51 +159,37 @@ class ExperimentBlock extends React.Component {
 
   constructor(props) {
     super(props)
-    this.isAnti = props.condition.type === "anti-charity"
     staircase = new DbStaircase({
-      firstVal: props.starting_duration,
+      firstVal: 400,
       down: 2,
-      stepSizes: [2, 2, 1]
+      stepSizes: [8, 4, 4, 2, 2, 1]
     })
   }
 
-  getIconClass() {
-    let iconClass = this.props.condition.type
-    iconClass += this.props.condition.socialIssue ? 
-      ` ${this.props.condition.socialIssue.name}  ${this.props.condition.socialIssue.position}`
-      : ''
-    return iconClass  
-  }
-
   getTimeline() {
-      const timeline = []
+    const timeline = []
+    timeline.push(this.instructions)
 
-      this.instructions.type = this.props.initialBlock ? 'fullscreen' : 'html-keyboard-response'
-      this.instructions.fullscreen_mode = this.props.initialBlock
-      timeline.push(this.instructions)
+    const test_procedure = {
+        timeline: [
+          this.cue,
+          this.fixation,
+          this.target,
+          this.blank1,
+          this.feedback1,
+          this.feedback2,
+          this.blank2
+        ],
+        repetitions: 30
+    }
+    timeline.push(test_procedure)
 
-      const test_procedure = {
-          timeline: [
-            this.cue,
-            this.fixation,
-            this.target,
-            this.blank1,
-            this.feedback1,
-            this.feedback2,
-            this.blank2
-          ],
-          repetitions: 5
-      }
-      timeline.push(test_procedure)
-
-      if (this.props.finalBlock) {
-        timeline.push({
-            type: 'fullscreen',
-            fullscreen_mode: false
-        })
-      }
-
-      return timeline
+    timeline.push({
+        type: 'fullscreen',
+        fullscreen_mode: false
+    })
+    
+    return timeline
   }
 
   render() {
@@ -249,22 +201,12 @@ class ExperimentBlock extends React.Component {
         <div id="jspsych-experiment"
           ref={(exp) => { this.experiment = exp }}
         >
-          Experiment here
+          Practice here
         </div>
     )
   }
 
-  initExperiment() {
-    keyLogger = new KeyLogger()
-    pointsTracker = new PointsTracker()
-    this.isAnti = this.props.condition.type === "anti-charity"
-    this.setState({ results: {} })
-    staircase = new DbStaircase({
-      firstVal: this.props.starting_duration,
-      down: 2,
-      stepSizes: [2, 2, 1]
-    })
-
+  componentDidMount() {
     jsPsych.init({
       timeline: this.getTimeline(),
       on_finish: this.onExperimentFinish.bind(this),
@@ -273,32 +215,22 @@ class ExperimentBlock extends React.Component {
     this.experiment.focus()
   }
 
-  componentDidMount() {
-      this.initExperiment()
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.condition !== prevProps.condition) {
-      this.initExperiment()
-    }
-  }
-
   onExperimentFinish() {
-      const trialData = JSON.parse(
-          jsPsych.data.get().json()
-      )
-      const data = this.collectTrials(trialData)
-      const results = {
-        points: pointsTracker.currentTotal,
-        point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
-        final_duration: data[data.length - 1].target_presentation_duration,
-        data: data,
-      }
+    const trialData = JSON.parse(
+        jsPsych.data.get().json()
+    )
+    const data = this.collectTrials(trialData)
+    const results = {
+      points: pointsTracker.currentTotal,
+      calculated_duration: getMeanForLast(staircase.stairs.values, 5),
+      point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
+      final_duration: data[data.length - 1].target_presentation_duration,
+      data: data,
+    }
 
-
-      this.setState({ results })
-
-      this.props.onBlockFinish(results)
+    this.setState({ results })
+    this.props.finishPractice(results)
+    this.props.advanceStep()
   }
 
   collectTrials(trialData) {
@@ -338,7 +270,6 @@ class ExperimentBlock extends React.Component {
     trials.push(currentTrial)
     return trials
   }
-
 }
 
-export default ExperimentBlock
+export default PracticeBlock

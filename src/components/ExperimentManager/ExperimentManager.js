@@ -7,17 +7,18 @@ class ExperimentManager extends React.Component {
     blocks: [],
     blockIndex: 0
   }
+  
   constructor(props) {
       super(props)
 
-      // create blocks here. need 8 total randomized. 2 self, 2 game, 2 anti-charity and 2 charity
-      // no 2 categories should ever repeat
       this.state.blocks = this.randomizeBlocks()
 
       this.showNextBlock = this.showNextBlock.bind(this)
       this.updateBlock = this.updateBlock.bind(this)
   }
 
+  // create blocks here. need 8 total randomized. 2 self, 2 game, 2 anti-charity and 2 charity
+  // no 2 categories should ever repeat
   randomizeBlocks() {
     let conditions = shuffle(['self', 'anti-charity', 'charity', 'game'])
     let newConditions = shuffle(['self', 'anti-charity', 'charity', 'game'])
@@ -28,7 +29,6 @@ class ExperimentManager extends React.Component {
 
 
     let blocks = []
-    // Each condition has an icon and copy
 
     conditions.forEach(c => {
       let condition = {
@@ -47,8 +47,8 @@ class ExperimentManager extends React.Component {
       })
     })
 
-    return blocks.splice(0,3)
-    // return blocks
+    // return blocks.splice(0,3)
+    return blocks
   }
 
   updateBlock(blockData) {
@@ -87,6 +87,8 @@ class ExperimentManager extends React.Component {
               <ExperimentBlock 
                 {...this.state.blocks[this.state.blockIndex] } 
                 onBlockFinish={this.updateBlock}
+                initialBlock={this.state.blockIndex === 0}
+                finalBlock={this.state.blockIndex === this.state.blocks.length - 1}
                 />
             </div>
         )

@@ -18,6 +18,28 @@ const randomFromInterval = (min, max, step=1) => {
   return min + Math.floor(Math.random() * range) * step
 }
 
+const getMeanForLast = (arr, n) => {
+  var data = arr.slice(-n);
+  var sum = 0;
+  for (var i = 0; i < data.length; i++) {
+    sum += data[i];
+  }
+  return Math.round(sum / n);
+}
+
+
+const closeFullscreen = () => {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) { /* Firefox */
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE/Edge */
+    document.msExitFullscreen();
+  }
+}
+
 class KeyLogger {
   keyLog = []
   logger = (event) => { this.keyLog.push(event.keyCode) }
@@ -75,6 +97,8 @@ function conditionCopy(c, {name, position}) {
 export {
   shuffle,
   randomFromInterval,
+  getMeanForLast,
+  closeFullscreen,
   KeyLogger,
   PointsTracker,
   conditionCopy
