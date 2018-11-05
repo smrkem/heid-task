@@ -15,7 +15,7 @@ class TaskManager extends React.Component {
     'intro',
     // 'survey',
     'practiceTrial',
-    // 'experiment',
+    'experiment',
     'final'
   ]
 
@@ -43,7 +43,6 @@ class TaskManager extends React.Component {
   }
 
     render() {
-        console.log('manager render', this.state)
         return (
             <div className="task-manager">
                 { (this.showing() === 'intro') && (
@@ -64,7 +63,7 @@ class TaskManager extends React.Component {
                         name: "Gender Equality",
                         position: "for"
                       }}
-                      starting_duration={320}
+                      starting_duration={this.state.practiceData.calculated_duration || 320}
                       advanceStep={this.showNextStep} />
                 )}
                 { (this.showing() === 'final') && (

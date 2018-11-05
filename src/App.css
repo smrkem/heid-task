@@ -25,6 +25,14 @@
   left: 0;
   background: #fff;
 }
+.exp-results p {
+    text-align: left;
+    max-width: 600px;
+}
+.exp-results .exp-data {
+    padding: 1rem;
+    margin-top: 1rem;
+}
 
 pre {
   text-align: left;

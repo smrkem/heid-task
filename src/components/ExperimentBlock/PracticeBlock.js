@@ -8,7 +8,8 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker, closeFullscreen, getMeanForLast } from '../../utils'
 
 const jsPsych = window.jsPsych
-const NUM_REVERSALS = 5
+// const NUM_REVERSALS = 8
+const NUM_REVERSALS = 3
 let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
 let staircase = null
@@ -128,10 +129,10 @@ class PracticeBlock extends React.Component {
         jsPsych.data.getLastTimelineData().filter({target: true}).json()
       ).pop();
 
-      pointsTracker.setNextValue(true)
+      pointsTracker.setNextValue(targetData.hit)
 
       const msg = targetData.hit ? 'Win!' : 'Lose'
-      const sign = '+'
+      const sign = targetData.hit ? '+' : '-'
       return (`
         <div class="feedback icon game"></div>
         <p>${msg}</p>
@@ -180,7 +181,7 @@ class PracticeBlock extends React.Component {
           this.feedback2,
           this.blank2
         ],
-        repetitions: 30
+        repetitions: 40
     }
     timeline.push(test_procedure)
 
@@ -194,7 +195,26 @@ class PracticeBlock extends React.Component {
 
   render() {
     if (this.state.showResults) {
-      return <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
+      return (
+        <div className="exp-results container">
+          <h2>Practice Block Finished</h2>
+          <p>This is where we can send the data to the server if we want.</p>
+          <p>Questions:</p>
+          <ul>
+            <li>What kind of data to store and how to format it? Below is the output from this practice trial. What other metrics do we need to measure</li>
+            <li>Where do we want to store the data. Who should be able to access it and how? What format is easiest? Should we store directly to a database?</li>
+          </ul>
+          <div>
+            <button
+              className="btn btn-large btn-primary"
+              onClick={this.props.advanceStep}
+              >Continue</button>
+          </div>
+          <div className="exp-data">
+            <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
+          </div>
+        </div>
+      )
     }
 
     return (
@@ -216,6 +236,7 @@ class PracticeBlock extends React.Component {
   }
 
   onExperimentFinish() {
+    this.experiment.blur()
     const trialData = JSON.parse(
         jsPsych.data.get().json()
     )
@@ -228,39 +249,47 @@ class PracticeBlock extends React.Component {
       data: data,
     }
 
-    this.setState({ results })
+    this.setState({ results, showResults: true })
     this.props.finishPractice(results)
-    this.props.advanceStep()
+    // this.props.advanceStep()
   }
 
   collectTrials(trialData) {
     const trials = []
-    let currentTrial = null
+    let currentTrial = {}
     let trialIndex = 1
     trialData.forEach( (trialPart) => {
         delete trialPart.stimulus
 
         if (trialPart.beginTrial) {
-            if (currentTrial) {
+            if (Object.keys(currentTrial).length > 0) {
                 trials.push(currentTrial)
             }
             currentTrial = {index: trialIndex++}
         }
 
+
+
+        ['cue', 'fixation', 'target', 'blank1', 'feedback1', 'feedback2', 'blank2'].forEach((n) => {
+          if (trialPart[n]) {
+            currentTrial[`${n}_time_elapsed`] = trialPart.time_elapsed
+          }
+        })
+        
         if (trialPart.fixation) {
-            currentTrial.responded_early = trialPart.rt || false
+          currentTrial.responded_early = trialPart.rt || false
         }
 
         if (trialPart.target) {
-            currentTrial.hit = trialPart.hit
-            currentTrial.rt = trialPart.rt
-            currentTrial.target_presentation_duration = trialPart.presentation_duration
+          currentTrial.hit = trialPart.hit
+          currentTrial.rt = trialPart.rt
+          currentTrial.target_presentation_duration = trialPart.presentation_duration
         }
 
         if (trialPart.blank1) {
-            currentTrial.responded_late = trialPart.rt || false
-            currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
-            currentTrial.num_responses = trialPart.keylog.length
+          currentTrial.responded_late = trialPart.rt || false
+          currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
+          currentTrial.num_responses = trialPart.keylog.length
         }
 
         if (trialPart.point_value) {

@@ -13,26 +13,6 @@ let pointsTracker = new PointsTracker()
 let staircase = null
 
 
-// const staircase = new DbStaircase({
-//     firstVal: 400,
-//     down: 2,
-//     stepSizes: [8, 4, 4, 2, 2, 1]
-// })
-// const NUM_REVERSALS = 9
-// const NUM_STAIRCASE_VALUES = 5
-
-// function closeFullscreen() {
-//     if (document.exitFullscreen) {
-//       document.exitFullscreen();
-//     } else if (document.mozCancelFullScreen) { /* Firefox */
-//       document.mozCancelFullScreen();
-//     } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-//       document.webkitExitFullscreen();
-//     } else if (document.msExitFullscreen) { /* IE/Edge */
-//       document.msExitFullscreen();
-//     }
-// }
-
 class ExperimentBlock extends React.Component {
   state = {
     showResults: false,
@@ -213,7 +193,7 @@ class ExperimentBlock extends React.Component {
       const timeline = []
 
       this.instructions.type = this.props.initialBlock ? 'fullscreen' : 'html-keyboard-response'
-      this.instructions.fullscreen_mode = this.props.initialBlock
+      this.instructions.fullscreen_mode = this.props.initialBlock ? true : false
       timeline.push(this.instructions)
 
       const test_procedure = {
@@ -293,6 +273,7 @@ class ExperimentBlock extends React.Component {
         point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
         final_duration: data[data.length - 1].target_presentation_duration,
         data: data,
+        success_rate: data.filter(trial => trial.hit).length / data.length
       }
 
 
@@ -315,20 +296,26 @@ class ExperimentBlock extends React.Component {
             currentTrial = {index: trialIndex++}
         }
 
+        ['cue', 'fixation', 'target', 'blank1', 'feedback1', 'feedback2', 'blank2'].forEach((n) => {
+          if (trialPart[n]) {
+            currentTrial[`${n}_time_elapsed`] = trialPart.time_elapsed
+          }
+        })
+
         if (trialPart.fixation) {
-            currentTrial.responded_early = trialPart.rt || false
+          currentTrial.responded_early = trialPart.rt || false
         }
 
         if (trialPart.target) {
-            currentTrial.hit = trialPart.hit
-            currentTrial.rt = trialPart.rt
-            currentTrial.target_presentation_duration = trialPart.presentation_duration
+          currentTrial.hit = trialPart.hit
+          currentTrial.rt = trialPart.rt
+          currentTrial.target_presentation_duration = trialPart.presentation_duration
         }
 
         if (trialPart.blank1) {
-            currentTrial.responded_late = trialPart.rt || false
-            currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
-            currentTrial.num_responses = trialPart.keylog.length
+          currentTrial.responded_late = trialPart.rt || false
+          currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
+          currentTrial.num_responses = trialPart.keylog.length
         }
 
         if (trialPart.point_value) {
