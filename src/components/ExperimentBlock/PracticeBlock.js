@@ -20,9 +20,9 @@ class PracticeBlock extends React.Component {
   }
 
   instructions = {
-    type: "html-keyboard-response",
+    type: "fullscreen",
     data: { instructions: true},
-    stimuli: () => {
+    message: () => {
       return (
         `<div class="instructions">` + 
           `<div class="instructions icon game"></div>` +
@@ -31,11 +31,11 @@ class PracticeBlock extends React.Component {
       )
     },
     on_finish: function(data) {
-      // const elem = document.getElementById('jspsych-experiment')
-      // elem.classList.add("fullscreen")
-      // elem.focus()
+      const elem = document.getElementById('jspsych-experiment')
+      elem.classList.add("fullscreen")
+      elem.focus()
     },
-    fullscreen_mode: false,
+    fullscreen_mode: true,
     button_label: "Begin Practice"
   }
 
@@ -184,10 +184,10 @@ class PracticeBlock extends React.Component {
     }
     timeline.push(test_procedure)
 
-    // timeline.push({
-    //     type: 'fullscreen',
-    //     fullscreen_mode: false
-    // })
+    timeline.push({
+        type: 'fullscreen',
+        fullscreen_mode: false
+    })
     
     return timeline
   }
@@ -195,12 +195,24 @@ class PracticeBlock extends React.Component {
   render() {
     if (this.state.showResults) {
       return (
-        <div className="exp-results">
-          <button
-            className="btn btn-large btn-primary"
-            onClick={() => { alert('advance') }}
-            >Continue</button>
-          <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
+        <div className="exp-results container">
+          <h2>Practice Block Finished</h2>
+          <p>This is where we can send the data to the server if we want.</p>
+          <p>Questions:
+            <ul>
+              <li>What kind of data to store and how to format it? Below is the output from this practice trial. What other metrics do we need to measure</li>
+              <li>Where do we want to store the data. Who should be able to access it and how? What format is easiest? Should we store directly to a database?</li>
+            </ul>
+          </p>
+          <div>
+            <button
+              className="btn btn-large btn-primary"
+              onClick={() => { alert('advance') }}
+              >Continue</button>
+          </div>
+          <div className="exp-data">
+            <pre>{JSON.stringify(this.state.results, null, 2)}</pre>
+          </div>
         </div>
       )
     }
@@ -224,6 +236,7 @@ class PracticeBlock extends React.Component {
   }
 
   onExperimentFinish() {
+    this.experiment.blur()
     const trialData = JSON.parse(
         jsPsych.data.get().json()
     )
@@ -243,32 +256,40 @@ class PracticeBlock extends React.Component {
 
   collectTrials(trialData) {
     const trials = []
-    let currentTrial = null
+    let currentTrial = {}
     let trialIndex = 1
     trialData.forEach( (trialPart) => {
         delete trialPart.stimulus
 
         if (trialPart.beginTrial) {
-            if (currentTrial) {
+            if (Object.keys(currentTrial).length > 0) {
                 trials.push(currentTrial)
             }
             currentTrial = {index: trialIndex++}
         }
 
+
+
+        ['cue', 'fixation', 'target', 'blank1', 'feedback1', 'feedback2', 'blank2'].forEach((n) => {
+          if (trialPart[n]) {
+            currentTrial[`${n}_time_elapsed`] = trialPart.time_elapsed
+          }
+        })
+        
         if (trialPart.fixation) {
-            currentTrial.responded_early = trialPart.rt || false
+          currentTrial.responded_early = trialPart.rt || false
         }
 
         if (trialPart.target) {
-            currentTrial.hit = trialPart.hit
-            currentTrial.rt = trialPart.rt
-            currentTrial.target_presentation_duration = trialPart.presentation_duration
+          currentTrial.hit = trialPart.hit
+          currentTrial.rt = trialPart.rt
+          currentTrial.target_presentation_duration = trialPart.presentation_duration
         }
 
         if (trialPart.blank1) {
-            currentTrial.responded_late = trialPart.rt || false
-            currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
-            currentTrial.num_responses = trialPart.keylog.length
+          currentTrial.responded_late = trialPart.rt || false
+          currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
+          currentTrial.num_responses = trialPart.keylog.length
         }
 
         if (trialPart.point_value) {
