@@ -273,6 +273,7 @@ class ExperimentBlock extends React.Component {
         point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
         final_duration: data[data.length - 1].target_presentation_duration,
         data: data,
+        success_rate: data.filter(trial => trial.hit).length / data.length
       }
 
 

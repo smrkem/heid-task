@@ -8,6 +8,7 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker, closeFullscreen, getMeanForLast } from '../../utils'
 
 const jsPsych = window.jsPsych
+// const NUM_REVERSALS = 8
 const NUM_REVERSALS = 3
 let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
@@ -180,7 +181,7 @@ class PracticeBlock extends React.Component {
           this.feedback2,
           this.blank2
         ],
-        repetitions: 4
+        repetitions: 40
     }
     timeline.push(test_procedure)
 
@@ -198,16 +199,15 @@ class PracticeBlock extends React.Component {
         <div className="exp-results container">
           <h2>Practice Block Finished</h2>
           <p>This is where we can send the data to the server if we want.</p>
-          <p>Questions:
-            <ul>
-              <li>What kind of data to store and how to format it? Below is the output from this practice trial. What other metrics do we need to measure</li>
-              <li>Where do we want to store the data. Who should be able to access it and how? What format is easiest? Should we store directly to a database?</li>
-            </ul>
-          </p>
+          <p>Questions:</p>
+          <ul>
+            <li>What kind of data to store and how to format it? Below is the output from this practice trial. What other metrics do we need to measure</li>
+            <li>Where do we want to store the data. Who should be able to access it and how? What format is easiest? Should we store directly to a database?</li>
+          </ul>
           <div>
             <button
               className="btn btn-large btn-primary"
-              onClick={() => { alert('advance') }}
+              onClick={this.props.advanceStep}
               >Continue</button>
           </div>
           <div className="exp-data">
@@ -250,7 +250,7 @@ class PracticeBlock extends React.Component {
     }
 
     this.setState({ results, showResults: true })
-    // this.props.finishPractice(results)
+    this.props.finishPractice(results)
     // this.props.advanceStep()
   }
 

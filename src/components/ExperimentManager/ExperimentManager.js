@@ -47,8 +47,8 @@ class ExperimentManager extends React.Component {
       })
     })
 
-    // return blocks.splice(0,3)
-    return blocks
+    return blocks.splice(0,3)
+    // return blocks
   }
 
   updateBlock(blockData) {
@@ -57,7 +57,8 @@ class ExperimentManager extends React.Component {
       ...this.state.blocks[this.state.blockIndex],
       final_duration: blockData.final_duration,
       final_points: blockData.points,
-      block_trial_data: blockData.data
+      block_trial_data: blockData.data,
+      success_rate: blockData.success_rate
     }
     delete blocks[this.state.blockIndex].condition.copy
     
