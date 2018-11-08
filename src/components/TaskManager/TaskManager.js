@@ -1,6 +1,6 @@
 import React from 'react'
 import ExperimentIntro from '../ExperimentIntro/ExperimentIntro'
-import ExperimentSurvey from '../ExperimentSurvey/ExperimentSurvey'
+import SurveyManager from '../SurveyManager/SurveyManager'
 import PracticeBlock from '../ExperimentBlock/PracticeBlock'
 import ExperimentManager from '../ExperimentManager/ExperimentManager'
 
@@ -13,7 +13,7 @@ class TaskManager extends React.Component {
   }
   steps = [
     'intro',
-    // 'survey',
+    'survey',
     'practiceTrial',
     'experiment',
     'final'
@@ -49,7 +49,7 @@ class TaskManager extends React.Component {
                     <ExperimentIntro advanceStep={this.showNextStep} />
                 )}
                 { (this.showing() === 'survey') && (
-                    <ExperimentSurvey advanceStep={this.showNextStep} />
+                    <SurveyManager advanceStep={this.showNextStep} />
                 )}
                 { (this.showing() === 'practiceTrial') && (
                     <PracticeBlock

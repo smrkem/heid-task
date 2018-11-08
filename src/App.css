@@ -1,3 +1,10 @@
+body > #root > div {
+    height: 100vh;
+  }
+
+.bold {
+    font-weight: bold;
+}
 
 .App {
   text-align: center;
@@ -10,10 +17,11 @@
   align-items: center;
   justify-content: center;
   color: white;
+  z-index: 100;
 }
 
 .App-body {
-  padding-top: 40px;
+    
 }
 
 
