@@ -3,17 +3,17 @@ import './SurveyManager.css'
 import SurveyIntro from '../SurveyIntro/SurveyIntro'
 import SurveyConsent from '../SurveyConsent/SurveyConsent'
 import SurveyWellBeing from '../SurveyWellBeing/SurveyWellBeing'
-import SurveyInitialIssues from '../SurveyInitialIssues/SurveyInitialIssues'
+import SurveySection1 from '../SurveySection1/SurveySection1'
 
 
 class SurveyManager extends React.Component {
   state = { 
     issues: [],
     steps: [
-      'intro',
-      'consent',
-      'wellbeing',
-      'initialIssues',
+      // 'intro',
+      // 'consent',
+      // 'wellbeing',
+      'section1',
       'issueSelection',
       'finalIssue',
       'goodbye'
@@ -60,9 +60,9 @@ class SurveyManager extends React.Component {
       )
     }
 
-    if (this.showing() === 'initialIssues') {
+    if (this.showing() === 'section1') {
       return (
-        <SurveyInitialIssues
+        <SurveySection1
           onFinish={this.advanceStep.bind(this)}
           />
       )

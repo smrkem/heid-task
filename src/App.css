@@ -18,12 +18,21 @@ body > #root > div {
   justify-content: center;
   color: white;
   z-index: 100;
+
+  height: 0;
+  overflow: hidden;
 }
 
 .App-body {
-    
+    height: 100vh;
+    /* margin-top: -56px;
+    padding-top: 56px; */
 }
 
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+}
 
 #jspsych-experiment {
   position: absolute;
@@ -73,4 +82,52 @@ pre {
 .icon.self {
   background-image: url('/images/self-icon.png');
   border: 1px solid #aaa;
+}
+
+.task-manager,
+.surveySection {
+    height: 100%;
+}
+
+.survey-issues-bg {
+    background: url('/images/issues-bg.png');
+}
+
+.green-bg {
+    background: lightgreen;
+}
+
+.surveySection h1 {
+    padding: 1rem;
+    background: white;
+}
+
+.thinker-icon-center:after {
+    content: "";
+    position: absolute;
+    background-image: url(/images/thinker.png);
+    background-repeat: no-repeat;
+    
+    background-size: 197px auto;
+    bottom: 0;
+    height: 270px;
+    width: 197px;
+    z-index: 10;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.thinker-icon-bottom-left:after {
+    content: "";
+    position: absolute;
+    background-image: url(/images/thinker.png);
+    background-repeat: no-repeat;
+    
+    left: 50px;
+    bottom: 0;
+    height: 217px;
+    width: 157px;
+    background-size: 300px auto;
+    z-index: 10;
 }
