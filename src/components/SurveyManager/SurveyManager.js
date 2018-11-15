@@ -4,16 +4,18 @@ import SurveyIntro from '../SurveyIntro/SurveyIntro'
 import SurveyConsent from '../SurveyConsent/SurveyConsent'
 import SurveyWellBeing from '../SurveyWellBeing/SurveyWellBeing'
 import SurveySection1 from '../SurveySection1/SurveySection1'
+import SurveySection2 from '../SurveySection2/SurveySection2'
 
 
 class SurveyManager extends React.Component {
   state = { 
     issues: [],
     steps: [
-      // 'intro',
-      // 'consent',
-      // 'wellbeing',
+      'intro',
+      'consent',
+      'wellbeing',
       'section1',
+      'section2',
       'issueSelection',
       'finalIssue',
       'goodbye'
@@ -29,6 +31,10 @@ class SurveyManager extends React.Component {
     this.setState({
       stepIndex: this.state.stepIndex + 1
     })
+  }
+
+  submitIssues(issues) {
+    this.setState({issues})
   }
 
   showGoodbye() {
@@ -63,6 +69,16 @@ class SurveyManager extends React.Component {
     if (this.showing() === 'section1') {
       return (
         <SurveySection1
+          submitIssues={this.submitIssues.bind(this)}
+          onFinish={this.advanceStep.bind(this)}
+          />
+      )
+    }
+
+    if (this.showing() === 'section2') {
+      return (
+        <SurveySection2
+          issues={this.state.issues}
           onFinish={this.advanceStep.bind(this)}
           />
       )

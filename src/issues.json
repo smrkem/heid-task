@@ -1,54 +1,173 @@
 [  
   {  
      "title":"Animal Testing",
-     "content":"Do you beleive humans have the right to experiment on animals?"
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Animal Testing problem statement placeholder?",
+     "content": [
+         "Do you beleive humans have the right to experiment on animals? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+         "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+        ]
   },
   {  
      "title":"The Death Penalty",
-     "content":"How for or against the Death penalty are you?"
+     "image": "issue-metoo.jpg",
+     "problem_statement": "The Death Penalty problem statement placeholder?",
+     "content": [
+        "How for or against the Death penalty are you? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Gun Control",
-     "content":"Are you for or against Gun Control?"
+     "title":"Stricter Gun Control",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Stricter Gun Control problem statement placeholder?",
+     "content": [
+        "Are you for or against Gun Control? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Abortion",
-     "content":"Are you for or against Abortion?"
+     "title":"Abortion Rights",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Abortion Rights problem statement placeholder?",
+     "content": [
+        "Are you for or against Abortion Rights? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
      "title":"Climate Change",
-     "content":"Are you for or against Climate Change?"
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Climate Change problem statement placeholder?",
+     "content": [
+        "Are you for or against Climate Change? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Free Healthcare",
-     "content":"Are you for or against Free Healthcare?"
+     "title":"Government Funded Healthcare",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Government Funded Healthcare problem statement placeholder?",
+     "content": [
+        "Are you for or against Government Funded Healthcare? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
      "title":"Marriage Equality",
-     "content":"Do you beleive in Marriage Equality?"
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Marriage Equality problem statement placeholder?",
+     "content": [
+        "Are you for or against Marriage Equality? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Gender Inequality",
-     "content":"Do you beleive in Gender Inequality?"
+     "title":"Gender Wage Equality",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Gender Wage Equality problem statement placeholder?",
+     "content": [
+        "Are you for or against Gender Wage Equality? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Legalization of Prostitution",
-     "content":"Do you beleive in Legalization of Prostitution?"
+     "title":"Legalizing Prostitution",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Legalizing Prostitution problem statement placeholder?",
+     "content": [
+        "Are you for or against Legalizing Prostitution? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Hijab / Burqa",
-     "content":"Do you beleive in Hijab / Burqa?"
+     "title":"Banning Burqa",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Banning Burqa problem statement placeholder?",
+     "content": [
+        "Are you for or against Banning Burqa? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Marijuana Legalisation",
-     "content":"Do you beleive in Marijuana Legalisation?"
+     "title":"Legalizing Marijuana",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Legalizing Marijuana problem statement placeholder?",
+     "content": [
+        "Are you for or against Legalizing Marijuana? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Euthanasia",
-     "content":"Do you beleive in Euthanasia?"
+     "title":"Legalizing Euthanasia",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Legalizing Euthanasia problem statement placeholder?",
+     "content": [
+        "Are you for or against Legalizing Euthanasia? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
   },
   {  
-     "title":"Vaccines",
-     "content":"Do you beleive in Vaccines?"
+     "title":"Children Vaccinations",
+     "image": "issue-metoo.jpg",
+     "problem_statement": "Children Vaccinations problem statement placeholder?",
+     "content": [
+        "Are you for or against Children Vaccinations? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+       ]
+  },
+  {  
+    "title":"Eating Meat",
+    "image": "issue-metoo.jpg",
+    "problem_statement": "Eating Meat problem statement placeholder?",
+    "content": [
+       "Are you for or against Eating Meat? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+       "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+      ]
+  },
+  {  
+    "title":"Hate Speech Censorship",
+    "image": "issue-metoo.jpg",
+    "problem_statement": "Hate Speech Censorship problem statement placeholder?",
+    "content": [
+       "Are you for or against Hate Speech Censorship? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+       "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+      ]
+  },
+  {  
+    "title":"#BlackLivesMatter",
+    "image": "issue-metoo.jpg",
+    "problem_statement": "#BlackLivesMatter problem statement placeholder?",
+    "content": [
+       "Are you for or against #BlackLivesMatter? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+       "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+      ]
+  },
+  {  
+    "title":"Stem Cell Research",
+    "image": "issue-metoo.jpg",
+    "problem_statement": "Stem Cell Research problem statement placeholder?",
+    "content": [
+       "Are you for or against Stem Cell Research? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+       "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+      ]
+  },
+  {  
+    "title":"Illegal Immigration",
+    "image": "issue-metoo.jpg",
+    "problem_statement": "Illegal Immigration problem statement placeholder?",
+    "content": [
+       "Are you for or against Illegal Immigration? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+       "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+      ]
+  },
+  {  
+    "title":"#MeToo Movement",
+    "image": "issue-metoo.jpg",
+    "problem_statement": "Should Accusations of Secual Assault Be Broadcast on Social Media Platforms?",
+    "content": [
+       "The Me Too movement (or #MeToo movement) is a movement against sexual harassment and sexual assault in the workplace, music industry, sciences, academia, and politics. The hashtag #MeToo spread virally  in October 2017 on social media where victims could share publicly their #MeToo stories in an attempt to demonstrate the widespread prevalence of sexual assault and harassment that goes unreported. More than 12 million #MeToo related stories were posted on social media (e.g., Facebook, Twitter) during the first 24 hours, including some high-profile posts from several American celebrities (e.g., Gwyneth Paltrow, Uma Thurman, Jennifer Lawrence) describing their #MeToo stories accusing men of sexual assault.",
+       "There have been significant concerns raised about the #MeToo movement and posting accusations of sexual assault publicly online. If you wish for more information on this controversy and arguments FOR and AGAINST posting accusations online click <a href=\"https://google.com\" target=\"_blank\">here</a>."
+      ]
   }
 ]

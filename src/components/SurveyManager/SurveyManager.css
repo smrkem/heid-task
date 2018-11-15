@@ -51,6 +51,7 @@
     padding-bottom: 4rem;
 }
 
+.social-values-sec1-issue-modal,
 .social-values-copy-modal {
     background: rgba(255,255,255,0.95);
     margin: 4rem auto 2rem;
@@ -60,4 +61,56 @@
     border-radius: 5px;
     box-shadow: 1px 1px 1px 1px #333;
     max-width: 675px;
+}
+.social-values-sec1-issue-modal {
+    max-width: 570px;
+}
+
+.social-values-sec1-issue-modal h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.sec1-issue-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sec1-issue-image {
+    height: 135px;
+    width: 240px;
+    background-repeat: no-repeat;
+    background-size: 240px auto;
+}
+.sec1-issue-problem-statement {
+    width: 200px;
+    font-weight: 500;
+}
+
+.sec1-issue-selections {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: auto;
+}
+
+.sec2-issue-categorize {
+
+}
+
+.sec2-issue-categorize .issue-drop {
+    display: flex;
+}
+
+
+.sec2-issue-categorize .issue-drop .cat {
+    margin: 1rem;
+    flex-grow: 1;
+    height: 380px;
+}
+.sec2-issue-categorize .cat.most-important {
+    background: lightgreen;
+}
+.sec2-issue-categorize .cat.less-important {
+    background: lightgray;
 }

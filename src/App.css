@@ -97,6 +97,10 @@ pre {
     background: lightgreen;
 }
 
+.black-bg {
+    background: black;
+}
+
 .surveySection h1 {
     padding: 1rem;
     background: white;
@@ -128,6 +132,6 @@ pre {
     bottom: 0;
     height: 217px;
     width: 157px;
-    background-size: 300px auto;
+    background-size: 157px auto;
     z-index: 10;
 }
