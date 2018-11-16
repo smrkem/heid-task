@@ -1,6 +1,10 @@
 import React from 'react'
 import issues from '../../issues.json'
 import { shuffle } from '../../utils'
+import Copy1 from './copy1'
+import Copy2 from './copy2'
+import IssueView from './IssueView'
+
 
 class SurveySection1 extends React.Component {
   state = { 
@@ -18,6 +22,8 @@ class SurveySection1 extends React.Component {
   constructor(props) {
     super(props);
     this.state.issues = shuffle(issues);
+
+    this.categorizeIssue = this.categorizeIssue.bind(this);
   }
 
   advanceStep() {
@@ -68,18 +74,7 @@ class SurveySection1 extends React.Component {
         <div className="survey-issues-bg surveySection">
           <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
           <div className="social-values-copy-modal">          
-            <p>In this task, you will review a number of controversial social topics where people tend to be either 
-              <b>FOR</b> or <b>AGAINST</b> these issues (e.g., same-sex marriage, animal testing, etc.).</p>
-            <p>The goal is to understand which social issues  are <b>MOST IMPORTANT TO YOU</b> and what <b>YOU BELIEVE IN</b> 
-              (e.g., are you FOR or AGAINST this issue). You will be asked to complete three exercises in this task that will help us identify a final social issue that appears important to you and that you are most motivated to fight for in the next task. </p>
-
-            <p>
-              There are no right or wrong answers. What social issues you value are very individual; values are not based on what others expect of us or what we think we should be doing. They are based on what you believe in, what is truly important and meaningful to you.
-            </p>
-
-            <p>
-            We realize that not all social values are equally popular in today's society. Please be aware that your responses will be completely de-identified and there will be no link between your value choices and your personal identity. What is most important is that you answer honestly from your own perspective, rather than what you think is socially desirable. 
-            </p>
+            <Copy1 />
           </div>
           <button
             onClick={() => this.advanceStep()}
@@ -95,29 +90,7 @@ class SurveySection1 extends React.Component {
         <div className="survey-issues-bg surveySection">
           <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
           <div className="social-values-copy-modal">
-            <h2>Section I</h2>      
-            <p>
-              In this section, you will be presented with a short description of 19 controversial social issue.
-            </p>
-            <p>
-              The goal is to determine which of these social issues are most important to you and what you believe in. 
-            </p>
-              
-            <div>
-              <p>
-                <b>Your Task:</b><br />
-                Indicate how important each social issue is to you and what you believe in by clicking on one of three possible boxes:
-              </p>
-              <p>
-                <b>&#x25cb; Not Important to Me</b><br />
-                <b>&#x25cb; Somewhat Important to Me</b><br />
-                <b>&#x25cb; Very Important to Me</b>
-              </p>
-            </div>
-
-            <p>
-              You will get the chance to read more about the social issues you think are important to you in Section III.  Just try your best in determining how important each social issue is for you. 
-            </p>
+            <Copy2 />
           </div>
           <button
             className="btn btn-primary"
@@ -129,33 +102,11 @@ class SurveySection1 extends React.Component {
     }
 
     if (this.showing() === 'issues') {
-      const issue = this.state.issues[this.state.issueIndex];
       return (
-        <div className="black-bg surveySection thinker-icon-bottom-left">
-          <div className="card social-values-sec1-issue-modal">
-            <h2>{issue.title}</h2>
-            <div className="sec1-issue-bottom">
-              <div 
-                style={{backgroundImage: `url(/images/${issue.image})`}}
-                className="sec1-issue-image"></div>
-              <p className="sec1-issue-problem-statement">{issue.problem_statement}</p>
-            </div>          
-          </div>
-          <div className="sec1-issue-selections">
-            <button
-              className="btn btn-info"
-              onClick={() => this.categorizeIssue(issue, 'not-important')}
-              >NOT<br /> IMPORTANT</button>
-            <button
-              className="btn btn-info"
-              onClick={() => this.categorizeIssue(issue, 'somewhat-important')}
-              >SOMEWHAT<br /> IMPORTANT</button>
-            <button
-              className="btn btn-info"
-              onClick={() => this.categorizeIssue(issue, 'important')}
-              >IMPORTANT</button>
-          </div>
-        </div>
+        <IssueView
+          issue={this.state.issues[this.state.issueIndex]}
+          categorizeIssue={this.categorizeIssue}
+        />
       )
     }
 
