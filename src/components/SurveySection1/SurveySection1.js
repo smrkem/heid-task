@@ -35,7 +35,7 @@ class SurveySection1 extends React.Component {
   categorizeIssue(issue, cat) {
     const index = this.state.issues.indexOf(issue);
     let issues = [...this.state.issues]
-    issues[index].importance = cat
+    issues[index].importance1 = cat
     this.setState({issues})
     if (this.state.issueIndex === this.state.issues.length - 1) {
       this.advanceStep()
@@ -152,8 +152,8 @@ class SurveySection1 extends React.Component {
               >SOMEWHAT<br /> IMPORTANT</button>
             <button
               className="btn btn-info"
-              onClick={() => this.categorizeIssue(issue, 'very-important')}
-              >VERY<br /> IMPORTANT</button>
+              onClick={() => this.categorizeIssue(issue, 'important')}
+              >IMPORTANT</button>
           </div>
         </div>
       )

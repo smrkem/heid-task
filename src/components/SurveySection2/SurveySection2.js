@@ -13,6 +13,7 @@ class SurveySection2 extends React.Component {
 
   constructor(props) {
     super(props)
+    props.issues.forEach(iss => { iss.importance2 = 'uncategorized'} )
     this.state.issues = props.issues
   }
 
@@ -28,8 +29,26 @@ class SurveySection2 extends React.Component {
     return this.state.steps[this.state.stepIndex]
   }
 
-  render() {
+  onDragStart(e, issue) {
+    e.dataTransfer.setData("issue", JSON.stringify(issue));
+  }
 
+  onDrop(e, cat) {
+    const droppedIssue = JSON.parse(e.dataTransfer.getData("issue"))
+    let issues = JSON.parse(JSON.stringify(this.state.issues))
+    issues.forEach(i => {
+      if (i.title === droppedIssue.title) {
+        i.importance2 = cat
+      }
+    })
+    this.setState({issues})
+  }
+
+  onDragOver(e) {
+    e.preventDefault();
+  }
+
+  render() {
     if (this.showing() === 'copy1') {
       return (
         <div className="survey-issues-bg surveySection">
@@ -67,14 +86,56 @@ class SurveySection2 extends React.Component {
     }
 
     if (this.showing() === 'issues') {
+      const issueCards = {
+        uncategorized: [],
+        most_important: [],
+        less_important: []
+      }
+
+      this.state.issues.filter(i => i.importance1 === 'important').forEach(i => {
+        issueCards[i.importance2].push(
+          <div 
+            draggable
+            onDragStart={e => this.onDragStart(e, i)}
+            key={i.title}
+            className="card issue-card"
+            >
+            <h5 className="card-title">{i.title}</h5>
+          </div>
+        )
+      })
+      // console.log(this.state.issues)
+      // let importantIssues = this.state.issues.filter(iss => iss.importance1 === 'important' )
+      // console.log("ii:", importantIssues);
+
       return (
         <div className="black-bg surveySection thinker-icon-bottom-left sec2-issue-categorize">
           <div className="issue-drop">
-            <div className="cat most-important">
+            
+            <div className="cat most_important">
               <h3>Most Important To Me</h3>
+              <div className="dropWrapper"
+                onDrop={e => this.onDrop(e, 'most_important')}
+                onDragOver={e => this.onDragOver(e)}
+              >
+                {issueCards.most_important}
+              </div>
             </div>
-            <div className="cat less-important">
+
+            <div className="cat less_important">
               <h3>Less Important To Me</h3>
+              <div className="dropWrapper"
+                onDrop={e => this.onDrop(e, 'less_important')}
+                onDragOver={e => this.onDragOver(e)}
+              >
+                {issueCards.less_important}
+              </div>
+            </div>
+
+            <div className="issue-queue">
+              <div className="issue-row">
+                {issueCards.uncategorized}
+              </div>
             </div>
           </div>
         </div>
