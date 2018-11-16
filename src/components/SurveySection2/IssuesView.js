@@ -1,6 +1,13 @@
 import React from 'react'
+import informationIcon from './information_blue.svg'
+import IssueInfoModal from './IssueInfoModal'
+
 
 class IssuesView extends React.Component {
+  state = {
+    issueDetail: null
+  }
+
   onDrop(e, cat) {
     const droppedIssue = JSON.parse(e.dataTransfer.getData("issue"))
     this.props.onIssueDrop(droppedIssue, cat)
@@ -12,6 +19,14 @@ class IssuesView extends React.Component {
 
   onDragStart(e, issue) {
     e.dataTransfer.setData("issue", JSON.stringify(issue));
+  }
+
+  showIssueDetail(issue) {
+    this.setState({issueDetail: issue})
+  }
+
+  removeIssueDetail() {
+    this.setState({issueDetail: null})
   }
 
   render() {
@@ -32,11 +47,23 @@ class IssuesView extends React.Component {
           className="card issue-card"
           >
           <h5 className="card-title">{i.title}</h5>
+          <div 
+            className="information-icon"
+            onClick={() => this.showIssueDetail(i) }
+            >
+              <img src={informationIcon} alt="info" />
+            </div>
         </div>
       )
     })
     return (
       <div>
+        {this.state.issueDetail && (
+          <IssueInfoModal 
+            issue={this.state.issueDetail} 
+            onCancel={this.removeIssueDetail.bind(this)}
+            />
+        )}
         <div className="issue-drop">
             
             <div className="cat most_important">

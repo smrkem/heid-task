@@ -25,6 +25,7 @@
     position: fixed;
     width: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
     padding-bottom: 4rem;
 }
 
@@ -104,11 +105,12 @@
 .issue-queue {
     background: #666;
     height: 200px;
-    right: 10px;
+    right: -10px;
     position: absolute;
     bottom: 50px;
     left: 200px;
     overflow: hidden;
+    border-radius: 5px;
 
     box-shadow: inset 2px 2px 10px rgba(25, 25, 25, 0.6), inset -3px -4px 2px rgba(0, 0, 0, 0.4);
 }
@@ -136,6 +138,7 @@
     font-size: 1rem;
     
     border: 1px solid darkgreen;
+    border-radius: 5px;
     box-shadow: inset 3px 1px 2px rgba(25, 180, 25, 1), inset -3px -4px 2px rgba(0, 0, 0, .4);
     max-height: 60px;
 }
@@ -145,7 +148,64 @@
     font-size: 1rem;
 }
 
+.issue-card .information-icon {
+    position: absolute;
+    right: 10px;
+    top: 45%;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+.issue-card .information-icon img {
+    height: 30px;
+    width: 30px;
+    opacity: 0.7;
+    transition: opacity .3s ease;
+}
+.issue-card .information-icon img:hover {
+    opacity: 1;
+}
+
 .dropWrapper .issue-card.card h5 {
     font-weight: 700;
     font-size: 0.9rem;
+}
+
+.issueInfoModal {
+    background: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+    bottom: 0;
+    overflow-y: scroll;
+}
+.issueInfoModal .social-values-copy-modal {
+    position: relative;
+    background: white;
+}
+.issueInfoModal .social-values-copy-modal h1 {
+    padding: 0;
+}
+.issueInfoModal-cancel {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #eee;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    display: flex;
+}
+.issueInfoModal-cancel span {
+    margin: auto;
+}
+
+.IssueInfoModal-issueImage {
+    height: 288px;
+    width: 512px;
+    background-repeat: no-repeat;
+    background-size: 512px auto;
 }
