@@ -65,8 +65,37 @@ class SurveySection2 extends React.Component {
         <div className="black-bg surveySection thinker-icon-bottom-left sec2-issue-categorize">
           <IssuesView 
             onIssueDrop={this.onIssueDrop.bind(this)}
+            finishedSorting={() => this.advanceStep()}
             issues={this.state.issues}
           />
+        </div>
+      )
+    }
+
+    if (this.showing() === 'showResults') {
+      let issues = JSON.parse(JSON.stringify(this.state.issues))
+      const issueData = issues.map(iss => {
+        delete iss.image;
+        delete iss.content;
+        delete iss.problem_statement;
+        return iss;
+      })
+      return (
+        <div className="green-bg surveySection exp-results">
+          <h1 className="topBanner">Section 2 Results</h1>
+          <div className="social-values-copy-modal">
+            <p>Section 2 completed by user.</p>
+            <p>Do we want to store any data at this point? Can we throw out all data pertaining to issues catgorized as LESS IMPORTANT?</p>
+            <p>Data at this point shown below:</p>
+            <div className="exp-data">
+              <pre>{JSON.stringify(issueData, null, 3)}</pre>
+            </div>
+          </div>
+          <button
+            className="btn btn-info"
+            onClick={() => this.advanceStep()}
+          >
+            Continue</button>
         </div>
       )
     }

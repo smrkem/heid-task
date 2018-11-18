@@ -123,7 +123,7 @@ class SurveySection1 extends React.Component {
           <h1 className="topBanner">Section 1 Results</h1>
           <div className="social-values-copy-modal">
             <p>Section 1 completed by user.</p>
-            <p>Do we want to store any data at this point? Can we throw out all data pertaining to issues catgorized as NOT IMPORTANT?</p>
+            <p>Do we want to store any data at this point? Can we throw out all data pertaining to issues catgorized as NOT IMPORTANT or SOMEWHAT IMPORTANT?</p>
             <p>Data at this point shown below:</p>
             <div className="exp-data">
               <pre>{JSON.stringify(issueData, null, 3)}</pre>

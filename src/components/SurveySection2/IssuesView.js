@@ -17,6 +17,13 @@ class IssuesView extends React.Component {
     e.preventDefault();
   }
 
+  onDragOverMostImportant(e) {
+    const mostImportantIssues = this.props.issues.filter(iss => iss.importance2 === 'most_important');
+    if (mostImportantIssues.length < 3) {
+      e.preventDefault();
+    }
+  }
+
   onDragStart(e, issue) {
     e.dataTransfer.setData("issue", JSON.stringify(issue));
   }
@@ -30,7 +37,7 @@ class IssuesView extends React.Component {
   }
 
   render() {
-    const { issues } = this.props;
+    const { issues, finishedSorting } = this.props;
 
     const issueCards = {
       uncategorized: [],
@@ -68,9 +75,10 @@ class IssuesView extends React.Component {
             
             <div className="cat most_important">
               <h3>Most Important To Me</h3>
+              <small style={{display: 'block', marginTop: '-10px'}}>1 - 3 issues</small>
               <div className="dropWrapper"
                 onDrop={e => this.onDrop(e, 'most_important')}
-                onDragOver={e => this.onDragOver(e)}
+                onDragOver={e => this.onDragOverMostImportant(e)}
               >
                 {issueCards.most_important}
               </div>
@@ -89,6 +97,14 @@ class IssuesView extends React.Component {
         <div className="issue-queue">
           <div className="issue-row">
             {issueCards.uncategorized}
+            {!issueCards.uncategorized.length && (
+              <button
+                onClick={finishedSorting}
+                disabled={!issueCards.most_important.length}
+                className="btn btn-large btn-primary finishedButton"
+                >I'm Finished
+                </button>
+            )}
           </div>
         </div>
       </div>
