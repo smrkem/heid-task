@@ -4,7 +4,7 @@ const Copy1 = () => (
 <div>
   <h2>Section II</h2>      
   <p>
-    The social issues that were categorized as somewhat and very important will be presented again.
+    The social issues that were categorized as important will be presented again.
   </p>
   <p>
     This time, you will be asked to select your top three social issues.
