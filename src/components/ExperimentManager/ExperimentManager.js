@@ -47,8 +47,8 @@ class ExperimentManager extends React.Component {
       })
     })
 
-    return blocks.splice(0,3)
-    // return blocks
+    // return blocks.splice(0,3)
+    return blocks
   }
 
   updateBlock(blockData) {

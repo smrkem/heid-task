@@ -9,8 +9,10 @@ class TaskManager extends React.Component {
   state = {
     index: 0,
     blockData: [],
-    practiceData: {}
+    practiceData: {},
+    socialIssue: {}
   }
+
   steps = [
     'intro',
     'survey',
@@ -21,8 +23,9 @@ class TaskManager extends React.Component {
 
   constructor(props) {
       super(props)
-      this.showNextStep = this.showNextStep.bind(this)
-      this.setPracticeData = this.setPracticeData.bind(this)
+      this.showNextStep = this.showNextStep.bind(this);
+      this.setPracticeData = this.setPracticeData.bind(this);
+      this.submitSocialIssue = this.submitSocialIssue.bind(this);
   }
 
   showNextStep(blockData=false) {
@@ -32,6 +35,17 @@ class TaskManager extends React.Component {
       this.setState({
           index: this.state.index + 1
       })
+  }
+
+  submitSocialIssue(issue) {
+    let position = issue.position < 0 ? "against" : "for";
+    this.setState({
+      socialIssue: {
+        name: issue.title,
+        position: position
+      }
+    });
+    this.showNextStep();
   }
 
   showing() {
@@ -49,7 +63,10 @@ class TaskManager extends React.Component {
                     <ExperimentIntro advanceStep={this.showNextStep} />
                 )}
                 { (this.showing() === 'survey') && (
-                    <SurveyManager advanceStep={this.showNextStep} />
+                    <SurveyManager
+                      submitSocialIssue={this.submitSocialIssue}
+                      advanceStep={this.showNextStep} 
+                    />
                 )}
                 { (this.showing() === 'practiceTrial') && (
                     <PracticeBlock
@@ -59,10 +76,7 @@ class TaskManager extends React.Component {
                 )}
                 { (this.showing() === 'experiment') && (
                     <ExperimentManager 
-                      socialIssue={{
-                        name: "Gender Equality",
-                        position: "for"
-                      }}
+                      socialIssue={this.state.socialIssue}
                       starting_duration={this.state.practiceData.calculated_duration || 320}
                       advanceStep={this.showNextStep} />
                 )}

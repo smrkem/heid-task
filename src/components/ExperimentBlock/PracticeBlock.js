@@ -8,8 +8,8 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker, closeFullscreen, getMeanForLast } from '../../utils'
 
 const jsPsych = window.jsPsych
-// const NUM_REVERSALS = 8
-const NUM_REVERSALS = 3
+const NUM_REVERSALS = 8
+// const NUM_REVERSALS = 3
 let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
 let staircase = null

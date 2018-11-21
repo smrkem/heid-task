@@ -206,7 +206,7 @@ class ExperimentBlock extends React.Component {
             this.feedback2,
             this.blank2
           ],
-          repetitions: 5
+          repetitions: 25
       }
       timeline.push(test_procedure)
 

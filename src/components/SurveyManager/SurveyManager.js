@@ -48,7 +48,6 @@ class SurveyManager extends React.Component {
   }
 
   submitFinalIssues(finalIssues) {
-    console.log('sfi: ', finalIssues);
     const issues = JSON.parse(JSON.stringify(this.state.issues));
     finalIssues.forEach(finalIssue => {
       const index = issues.findIndex(iss => iss.title === finalIssue.title);
@@ -59,6 +58,11 @@ class SurveyManager extends React.Component {
       }
     })
     this.setState({issues});
+  }
+
+  finishSurvey() {
+    const selectedIssues = this.state.issues.filter(iss => iss.selectedIssue);
+    this.props.submitSocialIssue(selectedIssues[0]);
   }
 
   showGoodbye() {
@@ -126,6 +130,7 @@ class SurveyManager extends React.Component {
       return (
         <SurveyFinal 
           issues={this.state.issues}
+          finishSurvey={this.finishSurvey.bind(this)}
         />
       )
     }

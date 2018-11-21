@@ -1,16 +1,24 @@
 import React from 'react'
+import { shuffle } from '../../utils'
+
 
 class SurveyFinal extends React.Component {
   randomMargin() {
-    return Math.floor((Math.random() * 4) + 1) * 0.5;
+    return Math.floor((Math.random() * 8) + 1) * 0.25;
   }
 
   render() {
-    console.log('final: ', this.props.issues);
+    let issues = shuffle(JSON.parse(JSON.stringify(this.props.issues)));    
     return(
       <div className="green-bg surveySection surveyFinal exp-results">
+        <div className="thank-you-copy">
+          <h4>Thank you for playing!</h4>
+          <button
+            className="btn btn-primary"
+            onClick={this.props.finishSurvey}>Next</button>
+        </div>
         <div className="row issue-row">
-          { this.props.issues.map(issue => {
+          { issues.map(issue => {
             let className = "card issue-card";
             if (issue.importance2 === 'most_important') {
               className += " most_important";
