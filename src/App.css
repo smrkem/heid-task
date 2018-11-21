@@ -5,6 +5,9 @@ body > #root > div {
 .bold {
     font-weight: bold;
 }
+.text-center {
+    text-align: center;
+}
 
 .App {
   text-align: center;
@@ -134,4 +137,5 @@ pre {
     width: 157px;
     background-size: 157px auto;
     z-index: 10;
+    transform: rotateY(180deg);
 }

@@ -16,6 +16,10 @@ class SurveySection2 extends React.Component {
   constructor(props) {
     super(props)
     props.issues.forEach(iss => { iss.importance2 = 'uncategorized'} )
+
+    if (props.step) {
+      this.state.stepIndex = this.state.steps.indexOf(props.step);
+    }
     this.state.issues = props.issues
   }
 
@@ -78,6 +82,7 @@ class SurveySection2 extends React.Component {
         delete iss.image;
         delete iss.content;
         delete iss.problem_statement;
+        delete iss.position_statement;
         return iss;
       })
       return (

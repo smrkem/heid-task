@@ -116,6 +116,7 @@ class SurveySection1 extends React.Component {
         delete iss.image;
         delete iss.content;
         delete iss.problem_statement;
+        delete iss.position_statement;
         return iss;
       })
       return (

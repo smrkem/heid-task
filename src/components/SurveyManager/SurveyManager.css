@@ -215,3 +215,85 @@
     margin: auto;
     border-color: #555;
 }
+
+.sec3-issueDetail {
+    padding: 2rem;
+}
+
+.sec3-issue-copy {
+    background: #fff;
+    margin: 2rem auto 2rem;
+    padding: 2rem;
+    text-align: left;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px #333;
+}
+
+.sec3-issue-image {
+    height: 191px;
+    width: 340px;
+    background-repeat: no-repeat;
+    background-size: 340px auto;
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sec3-issue-bottomForm {
+    padding: 2rem;
+    margin-top: 2rem;
+    background: white;
+    margin-left: 200px;
+}
+
+.sec3-content-wrap {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.sec3-position-range {
+    margin: 0 5rem;
+}
+.sec3-position-range p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.sec3-position-range input {
+    width: 80%;
+}
+.sec3-position-range .input-prefix,
+.sec3-position-range .input-suffix {
+    font-size: 2rem;
+    color: #666;
+}
+.btn.finalIssueSelection {
+    margin: 1rem;
+}
+
+.finalIssue-textarea {
+    display: block;
+    width: 100%;
+    height: 150px;
+}
+
+.surveyFinal .issue-row {
+    height: auto;    
+}
+
+.surveyFinal .issue-card {
+    max-height: none;
+    min-height: none;
+    height: 90px;
+}
+
+.surveyFinal .issue-card.most_important {
+    background: yellow;
+}
+.surveyFinal .issue-card.selected_issue {
+    transform: scale(1.1);
+}
+.surveyFinal .issue-card.selected_issue h5 {
+    font-size: 1.5rem;
+}
