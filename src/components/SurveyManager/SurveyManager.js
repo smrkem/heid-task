@@ -13,7 +13,7 @@ class SurveyManager extends React.Component {
   state = { 
     issues: [],
     steps: [
-      'intro',
+      // 'intro',
       // 'consent',
       // 'wellbeing',
       'section1',

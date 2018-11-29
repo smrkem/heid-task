@@ -2,7 +2,7 @@ import React from 'react'
 
 const IssueView = ({issue, categorizeIssue}) => {
   return (
-    <div className="black-bg surveySection thinker-icon-bottom-left">
+    <div className="black-bg thinker-icon-bottom-left">
       <div className="card social-values-sec1-issue-modal">
         <h2>{issue.title}</h2>
         <div className="sec1-issue-bottom">

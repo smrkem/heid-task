@@ -4,7 +4,22 @@ import { shuffle } from '../../utils'
 import Copy1 from './copy1'
 import Copy2 from './copy2'
 import IssueView from './IssueView'
+import figureHandsOnHips from './figure_handsonhips.png'
+import figurePondering from './figure_pondering.png'
 
+
+const FigureHandsOnHips = (props) => (
+  <div className="figure_handsonhips_center">
+    <img src={figureHandsOnHips} />
+  </div>
+);
+
+
+const FigurePondering = (props) => (
+  <div className={`figure_pondering ${props.classNames}`}>
+    <img src={figurePondering} />
+  </div>
+);
 
 class SurveySection1 extends React.Component {
   state = { 
@@ -18,6 +33,7 @@ class SurveySection1 extends React.Component {
     stepIndex: 0,
     issueIndex: 0
   }
+  contentWrap = null
 
   constructor(props) {
     super(props);
@@ -31,7 +47,8 @@ class SurveySection1 extends React.Component {
       this.props.submitIssues(this.state.issues)
       this.props.onFinish()
     }
-    this.setState({stepIndex: this.state.stepIndex + 1})
+    this.setState({stepIndex: this.state.stepIndex + 1});
+    this.contentWrap && this.contentWrap.scrollTo(0,0);
   }
 
   advanceIssue() {
@@ -58,55 +75,71 @@ class SurveySection1 extends React.Component {
   render() {
     if (this.showing() === 'welcome') {
       return (
-        <div className="survey-issues-bg surveySection thinker-icon-center">
-          <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
-          <button
-            className="btn btn-primary btn-large"
-            onClick={() => {this.advanceStep()}}
-          >
-            Begin</button>
+        <div className="surveySection">
+          <div className="survey-issues-bg"></div>
+          <div className="sec1-inner welcome">
+            <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
+            <button
+              className="btn btn-primary btn-large"
+              onClick={() => {this.advanceStep()}}
+            >
+              Begin</button>
+          </div>
+          
+          <FigurePondering classNames="figure_pondering_large_top figure_pondering_center_bottom" />
         </div>
       )
     }
 
     if (this.showing() === 'copy1') {
       return (
-        <div className="survey-issues-bg surveySection">
-          <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
-          <div className="social-values-copy-modal">          
-            <Copy1 />
+        <div className="surveySection">
+          <div className="survey-issues-bg"></div>
+
+          <div className="sec1-inner copy1" ref={e => this.contentWrap = e}>
+            <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
+            <div className="social-values-copy-modal">          
+              <Copy1 />
+            </div>
+            <button
+              onClick={() => this.advanceStep()}
+              className="btn btn-primary btn-large"
+            >
+              Next</button>
           </div>
-          <button
-            onClick={() => this.advanceStep()}
-            className="btn btn-primary"
-          >
-            Next</button>
+          
         </div>
       )
     }
 
     if (this.showing() === 'copy2') {
       return (
-        <div className="survey-issues-bg surveySection">
-          <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
-          <div className="social-values-copy-modal">
-            <Copy2 />
+        <div className="surveySection">
+          <div className="survey-issues-bg"></div>
+
+          <div className="sec1-inner copy2" ref={e => this.contentWrap = e}>
+            <div className="social-values-copy-modal">
+              <Copy2 />
+            </div>
+            <button
+              className="btn btn-primary btn-large"
+              onClick={() => this.advanceStep()}
+            >
+              Ready to Begin</button>
           </div>
-          <button
-            className="btn btn-primary"
-            onClick={() => this.advanceStep()}
-          >
-            Ready to Begin</button>
+          
         </div>
       )
     }
 
     if (this.showing() === 'issues') {
       return (
-        <IssueView
-          issue={this.state.issues[this.state.issueIndex]}
-          categorizeIssue={this.categorizeIssue}
-        />
+        <div className="surveySection">
+          <IssueView
+            issue={this.state.issues[this.state.issueIndex]}
+            categorizeIssue={this.categorizeIssue}
+          />
+        </div>
       )
     }
 
