@@ -1,5 +1,5 @@
 import React from 'react'
-import { getConsentCopy } from './surveyCopy'
+import { getConsentCopy } from './consentCopy'
 
 class SurveyConsent extends React.Component {
   state = {

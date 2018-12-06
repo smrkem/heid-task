@@ -3,6 +3,7 @@ import ExperimentIntro from '../ExperimentIntro/ExperimentIntro'
 import SurveyManager from '../SurveyManager/SurveyManager'
 import PracticeBlock from '../ExperimentBlock/PracticeBlock'
 import ExperimentManager from '../ExperimentManager/ExperimentManager'
+import Consent from '../Consent/Consent'
 
 
 class TaskManager extends React.Component {
@@ -14,11 +15,13 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    // 'intro',
+    'intro',
+    'consent',
     'survey',
     'practiceTrial',
     'experiment',
-    'final'
+    'final',
+    'goodbye'
   ]
 
   constructor(props) {
@@ -56,12 +59,25 @@ class TaskManager extends React.Component {
     this.setState({practiceData})
   }
 
+  showGoodbye() {
+    const index = this.steps.indexOf('goodbye');
+    this.setState({index});
+  }
+
     render() {
         return (
             <div className="task-manager">
                 { (this.showing() === 'intro') && (
                     <ExperimentIntro advanceStep={this.showNextStep} />
                 )}
+
+                { (this.showing() === 'consent') && (
+                  <Consent
+                    onFinish={this.showNextStep.bind(this)}
+                    showGoodbye={this.showGoodbye.bind(this)}
+                    />
+                )}
+
                 { (this.showing() === 'survey') && (
                     <SurveyManager
                       submitSocialIssue={this.submitSocialIssue}
@@ -87,6 +103,12 @@ class TaskManager extends React.Component {
                       <p>This is also where we would send data to server for storage.</p>
                       <pre>{ JSON.stringify(this.state, null, 2) }</pre>
                     </div>
+                )}
+                { (this.showing() === 'goodbye') && (
+                  <div>
+                    <h2>Thanks for your time :)</h2>
+                    <p>You have chosen not to continue the survey.</p>
+                  </div>
                 )}
             </div>
         )

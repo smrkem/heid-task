@@ -26,146 +26,165 @@
     width: 100%;
 }
 
-.social-values-sec1-issue-modal,
-.social-values-copy-modal {
-    background: rgba(255,255,255,0.95);
-    margin: 4rem auto 2rem;
-    padding: 2rem;
-    text-align: left;
 
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px #333;
-    max-width: 675px;
-}
-.social-values-sec1-issue-modal {
-    max-width: 570px;
-}
 
-.social-values-sec1-issue-modal h2 {
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-.sec1-issue-bottom {
-    display: flex;
-    justify-content: space-between;
-}
 
-.sec1-issue-image {
-    height: 135px;
-    width: 240px;
-    background-repeat: no-repeat;
-    background-size: 240px auto;
+
+
+
+
+
+
+/** 
+    SURVEY BUTTONS
+
+*/
+.btn-black {
+    color: #fff;
+    background-color: #333;
+    border-color: #000;
+    cursor: pointer;
 }
-.sec1-issue-problem-statement {
-    width: 200px;
-    font-weight: 500;
+.btn-black:hover {
+    background-color: #666;
+    border-color: #333;
+}
+.btn-black:not(:disabled):not(.disabled):active {
+    background-color: #333;
 }
 
-.sec1-issue-selections {
-    display: flex;
-    justify-content: space-between;
-    max-width: 600px;
-    margin: auto;
+.btn-grey {
+    color: #fff;
+    background-color: #999;
+    border-color: #333;
 }
-
-.sec2-issue-categorize {
-    user-select: none;
+.btn-grey:hover {
+    background-color: #888;
 }
-
-.sec2-issue-categorize .issue-drop {
-    display: flex;
+.btn-grey:not(:disabled):not(.disabled):active {
+    background-color: #999;
 }
 
 
-.sec2-issue-categorize .issue-drop .cat {
-    margin: 1rem;
-    flex-grow: 1;
-    height: 380px;
-    position: relative;
-}
-.dropWrapper {
-    display: flex;
-    top: 60px;
-    bottom: 0;
-    position: absolute;
+
+
+
+
+/*
+    SURVEY BACKGROUNDS
+*/
+.survey-green-bg,
+.survey-issues-bg,
+.survey-black-bg {
     width: 100%;
-    flex-flow: column wrap;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -10;
 }
-.sec2-issue-categorize .cat.most_important {
+
+.survey-issues-bg {
+    background: url('/images/issues-bg.png');
+    background-size: cover;
+}
+.survey-issues-bg:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* background: #000; */
+    z-index: -9;
+    opacity: 0.3;
+}
+.survey-green-bg {
     background: lightgreen;
 }
-.sec2-issue-categorize .cat.less_important {
-    background: lightgray;
+.survey-black-bg {
+    background: black;
 }
 
-.issue-queue {
-    background: #666;
-    height: 200px;
-    right: -10px;
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+    Figure Styles
+*/
+.figure_handsonhips_center {
     position: absolute;
-    bottom: 50px;
-    left: 200px;
-    overflow: hidden;
-    border-radius: 5px;
+    bottom: 0;
+    height: 50%;
+    z-index: 10;
 
-    box-shadow: inset 2px 2px 10px rgba(25, 25, 25, 0.6), inset -3px -4px 2px rgba(0, 0, 0, 0.4);
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-
-
-
-.issue-row {
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    height: 180px;
-    margin: 10px;
-    flex-wrap: wrap;
+.figure_handsonhips_center img {
+    height: 100%;
 }
 
-.issue-card.card {
-    flex-direction: column;
-    justify-content: center;
-
-    margin: 0.5rem;
-    padding: 8px 45px 0px 15px;
-    max-width: 225px;
-    cursor: pointer;
-    font-size: 1rem;
-    
-    border: 1px solid darkgreen;
-    border-radius: 5px;
-    box-shadow: inset 3px 1px 2px rgba(25, 180, 25, 1), inset -3px -4px 2px rgba(0, 0, 0, .4);
-    max-height: 60px;
+.figure_pondering img {
+    height: 175%;
+    transform: rotateY(180deg);
 }
-
-.issue-card.card h5 {
-    font-weight: 800;
-    font-size: 1rem;
-}
-
-.issue-card .information-icon {
+.figure_pondering {
     position: absolute;
-    right: 10px;
-    top: 45%;
-    cursor: pointer;
-    transform: translateY(-50%);
+    height: 210px;
+    z-index: 10;
+
 }
-.issue-card .information-icon img {
-    height: 30px;
-    width: 30px;
-    opacity: 0.7;
-    transition: opacity .3s ease;
+.figure_pondering_large_top {
+    height: 50%;
+    overflow: hidden;
 }
-.issue-card .information-icon img:hover {
-    opacity: 1;
+.figure_pondering_large_top img {
+    height: 175%;
+}
+.figure_pondering_center_bottom {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+.figure_pondering_left_bottom {
+    left: 40px;
+    bottom: 0;
 }
 
-.dropWrapper .issue-card.card h5 {
+
+
+
+
+
+
+
+
+/**
+    SURVEY MODALS
+*/
+.sec1-inner-h2 {
+    text-align: center;
     font-weight: 700;
-    font-size: 0.9rem;
+    margin-bottom: 1rem;
 }
+
+
+
+
+
+/**
+    ISSUE INFO MODAL
+*/
 
 .issueInfoModal {
     background: rgba(0,0,0,0.4);
@@ -201,20 +220,51 @@
 }
 
 .IssueInfoModal-issueImage {
-    height: 288px;
-    width: 512px;
+    height: 236px;
+    width: 420px;
     background-repeat: no-repeat;
-    background-size: 512px auto;
+    background-size: 420px auto;
+    margin: 1rem auto;
 }
 
-.finishedButton:disabled,
-.finishedButton {
-    margin: auto;
-    border-color: #555;
+
+
+
+
+
+
+/*
+    SECTION 2 
+*/
+.tray-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    SECTION 3
+*/
+.sec3-content-wrap h1 {
+    color: #fff;
+    margin: 1rem 0 0;
+}
+
 
 .sec3-issueDetail {
-    padding: 2rem;
+    padding: 0 2rem 2rem;
 }
 
 .sec3-issue-copy {
@@ -248,191 +298,263 @@
     overflow-y: scroll;
 }
 
+.sec3-issueDetail .motivation {
+    padding: 2rem;
+    border: 1px solid #eee;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: inset -1px -1px 3px #aaa, inset 1px 1px 3px #666;
+    margin-bottom: 2rem;
+}
+
+
+
+/* Custom handles */
+.sec3-motivation-range,
 .sec3-position-range {
     margin: 0 5rem;
 }
+.sec3-motivation-range p,
 .sec3-position-range p {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
+
+
+/* Postion Range */
+.sec3-position-range input {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+}
+.sec3-position-range input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: lightgreen;
+    cursor: pointer;
+    margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+.sec3-position-range input::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: lightgreen;
+    cursor: pointer;
+}
+.sec3-position-range input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: lightgreen;
+    cursor: pointer;
+}
+.sec3-position-range input:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+.sec3-position-range input::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+}
+.sec3-position-range input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+  
+.sec3-position-range input:focus::-webkit-slider-runnable-track {
+    background: #367ebd;
+} 
+.sec3-position-range input::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+.sec3-position-range input::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+.sec3-position-range input::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+.sec3-position-range input:focus::-ms-fill-lower {
+    background: #3071a9;
+}
+.sec3-position-range input::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+.sec3-position-range input:focus::-ms-fill-upper {
+    background: #367ebd;
+}
+/* Motivation */
+.sec3-motivation-range input {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+}
+.sec3-motivation-range input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: lightgreen;
+    cursor: pointer;
+    margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+.sec3-motivation-range input::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: lightgreen;
+    cursor: pointer;
+}
+.sec3-motivation-range input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: lightgreen;
+    cursor: pointer;
+}
+.sec3-motivation-range input:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+.sec3-motivation-range input::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+}
+.sec3-motivation-range input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+  
+.sec3-motivation-range input:focus::-webkit-slider-runnable-track {
+    background: #367ebd;
+} 
+.sec3-motivation-range input::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+}
+.sec3-motivation-range input::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+.sec3-motivation-range input::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+.sec3-motivation-range input:focus::-ms-fill-lower {
+    background: #3071a9;
+}
+.sec3-motivation-range input::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+.sec3-motivation-range input:focus::-ms-fill-upper {
+    background: #367ebd;
+}
+
+
+
+
+
+
+
+
+.sec3-motivation-range input,
 .sec3-position-range input {
     width: 80%;
 }
+
+.sec3-motivation-range .input-prefix,
+.sec3-motivation-range .input-suffix,
 .sec3-position-range .input-prefix,
 .sec3-position-range .input-suffix {
-    font-size: 2rem;
-    color: #666;
-}
-.btn.finalIssueSelection {
-    margin: 1rem;
-}
-
-.finalIssue-textarea {
-    display: block;
-    width: 100%;
-    height: 150px;
-}
-
-.surveyFinal .issue-row {
-    height: auto;    
-}
-
-.surveyFinal .issue-card {
-    max-height: none;
-    min-height: none;
-    height: 90px;
-}
-
-.surveyFinal .issue-card.most_important {
-    background: yellow;
-}
-.surveyFinal .issue-card.selected_issue {
-    transform: scale(1.1);
-}
-.surveyFinal .issue-card.selected_issue h5 {
-    font-size: 1.2rem;
-}
-
-.thank-you-copy {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    background: black;
-    color: white;
-    padding: 1rem 2rem;
-    z-index: 10;
-}
-
-
-.survey-issues-bg {
-    background: url('/images/issues-bg.png');
-    background-size: cover;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: -10;
-}
-.survey-issues-bg:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #000;
-    z-index: -9;
-    opacity: 0.3;
-}
-
-.green-bg {
-    background: lightgreen;
-}
-
-.black-bg {
-    background: black;
-}
-
-.surveySection h1 {
-    padding: 1rem;
-    background: white;
-    width: 50%;
-    margin: auto;
-    border-radius: 5px;
-}
-
-.thinker-icon-center:after {
-    content: "";
-    position: absolute;
-    background-image: url(/images/thinker.png);
-    background-repeat: no-repeat;
-    
-    background-size: 197px auto;
-    bottom: 0;
-    height: 270px;
-    width: 197px;
-    z-index: 10;
-
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.figure_handsonhips_center {
-    position: absolute;
-    bottom: 0;
-    height: 50%;
-    z-index: 10;
-
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.figure_handsonhips_center img {
-    height: 100%;
-}
-
-.figure_pondering img {
-    height: 100%;
-}
-.figure_pondering {
-    position: absolute;
-    height: 50%;
-    z-index: 10;
-
-}
-.figure_pondering_large_top {
-    overflow: hidden;
-}
-.figure_pondering_large_top img {
-    height: 175%;
-}
-.figure_pondering_center_bottom {
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-}
-
-.thinker-icon-bottom-left:after {
-    content: "";
-    position: absolute;
-    background-image: url(/images/thinker.png);
-    background-repeat: no-repeat;
-    
-    left: 50px;
-    bottom: 0;
-    height: 217px;
-    width: 157px;
-    background-size: 157px auto;
-    z-index: 10;
-    transform: rotateY(180deg);
-}
-
-
-.sec1-inner {
-    position: absolute;
-    top: 0;
-    width: 100%;
-
-    height: 100%;
-    overflow-y: scroll;
-}
-
-.sec1-inner.welcome {
-    flex-direction: column;
     display: flex;
-    justify-content: space-evenly;
-
-    height: 50%;
+    align-items: center;
 }
-.sec1-inner.copy1,
-.sec1-inner.copy2 {
-    padding: 3rem 0;
+.sec3-motivation-range .input-prefix-cue,
+.sec3-motivation-range .input-suffix-cue,
+.sec3-position-range .input-prefix-cue,
+.sec3-position-range .input-suffix-cue {
+    font-size: 2rem;
+    color: #3071a9;
+}
+.sec3-motivation-range .input-prefix-label,
+.sec3-motivation-range .input-suffix-label,
+.sec3-position-range .input-prefix-label,
+.sec3-position-range .input-suffix-label {
+    width: 120px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.sec3-motivation-range .input-suffix-label,
+.sec3-position-range .input-suffix-label {
+    text-align: left;
 }
 
-.sec1-inner button {
-    margin: auto;
-    border: 1px solid #333;
+.range-feedback {
+    font-weight: 700;
 }

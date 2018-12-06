@@ -4,22 +4,9 @@ import { shuffle } from '../../utils'
 import Copy1 from './copy1'
 import Copy2 from './copy2'
 import IssueView from './IssueView'
-import figureHandsOnHips from './figure_handsonhips.png'
-import figurePondering from './figure_pondering.png'
+import FigurePondering from '../SurveyManager/components/FigurePondering/FigurePondering'
+import './SurveySection1.css'
 
-
-const FigureHandsOnHips = (props) => (
-  <div className="figure_handsonhips_center">
-    <img src={figureHandsOnHips} />
-  </div>
-);
-
-
-const FigurePondering = (props) => (
-  <div className={`figure_pondering ${props.classNames}`}>
-    <img src={figurePondering} />
-  </div>
-);
 
 class SurveySection1 extends React.Component {
   state = { 
@@ -37,7 +24,14 @@ class SurveySection1 extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state.issues = shuffle(issues);
+    let theIssues = shuffle(issues);
+
+    // Temp to put #MeToo first
+    const meTooIndex = theIssues.findIndex(iss => iss.title === '#MeToo Movement');
+    const meTooIssue = theIssues.splice(meTooIndex, 1)[0];
+    theIssues.unshift(meTooIssue);
+
+    this.state.issues = theIssues;
 
     this.categorizeIssue = this.categorizeIssue.bind(this);
   }
@@ -80,7 +74,7 @@ class SurveySection1 extends React.Component {
           <div className="sec1-inner welcome">
             <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
             <button
-              className="btn btn-primary btn-large"
+              className="btn btn-black btn-large"
               onClick={() => {this.advanceStep()}}
             >
               Begin</button>
@@ -103,7 +97,7 @@ class SurveySection1 extends React.Component {
             </div>
             <button
               onClick={() => this.advanceStep()}
-              className="btn btn-primary btn-large"
+              className="btn btn-black btn-large"
             >
               Next</button>
           </div>
@@ -122,7 +116,7 @@ class SurveySection1 extends React.Component {
               <Copy2 />
             </div>
             <button
-              className="btn btn-primary btn-large"
+              className="btn btn-black btn-large"
               onClick={() => this.advanceStep()}
             >
               Ready to Begin</button>
@@ -135,10 +129,14 @@ class SurveySection1 extends React.Component {
     if (this.showing() === 'issues') {
       return (
         <div className="surveySection">
+          <div className="survey-black-bg"></div>
+  
           <IssueView
             issue={this.state.issues[this.state.issueIndex]}
             categorizeIssue={this.categorizeIssue}
           />
+
+          <FigurePondering classNames="figure_pondering_left_bottom" />
         </div>
       )
     }
@@ -153,21 +151,25 @@ class SurveySection1 extends React.Component {
         return iss;
       })
       return (
-        <div className="green-bg surveySection exp-results">
-          <h1 className="topBanner">Section 1 Results</h1>
-          <div className="social-values-copy-modal">
-            <p>Section 1 completed by user.</p>
-            <p>Do we want to store any data at this point? Can we throw out all data pertaining to issues catgorized as NOT IMPORTANT or SOMEWHAT IMPORTANT?</p>
-            <p>Data at this point shown below:</p>
-            <div className="exp-data">
-              <pre>{JSON.stringify(issueData, null, 3)}</pre>
+        <div className="surveySection exp-results">
+
+          <div className="survey-green-bg"></div>
+          <div className="sec1-inner copy1" ref={e => this.contentWrap = e}>
+            <h1 className="topBanner">Section 1 Results</h1>
+            <div className="social-values-copy-modal">
+              <p>Section 1 completed by user.</p>
+              <p>Do we want to store any data at this point? Can we throw out all data pertaining to issues catgorized as NOT IMPORTANT or SOMEWHAT IMPORTANT?</p>
+              <p>Data at this point shown below:</p>
+              <div className="exp-data">
+                <pre>{JSON.stringify(issueData, null, 3)}</pre>
+              </div>
             </div>
+            <button
+              className="btn btn-black btn-large"
+              onClick={() => this.advanceStep()}
+            >
+              Continue</button>
           </div>
-          <button
-            className="btn btn-info"
-            onClick={() => this.advanceStep()}
-          >
-            Continue</button>
         </div>
       )
     }

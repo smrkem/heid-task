@@ -2,7 +2,7 @@ import React from 'react'
 
 const Copy2 = () => (
   <div>
-    <h2>Section I</h2>      
+    <h2 className="sec1-inner-h2">Social Values Task - Section I</h2>      
     <p>
       In this section, you will be presented with a short description of 19 controversial social issue.
     </p>

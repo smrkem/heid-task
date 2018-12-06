@@ -10,7 +10,8 @@ class SurveyFinal extends React.Component {
   render() {
     let issues = shuffle(JSON.parse(JSON.stringify(this.props.issues)));    
     return(
-      <div className="green-bg surveySection surveyFinal exp-results">
+      <div className="surveySection surveyFinal exp-results">
+        <div className="survey-green-bg"></div>
         <div className="thank-you-copy">
           <h4>Thank you for playing!</h4>
           <button

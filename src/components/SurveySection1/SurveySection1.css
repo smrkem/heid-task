@@ -1,0 +1,330 @@
+
+.social-values-sec1-issue-modal,
+.social-values-copy-modal {
+    background: rgba(255,255,255,0.95);
+    margin: 2rem auto 2rem;
+    padding: 2rem;
+    text-align: left;
+
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #333;
+    max-width: 675px;
+}
+.social-values-sec1-issue-modal {
+    max-width: 570px;
+}
+@media only screen and (min-width: 860px) {
+    .social-values-sec1-issue-modal {
+        max-width: none;
+        margin-left: 200px;
+        margin-right: 200px;
+    }   
+}
+
+
+.social-values-sec1-issue-modal h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.sec1-issue-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sec1-issue-image {
+    height: 146px;
+    width: 260px;
+    min-width: 260px;
+    background-repeat: no-repeat;
+    background-size: 260px auto;
+}
+.sec1-issue-problem-statement {
+    font-weight: 600;
+    flex-grow: 1;
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+}
+
+
+
+
+
+
+/** 
+    SURVEY BUTTONS
+
+*/
+.sec1-issue-selections {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0 0;
+}
+
+.sec1-issue-selections .btn {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+.sec1-issue-selections .btn:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+.sec1-issue-selections .btn:not(:disabled):not(.disabled):active {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+} 
+@media screen and (min-width: 1210px) {
+    .sec1-issue-selections .btn {
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+    }
+}
+
+
+.sec2-issue-categorize {
+    user-select: none;
+}
+
+.sec2-issue-categorize .issue-drop {
+    display: flex;
+}
+
+
+.sec2-issue-categorize .issue-drop .cat {
+    margin: 1rem;
+    flex-grow: 1;
+    height: 380px;
+    position: relative;
+}
+.dropWrapper {
+    display: flex;
+    top: 60px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    flex-flow: column wrap;
+}
+.sec2-issue-categorize .cat.most_important {
+    background: lightgreen;
+}
+.sec2-issue-categorize .cat.less_important {
+    background: lightgray;
+}
+
+.issue-queue {
+    background: #666;
+    height: 200px;
+    right: -10px;
+    position: absolute;
+    bottom: 50px;
+    left: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+
+    box-shadow: inset 2px 2px 10px rgba(25, 25, 25, 0.6), inset -3px -4px 2px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+.issue-row {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 180px;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+.issue-card.card {
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 0.5rem;
+    padding: 8px 45px 0px 15px;
+    max-width: 225px;
+    cursor: pointer;
+    font-size: 1rem;
+    
+    border: 1px solid darkgreen;
+    border-radius: 5px;
+    box-shadow: inset 3px 1px 2px rgba(25, 180, 25, 1), inset -3px -4px 2px rgba(0, 0, 0, .4);
+    max-height: 60px;
+}
+
+.issue-card.card h5 {
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.issue-card .information-icon {
+    position: absolute;
+    right: 10px;
+    top: 45%;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+.issue-card .information-icon img {
+    height: 30px;
+    width: 30px;
+    opacity: 0.7;
+    transition: opacity .3s ease;
+}
+.issue-card .information-icon img:hover {
+    opacity: 1;
+}
+
+.dropWrapper .issue-card.card h5 {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+
+.finishedButton:disabled,
+.finishedButton {
+    margin: auto;
+    border-color: #555;
+}
+
+.btn.finalIssueSelection {
+    margin: 1rem;
+}
+
+.finalIssue-textarea {
+    display: block;
+    width: 100%;
+    height: 150px;
+}
+
+.surveyFinal .issue-row {
+    height: auto;    
+}
+
+.surveyFinal .issue-card {
+    max-height: none;
+    min-height: none;
+    height: 90px;
+}
+
+.surveyFinal .issue-card.most_important {
+    background: yellow;
+}
+.surveyFinal .issue-card.selected_issue {
+    transform: scale(1.1);
+}
+.surveyFinal .issue-card.selected_issue h5 {
+    font-size: 1.2rem;
+}
+
+.thank-you-copy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: black;
+    color: white;
+    padding: 1rem 2rem;
+    z-index: 10;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+        OTHER
+*/
+.topBanner {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+    background: white;
+    border-bottom: 1px solid #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sec1_thought_bubble:after {
+    content: "";
+    background-image: url('/images/thought.svg');
+    height: 75px;
+    width: 75px;
+    background-size: auto;
+    top: 101%;
+    left: 40%;
+    position: absolute;
+    transform: rotateY(180deg);
+}
+@media only screen and (min-width: 860px) {
+    .sec1_thought_bubble:after {
+        left: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.sec1-inner {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.sec1-inner.welcome {
+    height: 50%;
+}
+.sec1-inner.copy1,
+.sec1-inner.copy2 {
+    padding: 3rem 0;
+}
+
+.sec1-inner.welcome button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sec1-inner.copy1 .social-values-copy-modal {
+    margin: 4rem auto 2rem;
+}
+

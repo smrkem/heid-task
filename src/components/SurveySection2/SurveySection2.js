@@ -1,6 +1,8 @@
 import React from 'react'
 import Copy1 from './Copy1'
 import IssuesView from './IssuesView';
+import FigurePondering from '../SurveyManager/components/FigurePondering/FigurePondering'
+
 
 class SurveySection2 extends React.Component {
   state = { 
@@ -35,6 +37,13 @@ class SurveySection2 extends React.Component {
     return this.state.steps[this.state.stepIndex]
   }
 
+  resetIssues() {
+    let issues = JSON.parse(JSON.stringify(this.state.issues))
+    issues.forEach(i => {
+        i.importance2 = 'uncategorized'
+    })
+    this.setState({issues}) 
+  }
 
   onIssueDrop(droppedIssue, cat) {
     // Make a copy of issues in state:
@@ -50,13 +59,13 @@ class SurveySection2 extends React.Component {
   render() {
     if (this.showing() === 'copy1') {
       return (
-        <div className="survey-issues-bg surveySection">
-          <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
+        <div className="surveySection">
+          <div className="survey-issues-bg"></div>
           <div className="social-values-copy-modal">
             <Copy1 />
           </div>
           <button
-            className="btn btn-primary"
+            className="btn btn-black btn-large"
             onClick={() => this.advanceStep()}
           >
             Ready to Begin</button>
@@ -66,12 +75,15 @@ class SurveySection2 extends React.Component {
 
     if (this.showing() === 'issues') {
       return (
-        <div className="black-bg surveySection thinker-icon-bottom-left sec2-issue-categorize">
+        <div className="surveySection sec2-issue-categorize">
+          <div className="survey-black-bg"></div>
           <IssuesView 
             onIssueDrop={this.onIssueDrop.bind(this)}
             finishedSorting={() => this.advanceStep()}
+            resetIssues={() => this.resetIssues()}
             issues={this.state.issues}
           />
+          <FigurePondering classNames="figure_pondering_left_bottom" />
         </div>
       )
     }
@@ -86,21 +98,26 @@ class SurveySection2 extends React.Component {
         return iss;
       })
       return (
-        <div className="green-bg surveySection exp-results">
-          <h1 className="topBanner">Section 2 Results</h1>
-          <div className="social-values-copy-modal">
-            <p>Section 2 completed by user.</p>
-            <p>Do we want to store any data at this point? Can we throw out all data pertaining to issues catgorized as LESS IMPORTANT?</p>
-            <p>Data at this point shown below:</p>
-            <div className="exp-data">
-              <pre>{JSON.stringify(issueData, null, 3)}</pre>
+        <div className="surveySection exp-results">
+          <div className="survey-green-bg"></div>
+          
+          <div className="sec1-inner copy1" ref={e => this.contentWrap = e}>
+            <h1 className="topBanner">Section 2 Results</h1>
+            <div className="social-values-copy-modal">
+              <p>Section 2 completed by user.</p>
+              <p>Do we want to store any data at this point? Can we throw out all data pertaining to issues catgorized as LESS IMPORTANT?</p>
+              <p>Data at this point shown below:</p>
+              <div className="exp-data">
+                <pre>{JSON.stringify(issueData, null, 3)}</pre>
+              </div>
             </div>
+            <button
+              className="btn btn-black btn-large"
+              onClick={() => this.advanceStep()}
+            >
+              Continue</button>
           </div>
-          <button
-            className="btn btn-info"
-            onClick={() => this.advanceStep()}
-          >
-            Continue</button>
+          
         </div>
       )
     }

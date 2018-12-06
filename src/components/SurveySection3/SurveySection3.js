@@ -1,5 +1,6 @@
 import React from 'react'
 import IssueDetail from './IssueDetail'
+import FigurePondering from '../SurveyManager/components/FigurePondering/FigurePondering'
 
 
 class SurveySection3 extends React.Component {
@@ -45,9 +46,10 @@ class SurveySection3 extends React.Component {
     this.contentWrap.scrollTo(0,0);
   }
 
-  sumbitIssue(position) {
+  sumbitIssue(issueData) {
     let issues = JSON.parse(JSON.stringify(this.state.issues))
-    issues[this.state.issueIndex].position = position;
+    issues[this.state.issueIndex].position = issueData.position;
+    issues[this.state.issueIndex].motivation = issueData.motivation;
     this.setState({issues});
     this.advanceIssue();
   }
@@ -92,32 +94,36 @@ class SurveySection3 extends React.Component {
   render() {
     if (this.showing() === 'copy1') {
       return (
-        <div className="survey-issues-bg surveySection">
-          <h1 className="topBanner"> Welcome to the Social Values Task!</h1>
-          <div className="social-values-copy-modal">
-            <h2>Section III</h2>
-            <p>You have indicated that the following social issues are most important to you: </p>
-            <ul>
-              {this.state.issues.map(
-                (iss, ind) => <li key={ind}>{iss.title}</li>
-              )}
-            </ul>
-            <p>
-              Do you wish to go back and make any changes?
-            </p>
-            <p>
-              <button
-                onClick={this.props.goBackSection2}
-                className="btn btn-info"
-              >Go Back</button>
-            </p>
-            <p>In this Section III, the goal is to clarify your views on these issues. Please answer each question as best as you can.</p>
+        <div className="surveySection">
+          <div className="survey-issues-bg"></div>
+
+          <div className="sec1-inner copy1" ref={e => this.contentWrap = e}>
+            <div className="social-values-copy-modal">
+              <h2 className="sec1-inner-h2">Social Values Task - Section III</h2>
+              <p>You have indicated that the following social issues are most important to you: </p>
+              <ul>
+                {this.state.issues.map(
+                  (iss, ind) => <li key={ind}>{iss.title}</li>
+                )}
+              </ul>
+              <p>
+                Do you wish to go back and make any changes?
+              </p>
+              <p>
+                <button
+                  onClick={this.props.goBackSection2}
+                  className="btn btn-info"
+                >Go Back</button>
+              </p>
+              <p>In this Section III, the goal is to clarify your views on these issues. Please answer each question as best as you can.</p>
+            </div>
+            <button
+              className="btn btn-black btn-large"
+              onClick={() => this.advanceStep()}
+            >
+              Ready to Begin</button>
           </div>
-          <button
-            className="btn btn-primary"
-            onClick={() => this.advanceStep()}
-          >
-            Ready to Begin</button>
+          
         </div>
       )
     }
@@ -125,7 +131,9 @@ class SurveySection3 extends React.Component {
     if (this.showing() === 'issues') {
       const currentIssue = this.state.issues[this.state.issueIndex];
       return (
-        <div className="black-bg surveySection thinker-icon-bottom-left sec3">
+        <div className="surveySection sec3">
+          <div className="survey-black-bg"></div>
+
           <div className="sec3-content-wrap" ref={elem => {this.contentWrap = elem}}>
             <h1>{currentIssue.title}</h1>
             <IssueDetail
@@ -133,6 +141,8 @@ class SurveySection3 extends React.Component {
               issue={currentIssue}
             />
           </div>
+
+          <FigurePondering classNames="figure_pondering_left_bottom" />
         </div>
       )
     }
@@ -148,7 +158,9 @@ class SurveySection3 extends React.Component {
       }
 
       return (
-        <div className="black-bg surveySection thinker-icon-bottom-left sec3">
+        <div className="surveySection sec3">
+          <div className="survey-black-bg"></div>
+
           <div className="social-values-copy-modal">
             <p>In the next task, you will have the opportunity to fight for one of these causes (i.e., donate $75 towards it). Please carefully select the cause you would be MOST MOTIVATED to fight for by clicking one of these options: </p>
             <ul>
@@ -183,7 +195,7 @@ class SurveySection3 extends React.Component {
                 <p style={{textAlign: 'right'}}>
                   <button
                     className="btn btn-primary"
-                    disabled={this.state.finalIssueDescription.length < 100}
+                    disabled={this.state.finalIssueDescription.length < 1}
                     onClick={() => this.finishFinalIssue()}
                   >Finish</button>
                 </p>
@@ -191,6 +203,8 @@ class SurveySection3 extends React.Component {
             )}
 
           </div>
+
+          <FigurePondering classNames="figure_pondering_left_bottom" />
         </div>
       )
     }
@@ -208,21 +222,26 @@ class SurveySection3 extends React.Component {
         return iss;
       })
       return (
-        <div className="green-bg surveySection exp-results">
-          <h1 className="topBanner">Section 3 Results</h1>
-          <div className="social-values-copy-modal">
-            <p>Section 3 completed by user.</p>
-            <p>What data do we want to store at this point?</p>
-            <p>Data from this section shown below:</p>
-            <div className="exp-data">
-              <pre>{JSON.stringify(issueData, null, 3)}</pre>
+        <div className="surveySection exp-results">
+          <div className="survey-green-bg"></div>
+
+          <div className="sec1-inner copy1" ref={e => this.contentWrap = e}>
+            <h1 className="topBanner">Section 3 Results</h1>
+            <div className="social-values-copy-modal">
+              <p>Section 3 completed by user.</p>
+              <p>What data do we want to store at this point?</p>
+              <p>Data from this section shown below:</p>
+              <div className="exp-data">
+                <pre>{JSON.stringify(issueData, null, 3)}</pre>
+              </div>
             </div>
+            <button
+              className="btn btn-black btn-large"
+              onClick={() => this.advanceStep()}
+            >
+              Continue</button>
           </div>
-          <button
-            className="btn btn-info"
-            onClick={() => this.advanceStep()}
-          >
-            Continue</button>
+          
         </div>
       )
     }

@@ -5,7 +5,12 @@ import IssueInfoModal from './IssueInfoModal'
 
 class IssuesView extends React.Component {
   state = {
-    issueDetail: null
+    issueDetail: null,
+    alertFull: false
+  }
+
+  componentDidUpdate() {
+    
   }
 
   onDrop(e, cat) {
@@ -19,9 +24,16 @@ class IssuesView extends React.Component {
 
   onDragOverMostImportant(e) {
     const mostImportantIssues = this.props.issues.filter(iss => iss.importance2 === 'most_important');
-    if (mostImportantIssues.length < 3) {
+    if (mostImportantIssues.length >= 3) {
+      this.setState({alertFull: true});
+    }
+    else {
       e.preventDefault();
     }
+  }
+
+  onDragLeaveMostImportant(e) {
+    this.setState({alertFull: false});
   }
 
   onDragStart(e, issue) {
@@ -75,10 +87,17 @@ class IssuesView extends React.Component {
             
             <div className="cat most_important">
               <h3>Most Important To Me</h3>
-              <small style={{display: 'block', marginTop: '-10px'}}>1 - 3 issues</small>
+              {(issueCards.most_important.length === 0) && 
+                <small style={{display: 'block', marginTop: '-10px'}}>Must select 1 - 3 issues</small>
+              }
+              { this.state.alertFull && 
+                <small style={{display: 'block', marginTop: '-10px'}}>May only select 1 - 3 issues.</small>
+              }
+              
               <div className="dropWrapper"
                 onDrop={e => this.onDrop(e, 'most_important')}
                 onDragOver={e => this.onDragOverMostImportant(e)}
+                onDragLeave={e => this.onDragLeaveMostImportant(e)}
               >
                 {issueCards.most_important}
               </div>
@@ -98,12 +117,20 @@ class IssuesView extends React.Component {
           <div className="issue-row">
             {issueCards.uncategorized}
             {!issueCards.uncategorized.length && (
-              <button
-                onClick={finishedSorting}
-                disabled={!issueCards.most_important.length}
-                className="btn btn-large btn-primary finishedButton"
-                >I'm Finished
-                </button>
+              <div className="tray-buttons">
+                <button
+                  onClick={this.props.resetIssues}
+                  className="btn btn-large btn-grey finishedButton"
+                  >Start Over
+                  </button>
+
+                <button
+                  onClick={finishedSorting}
+                  disabled={!issueCards.most_important.length}
+                  className="btn btn-large btn-primary finishedButton"
+                  >I'm Finished
+                  </button>
+              </div>
             )}
           </div>
         </div>
