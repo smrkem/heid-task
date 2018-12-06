@@ -161,48 +161,52 @@ class SurveySection3 extends React.Component {
         <div className="surveySection sec3">
           <div className="survey-black-bg"></div>
 
-          <div className="social-values-copy-modal">
-            <p>In the next task, you will have the opportunity to fight for one of these causes (i.e., donate $75 towards it). Please carefully select the cause you would be MOST MOTIVATED to fight for by clicking one of these options: </p>
-            <ul>
-              {this.state.issues.map(iss => {
-                let pos = iss.position < 0 ? 'AGAINST' : 'FOR';
-                if (parseInt(iss.position) === 0) {
-                  pos = 'NEUTRAL';
-                }
-                return (
-                  <li key={iss.title}>
+          <div className="sec1-inner copy1" ref={e => this.contentWrap = e}>
+            <div className="social-values-copy-modal">
+              <p>In the next task, you will have the opportunity to fight for one of these causes (i.e., donate $75 towards it). Please carefully select the cause you would be MOST MOTIVATED to fight for by clicking one of these options: </p>
+              <ul>
+                {this.state.issues.map(iss => {
+                  let pos = iss.position < 0 ? 'AGAINST' : 'FOR';
+                  if (parseInt(iss.position) === 0) {
+                    pos = 'NEUTRAL';
+                  }
+                  return (
+                    <li key={iss.title}>
+                      <button
+                        className="btn btn-primary finalIssueSelection"
+                        disabled={iss.selectedIssue}
+                        onClick={() => this.selectFinal(iss)}
+                      >{pos} {iss.title}</button>
+                    </li>)
+                })}
+              </ul>
+              
+              {finalIssue && (
+                <div className="finalIssue-description">
+                  <p>Amazing! You have decided to fight <b>{finalIssuePosition} {finalIssue.title}</b></p>
+                  <p>In this section, please write in 5 sentences or less WHY you chose this social issue (e.g., what do you believe in and/or why it is motivating to fight for): </p>
+                  <p>
+                    <textarea 
+                      className="finalIssue-textarea"
+                      value={this.state.finalIssueDescription} 
+                      onChange={this.handleFinalIssueDescriptionChange.bind(this)} 
+                      maxLength={500} />
+                    <small>{500 - this.state.finalIssueDescription.length} remaining</small>
+                  </p>
+                  <p style={{textAlign: 'right'}}>
                     <button
-                      className="btn btn-primary finalIssueSelection"
-                      disabled={iss.selectedIssue}
-                      onClick={() => this.selectFinal(iss)}
-                    >{pos} {iss.title}</button>
-                  </li>)
-              })}
-            </ul>
-            
-            {finalIssue && (
-              <div className="finalIssue-description">
-                <p>Amazing! You have decided to fight <b>{finalIssuePosition} {finalIssue.title}</b></p>
-                <p>In this section, please write in 5 sentences or less WHY you chose this social issue (e.g., what do you believe in and/or why it is motivating to fight for): </p>
-                <p>
-                  <textarea 
-                    className="finalIssue-textarea"
-                    value={this.state.finalIssueDescription} 
-                    onChange={this.handleFinalIssueDescriptionChange.bind(this)} 
-                    maxLength={500} />
-                  <small>{500 - this.state.finalIssueDescription.length} remaining</small>
-                </p>
-                <p style={{textAlign: 'right'}}>
-                  <button
-                    className="btn btn-primary"
-                    disabled={this.state.finalIssueDescription.length < 1}
-                    onClick={() => this.finishFinalIssue()}
-                  >Finish</button>
-                </p>
-              </div>
-            )}
+                      className="btn btn-primary"
+                      disabled={this.state.finalIssueDescription.length < 1}
+                      onClick={() => this.finishFinalIssue()}
+                    >Finish</button>
+                  </p>
+                </div>
+              )}
 
+            </div>
           </div>
+
+          
 
           <FigurePondering classNames="figure_pondering_left_bottom" />
         </div>
