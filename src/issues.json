@@ -2,7 +2,7 @@
   {  
      "title":"Animal Testing",
      "image": "issue-metoo.jpg",
-     "problem_statement": "Animal Testing problem statement placeholder?",
+     "problem_statement": "Should animals be used for scientific and commercial testing in laboratories?",
      "position_statement": "Please indicate below your beliefs about Animal Testing by indicating the DEGREE to which you are FOR or AGAINST placeholder copy here.",
      "content": [
          "Do you beleive humans have the right to experiment on animals? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
@@ -10,9 +10,9 @@
         ]
   },
   {  
-     "title":"The Death Penalty",
+     "title":"Legalization of the Death Penalty",
      "image": "issue-metoo.jpg",
-     "problem_statement": "The Death Penalty problem statement placeholder?",
+     "problem_statement": "Should the death penalty be a legal option for breaking the law?",
      "position_statement": "Please indicate below your beliefs about The Death Penalty by indicating the DEGREE to which you are FOR or AGAINST placeholder copy here.",
      "content": [
         "How for or against the Death penalty are you? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
@@ -20,9 +20,9 @@
        ]
   },
   {  
-     "title":"Stricter Gun Control",
+     "title":"Gun Control Laws",
      "image": "issue-metoo.jpg",
-     "problem_statement": "Stricter Gun Control problem statement placeholder?",
+     "problem_statement": "Should gun laws be more strictly enforced by law?",
      "position_statement": "Please indicate below your beliefs about Stricter Gun Control by indicating the DEGREE to which you are FOR or AGAINST placeholder copy here.",
      "content": [
         "Are you for or against Gun Control? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
@@ -30,14 +30,24 @@
        ]
   },
   {  
-     "title":"Abortion Rights",
+     "title":"Abortion Laws",
      "image": "issue-metoo.jpg",
-     "problem_statement": "Abortion Rights problem statement placeholder?",
+     "problem_statement": "Should women have the right to an abortion?",
      "position_statement": "Please indicate below your beliefs about Abortion Rights by indicating the DEGREE to which you are FOR or AGAINST placeholder copy here.",
      "content": [
         "Are you for or against Abortion Rights? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
         "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
        ]
+  },
+  {  
+    "title":"Gender Wage Equality",
+    "image": "issue-metoo.jpg",
+    "problem_statement": "Gender Wage Equality problem statement placeholder?",
+    "position_statement": "Please indicate below your beliefs about Gender Wage Equality by indicating the DEGREE to which you are FOR or AGAINST placeholder copy here.",
+    "content": [
+       "Are you for or against Gender Wage Equality? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+       "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
+      ]
   },
   {  
      "title":"Climate Change",
@@ -66,16 +76,6 @@
      "position_statement": "Please indicate below your beliefs about Marriage Equality by indicating the DEGREE to which you are FOR or AGAINST placeholder copy here.",
      "content": [
         "Are you for or against Marriage Equality? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-        "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
-       ]
-  },
-  {  
-     "title":"Gender Wage Equality",
-     "image": "issue-metoo.jpg",
-     "problem_statement": "Gender Wage Equality problem statement placeholder?",
-     "position_statement": "Please indicate below your beliefs about Gender Wage Equality by indicating the DEGREE to which you are FOR or AGAINST placeholder copy here.",
-     "content": [
-        "Are you for or against Gender Wage Equality? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in neque eros. Nulla id commodo mauris. Etiam non dignissim orci, quis faucibus lacus. Sed scelerisque metus varius tellus volutpat, a hendrerit ex hendrerit. Nullam dapibus hendrerit ornare. Etiam lacinia luctus leo, id rutrum est tincidunt sed. In hac habitasse platea dictumst. Quisque vehicula libero sit amet mi tincidunt, eget ornare risus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
         "Sed feugiat quam at tellus aliquam, sed varius augue vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse mi metus, consequat ultricies rutrum quis, suscipit non neque. Vivamus vestibulum ex mi, id dapibus turpis consequat sit amet."
        ]
   },
