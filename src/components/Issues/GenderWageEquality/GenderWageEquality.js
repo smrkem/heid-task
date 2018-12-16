@@ -1,7 +1,10 @@
+import imgSrc from './issue-gender-wage-equality.jpg';
+
 export default {
   title: "Gender Wage Equality",
   problem_statement: "Should there be more legislation to ensure that men and women are paid equally?",
   image_filename: 'issue-gender-wage-equality.jpg',
+  image_src: imgSrc,
   description: [
     "The gender wage gap is the difference in earnings between men and women in the workplace. There are three ways the wage gap is measured. First, by comparing annual earnings of full time and part time workers of both genders. Second, by comparing the annual earnings of full time workers only. Lastly, by comparing the hourly wages of full time and part time workers. In general, these reports suggest that women earn an average of 87 cents to every dollar a male earns, and there is a disproportionate amount of women in lower paying jobs than men. Debate on this topic extends to beliefs on reasons why the gap exists, whether there is in fact equal opportunity for all, and whether affirmative action (giving women preferential treatment in employment) is fair/justified."
   ],

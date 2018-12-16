@@ -1,6 +1,7 @@
 import React from 'react'
-import informationIcon from './information_blue.svg'
+// import informationIcon from './information_blue.svg'
 import IssueInfoModal from './IssueInfoModal'
+import InformationIcon from '../InformationIcon/InformationIcon'
 
 
 class IssuesView extends React.Component {
@@ -41,6 +42,7 @@ class IssuesView extends React.Component {
   }
 
   showIssueDetail(issue) {
+    console.log('show: ', issue);
     this.setState({issueDetail: issue})
   }
 
@@ -66,12 +68,9 @@ class IssuesView extends React.Component {
           className="card issue-card"
           >
           <h5 className="card-title">{i.title}</h5>
-          <div 
-            className="information-icon"
+          <InformationIcon 
             onClick={() => this.showIssueDetail(i) }
-            >
-              <img src={informationIcon} alt="info" />
-            </div>
+          />
         </div>
       )
     })

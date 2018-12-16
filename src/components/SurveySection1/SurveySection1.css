@@ -33,11 +33,12 @@
 }
 
 .sec1-issue-image {
-    height: 146px;
-    width: 260px;
+    width: 36%;
     min-width: 260px;
-    background-repeat: no-repeat;
-    background-size: 260px auto;
+}
+.sec1-issue-image img {
+    width: 100%;
+    height: auto;
 }
 .sec1-issue-problem-statement {
     font-weight: 600;
@@ -46,7 +47,11 @@
     text-align: center;
     padding: 5px;
 }
-
+@media screen and (min-width: 1210px) {
+    .sec1-issue-problem-statement {
+        font-size: 1.5rem;
+    }
+}
 
 
 
@@ -59,7 +64,11 @@
 .sec1-issue-selections {
     display: flex;
     justify-content: space-between;
-    margin: 2rem 0 0;
+}
+.sec1-issue-selections-wr {
+    margin: 2rem auto 0;
+    width: 100%;
+    max-width: 940px;
 }
 
 .sec1-issue-selections .btn {
@@ -159,22 +168,7 @@
     font-size: 1rem;
 }
 
-.issue-card .information-icon {
-    position: absolute;
-    right: 10px;
-    top: 45%;
-    cursor: pointer;
-    transform: translateY(-50%);
-}
-.issue-card .information-icon img {
-    height: 30px;
-    width: 30px;
-    opacity: 0.7;
-    transition: opacity .3s ease;
-}
-.issue-card .information-icon img:hover {
-    opacity: 1;
-}
+
 
 .dropWrapper .issue-card.card h5 {
     font-weight: 700;

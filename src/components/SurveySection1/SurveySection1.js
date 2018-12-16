@@ -1,5 +1,6 @@
 import React from 'react'
-import issues from '../../issues.json'
+// import issues from '../../issues.json'
+import issues from '../Issues/Issues'
 import { shuffle } from '../../utils'
 import Copy1 from './copy1'
 import Copy2 from './copy2'
@@ -24,12 +25,9 @@ class SurveySection1 extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log('ti:', issues);
     let theIssues = shuffle(issues);
-
-    // Temp to put #MeToo first
-    const meTooIndex = theIssues.findIndex(iss => iss.title === '#MeToo Movement');
-    const meTooIssue = theIssues.splice(meTooIndex, 1)[0];
-    theIssues.unshift(meTooIssue);
+    console.log('ti2:', theIssues);
 
     this.state.issues = theIssues;
 

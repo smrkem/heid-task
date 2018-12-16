@@ -16,7 +16,7 @@ class TaskManager extends React.Component {
 
   steps = [
     'intro',
-    'consent',
+    // 'consent',
     'survey',
     'practiceTrial',
     'experiment',
