@@ -1,4 +1,4 @@
-import imgSrc from './issue-metoo.jpg';
+import imgSrc from './issue-gun-control-laws.png';
 
 export default {
   title: "Legalization of Marijuana",

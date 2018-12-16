@@ -1,4 +1,4 @@
-import imgSrc from './issue-metoo.jpg';
+import imgSrc from './issue-hate-speech-censorship.png';
 
 export default {
   title: "Legalization of Marijuana",
