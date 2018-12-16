@@ -3,7 +3,6 @@ import imgSrc from './issue-metoo.jpg';
 export default {
   title: "Me Too Movement",
   problem_statement: "Should Accusations of Sexual Assault Be Broadcasted on Social Media Platforms?",
-  image_filename: 'issue-metoo.jpg',
   image_src: imgSrc,
   description: [
     "The Me Too movement (or #MeToo movement) is a movement against sexual harassment and sexual assault in the workplace, music industry, sciences, academia, and politics. The hashtag #MeToo spread virally in October 2017 on social media where victims could share publicly their #MeToo stories in an attempt to demonstrate the widespread prevalence of sexual assault and harassment. It followed soon after the sexual misconduct allegations against Harvey Weinstein. Alyssa Milano, one of the founders of the movement, encouraged victims of sexual harassment to tweet about it and &quot;give people a sense of the magnitude of the problem&quot;. This was met with success, with more than 12 million #MeToo related posts during the first 24 hours on Facebook and Twitter, including some high-profile posts from several American celebrities (e.g.,Gwyneth Paltrow, Uma Thurman, Jennifer Lawrence) describing their #MeToo stories accusing men of sexual assault. Despite the hype, there have been significant concerns raised about the #MeToo movement. Here are a few arguments FOR and AGAINST posting reports of sexual harassment and assault claims online."

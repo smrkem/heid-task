@@ -40,6 +40,16 @@ const closeFullscreen = () => {
   }
 }
 
+const dataFromIssue = (iss) => {
+  delete iss.image_src;
+  delete iss.description;
+  delete iss.problem_statement;
+  delete iss.pros;
+  delete iss.cons;
+  delete iss.position_statement;
+  return iss;
+}
+
 class KeyLogger {
   keyLog = []
   logger = (event) => { this.keyLog.push(event.keyCode) }
@@ -101,5 +111,6 @@ export {
   closeFullscreen,
   KeyLogger,
   PointsTracker,
-  conditionCopy
+  conditionCopy,
+  dataFromIssue
 }

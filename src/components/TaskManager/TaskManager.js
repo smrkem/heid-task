@@ -1,6 +1,6 @@
 import React from 'react'
 import ExperimentIntro from '../ExperimentIntro/ExperimentIntro'
-import SurveyManager from '../SurveyManager/SurveyManager'
+import SurveyManager from '../Survey/SurveyManager/SurveyManager'
 import PracticeBlock from '../ExperimentBlock/PracticeBlock'
 import ExperimentManager from '../ExperimentManager/ExperimentManager'
 import Consent from '../Consent/Consent'

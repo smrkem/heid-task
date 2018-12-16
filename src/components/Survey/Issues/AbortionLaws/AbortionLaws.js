@@ -3,7 +3,6 @@ import imgSrc from './issue-abortion-laws.jpg';
 export default {
   title: "Abortion Laws",
   problem_statement: "Should women have the right to an abortion?",
-  image_filename: 'issue-abortion-laws.jpg',
   image_src: imgSrc,
   description: [
     "Having an unintended pregnancy is common in the US and Canada, and it is estimated that 4 out of 10 people will decide to have an abortion to end the pregnancy. Abortion procedures under medical supervision are generally very safe and consist of surgical abortion (e.g.: suction aspiration, hysterotomy) or medical abortions (e.g.: saline abortions, drugs) to support the premature ending of a pregnancy. Inducing an abortion was a crime in Canada until 1988 and in the US until 1973, when abortion laws were determined to be \"unconstitutional\". Since then, abortion has been legal at any stage in a woman's pregnancy in Canada and is publicly funded as a medical procedure. However, access to abortion services differ across these countries and abortion remains one of the most divisive political issues of our time."

@@ -1,7 +1,6 @@
 import React from 'react'
-// import informationIcon from './information_blue.svg'
-import IssueInfoModal from './IssueInfoModal'
-import InformationIcon from '../InformationIcon/InformationIcon'
+import IssueInfoModal from '../components/IssueInfoModal'
+import InformationIcon from '../components/InformationIcon/InformationIcon'
 
 
 class IssuesView extends React.Component {

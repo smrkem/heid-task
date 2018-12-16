@@ -1,7 +1,6 @@
 import React from 'react'
 import './SurveyManager.css'
 import SurveyIntro from '../SurveyIntro/SurveyIntro'
-import SurveyWellBeing from '../SurveyWellBeing/SurveyWellBeing'
 import SurveySection1 from '../SurveySection1/SurveySection1'
 import SurveySection2 from '../SurveySection2/SurveySection2'
 import SurveySection3 from '../SurveySection3/SurveySection3'
@@ -13,7 +12,6 @@ class SurveyManager extends React.Component {
     issues: [],
     steps: [
       // 'intro',
-      // 'wellbeing',
       'section1',
       'section2',
       'section3',
@@ -67,14 +65,6 @@ class SurveyManager extends React.Component {
     if (this.showing() === 'intro') {
       return (
         <SurveyIntro onFinish={this.advanceStep.bind(this)} />
-      )
-    }
-
-    if (this.showing() === 'wellbeing') {
-      return (
-        <SurveyWellBeing
-          onFinish={this.advanceStep.bind(this)}
-          />
       )
     }
 

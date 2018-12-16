@@ -1,5 +1,5 @@
 import React from 'react'
-import { shuffle } from '../../utils'
+import { shuffle } from '../../../utils'
 
 
 class SurveyFinal extends React.Component {

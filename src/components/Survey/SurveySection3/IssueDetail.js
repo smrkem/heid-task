@@ -38,13 +38,32 @@ class IssueDetail extends React.Component {
         <div className="sec3-issue-copy">
           <h3 className="text-center">{issue.problem_statement}</h3>
           <div className="sec3-issue-copywrap">
-            <div 
-                style={{backgroundImage: `url(/images/${issue.image})`}}
-                className="sec3-issue-image"
-            ></div>
-            {issue.content.map((p, ind) => (
-            <p key={ind}>{p}</p>
-          ))}
+            <div className="issue-info-modal-image">
+              <img src={issue.image_src} alt={issue.title} />
+            </div>
+            
+            <div>
+              {issue.description.map((p, ind) => (
+                <p key={ind}>{p}</p>
+              ))}
+            </div>
+            <div>
+              <h4>PROS:</h4>
+              <ul>
+                {issue.pros.map((p, i) => (
+                  <li key={i}>{p}</li>
+                ))}  
+              </ul>
+            </div>
+            <div>
+              <h4>CONS:</h4>
+              <ul>
+                {issue.cons.map((c, i) => (
+                  <li key={i}>{c}</li>
+                ))}  
+              </ul>
+            </div>
+            
           </div>
         </div>
         <div className="sec3-issue-bottomForm">

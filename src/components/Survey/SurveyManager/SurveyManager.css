@@ -266,7 +266,15 @@
     margin: 1rem auto;
 }
 
-
+.issue-info-modal-image {
+    width: 80%;
+    max-width: 600px;
+    margin: 1rem auto;
+}
+.issue-info-modal-image img {
+    width: 100%;
+    height: auto;
+}
 
 
 
@@ -303,6 +311,7 @@
 
 
 .sec3-issueDetail {
+    margin-left: 200px;
     padding: 0 2rem 2rem;
 }
 
@@ -329,7 +338,6 @@
     padding: 2rem;
     margin-top: 2rem;
     background: white;
-    margin-left: 200px;
 }
 
 .sec3-content-wrap {
@@ -589,9 +597,15 @@
     font-size: 0.8rem;
     text-align: center;
 }
+.sec3-motivation-range .input-prefix-label,
+.sec3-position-range .input-prefix-label {
+    text-align: right;
+    margin-right: 5px;
+}
 .sec3-motivation-range .input-suffix-label,
 .sec3-position-range .input-suffix-label {
     text-align: left;
+    margin-left: 5px;
 }
 
 .range-feedback {

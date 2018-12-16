@@ -1,7 +1,7 @@
 import React from 'react'
 import IssueDetail from './IssueDetail'
-import FigurePondering from '../SurveyManager/components/FigurePondering/FigurePondering'
-
+import FigurePondering from '../components/FigurePondering/FigurePondering'
+import { dataFromIssue } from '../../../utils'
 
 class SurveySection3 extends React.Component {
   state = { 
@@ -215,16 +215,7 @@ class SurveySection3 extends React.Component {
 
     if (this.showing() === 'showResults') {
       let issues = JSON.parse(JSON.stringify(this.state.issues))
-      const issueData = issues.map(iss => {
-        delete iss.image;
-        delete iss.content;
-        delete iss.problem_statement;
-        delete iss.position_statement;
-        if (iss.selectedIssue) {
-          iss.userDescription = this.state.finalIssueDescription;
-        }
-        return iss;
-      })
+      const issueData = issues.map(iss => dataFromIssue(iss));
       return (
         <div className="surveySection exp-results">
           <div className="survey-green-bg"></div>

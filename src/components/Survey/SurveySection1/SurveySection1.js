@@ -1,11 +1,10 @@
 import React from 'react'
-// import issues from '../../issues.json'
 import issues from '../Issues/Issues'
-import { shuffle } from '../../utils'
+import { shuffle, dataFromIssue } from '../../../utils'
 import Copy1 from './copy1'
 import Copy2 from './copy2'
 import IssueView from './IssueView'
-import FigurePondering from '../SurveyManager/components/FigurePondering/FigurePondering'
+import FigurePondering from '../components/FigurePondering/FigurePondering'
 import './SurveySection1.css'
 
 
@@ -25,9 +24,7 @@ class SurveySection1 extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('ti:', issues);
     let theIssues = shuffle(issues);
-    console.log('ti2:', theIssues);
 
     this.state.issues = theIssues;
 
@@ -141,13 +138,7 @@ class SurveySection1 extends React.Component {
 
     if (this.showing() === 'showResults') {
       let issues = JSON.parse(JSON.stringify(this.state.issues))
-      const issueData = issues.map(iss => {
-        delete iss.image;
-        delete iss.content;
-        delete iss.problem_statement;
-        delete iss.position_statement;
-        return iss;
-      })
+      const issueData = issues.map(iss => dataFromIssue(iss));
       return (
         <div className="surveySection exp-results">
 
