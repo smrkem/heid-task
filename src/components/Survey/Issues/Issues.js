@@ -30,5 +30,14 @@ export default [
   LegalizationOfTheDeathPenalty,
   IllegalImmigrationLaws,
   ClimateChange,
-  MeTooMovement
+  MandatoryChildVaccinations,
+  LegalizationOfEuthanasia,
+  AnimalTesting,
+  GunControlLaws,
+  HateSpeechCensorship,
+  MeTooMovement,
+  LegalizationOfDrugs,
+  BlackLivesMatterMovement,
+  StemCellResearch,
+  Vegetarianism
 ]

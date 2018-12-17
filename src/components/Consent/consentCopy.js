@@ -1,58 +1,91 @@
-import React from 'react'
+import React from 'react';
+import logoSrc from './university-of-toronto-logo.png';
 
 const getConsentCopy = () => {
   return (
       <div id="copyWindow" className="consent-copy">
+        <div className="">
+          <img src={logoSrc} alt="University Of Toronto logo" />
+        </div>
+        <h2>Informed Consent Form</h2>
         <p>
           <span className="bold">Purpose of Experiment: </span>
-          to validate the following survey as a measure of your social and political beliefs.
+          to explore the emotional and motivational effects of working towards money for the self and social causes.
+        </p>
+        <p>
+          <span className="bold">Expected Time Requirement: </span>
+          1-hour session.
         </p>
         <p>
           <span className="bold">Procedure of Experiment: </span>
-          the experiment will be as follows:<br />
-          1) Wellbeing Measures (~5 minutes)<br />
-          2) Social Values Task<br />
-          3) Hedonic and Eudaimonic Incentive Delay Task<br />
+          the experiment will be as follows:
         </p>
+        <div>
+          <ol>
+            <li>I will fill in some questionnaires on depression and wellbeing (15 minutes);</li>
+            <li>I will complete a Social Values Task involving the selection of a social issue that is viewed as personally meaningful and important to me (15 minutes);</li>
+            <li>
+              I will complete a reward task (35 minutes) wherein I will be working towards hitting a target within a narrow window of time to win additional money (up to 225 CAD in total) for:
+              <ol type="a">
+                <li><b>Self:</b> winning 75 CAD for yourself that you can spend on anything you like.</li>
+                <li><b>Charity:</b> winning 75 CAD to donate to a charity that fights for a social issue you believe in (e.g., marriage equality, gun rights).</li>
+                <li><b>Anti-Charity:</b> avoid donating money for a social cause that is antithetic to my beliefs.</li>
+              </ol>
+              For instance, if I believe in stem cell research, then I am fighting to win 75 CAD for myself, 75 CAD for a charity that donates to stem cell research, AND fighting to NOT donate 75 CAD to a charity that is trying to abolish stem cell research (if I lose the anti-charity trials of this task, I will be forced to donate 75 CAD to this cause). This will be explained in greater detail during the task.
+            </li>
+            <li>During both the Social Values Task and reward task, I will be answering questions on my current emotional state and motivation.</li>
+          </ol>
+        </div>
+
         <p>
           <span className="bold">Results of Experiment: </span>
-          I understand that the investigator <span className="bold">DOES NOT</span> intend to analyze and publish the results of this study. The purpose of this study is to validate this survey as a measure to be used in future neuroimaging research and is not intended for publication. Should I wish to receive a copy of the results I will provide my e-mail address when prompted at the end of the study.
+          I understand that the investigator intends to analyze and publish the results of this study. Should I wish to receive a copy of the results I will add my e-mail address to sign-up provided at the end of the study.
         </p>
+
         <p>
           <span className="bold">Possible Benefits: </span>
-          Some benefits I may expect to receive from participating in this study are:<br />
-          1) knowledge that there are researchers interested in my social and political beliefs.<br />
-          2) contributing to affective neuroscience and the study of positive emotions by helping to validate a novel neuroimaging task.<br />
+          Some benefits I may expect to receive from participating in this study are:
         </p>
+        <div>
+          <ol>
+            <li>momentary increases in positive emotions and positive mood;</li>
+            <li>satisfaction from entering a weekly competition wherein the top 10 participants with the greatest score for each condition (i.e., self, charity, anti-charity) will win 75 CAD. As such, if you are in the top 10 participants for the Charity condition, you will win 75 CAD to donate to your charity of choice, based on the social issue you selected as important. If you are in the top 10 participants in the Self condition, you will win 75 CAD for yourself as pocket money (sent to your MTurk account).</li>
+            <li>an opportunity to contribute to scientific research on emotions and affective neuroscience.</li>
+          </ol>
+        </div>
         <p>
           <span className="bold">Possible Risks: </span>
-          The researchers have taken precautions to mitigate any risks involved in participating in this study. Questions will ask about your beliefs on a number of divisive social issues, which could elicit some anxiety related to sharing an opinion that is controversial. I understand that my responses are kept confidential and there will be no identifying information associated with my answers; as such, there will be no way to connect your responses with your identiy. I understand that I may take a break and/or withdraw from the study with no penalty. I understand that if I have concerns I can speak to the lead investigators of this study.
+          While the tasks may be stressful in the moment, the researchers do not foresee any long-term risks to me for participating in this study. If I do experience feelings of discomfort at any point during the study, I recognize that I am free to refrain from answering any question, or withdraw from the study at any time, without penalty, and will still receive credit for my participation regardless of my completion of the study.
         </p>
         <p>
           <span className="bold">Confidentiality and Anonymity: </span>
-          I understand that all of the data collected are anonymous at collection and will remain anonymous. I understand that I will not provide any personally identifying information nor will my responses be associated with such information.
+          I understand that all of the data collected will remain strictly confidential. Only people associated with the study will have confidential access to my data, <b>including the research ethics program of the University of Toronto that may request access to study data to help ensure participant protection procedures are followed.</b> This consent form will be stored separately, and my responses will not be associated with my name; instead, my name will be converted to a code number when the researchers store the data. I understand that my de-identified responses will be shared on the Open Science Framework ( <a href="https://osf.io/" target="_blank">https://osf.io/</a> ).
         </p>
-        <div>
-          <span className="bold">Voluntary Participation, Withdrawal, and Limitations to Withdrawal: </span>
-          I understand the following:
-          <ul>
-            <li>My participation is entirely voluntary, I can choose to leave questions blank rather than answer them, if I change my mind about participating I may withdraw my responses at the end of the study.</li>
-            <li>I will have my opportunity to withdraw made clear to me just prior to the end of the study; upon my withdrawal any responses collected from me will be destroyed, there are no undesirable consequences for withdrawing.</li>
-            <li>After completing the study I will no longer be able to withdraw as my responses will not be linked with my identity, my responses are anonymous. </li>
-            <li>To withdraw I must do so when prompted during the debriefing page at the end of the study; closing an incomplete survey will not withdraw my responses.</li>
-          </ul>
-        </div>
+        <p>
+          <span className="bold">Limits to Confidentiality: </span>
+          I understand that there are regular legal limitations to confidentiality. I understand that confidentiality is limited upon disclosure of plans to harm myself or others, or in the case of a demand to testify in court proceedings. I understand that the information collected in this study is not expected to lead to these conditions.
+        </p>
+        <p>
+          <span className="bold">Voluntary Participation and Withdrawal: </span>
+          I understand that my participation is entirely voluntary, that I may withdraw at any time during the study. Upon my withdrawal any responses collected from me will be destroyed. I understand that there are no undesirable consequences for withdrawing.
+        </p>
+        <p>
+          <span className="bold">Limitations to Withdrawal: </span>
+          I understand that after completing the study I will no longer be able to withdraw as my responses will not be linked with my identity, that is, my responses will be anonymous. To withdraw I must do so before completing the study. I understand that I will have my last opportunity to withdraw made clear to me just prior to the end of the study.
+        </p>
         <p>
           <span className="bold">Questions: </span>
-          I understand that I may e-mail questions to the primary investigator, Lê-Anh Dinh-Williams, a PhD student at the University of Toronto and that concerns may also be addressed to the investigator’s supervisor or to the University's Office of Research Ethics:
+          I understand that I may e-mail questions to the primary investigator, Le-Anh Dinh-Williams, a PhD student at the University of Toronto. I understand that concerns may also be addressed to the investigator’s supervisor or to the University's Office of Research Ethics:
         </p>
         <p>
-          <span className="bold">Study e-mail: </span> themindfulawarenesslab@gmail.com<br />
-          Investigator: Lê-Anh Dinh-Williams, e-mail: leanh.dinh.williams@mail.utoronto.ca
-        </p>
-        <p>
+          <span className="bold">Study e-mail: </span> eudaimonic.reward@gmail.com<br />
+          Investigator: Lê-Anh Dinh-Williams, e-mail: leanh.dinh.williams@mail.utoronto.ca<br />
           Investigator’s Supervisor: Professor Norman Farb, e-mail: norman.farb@utoronto.ca<br />
-          Office of Research Ethics: e-mail: ethics.review@utoronto.ca or tel: 416-9463273
+          Office of Research Ethics: e-mail: ethics.review@utoronto.ca or tel: 416-946-3273
+        </p>
+
+        <p>
+          Upon completion of my participation, I will receive a full written explanation about the rationale and predictions underlying this experiment. 
         </p>
       </div>
   )

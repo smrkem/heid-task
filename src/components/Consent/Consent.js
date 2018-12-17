@@ -1,5 +1,7 @@
 import React from 'react'
 import { getConsentCopy } from './consentCopy'
+import './Consent.css';
+
 
 class SurveyConsent extends React.Component {
   state = {
@@ -30,7 +32,7 @@ class SurveyConsent extends React.Component {
     const copy = getConsentCopy()
     return (
       <div className='survey-consent container'>
-        <h2>Informed Consent Form</h2>
+        <h1 className="topBanner">Welcome to the HEID Task!</h1>
         { copy }
         <p>
           <button
