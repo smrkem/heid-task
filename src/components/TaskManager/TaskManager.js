@@ -1,9 +1,10 @@
 import React from 'react'
-import SurveyWellBeing from '../SurveyWellBeing/SurveyWellBeing'
+import SurveyWellBeingManager from '../SurveyWellBeing/SurveyWellBeingManager'
 import SurveyManager from '../Survey/SurveyManager/SurveyManager'
 import PracticeBlock from '../ExperimentBlock/PracticeBlock'
 import ExperimentManager from '../ExperimentManager/ExperimentManager'
 import Consent from '../Consent/Consent'
+import Break from '../Break/Break';
 
 
 class TaskManager extends React.Component {
@@ -15,8 +16,9 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    'consent',
+    // 'consent',
     'wellbeing',
+    'break1',
     'survey',
     'practiceTrial',
     'experiment',
@@ -75,7 +77,13 @@ class TaskManager extends React.Component {
                 )}
 
                 { (this.showing() === 'wellbeing') && (
-                  <SurveyWellBeing
+                  <SurveyWellBeingManager
+                    onFinish={this.showNextStep.bind(this)}
+                    />
+                )}
+
+                 { (this.showing() === 'break1') && (
+                  <Break
                     onFinish={this.showNextStep.bind(this)}
                     />
                 )}

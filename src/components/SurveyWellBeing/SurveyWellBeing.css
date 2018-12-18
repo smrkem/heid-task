@@ -1,0 +1,37 @@
+.wellbeing-page .inner-copy {
+    max-width: 910px;
+    margin: 2rem auto;
+    text-align: left;
+}
+
+.wellbeing-page h1, 
+.wellbeing-page h2 {
+    text-align: center;
+}
+
+.wellbeing-page h1 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+
+.wellbeing-page .form-group {
+    padding: 1rem;
+    background: #f9f9f9;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+.wellbeing-page select {
+    background: #fff;
+}
+
+.form-check label {
+    cursor: pointer;
+}
+
+
+
+.wellbeing-page.welcome button {
+    display: block;
+    margin: auto;
+}

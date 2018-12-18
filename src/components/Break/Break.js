@@ -1,0 +1,14 @@
+import React from 'react';
+
+const Break = (props) => {
+  return (
+    <div>
+      <h2>Would you like to take a break or move on to the next task?</h2>
+      <button
+        onClick={props.onFinish}
+        className="btn btn-primary">Next Task</button>
+    </div>
+  )
+}
+
+export default Break
