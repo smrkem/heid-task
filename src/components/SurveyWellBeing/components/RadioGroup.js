@@ -7,8 +7,7 @@ const RadioGroup = (props) => {
     currentValue,
     handleRadioChange,
     name,
-    colCount,
-    otherLabel
+    colCount
   } = props;
 
   const ulStyles = colCount ? {

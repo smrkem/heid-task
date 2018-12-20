@@ -59,7 +59,7 @@ const getConsentCopy = () => {
         </p>
         <p>
           <span className="bold">Confidentiality and Anonymity: </span>
-          I understand that all of the data collected will remain strictly confidential. Only people associated with the study will have confidential access to my data, <b>including the research ethics program of the University of Toronto that may request access to study data to help ensure participant protection procedures are followed.</b> This consent form will be stored separately, and my responses will not be associated with my name; instead, my name will be converted to a code number when the researchers store the data. I understand that my de-identified responses will be shared on the Open Science Framework ( <a href="https://osf.io/" target="_blank">https://osf.io/</a> ).
+          I understand that all of the data collected will remain strictly confidential. Only people associated with the study will have confidential access to my data, <b>including the research ethics program of the University of Toronto that may request access to study data to help ensure participant protection procedures are followed.</b> This consent form will be stored separately, and my responses will not be associated with my name; instead, my name will be converted to a code number when the researchers store the data. I understand that my de-identified responses will be shared on the Open Science Framework ( <a href="https://osf.io/" target="_blank" rel="noopener noreferrer">https://osf.io/</a> ).
         </p>
         <p>
           <span className="bold">Limits to Confidentiality: </span>

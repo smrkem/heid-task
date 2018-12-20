@@ -21,8 +21,29 @@
     border: 1px solid #aaa;
     border-radius: 5px;
 }
+.wellbeing-page .form-group.error {
+    background: #f9cccc;
+    border: 1px solid #f99;
+}
 .wellbeing-page select {
     background: #fff;
+}
+.wellbeing-page.welcome button {
+    display: block;
+    margin: auto;
+}
+
+
+
+
+
+
+
+/*
+    FORM CONTROLS
+*/
+input[type="radio"] {
+    cursor: pointer;
 }
 
 .form-check label {
@@ -31,7 +52,156 @@
 
 
 
-.wellbeing-page.welcome button {
-    display: block;
-    margin: auto;
+
+
+
+
+.radioRange li {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.radioRange ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+/*
+    HEMAR, PWB, QUESTIONNAIRES
+*/
+.questionnaires .submit-button {
+    text-align: right;
+}
+
+.pwb-item,
+.hemar-item {
+    display: flex;
+    margin: 1rem 0;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    min-height: 60px;
+}
+.pwb-item:last-child,
+.hemar-item:last-child {
+    margin: 1rem 0 0;
+    border-bottom: none;
+    min-height: 60px;
+}
+
+
+
+.pwb-item .radioRange ul,
+.hemar-item .radioRange ul {
+    margin-left: 0.5rem;
+}
+
+
+
+
+
+
+
+
+
+/*
+    HEMAR
+*/
+.hemar .form-legend {
+    margin-left: 248px;
+    display: flex;
+    justify-content: space-between;
+    width: 424px;
+    font-size: 0.9rem;
+}
+
+
+.hemar-item .radioRange li {
+    width: 40px;
+    height: 40px;
+}
+
+.hemar-item .radioRange input {
+    opacity: 0;
+}
+.hemar-item .radioRange li label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #666;
+}
+.hemar-item .radioRange input:checked ~ label {
+    color: #fff;
+    background: #007bff;
+    border: 1px solid #043973;
+}
+.hemar-item p {
+    width: 240px;
+    margin-right: 0.5rem;
+}
+
+
+/*
+    PWB
+*/
+.pwb .form-group {
+    padding: 0;
+}
+.pwb-item {
+    min-width: 770px;
+}
+.pwb-item .form-check-input {
+    margin: 0;
+}
+.pwb .form-legend {
+    padding: 1rem 0 1rem 320px;
+    width: 100%;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #ddd;
+}
+.pwb .form-legend div {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+}
+
+.pwb form {
+    position: relative;
+}
+.pwb .grid-lines {
+    position: absolute;
+    top: 0;
+    left: 35%;
+    right: 0;
+    border-left: 1px solid #ddd;
+    bottom: 40px;
+}
+
+.pwb-item .radioRange li {
+    width: 60px;
+    text-align: center;
+}
+
+.pwb-item .form-check label {
+    display: none;
+}
+.pwb-item p {
+    width: 320px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.pwb .submit-button {
+    margin-top: 1rem;
 }
