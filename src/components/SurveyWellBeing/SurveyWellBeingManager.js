@@ -13,13 +13,15 @@ class SurveyWellBeingManager extends React.Component {
     steps: [
       'welcome',
       'demographics',
-      'questionnaires'
+      'questionnaires',
+      'showResults'
     ],
     questionnaires: [],
     stepIndex: 0,
     questionnairesIndex: 0,
     results: {}
   }
+  contentWrap = null;
 
   constructor(props) {
     super(props);
@@ -38,7 +40,9 @@ class SurveyWellBeingManager extends React.Component {
 
   advanceStep() {
     if (this.state.stepIndex === this.state.steps.length - 1) {
-      // Done with WellBeing
+      console.log('Done With Well being');
+      this.props.submitWellbeingData(this.state.results);
+      this.props.onFinish();
     }
 
     this.setState({stepIndex: this.state.stepIndex + 1});
@@ -51,6 +55,7 @@ class SurveyWellBeingManager extends React.Component {
     }
 
     this.setState({questionnairesIndex: this.state.questionnairesIndex + 1});
+    this.contentWrap && this.contentWrap.scrollTo(0,0);
   }
 
   addResults(questionnaire, data) {
@@ -59,14 +64,32 @@ class SurveyWellBeingManager extends React.Component {
     this.setState({results});
   }
 
+  getProgressValue() {
+    let progress = 0;
+    if (this.showing()==='questionnaires') {
+      progress = 20 + (this.state.questionnairesIndex * 20);
+    }
+    return progress;
+  }
 
   render() {
-    if (this.showing()==='questionnaires') {
-      console.log("questionnaires state: ", this.state);
-    }
+    const progress = this.getProgressValue();
 
     return (
-      <div className={`wellbeing-page ${this.showing()}`} >
+      <div
+        ref={elem => this.contentWrap = elem}
+        className={`wellbeing-page ${this.showing()}`} 
+      >
+        <div className="progress">
+          <div className="progress-bar"
+            role="progressbar"
+            aria-valuenow={progress}
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style={{width: `${progress}%`}}
+            ></div>
+        </div>
+
         {this.showing() === 'welcome' && (
           <Welcome finishStep={this.advanceStep.bind(this)} />
         )}
@@ -80,6 +103,26 @@ class SurveyWellBeingManager extends React.Component {
 
         {this.showing() === 'questionnaires' && (
           this.state.questionnaires[this.state.questionnairesIndex]
+        )}
+
+
+        {this.showing() === 'showResults' && (
+          <div className="surveySection exp-results">
+            <h1 className="">Wellbeing Questionnaire Results</h1>
+            <div className="">
+              <p>Wellbeing Questionnaire completed by user.</p>
+              <p>Store the data on the server. Need to associate with some kind of user_id.</p>
+              <p>Data at this point shown below:</p>
+              <div className="exp-data">
+                <pre>{JSON.stringify(this.state.results, null, 3)}</pre>
+              </div>
+            </div>
+            <button
+              className="btn btn-black btn-large"
+              onClick={() => this.advanceStep()}
+            >
+              Continue</button>
+          </div>
         )}
 
       </div>

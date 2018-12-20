@@ -1,0 +1,16 @@
+export default {
+  "1": "I would enjoy my favorite television or radio program",
+  "2": "I would enjoy being with family or close friends",
+  "3": "I would find pleasure in my hobbies and pastimes",
+  "4": "I would be able to enjoy my favorite meal",
+  "5": "I would enjoy a warm bath or refreshing shower",
+  "6": "I would find pleasure in the scent of flowers or the smell of a fresh sea breeze or freshly baked bread",
+  "7": "I would enjoy seeing other people’s smiling faces",
+  "8": "I would enjoy looking smart when I have made an effort with my appearance",
+  "9": "I would enjoy reading a book, magazine or newspaper",
+  "10": "I would enjoy a cup of tea or coffee or my favorite drink",
+  "11": "I would find pleasure in small things; e.g., bright sunny day, a telephone call from a friend",
+  "12": "I would be able to enjoy a beautiful landscape or view",
+  "13": "I would get pleasure from helping others",
+  "14": "I would feel pleasure when I receive praise from other people",
+}

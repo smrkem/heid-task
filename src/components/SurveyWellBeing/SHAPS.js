@@ -1,32 +1,79 @@
 import React from 'react';
 import RadioGroup from './components/RadioGroup';
+import SHAPSItems from './components/SHAPSItems';
+
+const options = [
+  {
+    "label": "Strongly Disagree",
+    "value": "1"
+  },
+  {
+    "label": "Disagree",
+    "value": "2"
+  },
+  {
+    "label": "Agree",
+    "value": "3"
+  },
+  {
+    "label": "Strongly agree",
+    "value": "4"
+  },
+];
 
 export default class SHAPS extends React.Component {
-  state = {
-
-  }
-
   constructor(props) {
     super(props);
+    let state = {};
+    Object.keys(SHAPSItems).forEach(key => {
+      state[key] = null;
+    });
+    this.state = state;
+
     this.handleFieldChange = this.handleFieldChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    window.scrollTo(0,0);
   }
 
   handleFieldChange(e) {
     this.setState({[e.target.name]: e.target.value});
   }
 
+  handleFormSubmit(e) {
+    e.preventDefault();
+    this.props.submitResults("SHAPS", this.state);
+    this.props.finishStep();
+  }
+
   render() {
-    const {finishStep} = this.props;
+    const formItems = Object.keys(SHAPSItems).map(key => (
+        <div key={key} className={`form-group`}>
+            <p>{`${key}. ${SHAPSItems[key]}`}</p>
+            <RadioGroup
+              handleRadioChange={this.handleFieldChange}
+              currentValue={this.state[key]}
+              name={key}
+              options={options}
+            />
+          </div>
+    ));
+
     return (
       <div className="inner-copy">
         <h2>SHAPS</h2>
 
         <p>This questionnaire is designed to measure your ability to experience pleasure <em>in the last few days.</em> It is important to read each statement very <em>carefully</em>. Select an option to indicate how much you agree or disagree with each statement.</p>
-        <form>
+        <form onSubmit={this.handleFormSubmit}>
 
-          <div>
+          <div className="form-items">
+            {formItems}
+          </div>
+
+          <div className="submit-button">
             <button
-            onClick={finishStep}
             className="btn btn-primary"
             >
             Next</button>

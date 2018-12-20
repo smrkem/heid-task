@@ -61,8 +61,8 @@ export default class Demographics extends React.Component {
       }
     });
 
-    // return errors;
-    return [];
+    return errors;
+    // return [];
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -152,7 +152,7 @@ export default class Demographics extends React.Component {
             />
           </div>
 
-          <div>
+          <div className="submit-button">
             <button
               type="submit"
               className="btn btn-primary"

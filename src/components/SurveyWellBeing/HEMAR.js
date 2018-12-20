@@ -16,6 +16,10 @@ export default class HEMAR extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
+
   handleFieldChange(e) {
     this.setState({[e.target.name]: e.target.value});
   }

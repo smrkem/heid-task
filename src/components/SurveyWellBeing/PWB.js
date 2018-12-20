@@ -17,12 +17,15 @@ export default class PWB extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
+
   handleFieldChange(e) {
     this.setState({[e.target.name]: e.target.value});
   }
 
   handleFormSubmit(e) {
-    console.log("form submit!!");
     e.preventDefault();
     this.props.submitResults("PWB", this.state);
     this.props.finishStep();

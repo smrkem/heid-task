@@ -74,6 +74,11 @@ input[type="radio"] {
 /*
     HEMAR, PWB, QUESTIONNAIRES
 */
+.wellbeing-page .questionnaires {
+    height: 100vh;
+}
+
+.demographics .submit-button,
 .questionnaires .submit-button {
     text-align: right;
 }
@@ -204,4 +209,28 @@ input[type="radio"] {
 
 .pwb .submit-button {
     margin-top: 1rem;
+}
+
+
+
+
+
+
+/*
+    RESULTS
+*/
+.wellbeing-page .progress {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.wellbeing-page.showResults .progress {
+    display: none;
+}
+
+.wellbeing-page.showResults .exp-results {
+    max-width: 900px;
+    margin: 2rem auto;
+    position: relative;
 }

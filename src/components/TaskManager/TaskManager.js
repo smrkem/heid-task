@@ -12,7 +12,8 @@ class TaskManager extends React.Component {
     index: 0,
     blockData: [],
     practiceData: {},
-    socialIssue: {}
+    socialIssue: {},
+    wellbeingData: {}
   }
 
   steps = [
@@ -31,6 +32,7 @@ class TaskManager extends React.Component {
       this.showNextStep = this.showNextStep.bind(this);
       this.setPracticeData = this.setPracticeData.bind(this);
       this.submitSocialIssue = this.submitSocialIssue.bind(this);
+      this.submitWellbeingData = this.submitWellbeingData.bind(this);
   }
 
   showNextStep(blockData=false) {
@@ -40,6 +42,10 @@ class TaskManager extends React.Component {
       this.setState({
           index: this.state.index + 1
       })
+  }
+
+  submitWellbeingData(data) {
+    this.setState({wellbeingData: data})
   }
 
   submitSocialIssue(issue) {
@@ -67,6 +73,9 @@ class TaskManager extends React.Component {
   }
 
     render() {
+      if (this.showing() === 'break1') {
+        console.log('state qqq: ', this.state.wellbeingData);
+      }
         return (
             <div className="task-manager">
                 { (this.showing() === 'consent') && (
@@ -78,6 +87,7 @@ class TaskManager extends React.Component {
 
                 { (this.showing() === 'wellbeing') && (
                   <SurveyWellBeingManager
+                    submitWellbeingData={this.submitWellbeingData}
                     onFinish={this.showNextStep.bind(this)}
                     />
                 )}
