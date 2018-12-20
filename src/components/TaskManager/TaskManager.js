@@ -17,7 +17,7 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    // 'consent',
+    'consent',
     'wellbeing',
     'break1',
     'survey',
