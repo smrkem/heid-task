@@ -33,7 +33,11 @@ export default class HEMAR extends React.Component {
 
   render() {
     let formItems = [];
+    let disabled = true;
     Object.keys(this.state).forEach(item => {
+      if (this.state[item] !== null) {
+        disabled = false;
+      }
       formItems.push(
           <div key={item} className="hemar-item">
             <p>{HEMARItems[item]}</p>
@@ -47,6 +51,7 @@ export default class HEMAR extends React.Component {
           </div>
       )
     });
+    
     return (
       <div className="inner-copy hemar">
         <h2>HEMA-R</h2>
@@ -65,6 +70,7 @@ export default class HEMAR extends React.Component {
 
           <div className="submit-button">
             <button
+            disabled={disabled}
             className="btn btn-primary"
             >
             Next</button>

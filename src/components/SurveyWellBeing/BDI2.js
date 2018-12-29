@@ -54,6 +54,13 @@ export default class BDI2 extends React.Component {
       )
     });
 
+    let disabled = true;
+    Object.keys(this.state).forEach(item => {
+      if (this.state[item] !== null) {
+        disabled = false;
+      }
+    });
+
 
     return (
       <div className="inner-copy">
@@ -69,6 +76,7 @@ export default class BDI2 extends React.Component {
 
           <div className="submit-button">
             <button
+            disabled={disabled}
             className="btn btn-primary"
             >
             Next</button>

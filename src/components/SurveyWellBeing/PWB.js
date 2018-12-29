@@ -33,8 +33,12 @@ export default class PWB extends React.Component {
   }
 
   render() {
+    let disabled = true;
     let formItems = [];
     Object.keys(this.state).forEach(item => {
+      if (this.state[item] !== null) {
+        disabled = false;
+      }
       formItems.push(
           <div key={item} className="pwb-item">
             <p>{PWBItems[item].prompt}</p>
@@ -70,6 +74,7 @@ export default class PWB extends React.Component {
           
           <div className="submit-button">
             <button
+              disabled={disabled}
               className="btn btn-primary"
             >
             Next</button>

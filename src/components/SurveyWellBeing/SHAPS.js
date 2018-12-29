@@ -63,6 +63,13 @@ export default class SHAPS extends React.Component {
           </div>
     ));
 
+    let disabled = true;
+    Object.keys(this.state).forEach(item => {
+      if (this.state[item] !== null) {
+        disabled = false;
+      }
+    });
+
     return (
       <div className="inner-copy">
         <h2>SHAPS</h2>
@@ -76,7 +83,8 @@ export default class SHAPS extends React.Component {
 
           <div className="submit-button">
             <button
-            className="btn btn-primary"
+              disabled={disabled}
+              className="btn btn-primary"
             >
             Next</button>
           </div>

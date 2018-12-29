@@ -12,7 +12,7 @@ import {
 export default class Demographics extends React.Component {
   state = {
     gender: null,
-    country: 'Canada',
+    country: 'United States',
     age: '',
     ethnic_heritage: null,
     ethnic_heritage_other: '',
@@ -61,8 +61,8 @@ export default class Demographics extends React.Component {
       }
     });
 
-    return errors;
-    // return [];
+    // return errors;
+    return [];
   }
 
   componentDidUpdate(prevProps, prevState) {
