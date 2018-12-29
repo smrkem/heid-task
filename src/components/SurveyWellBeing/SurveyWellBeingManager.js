@@ -7,6 +7,7 @@ import PWB from './PWB';
 import BDI2 from './BDI2';
 import SHAPS from './SHAPS';
 import { shuffle } from '../../utils';
+import ProgressBar from './components/ProgressBar'
 
 class SurveyWellBeingManager extends React.Component {
   state = { 
@@ -64,30 +65,42 @@ class SurveyWellBeingManager extends React.Component {
     this.setState({results});
   }
 
-  getProgressValue() {
-    let progress = 0;
-    if (this.showing()==='questionnaires') {
-      progress = 20 + (this.state.questionnairesIndex * 20);
-    }
-    return progress;
+  getProgressSections() {
+   let sections = [
+      {
+        name: 'demographics',
+        label: '1',
+        active: this.showing() == 'demographics',
+        completed: Object.keys(this.state.results).includes('demographics') 
+      }
+    ];
+    this.state.questionnaires.forEach( (q, ind) => {
+      sections.push(
+        {
+          name: `questionnaire-${q.type.name}`,
+          label: 2 + ind,
+          active: this.showing() === 'questionnaires' && this.state.questionnairesIndex === ind,
+          completed: Object.keys(this.state.results).includes(q.type.name)
+        }
+      )
+    });
+
+    return sections;
   }
 
   render() {
-    const progress = this.getProgressValue();
-
+    const sections = this.getProgressSections();
+    
     return (
       <div
         ref={elem => this.contentWrap = elem}
         className={`wellbeing-page ${this.showing()}`} 
       >
-        <div className="progress">
-          <div className="progress-bar"
-            role="progressbar"
-            aria-valuenow={progress}
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style={{width: `${progress}%`}}
-            ></div>
+        <div className="">
+          <ProgressBar 
+            sections={sections}
+            />
+          
         </div>
 
         {this.showing() === 'welcome' && (

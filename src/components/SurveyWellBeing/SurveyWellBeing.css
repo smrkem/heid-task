@@ -1,3 +1,6 @@
+.wellbeing-page {
+    padding: 5px;
+}
 .wellbeing-page .inner-copy {
     max-width: 910px;
     margin: 2rem auto;
@@ -34,6 +37,47 @@
 }
 
 
+
+
+
+
+
+
+
+/*
+    PROGRESS BAR
+    */
+
+.wellbeing-page .ProgressBar {
+    margin: 1rem auto;
+    background: #eee;
+    max-width: 910px;
+    display: flex;
+}
+
+.wellbeing-page.showResults .ProgressBar {
+    display: none;
+}
+
+.ProgressBar section {
+    flex-grow: 1;
+    margin: 3px;
+    border: 1px solid #ccc;
+}
+
+.ProgressBar section.active {
+    /* background-color: #139e13; */
+    background-color: lightgreen;
+    border-color: #139e13;
+    box-shadow: 0px 0px 1px 1px lightgreen;
+}
+
+.ProgressBar section.completed {
+    background: #007bff;
+    color: white;
+    border-color: #004baa;
+    box-shadow: 0px 0px 1px 1px lightblue;
+}
 
 
 
@@ -219,15 +263,6 @@ input[type="radio"] {
 /*
     RESULTS
 */
-.wellbeing-page .progress {
-    max-width: 900px;
-    margin: auto;
-    margin-top: 2rem;
-}
-
-.wellbeing-page.showResults .progress {
-    display: none;
-}
 
 .wellbeing-page.showResults .exp-results {
     max-width: 900px;

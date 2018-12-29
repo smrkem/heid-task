@@ -3,6 +3,7 @@ import BDI2Items from './components/BDI2Items';
 import RadioGroup from './components/RadioGroup';
 
 export default class BDI2 extends React.Component {
+  name = "BDI2"
 
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ export default class BDI2 extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    this.props.submitResults("BDI-2", this.state);
+    this.props.submitResults(this.name, this.state);
     this.props.finishStep();
   }
 

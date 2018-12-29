@@ -3,7 +3,8 @@ import RadioRange from './components/RadioRange';
 import PWBItems from './components/PWBItems';
 
 export default class PWB extends React.Component {
-
+  name = 'PWB';
+  
   constructor(props) {
     super(props);
 
@@ -27,7 +28,7 @@ export default class PWB extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    this.props.submitResults("PWB", this.state);
+    this.props.submitResults(this.name, this.state);
     this.props.finishStep();
   }
 

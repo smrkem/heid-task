@@ -22,6 +22,8 @@ const options = [
 ];
 
 export default class SHAPS extends React.Component {
+  name = "SHAPS";
+
   constructor(props) {
     super(props);
     let state = {};
@@ -44,7 +46,7 @@ export default class SHAPS extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    this.props.submitResults("SHAPS", this.state);
+    this.props.submitResults(this.name, this.state);
     this.props.finishStep();
   }
 

@@ -3,6 +3,7 @@ import RadioRange from './components/RadioRange';
 import HEMARItems from './components/HEMARItems';
 
 export default class HEMAR extends React.Component {
+  name = "HEMAR";
 
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ export default class HEMAR extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    this.props.submitResults("HEMA-R", this.state);
+    this.props.submitResults(this.name, this.state);
     this.props.finishStep();
   }
 
