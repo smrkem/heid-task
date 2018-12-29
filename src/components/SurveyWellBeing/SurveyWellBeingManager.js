@@ -39,6 +39,20 @@ class SurveyWellBeingManager extends React.Component {
     return this.state.steps[this.state.stepIndex]
   }
 
+  showDemographics() {
+    this.setState({
+      stepIndex: this.state.steps.indexOf('demographics'),
+      questionnairesIndex: 0
+    });
+  }
+
+  showQuestionnaire(index) {
+    this.setState({
+      stepIndex: this.state.steps.indexOf('questionnaires'),
+      questionnairesIndex: index
+    });
+  }
+
   advanceStep() {
     if (this.state.stepIndex === this.state.steps.length - 1) {
       console.log('Done With Well being');
@@ -90,6 +104,16 @@ class SurveyWellBeingManager extends React.Component {
 
   render() {
     const sections = this.getProgressSections();
+
+    // Set up questionnaire with existing formData if present:
+    let questionnaire = null;
+    if (this.showing() === 'questionnaires') {
+      const key = this.state.questionnaires[this.state.questionnairesIndex].type.name;
+      questionnaire = React.cloneElement(
+        this.state.questionnaires[this.state.questionnairesIndex],
+        {formData: this.state.results[key] || null}
+      );
+    }
     
     return (
       <div
@@ -98,6 +122,8 @@ class SurveyWellBeingManager extends React.Component {
       >
         <div className="">
           <ProgressBar 
+            showDemographics={this.showDemographics.bind(this)}
+            showQuestionnaire={this.showQuestionnaire.bind(this)}
             sections={sections}
             />
           
@@ -109,13 +135,14 @@ class SurveyWellBeingManager extends React.Component {
 
         {this.showing() === 'demographics' && (
           <Demographics 
+            formData={this.state.results.demographics || null}
             submitResults={this.addResults.bind(this)}
             finishStep={this.advanceStep.bind(this)}
           />
         )}
 
         {this.showing() === 'questionnaires' && (
-          this.state.questionnaires[this.state.questionnairesIndex]
+          questionnaire
         )}
 
 

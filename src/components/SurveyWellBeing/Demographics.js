@@ -24,6 +24,11 @@ export default class Demographics extends React.Component {
 
   constructor(props) {
     super(props);
+    if (props.formData) {
+      for (const key in props.formData) {
+        this.state[key] = props.formData[key];
+      }
+    }
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }

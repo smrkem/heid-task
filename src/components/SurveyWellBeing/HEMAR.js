@@ -7,11 +7,15 @@ export default class HEMAR extends React.Component {
 
   constructor(props) {
     super(props);
-    let state = {};
-    Object.keys(HEMARItems).forEach(key => {
-      state[key] = null;
-    });
-    this.state = state;
+    if (props.formData) {
+      this.state = props.formData;
+    } else {
+      let state = {};
+      Object.keys(HEMARItems).forEach(key => {
+        state[key] = null;
+      });
+      this.state = state;
+    }
 
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
