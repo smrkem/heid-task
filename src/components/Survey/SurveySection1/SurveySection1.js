@@ -29,6 +29,8 @@ class SurveySection1 extends React.Component {
     this.state.issues = theIssues;
 
     this.categorizeIssue = this.categorizeIssue.bind(this);
+
+    // categorizeIssue(issue, cat)
   }
 
   advanceStep() {
@@ -55,6 +57,16 @@ class SurveySection1 extends React.Component {
     else {
       this.advanceIssue()
     }
+  }
+
+  autoCategorize() {
+    const issues = [...this.state.issues];
+    issues.forEach(iss => {
+      const options = ['important', 'not-important', 'somewhat-important']
+      const ind = Math.floor(Math.random() * 3);
+      iss.importance1 = options[ind];
+    });
+    this.advanceStep();
   }
 
   showing() {
@@ -125,6 +137,9 @@ class SurveySection1 extends React.Component {
       return (
         <div className="surveySection">
           <div className="survey-black-bg"></div>
+
+          <button onClick={() => this.autoCategorize() } 
+          className="debug">categorize auto</button>
   
           <IssueView
             issue={this.state.issues[this.state.issueIndex]}

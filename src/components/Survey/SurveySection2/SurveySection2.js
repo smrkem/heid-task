@@ -60,16 +60,18 @@ class SurveySection2 extends React.Component {
   render() {
     if (this.showing() === 'copy1') {
       return (
-        <div className="surveySection">
+        <div className="surveySection sec2">
           <div className="survey-issues-bg"></div>
-          <div className="social-values-copy-modal">
-            <Copy1 />
+          <div className="sec1-inner">          
+            <div className="social-values-copy-modal">
+              <Copy1 />
+            </div>
+            <button
+              className="btn btn-black btn-large"
+              onClick={() => this.advanceStep()}
+            >
+              Ready to Begin</button>
           </div>
-          <button
-            className="btn btn-black btn-large"
-            onClick={() => this.advanceStep()}
-          >
-            Ready to Begin</button>
         </div>
       )
     }

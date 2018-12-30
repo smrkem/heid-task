@@ -6,7 +6,13 @@ import InformationIcon from '../components/InformationIcon/InformationIcon'
 class IssuesView extends React.Component {
   state = {
     issueDetail: null,
-    alertFull: false
+    alertFull: false,
+    showInstructions: false
+  }
+
+  constructor(props) {
+    super(props);
+    this.showInstructions = this.showInstructions.bind(this);
   }
 
   componentDidUpdate() {
@@ -49,6 +55,10 @@ class IssuesView extends React.Component {
     this.setState({issueDetail: null})
   }
 
+  showInstructions(show=true) {
+    this.setState({showInstructions: show});
+  }
+
   render() {
     const { issues, finishedSorting } = this.props;
 
@@ -73,6 +83,28 @@ class IssuesView extends React.Component {
         </div>
       )
     })
+
+    if (this.state.showInstructions) {
+      return (
+        <div className="section2-instructions">
+          <button
+            className="showInstructionsButton"
+            onClick={() => this.showInstructions(false)}
+            >Hide Instructions</button>
+          
+          <div className="instruction-copy">
+            <p>Please select your top three social issues.</p>
+            <h4>Your Task:</h4>
+            <ul>
+              <li>Categorize each social issue as either <b>Most Important to Me</b> or <b>Less Important to Me</b> by dragging and dropping them in the appropriate box.</li>
+              <li>You can have no more than 3 cards and no less than 1 card in the <b>Most Important to Me</b> or <b>Less Important to Me</b> box.</li>
+              <li>You can drag items between the <b>Most Important to Me</b> and the <b>Less Important to Me</b> boxes.</li>
+            </ul>
+            <p>You will get the chance to read more about the social issues you think are important to you in Section III.  Just try your best in determining how important each social issue is for you.</p>
+          </div>
+        </div>
+      )
+    }
     return (
       <div>
         {this.state.issueDetail && (
@@ -112,6 +144,11 @@ class IssuesView extends React.Component {
             </div>
         </div>
         <div className="issue-queue">
+          <button
+            onClick={this.showInstructions} 
+            className="showInstructionsButton"
+            >Show Instructions</button>
+
           <div className="issue-row">
             {issueCards.uncategorized}
             {!issueCards.uncategorized.length && (
