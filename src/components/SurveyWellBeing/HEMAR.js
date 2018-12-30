@@ -2,6 +2,13 @@ import React from 'react';
 import RadioRange from './components/RadioRange';
 import HEMARItems from './components/HEMARItems';
 
+const Legend = () => (
+  <div className="form-legend">
+    <div>Not at all</div>
+    <div>Very Much</div>
+  </div>
+)
+
 export default class HEMAR extends React.Component {
   name = "HEMAR";
 
@@ -42,6 +49,8 @@ export default class HEMAR extends React.Component {
       if (this.state[item] !== null) {
         disabled = false;
       }
+
+      formItems.push(<Legend key={`${item}-legend`} />);
       formItems.push(
           <div key={item} className="hemar-item">
             <p>{HEMARItems[item]}</p>
@@ -64,10 +73,6 @@ export default class HEMAR extends React.Component {
         <form onSubmit={this.handleFormSubmit}>
 
           <div className="form-group">
-            <div className="form-legend">
-              <div>Not at all</div>
-              <div>Very Much</div>
-            </div>
             {formItems}
           </div>
           

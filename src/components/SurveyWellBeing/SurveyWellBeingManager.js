@@ -33,6 +33,14 @@ class SurveyWellBeingManager extends React.Component {
       <SHAPS submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />
     ]);
 
+    // Temp for determined order for dev work:
+    // this.state.questionnaires = [
+    //   <HEMAR submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
+    //   <PWB submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
+    //   <BDI2 submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
+    //   <SHAPS submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />
+    // ];
+
   }
 
   showing() {

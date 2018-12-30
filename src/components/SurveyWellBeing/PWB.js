@@ -2,6 +2,18 @@ import React from 'react';
 import RadioRange from './components/RadioRange';
 import PWBItems from './components/PWBItems';
 
+
+const Legend = (props) => (
+  <div className="form-legend">
+    <div>Strongly disagree</div>
+    <div>Moderately disagree</div>
+    <div>Slightly disagree</div>
+    <div>Slightly agree</div>
+    <div>Moderately agree</div>
+    <div>Strongly agree</div>
+  </div>
+)
+
 export default class PWB extends React.Component {
   name = 'PWB';
   
@@ -38,6 +50,7 @@ export default class PWB extends React.Component {
   render() {
     let disabled = true;
     let formItems = [];
+    let i = 1;
     Object.keys(this.state).forEach(item => {
       if (this.state[item] !== null) {
         disabled = false;
@@ -55,6 +68,10 @@ export default class PWB extends React.Component {
             />
           </div>
       )
+      if (i % 3 === 0 && i !== Object.keys(this.state).length) {
+        formItems.push(<Legend key={`${item}-legend`} />)
+      }
+      i++;
     });
     return (
       <div className="inner-copy pwb">

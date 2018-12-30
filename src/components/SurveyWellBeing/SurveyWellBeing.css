@@ -154,11 +154,6 @@ input[type="radio"] {
 
 
 
-.pwb-item .radioRange ul,
-.hemar-item .radioRange ul {
-    margin-left: 0.5rem;
-}
-
 
 
 
@@ -170,14 +165,20 @@ input[type="radio"] {
 /*
     HEMAR
 */
+.hemar form {
+    min-width: 740px;
+}
 .hemar .form-legend {
     margin-left: 248px;
     display: flex;
     justify-content: space-between;
     width: 424px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
+.hemar-item .radioRange ul {
+    margin-left: 0.5rem;
+}
 
 .hemar-item .radioRange li {
     width: 40px;
@@ -220,14 +221,20 @@ input[type="radio"] {
 .pwb-item {
     min-width: 770px;
 }
+.pwb-item .radioRange ul {
+    margin-left: 5px;
+}
 .pwb-item .form-check-input {
     margin: 0;
 }
 .pwb .form-legend {
-    padding: 1rem 0 1rem 320px;
+    padding: 0rem 0 1rem 320px;
     width: 100%;
     font-size: 0.9rem;
     border-bottom: 1px solid #ddd;
+}
+.pwb .form-legend:first-child {
+    padding: 1rem 0 1rem 320px;
 }
 .pwb .form-legend div {
     display: inline-block;
@@ -237,19 +244,21 @@ input[type="radio"] {
 
 .pwb form {
     position: relative;
+    min-width: 820px;
 }
 .pwb .grid-lines {
     position: absolute;
     top: 0;
-    left: 35%;
+    left: 320px;
     right: 0;
     border-left: 1px solid #ddd;
-    bottom: 40px;
+    bottom: 55px;
 }
 
 .pwb-item .radioRange li {
     width: 60px;
     text-align: center;
+    padding-left: 0;
 }
 
 .pwb-item .form-check label {
