@@ -201,6 +201,13 @@
     width: 30px;
     opacity: 0.7;
     transition: opacity .3s ease;
+
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 .information-icon img:hover {
     opacity: 1;
@@ -310,7 +317,7 @@
     background: #666;
     padding-top: 5px;
     padding-bottom: 5px;
-    position: relative;
+    position: absolute;
     bottom: 50px;
     left: 200px;
     right: -50px;
@@ -395,6 +402,9 @@
 /******
         SECTION 2 INSTRUCTIONS
 */
+.section2-instructions {
+    margin-top: 1rem;
+}
 .section2-instructions .instruction-copy {
     color: white;
     max-width: 900px;
@@ -458,7 +468,7 @@
 }
 
 .sec3-issueDetail .motivation {
-    padding: 2rem;
+    padding: 2rem 0;
     border: 1px solid #eee;
     margin-top: 2rem;
     border-radius: 5px;
@@ -755,10 +765,10 @@
     background: yellow;
 }
 .surveyFinal .issue-card.selected_issue {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
 .surveyFinal .issue-card.selected_issue h5 {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
 }
 
 .thank-you-copy {

@@ -73,6 +73,9 @@ class IssueDetail extends React.Component {
               <p>
                 The slider provided below ranges from -100 (100% AGAINST) to +100 (100% FOR). For instance, -75 (75% AGAINST) would represent some understanding/agreement with arguments FOR.  If you have a neutral stance on the topic, please set the slider to 0.
               </p>
+              <p>
+                Please indicate below your beliefs about <em>{issue.title}</em> indicating the DEGREE to which you are:
+              </p>
             </div>
             <div className="range-feedback">
               { parseInt(this.state.position) < 0 && (<span>AGAINST {-1 * this.state.position}%</span>)}
@@ -95,26 +98,32 @@ class IssueDetail extends React.Component {
                     <span className="input-suffix-label">FOR</span>
                   </span>
               </p>
+              <p>{issue.problem_statement}</p>
             </div>
             <div className="motivation">
               <p>
-                How passionately are your beliefs about {issue.title}?
+                How important is this issue to you and what you believe in?
               </p>
               <div className="sec3-motivation-range">
               <p>
                   <span className="input-prefix">
-                    <span className="input-prefix-label">LESS PASSIONATE</span>
+                    <span className="input-prefix-label">NOT AT ALL IMPORTANT</span>
                     <span className="input-prefix-cue">◀</span>
                   </span>
                   <input 
                       name="motivation"
                       value={this.state.motivation}
                       onChange={this.handleMotivationChange} 
-                      type="range" min={0} max={7} />
+                      type="range" min={0} max={100} />
                   <span className="input-suffix">
                     <span className="input-suffix-cue">▶</span>
-                    <span className="input-suffix-label">MORE PASSIONATE</span>
+                    <span className="input-suffix-label">VERY IMPORTANT</span>
                   </span>
+              </p>
+              <p>
+                <div className="sec3-motivation-feedback">
+                  {this.state.motivation} %
+                </div>
               </p>
             </div>
             </div>

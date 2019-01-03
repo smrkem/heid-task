@@ -92,7 +92,7 @@ class SurveyWellBeingManager extends React.Component {
       {
         name: 'demographics',
         label: '1',
-        active: this.showing() == 'demographics',
+        active: this.showing() === 'demographics',
         completed: Object.keys(this.state.results).includes('demographics') 
       }
     ];

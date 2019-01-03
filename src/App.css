@@ -114,3 +114,27 @@ pre {
     padding: 1rem;
     border-bottom: 1px solid #666;
 }
+
+
+
+
+
+
+
+
+/*
+    TAKE A BREAK
+    */
+.take-a-break {
+    max-width: 700px;
+    padding: 1rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 85vh;
+}
+
+.take-a-break h2 {
+    margin-bottom: 4rem;
+}

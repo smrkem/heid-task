@@ -17,10 +17,11 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    // 'consent',
-    // 'wellbeing',
-    // 'break1',
+    'consent',
+    'wellbeing',
+    'break1',
     'survey',
+    'break2',
     'practiceTrial',
     'experiment',
     'final',
@@ -73,9 +74,6 @@ class TaskManager extends React.Component {
   }
 
     render() {
-      if (this.showing() === 'break1') {
-        console.log('state qqq: ', this.state.wellbeingData);
-      }
         return (
             <div className="task-manager">
                 { (this.showing() === 'consent') && (
@@ -92,7 +90,7 @@ class TaskManager extends React.Component {
                     />
                 )}
 
-                 { (this.showing() === 'break1') && (
+                 { (this.showing().includes('break')) && (
                   <Break
                     onFinish={this.showNextStep.bind(this)}
                     />

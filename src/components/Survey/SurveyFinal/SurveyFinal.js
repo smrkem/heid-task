@@ -21,11 +21,11 @@ class SurveyFinal extends React.Component {
         <div className="row issue-row">
           { issues.map(issue => {
             let className = "card issue-card";
-            if (issue.importance2 === 'most_important') {
-              className += " most_important";
-            }
+            // if (issue.importance2 === 'most_important') {
+            //   className += " most_important";
+            // }
             if (issue.selectedIssue) {
-              className += " selected_issue";
+              className += " most_important selected_issue";
             }
             const styles = {
               marginTop: `${this.randomMargin()}rem`,
