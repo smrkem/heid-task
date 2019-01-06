@@ -4,9 +4,6 @@ import './Consent.css';
 
 
 class SurveyConsent extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   quitStudy() {
     if (window.confirm("Are you sure you wish to quite this study?")) {

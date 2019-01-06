@@ -60,6 +60,10 @@
     height: 33px;
 }
 
+.question-header {
+    max-width: 800px;
+}
+.endHAQ .question,
 .midEAQ .question {
     font-size: 2rem;
     margin: 2rem 0;

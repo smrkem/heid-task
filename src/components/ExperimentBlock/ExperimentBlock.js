@@ -7,6 +7,7 @@ import { DbStaircase } from './staircase'
 import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
 
+const NUM_TRIALS = 3;
 const jsPsych = window.jsPsych
 let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
@@ -119,6 +120,167 @@ class ExperimentBlock extends React.Component {
     ),
     choices: ['1', '2', '3', '4', '5'],
     data: {midEAQ5: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+
+  endHAQ1 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking relaxation?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ1: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ2 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking to develop a skill, learn, or gain insight into something?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ2: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ3 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking to do what you believe in?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ3: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ4 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking pleasure?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ4: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ5 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking to pursue excellence or a personal ideal?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ5: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ6 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking enjoyment?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ6: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ7 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking to take it easy?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ7: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ8 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking to use the best in yourself?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ8: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ9 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking fun?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ9: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  endHAQ10 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
+        `<p class="question">Seeking to contribute to others or the surrounding world?</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {endHAQ10: true},
     on_finish: function(data) {
       const response = String.fromCharCode(data.key_press)
       data.response = response;
@@ -433,18 +595,41 @@ class ExperimentBlock extends React.Component {
           this.feedback2,
           this.blank2
         ],
-        repetitions: 3
+        repetitions: NUM_TRIALS
       }
-      
+      const endHA = {
+        timeline: [
+          this.endHAQ1,
+          this.endHAQ2,
+          this.endHAQ3,
+          this.endHAQ4,
+          this.endHAQ5,
+          this.endHAQ6,
+          this.endHAQ7,
+          this.endHAQ8,
+          this.endHAQ9,
+          this.endHAQ10
+        ]
+      }
 
       if (this.props.condition.assessment) {
         const testProc1 = {...test_procedure};
-        testProc1.repetitions = 1;
+        const reps = testProc1.repetitions;
+
+        let newIndex = Math.floor(reps/2);
+        if ( newIndex > 8 ) {
+          newIndex += randomFromInterval(-3, 4);
+        }
+        testProc1.repetitions = newIndex;
         timeline.push(testProc1);
+
         timeline.push(midEA);
+
         const testProc2 = {...test_procedure};
-        testProc2.repetitions = 2;
+        testProc2.repetitions = NUM_TRIALS - newIndex;
         timeline.push(testProc2);
+
+        timeline.push(endHA);
       }
       else {
         timeline.push(test_procedure);
@@ -453,10 +638,10 @@ class ExperimentBlock extends React.Component {
       
 
       if (this.props.finalBlock) {
-        timeline.push({
-            type: 'fullscreen',
-            fullscreen_mode: false
-        })
+        // timeline.push({
+        //     type: 'fullscreen',
+        //     fullscreen_mode: false
+        // })
       }
 
       return timeline
@@ -534,7 +719,17 @@ class ExperimentBlock extends React.Component {
         'midEAQ2',
         'midEAQ3',
         'midEAQ4',
-        'midEAQ5'
+        'midEAQ5',
+        'endHAQ1',
+        'endHAQ2',
+        'endHAQ3',
+        'endHAQ4',
+        'endHAQ5',
+        'endHAQ6',
+        'endHAQ7',
+        'endHAQ8',
+        'endHAQ9',
+        'endHAQ10'
       ].forEach((n) => {
         if (trialPart[n]) {
           assessments[`${n}_time_elapsed`] = trialPart.time_elapsed;
