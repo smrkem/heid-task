@@ -27,10 +27,10 @@ class SurveyWellBeingManager extends React.Component {
   constructor(props) {
     super(props);
     this.state.questionnaires = shuffle([
-      <HEMAR submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
-      <PWB submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
-      <BDI2 submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
-      <SHAPS submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />
+      <HEMAR key="HEMAR" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
+      <PWB key="PWB" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
+      <BDI2 key="BDI2" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
+      <SHAPS key="SHAPS" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />
     ]);
 
     // Temp for determined order for dev work:
@@ -99,10 +99,10 @@ class SurveyWellBeingManager extends React.Component {
     this.state.questionnaires.forEach( (q, ind) => {
       sections.push(
         {
-          name: `questionnaire-${q.type.name}`,
+          name: `questionnaire-${q.key}`,
           label: 2 + ind,
           active: this.showing() === 'questionnaires' && this.state.questionnairesIndex === ind,
-          completed: Object.keys(this.state.results).includes(q.type.name)
+          completed: Object.keys(this.state.results).includes(q.key)
         }
       )
     });
@@ -116,7 +116,7 @@ class SurveyWellBeingManager extends React.Component {
     // Set up questionnaire with existing formData if present:
     let questionnaire = null;
     if (this.showing() === 'questionnaires') {
-      const key = this.state.questionnaires[this.state.questionnairesIndex].type.name;
+      const key = this.state.questionnaires[this.state.questionnairesIndex].key;
       questionnaire = React.cloneElement(
         this.state.questionnaires[this.state.questionnairesIndex],
         {formData: this.state.results[key] || null}
