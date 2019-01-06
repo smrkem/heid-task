@@ -12,11 +12,220 @@ let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
 let staircase = null
 
+const scale = `
+  <p>Press keys 1 - 5 to respond</p>
+  <div class="numbered-scale">
+    <div class="grid-line"></div>
+    <div class="items">
+      <div>
+        <span>Not at all</span>
+        <span>|<br />1</span>
+      </div>
+      <div>
+        <span>|<br />2</span>
+      </div>
+      <div>
+        <span>|<br />3</span>
+      </div>
+      <div>
+        <span>|<br />4</span>
+      </div>
+      <div>
+        <span>Very Much</span>
+        <span>|<br />5</span>
+      </div>
+    </div>
+  </div>
+`;
 
 class ExperimentBlock extends React.Component {
   state = {
     showResults: false,
     results: {}
+  }
+
+  midEAQ1 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="midEAQ">` + 
+        `<p class="question-header">To what extent do you feel the following?</p>` +
+        `<p class="question">I feel proud of what I did.</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {midEAQ1: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  midEAQ2 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="midEAQ">` + 
+        `<p class="question-header">To what extent do you feel the following?</p>` +
+        `<p class="question">I feel proud of who I am.</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {midEAQ2: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  midEAQ3 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="midEAQ">` + 
+        `<p class="question-header">To what extent do you feel the following?</p>` +
+        `<p class="question">I feel </p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {midEAQ3: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  midEAQ4 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="midEAQ">` + 
+        `<p class="question-header">To what extent do you feel the following?</p>` +
+        `<p class="question">I feel alert/aroused.</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {midEAQ4: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+  midEAQ5 = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="midEAQ">` + 
+        `<p class="question-header">To what extent do you feel the following?</p>` +
+        `<p class="question">I feel motivated to win.</p>` +
+        scale +
+      `</div>`
+    ),
+    choices: ['1', '2', '3', '4', '5'],
+    data: {midEAQ5: true},
+    on_finish: function(data) {
+      const response = String.fromCharCode(data.key_press)
+      data.response = response;
+    }
+  }
+
+  instructionsMotivationQuestions = {
+    'charity': {
+      type: "html-keyboard-response",
+      choices: ['1', '2', '3', '4', '5'],
+      data: {motivationQuestion: true},
+      stimulus: () => {
+        let copy = ''
+        this.props.condition.copy.forEach(para => {
+          copy += `<p>${para}</p>`
+        })
+        return (
+          `<div class="instructions">` + 
+            `<div class="icon ${this.getIconClass()}"></div>` +
+            `<div class="copy">${copy}</div>` +
+          `</div>` +
+          `<div class="instructions-response">` +
+            `<p class="">How motivated are you at present to win money for this cause?</p>` +
+            scale +
+          "</div>"
+        )
+      },
+      on_finish: function(data) {
+        const response = String.fromCharCode(data.key_press)
+        data.response = response;
+      }
+    },
+    'anti-charity': {
+      type: "html-keyboard-response",
+      choices: ['1', '2', '3', '4', '5'],
+      data: {motivationQuestion: true},
+      stimulus: () => {
+        let copy = ''
+        this.props.condition.copy.forEach(para => {
+          copy += `<p>${para}</p>`
+        })
+        return (
+          `<div class="instructions">` + 
+            `<div class="icon ${this.getIconClass()}"></div>` +
+            `<div class="copy">${copy}</div>` +
+          `</div>` +
+          `<div class="instructions-response">` +
+            `<p class="">How motivated are you at present to win money for ANTI-CHARITY?</p>` +
+            scale +
+          "</div>"
+        )
+      },
+      on_finish: function(data) {
+        const response = String.fromCharCode(data.key_press)
+        data.response = response;
+      }
+    },
+    'game': {
+      type: "html-keyboard-response",
+      choices: ['1', '2', '3', '4', '5'],
+      data: {motivationQuestion: true},
+      stimulus: () => {
+        let copy = ''
+        this.props.condition.copy.forEach(para => {
+          copy += `<p>${para}</p>`
+        })
+        return (
+          `<div class="instructions">` + 
+            `<div class="icon ${this.getIconClass()}"></div>` +
+            `<div class="copy">${copy}</div>` +
+          `</div>` +
+          `<div class="instructions-response">` +
+            `<p class="">How motivated are you at present to win money for GAME?</p>` +
+            scale +
+          "</div>"
+        )
+      },
+      on_finish: function(data) {
+        const response = String.fromCharCode(data.key_press)
+        data.response = response;
+      }
+    },
+    'self': {
+      type: "html-keyboard-response",
+      choices: ['1', '2', '3', '4', '5'],
+      data: {motivationQuestion: true},
+      stimulus: () => {
+        let copy = ''
+        this.props.condition.copy.forEach(para => {
+          copy += `<p>${para}</p>`
+        })
+        return (
+          `<div class="instructions">` + 
+            `<div class="icon ${this.getIconClass()}"></div>` +
+            `<div class="copy">${copy}</div>` +
+          `</div>` +
+          `<div class="instructions-response">` +
+            `<p class="">How motivated are you at present to win money for SELF?</p>` +
+            scale +
+          "</div>"
+        )
+      },
+      on_finish: function(data) {
+        const response = String.fromCharCode(data.key_press)
+        data.response = response;
+      }
+    }
   }
 
   instructions = {
@@ -29,8 +238,10 @@ class ExperimentBlock extends React.Component {
       })
       return (
         `<div class="instructions">` + 
-          `<div class="instructions icon ${this.getIconClass()}"></div>` +
+          `<div class="icon ${this.getIconClass()}"></div>` +
           `<div class="copy">${copy}</div>` +
+        `</div>` +
+        `<div class="instructions-response">` +
           `<p class="continue-btn">Press any key to continue.</p>` +
         "</div>"
       )
@@ -42,9 +253,8 @@ class ExperimentBlock extends React.Component {
       })
       return (
         `<div class="instructions">` + 
-          `<div class="instructions icon ${this.getIconClass()}"></div>` +
+          `<div class="icon ${this.getIconClass()}"></div>` +
           `<div class="copy">${copy}</div>` +
-          // `<p class="continue-btn">Press any key to continue.</p>` +
         "</div>"
       )
     },
@@ -192,23 +402,55 @@ class ExperimentBlock extends React.Component {
   getTimeline() {
       const timeline = []
 
-      this.instructions.type = this.props.initialBlock ? 'fullscreen' : 'html-keyboard-response'
+      if (this.props.condition.assessment) {
+        timeline.push(this.instructionsMotivationQuestions[this.props.condition.type]);
+      }
+      
+
+      // this.instructions.type = this.props.initialBlock ? 'fullscreen' : 'html-keyboard-response'
+      this.instructions.type = 'html-keyboard-response'
       this.instructions.fullscreen_mode = this.props.initialBlock ? true : false
+
       timeline.push(this.instructions)
 
-      const test_procedure = {
-          timeline: [
-            this.cue,
-            this.fixation,
-            this.target,
-            this.blank1,
-            this.feedback1,
-            this.feedback2,
-            this.blank2
-          ],
-          repetitions: 25
+      // timeline.push(this.midEA);
+      const midEA = {
+        timeline: [
+          this.midEAQ1,
+          this.midEAQ2,
+          this.midEAQ3,
+          this.midEAQ4,
+          this.midEAQ5
+        ]
       }
-      timeline.push(test_procedure)
+      const test_procedure = {
+        timeline: [
+          this.cue,
+          this.fixation,
+          this.target,
+          this.blank1,
+          this.feedback1,
+          this.feedback2,
+          this.blank2
+        ],
+        repetitions: 3
+      }
+      
+
+      if (this.props.condition.assessment) {
+        const testProc1 = {...test_procedure};
+        testProc1.repetitions = 1;
+        timeline.push(testProc1);
+        timeline.push(midEA);
+        const testProc2 = {...test_procedure};
+        testProc2.repetitions = 2;
+        timeline.push(testProc2);
+      }
+      else {
+        timeline.push(test_procedure);
+      }
+
+      
 
       if (this.props.finalBlock) {
         timeline.push({
@@ -267,12 +509,13 @@ class ExperimentBlock extends React.Component {
       const trialData = JSON.parse(
           jsPsych.data.get().json()
       )
-      const data = this.collectTrials(trialData)
+      const data = this.collectTrials(trialData);
       const results = {
         points: pointsTracker.currentTotal,
         point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
         final_duration: data[data.length - 1].target_presentation_duration,
         data: data,
+        assessments: this.collectAssessments(trialData),
         success_rate: data.filter(trial => trial.hit).length / data.length
       }
 
@@ -280,6 +523,27 @@ class ExperimentBlock extends React.Component {
       this.setState({ results })
 
       this.props.onBlockFinish(results)
+  }
+
+  collectAssessments(trialData) {
+    const assessments = {};
+    trialData.forEach( (trialPart) => {
+      [
+        'motivationQuestion',
+        'midEAQ1',
+        'midEAQ2',
+        'midEAQ3',
+        'midEAQ4',
+        'midEAQ5'
+      ].forEach((n) => {
+        if (trialPart[n]) {
+          assessments[`${n}_time_elapsed`] = trialPart.time_elapsed;
+          assessments[`${n}_response`] = trialPart.response;
+        }
+      })
+
+    });
+    return assessments;
   }
 
   collectTrials(trialData) {
@@ -296,11 +560,21 @@ class ExperimentBlock extends React.Component {
             currentTrial = {index: trialIndex++}
         }
 
-        ['cue', 'fixation', 'target', 'blank1', 'feedback1', 'feedback2', 'blank2'].forEach((n) => {
+        [
+          'cue',
+          'fixation',
+          'target',
+          'blank1',
+          'feedback1',
+          'feedback2',
+          'blank2'
+        ].forEach((n) => {
           if (trialPart[n]) {
             currentTrial[`${n}_time_elapsed`] = trialPart.time_elapsed
           }
         })
+
+        
 
         if (trialPart.fixation) {
           currentTrial.responded_early = trialPart.rt || false

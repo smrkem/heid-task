@@ -17,12 +17,12 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    'consent',
-    'wellbeing',
-    'break1',
-    'survey',
-    'break2',
-    'practiceTrial',
+    // 'consent',
+    // 'wellbeing',
+    // 'break1',
+    // 'survey',
+    // 'break2',
+    // 'practiceTrial',
     'experiment',
     'final',
     'goodbye'

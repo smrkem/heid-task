@@ -1,5 +1,5 @@
 import React from 'react'
-import { shuffle, conditionCopy } from '../../utils'
+import { shuffle, conditionCopy, randomFromInterval } from '../../utils'
 import ExperimentBlock from '../ExperimentBlock/ExperimentBlock'
 
 class ExperimentManager extends React.Component {
@@ -29,6 +29,12 @@ class ExperimentManager extends React.Component {
 
 
     let blocks = []
+    let counts = {
+      'charity': 0,
+      'anti-charity': 0,
+      'self': 0,
+      'game': 0,
+    }
 
     conditions.forEach(c => {
       let condition = {
@@ -38,6 +44,21 @@ class ExperimentManager extends React.Component {
         type: c,
         copy: conditionCopy(c, this.props.socialIssue)
       }
+
+      if (counts[c] === 1) {
+        condition.assessment = true;
+      }
+      else if (counts[c] !== 'complete' && 
+        randomFromInterval(1, 3) % 2 === 0) {
+        condition.assessment = true;
+        counts[c] = 'complete';  
+      }
+
+      if (counts[c] !== 'complete') {
+        counts[c]++;
+      }
+      
+
       blocks.push({ 
         starting_duration: this.props.starting_duration,
         condition: condition,
@@ -47,8 +68,8 @@ class ExperimentManager extends React.Component {
       })
     })
 
-    // return blocks.splice(0,3)
-    return blocks
+    return blocks.splice(0,3)
+    // return blocks
   }
 
   updateBlock(blockData) {
@@ -58,6 +79,7 @@ class ExperimentManager extends React.Component {
       final_duration: blockData.final_duration,
       final_points: blockData.points,
       block_trial_data: blockData.data,
+      block_assessment_data: blockData.assessments,
       success_rate: blockData.success_rate
     }
     delete blocks[this.state.blockIndex].condition.copy
@@ -83,6 +105,7 @@ class ExperimentManager extends React.Component {
   }
 
     render() {
+      console.log('blocks:', this.state.blocks);
         return (
             <div id="exp-manager">
               <ExperimentBlock 

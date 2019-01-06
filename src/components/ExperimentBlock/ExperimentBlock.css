@@ -7,13 +7,95 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  font-size: 0.9rem;
+}
+.instructions-response {
+    height: 200px;
+    font-size: 0.9rem;
+}
+.instructions .icon {
+    width: 140px;
+    height: 100px;
+}
+
+.icon.charity {
+    background-image: url('/images/protestor-icon.png');
+}
+.icon.anti-charity {
+    background-image: url('/images/anti-protestor-icon.png');
+}
+.icon.game {
+    background-image: url('/images/game-icon.png');
+}
+.icon.self {
+    background-image: url('/images/self-icon.png');
+    border: 1px solid #aaa;
+}
+  
+
+@media only screen and (min-width: 900px) {
+    .instructions-response, 
+    .instructions {
+        font-size: 1rem;
+    }
+    
+    .instructions .icon {
+        width: 280px;
+        height: 200px;
+    }
 }
 
 .instructions .copy p {
   max-width: 800px;
-  text-align: left;
 }
 
 .instructions .continue-btn {
-    margin-top: 4rem;
+    margin-top: 67px;
+    margin-bottom: 100px;
+    height: 33px;
+}
+.instructions + #jspsych-fullscreen-btn {
+    margin-top: 67px;
+    margin-bottom: 100px;
+    height: 33px;
+}
+
+.midEAQ .question {
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+
+
+
+
+
+
+
+
+    /* NUMBERED SCALE */
+
+.numbered-scale {
+    position: relative;
+}
+.numbered-scale .grid-line {
+    position: absolute;
+    width: 400px;
+    border-bottom: 1px solid #aaa;
+
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.numbered-scale .items {
+    display: flex;
+    align-items: flex-end;
+    width: 500px;
+    margin: auto;
+}
+.numbered-scale .items span {
+    display: block;
+}
+.numbered-scale .items div {
+    width: 20%;
 }

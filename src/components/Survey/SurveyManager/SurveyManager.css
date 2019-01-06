@@ -6,14 +6,6 @@
     position: relative;
 }
 
-.consent-copy {
-    text-align: left;
-    max-width: 770px;
-    margin: 0 auto 2rem;
-    max-height: 500px;
-    overflow-y: scroll;
-}
-
 .initialIssuesIntro {
     background: white;
     border: 1px solid #333;

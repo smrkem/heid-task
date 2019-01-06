@@ -69,23 +69,6 @@ pre {
   background-position: center;
 }
 
-.icon.instructions {
-  width: 280px;
-}
-
-.icon.charity {
-  background-image: url('/images/protestor-icon.png');
-}
-.icon.anti-charity {
-  background-image: url('/images/anti-protestor-icon.png');
-}
-.icon.game {
-  background-image: url('/images/game-icon.png');
-}
-.icon.self {
-  background-image: url('/images/self-icon.png');
-  border: 1px solid #aaa;
-}
 
 .task-manager,
 .surveySection {

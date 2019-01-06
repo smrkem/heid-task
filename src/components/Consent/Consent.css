@@ -1,3 +1,11 @@
+.consent-copy {
+    text-align: left;
+    max-width: 770px;
+    margin: 0 auto 2rem;
+}
+
+
+
 .consent-copy h2 {
     font-weight: 700;
     text-align: center;
