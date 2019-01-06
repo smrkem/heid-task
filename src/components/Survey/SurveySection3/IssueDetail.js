@@ -74,7 +74,7 @@ class IssueDetail extends React.Component {
                 The slider provided below ranges from -100 (100% AGAINST) to +100 (100% FOR). For instance, -75 (75% AGAINST) would represent some understanding/agreement with arguments FOR.  If you have a neutral stance on the topic, please set the slider to 0.
               </p>
               <p>
-                Please indicate below your beliefs about <em>{issue.title}</em> indicating the DEGREE to which you are:
+                Please indicate below your beliefs about <em>{issue.title}</em> by indicating the DEGREE to which you are:
               </p>
             </div>
             <div className="range-feedback">
