@@ -443,7 +443,7 @@ class ExperimentBlock extends React.Component {
       point_value: () => pointsTracker.getCurrentValue() 
     },
     response_ends_trial: false,
-    trial_duration: 1000
+    trial_duration: 1650
   }
 
   fixation = {
@@ -516,32 +516,33 @@ class ExperimentBlock extends React.Component {
       const incr = ( (targetData.hit && !this.isAnti) || (!targetData.hit && this.isAnti))
       pointsTracker.setNextValue(incr)
 
-      const msg = targetData.hit ? 'Win!' : 'Lose'
-      const sign = incr ? '+' : '-'
-      return (`
-        <div class="feedback icon ${this.getIconClass()}"></div>
-        <p>${msg}</p>
-        <p>${sign}${targetData.point_value} Points</p>
-      `)
+      const direction = incr ? 'up' : 'down';
+      const pointVal = targetData.point_value;
+      return (
+        `<div class="feedback">` +
+          `<div class="icon moneybag"></div>` +
+          this.pointsArrow(direction, pointVal) +
+        `</div>`
+      )
     },
     data: { feedback1: true },
     response_ends_trial: false,
-    trial_duration: 1650
+    trial_duration: 2000
   }
 
-  feedback2 = {
-    type: "html-keyboard-response",
-    stimulus: () => {
-      const sign = (pointsTracker.currentTotal >= 0) ? '+' : ''
-      return (`
-        <div class="feedback icon ${this.getIconClass()}"></div>
-        <p>Total: ${sign}${pointsTracker.currentTotal}</p>
-      `)
-    },
-    data: { feedback2: true },
-    response_ends_trial: false,
-    trial_duration: 1000
-  }
+  // feedback2 = {
+  //   type: "html-keyboard-response",
+  //   stimulus: () => {
+  //     const sign = (pointsTracker.currentTotal >= 0) ? '+' : ''
+  //     return (`
+  //       <div class="feedback icon ${this.getIconClass()}"></div>
+  //       <p>Total: ${sign}${pointsTracker.currentTotal}</p>
+  //     `)
+  //   },
+  //   data: { feedback2: true },
+  //   response_ends_trial: false,
+  //   trial_duration: 1000
+  // }
 
   constructor(props) {
     super(props)
@@ -592,7 +593,6 @@ class ExperimentBlock extends React.Component {
           this.target,
           this.blank1,
           this.feedback1,
-          this.feedback2,
           this.blank2
         ],
         repetitions: NUM_TRIALS
@@ -761,7 +761,6 @@ class ExperimentBlock extends React.Component {
           'target',
           'blank1',
           'feedback1',
-          'feedback2',
           'blank2'
         ].forEach((n) => {
           if (trialPart[n]) {
@@ -793,6 +792,21 @@ class ExperimentBlock extends React.Component {
     })
     trials.push(currentTrial)
     return trials
+  }
+
+  pointsArrow(direction, pointVal) {
+    const height = 20 + Math.floor((pointVal/1000) * 100);
+    let arrow = `<div class="feedback-arrow" style="height: ${height}px">`;
+    if (direction === 'up') {
+      arrow += `<div class="arrowhead-up"></div>`;
+      arrow += `<div class="arrowshaft"></div>`;
+    }
+    else {
+      arrow += `<div class="arrowshaft"></div>`;
+      arrow += `<div class="arrowhead-down"></div>`;
+    }
+    arrow += `</div>`;
+    return arrow;
   }
 
 }

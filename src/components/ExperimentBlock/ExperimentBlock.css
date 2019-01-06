@@ -31,6 +31,9 @@
     background-image: url('/images/self-icon.png');
     border: 1px solid #aaa;
 }
+.icon.moneybag {
+    background-image: url('/images/moneybag-icon.png');
+}
   
 
 @media only screen and (min-width: 900px) {
@@ -102,4 +105,41 @@
 }
 .numbered-scale .items div {
     width: 20%;
+}
+
+
+
+
+
+.feedback {
+    display: flex;
+    align-items: center;
+}
+
+
+    /* ARROWS */
+.feedback-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+}
+.arrowhead-up {
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;  
+    border-bottom: 15px solid black;
+}
+.arrowhead-down {
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;  
+    border-top: 15px solid black;
+}
+.arrowshaft {
+    width: 10px;
+    background: black;
+    flex-grow: 1;
 }

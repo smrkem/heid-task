@@ -20,7 +20,7 @@ class TaskManager extends React.Component {
     // 'consent',
     // 'wellbeing',
     // 'break1',
-    // 'survey',
+    'survey',
     // 'break2',
     // 'practiceTrial',
     'experiment',

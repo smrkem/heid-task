@@ -17,6 +17,7 @@ const Copy1 = () => (
     <ul>
       <li>Categorize each social issue as either <b>Most Important to Me</b> or <b>Less Important to Me</b> by dragging and dropping them in the appropriate box.</li>
       <li>You can have no more than 3 cards and no less than 1 card  in the <b>Most Important Box</b>.</li>
+      <li>You can drag items between the <b>Most Important to Me</b> and the <b>Less Important to Me</b> boxes.</li>
     </ul>
   </div>
 

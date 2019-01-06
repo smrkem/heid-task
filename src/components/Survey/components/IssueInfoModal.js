@@ -19,7 +19,7 @@ const IssueInfoModal = ({issue, onCancel}) => {
             ))}
           </div>
           <div>
-            <h4>PROS:</h4>
+            <h4>FOR Arguments:</h4>
             <ul>
               {issue.pros.map((p, i) => (
                 <li key={i}>{p}</li>
@@ -27,7 +27,7 @@ const IssueInfoModal = ({issue, onCancel}) => {
             </ul>
           </div>
           <div>
-            <h4>CONS:</h4>
+            <h4>AGAINST Arguments:</h4>
             <ul>
               {issue.cons.map((c, i) => (
                 <li key={i}>{c}</li>
