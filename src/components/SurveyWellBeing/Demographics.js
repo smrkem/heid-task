@@ -66,8 +66,8 @@ export default class Demographics extends React.Component {
       }
     });
 
-    // return errors;
-    return [];
+    return errors;
+    // return [];
   }
 
   componentDidUpdate(prevProps, prevState) {
