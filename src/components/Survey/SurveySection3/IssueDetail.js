@@ -120,11 +120,11 @@ class IssueDetail extends React.Component {
                     <span className="input-suffix-label">VERY IMPORTANT</span>
                   </span>
               </p>
-              <p>
-                <div className="sec3-motivation-feedback">
-                  {this.state.motivation} %
-                </div>
-              </p>
+            
+              <div className="sec3-motivation-feedback">
+                <p>{this.state.motivation} %</p>
+              </div>
+            
             </div>
             </div>
             

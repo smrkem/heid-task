@@ -5,7 +5,7 @@ import PracticeBlock from '../ExperimentBlock/PracticeBlock'
 import ExperimentManager from '../ExperimentManager/ExperimentManager'
 import Consent from '../Consent/Consent'
 import Break from '../Break/Break';
-
+import HEIDWelcome from '../HEIDWelcome/HEIDWelcome';
 
 class TaskManager extends React.Component {
   state = {
@@ -17,11 +17,12 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    'consent',
-    'wellbeing',
-    'break1',
-    'survey',
-    'break2',
+    // 'consent',
+    // 'wellbeing',
+    // 'break1',
+    // 'survey',
+    // 'break2',
+    'HEIDWelcome',
     'practiceTrial',
     'experiment',
     'final',
@@ -74,6 +75,7 @@ class TaskManager extends React.Component {
   }
 
     render() {
+
         return (
             <div className="task-manager">
                 { (this.showing() === 'consent') && (
@@ -101,6 +103,12 @@ class TaskManager extends React.Component {
                       submitSocialIssue={this.submitSocialIssue}
                       advanceStep={this.showNextStep} 
                     />
+                )}
+                { (this.showing() === 'HEIDWelcome') && (
+                    <HEIDWelcome
+                      socialIssue={this.state.socialIssue}
+                      advanceStep={this.showNextStep} 
+                      />
                 )}
                 { (this.showing() === 'practiceTrial') && (
                     <PracticeBlock

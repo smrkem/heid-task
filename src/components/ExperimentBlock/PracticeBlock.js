@@ -19,7 +19,7 @@ class PracticeBlock extends React.Component {
     showResults: false,
     results: {}
   }
-
+  
   instructions = {
     type: "fullscreen",
     data: { instructions: true},
@@ -27,7 +27,11 @@ class PracticeBlock extends React.Component {
       return (
         `<div class="instructions">` + 
           `<div class="instructions icon game"></div>` +
-          `<div class="copy"><p>Practice Block instructions placeholder</p></div>` +
+          `<div class="copy">` +
+          `<p><b>In this section, you will get the chance to just practice the task.</b></p>` +
+          `<p>Your goal is to press ENTER when you see the grey circle target as quickly as possible before it disappears.</p>` + 
+          `<p>Remember that you cannot hit the ENTER key BEFORE seeing the target or multiple times. This will result in points being removed from your total score. Hit the enter key only once you see the target.</p>` + 
+          `</div>` +
         `</div>`
       )
     },
