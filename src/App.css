@@ -5,6 +5,9 @@ body > #root > div {
 .bold {
     font-weight: bold;
 }
+.underline {
+    text-decoration: underline;
+}
 .text-center {
     text-align: center;
 }

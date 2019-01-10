@@ -1,3 +1,5 @@
+import issues from './components/Survey/Issues/Issues';
+
 const shuffle = function(arr) {
   var currentIndex = arr.length;
   var randIndex, tempValue;
@@ -76,10 +78,10 @@ class PointsTracker {
 
 
 function conditionCopy(c, {name, position}) {
-  const charityCauseString = position === 'for' ?
-    `FOR ${name}` : `AGAINST ${name}`
-  const anticharityCauseString = position === 'for' ?
-    `ANTI ${name}` : `FOR ${name}`
+  const selectedIssue = issues.filter(iss => iss.title === name)[0];
+  const positionStatements = selectedIssue.position_statements[position];
+  const antiPosition = position === "for" ? "against" : "for";
+  const antiPositionStatements = selectedIssue.position_statements[antiPosition];
 
   const copy = {
     "game": [
@@ -87,18 +89,17 @@ function conditionCopy(c, {name, position}) {
       "Please take a few moments to think about why it is important for you to win."
       ],
     "charity": [
-      `In this block, you will be fighting to win money ${charityCauseString}, a social issue you believe in. The more points you WIN, the more likely it is you will win money to donate to this cause.`,
-      "Please take a few moments to think about why this cause is important to you."  
+      `In this round, your goal is to <span class="bold underline">WIN</span> money for <span class="bold">your social issue</span>.`,
+      `The more points you win by hitting your target quickly, the more likely you are to <span class="underline">WIN</span> money for a <span class="bold">charity that fights for your beliefs about ${name}</span> and is ${positionStatements.for_statement}.`
       ],
     "anti-charity": [
-      `In this block, you will be fighting an organization that is ${anticharityCauseString}. If you do not win these trials, you are at risk of donating to an organization that goes against your beliefs.`,
-      "Your goal is to WIN as many trials as possible. If you WIN the trial, points will be removed from this organization and you are LESS likely to donate money to this cause. If you LOSE, points will be added to this organization and you are MORE likely to donate money to this cause.",
-      "Please take a few moments to think about why it is important that you do NOT donate money to this cause. "
+      `In this round, your goal is to <span class="bold underline">AVOID LOSING</span> and risk donating money to a social issue you are against.`,
+      `The more trials you lose, the more likely you will donate money to a charity <span class="bold">that fights against your beliefs about ${name}</span> and is ${antiPositionStatements.for_statement}.`,
+      `<span class="bold">You want to win as many trials as possible.</span> Losing will result in points being added to this "anti-charity’s" total score; winning will result in points being removed from the anti-charity’s total score.</span> `
       ],
     "self": [
-      "In this block, you will be playing to win money for yourself, to spend money on something pleasant, enjoyable, and/or fun (e.g., food, entertainment, activities, shopping, vacation).",
-      "If you win, you will win points and increase the likelihood of winning money for yourself. If you lose, you will lose points and reduce the likelihood of winning money for yourself.", 
-      "Please take a few moments to think about what you would do with this money and why it is important for you to win."
+      `In this round, your goal is to <span class="bold underline">WIN</span> money for <span class="bold">yourself</b>.`,
+      `The more points you win by hitting your target quickly, the more likely you are to <span class="underline">WIN</span> money for yourself.`
     ]
   }
   return copy[c]

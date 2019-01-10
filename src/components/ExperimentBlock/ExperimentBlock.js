@@ -7,11 +7,13 @@ import { DbStaircase } from './staircase'
 import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
 
-const NUM_TRIALS = 25;
-const jsPsych = window.jsPsych
-let keyLogger = new KeyLogger()
-let pointsTracker = new PointsTracker()
-let staircase = null
+// const NUM_TRIALS = 25;
+const NUM_TRIALS = 3;
+const jsPsych = window.jsPsych;
+let keyLogger = new KeyLogger();
+let pointsTracker = new PointsTracker();
+let staircase = null;
+const DISABLE_FULLSCREEN = true;
 
 const scale = `
   <p>Press keys 1 - 5 to respond</p>
@@ -571,7 +573,8 @@ class ExperimentBlock extends React.Component {
       
 
       this.instructions.type = this.props.initialBlock ? 'fullscreen' : 'html-keyboard-response'
-      // this.instructions.type = 'html-keyboard-response'
+      if (DISABLE_FULLSCREEN) {this.instructions.type = 'html-keyboard-response'}
+
       this.instructions.fullscreen_mode = this.props.initialBlock ? true : false
 
       timeline.push(this.instructions)
@@ -638,10 +641,12 @@ class ExperimentBlock extends React.Component {
       
 
       if (this.props.finalBlock) {
-        timeline.push({
+        if (!DISABLE_FULLSCREEN) {
+          timeline.push({
             type: 'fullscreen',
             fullscreen_mode: false
-        })
+          })
+        }
       }
 
       return timeline

@@ -1,6 +1,8 @@
 import React from 'react'
 import { shuffle, conditionCopy, randomFromInterval } from '../../utils'
 import ExperimentBlock from '../ExperimentBlock/ExperimentBlock'
+import issues from '../Survey/Issues/Issues';
+
 
 class ExperimentManager extends React.Component {
   state = {

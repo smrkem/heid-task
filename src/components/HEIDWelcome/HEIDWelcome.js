@@ -6,9 +6,7 @@ import img2src from './heid-welcome-2.png';
 import img3src from './heid-welcome-3.png';
 
 const HEIDWelcome = ({socialIssue, advanceStep}) => {
-  console.log('issues:', issues);
-  console.log("si:", socialIssue);
-
+  // temp for dev work
   socialIssue = {
     name: "Abortion Laws",
     position: "for"
@@ -19,7 +17,7 @@ const HEIDWelcome = ({socialIssue, advanceStep}) => {
   return (
     <div className="HEIDWelcome">
       <div>
-        <h2>Welcome to the HEID Task!</h2>
+        <h2 className="text-center">Welcome to the HEID Task!</h2>
         <p>
           <b>Estimated time: </b><br />
           40 minutes

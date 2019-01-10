@@ -23,7 +23,7 @@ class TaskManager extends React.Component {
     // 'survey',
     // 'break2',
     'HEIDWelcome',
-    'practiceTrial',
+    // 'practiceTrial',
     'experiment',
     'final',
     'goodbye'
@@ -35,6 +35,11 @@ class TaskManager extends React.Component {
       this.setPracticeData = this.setPracticeData.bind(this);
       this.submitSocialIssue = this.submitSocialIssue.bind(this);
       this.submitWellbeingData = this.submitWellbeingData.bind(this);
+
+      this.state.socialIssue = {
+        name: "Abortion Laws",
+        position: "for"
+      }
   }
 
   showNextStep(blockData=false) {
