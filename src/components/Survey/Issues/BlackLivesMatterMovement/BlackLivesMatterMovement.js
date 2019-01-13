@@ -2,7 +2,17 @@ import imgSrc from './issue-black-lives-matter-movement.png';
 
 export default {
   title: "Black Lives Matter Movement",
-  problem_statement: "Is protesting for #BlackLivesMatter necessary and good for America (and other countries)?",
+  problem_statement: "Is Protesting for #BlackLivesMatter Necessary and Good for America (and other countries)?",
+  position_statements: {
+    for: {
+      for_statement: "FOR Black Lives Matter",
+      against_statement: "AGAINST Black Lives Matter"
+    },
+    against: {
+      for_statement: "FOR All Lives Matter",
+      against_statement: "AGAINST All Lives Matter"
+    }
+  },
   image_src: imgSrc,
   description: [
     "Black Lives Matter is an international activist movement originating in the United States that campaigns against violence and systemic racism towards black people. The movement began with the use of the hashtag #BlackLivesMatter on social media after the acquittal of George Zimmerman in the shooting of Trayvon Martin, a black teenager, in February 2012. Since, there have been over 2000 #BlackLivesMatter protests worldwide, including the U.S., England, Canada, Australia, and Ghana, as well as several high-profile statements, such as professional athletes sitting during the national anthem, as opposed to the tradition of standing (a symbol of national pride), in solidarity with the Black Lives Matter movement. The protests and these types of acts have generated mixed reactions. Here are a few arguments FOR and AGAINST whether the Black Lives Movement is “good” for America and other countries."

@@ -2,10 +2,20 @@ import imgSrc from './issue-legalization-of-same-sex-marriage.jpg';
 
 export default {
   title: "Legalization of Same-Sex Marriage",
-  problem_statement: "Should gay couples be allowed to marry?",
+  problem_statement: "Should Gay Couples be Allowed to Marry?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Marriage Equality",
+        against_statement: "AGAINST Marriage Equality",
+    },
+    against: {
+        for_statement: "FOR Protecting Traditional Marriage",
+        against_statement: "AGAINST Protecting Traditional Marriage",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "In 2001, the Netherlands became the first country to legalize same-sex marriage. In 2005, Canada became the fourth country in the world to legalize same-sex marriage. In 2015, USA legalized same sex-marriage. Support for same-sex unions continues to be mixed. Controversy on the topic include varied beliefs on the “limits of rights”, freedom of choice, religious doctrine, and equality."
+    "In 2001, the Netherlands became the first country to legalize same-sex marriage. In 2005, Canada became the fourth country in the world to legalize same-sex marriage. In 2015, USA legalized same sex-marriage. Support for same-sex unions continues to be mixed. Controversy on the topic include varied beliefs on the “limits of rights”, freedom of choice, religious doctrine, and equality. Here are a few arguments FOR and AGAINST legalizing same-sex marriages."
   ],
   pros: [
     "Equality extends to the right of who an individual wants to marry; denying this right is a discriminatory, homophobic act.",

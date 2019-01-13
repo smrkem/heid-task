@@ -3,6 +3,16 @@ import imgSrc from './issue-stem-cell-research.png';
 export default {
   title: "Stem Cell Research",
   problem_statement: "Should Embryonic Stem Cell Research Be Allowed?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Stem Cell Research",
+        against_statement: "AGAINST Stem Cell Research",
+    },
+    against: {
+        for_statement: "FOR Protection of Human Life",
+        against_statement: "AGAINST Protection of Human Life",
+    },
+  },
   image_src: imgSrc,
   description: [
     "Stem cells have been of particular research interest as they have a remarkable potential to develop into many different cell types in the body during early development. More importantly, they can renew themselves through cell division and become organ- or tissue-specific, repairing damaged or worn out cells. Given their regenerative abilities, stem cells have the potential of treating a wide variety of diseases. Despite that, there has been controversy surrounding the use of embryonic stem cells – cells derived from embryos that develop from eggs fertilized in vitro, in an in-vitro fertilization (IVF) clinic, and then donated for research purposes. Here are a few arguments FOR and AGAINST embryonic stem cell research."

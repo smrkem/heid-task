@@ -3,6 +3,16 @@ import imgSrc from './issue-vegetarianism.png';
 export default {
   title: "Vegetarianism",
   problem_statement: "Should Everyone Be Making a Move Towards Vegetarianism?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Vegetarianism",
+        against_statement: "AGAINST Vegetarianism",
+    },
+    against: {
+        for_statement: "FOR Dietary Freedom",
+        against_statement: "AGAINST Dietary Freedom",
+    },
+  },
   image_src: imgSrc,
   description: [
     "Vegetarianism refers to a lifestyle that seeks to eliminate the use of animal products in food, clothing, and other items because of health and ethical concerns. In the last couple of years, vegetarianism has increased in popularity, making many restaurants and shops around the world adapt to the changing dietary landscape. While many scientists and lay-people alike urge others to move towards a vegetarian lifestyle, the majority of people have reservations about whether to completely eliminate meat and other animal by-products from their everyday lives. Here are a few arguments FOR and AGAINST the move towards vegetarianism."

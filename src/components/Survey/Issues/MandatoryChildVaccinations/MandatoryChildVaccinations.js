@@ -2,10 +2,20 @@ import imgSrc from './issue-mandatory-child-vaccinations.jpg';
 
 export default {
   title: "Mandatory Child Vaccinations",
-  problem_statement: "Should it be required by law to vaccinate a child?",
+  problem_statement: "Should the Government Impose Mandatory Vaccinations on Children?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Mandatory Child Vaccinations",
+        against_statement: "AGAINST Mandatory Child Vaccinations",
+    },
+    against: {
+        for_statement: "FOR Protecting Children from Vaccinations",
+        against_statement: "AGAINST Protecting Children from Vaccinations",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "Vaccinations for children are recommended by Health Canada and the Centers for Disease Control  and Prevention (CDC) in the US, and are mandatory in a few states and provinces for children entering public schools. Although adverse reactions to vaccines are rare, a number of opponents have argued that injecting questionable vaccine ingredients into a child may cause important long-term problems, including seizures, autism, and ADHD. As such, there has been a number of important debates on whether vaccines should be mandatory for children."    
+    "Vaccinations for children are recommended by Health Canada and the Centers for Disease Control  and Prevention (CDC) in the US, and are mandatory in a few states and provinces for children entering public schools. Although adverse reactions to vaccines are rare, a number of opponents have argued that injecting questionable vaccine ingredients into a child may cause important long-term problems, including seizures, autism, and ADHD. As such, there has been a number of important debates on whether vaccines should be mandatory for children. Here are a few arguments FOR and AGAINST mandatory vaccinations for Children."    
   ],
   pros: [
     "The United Nations states that vaccines save 2.5 million children from preventable diseases (90%-99%) a year worldwide and save lives.",

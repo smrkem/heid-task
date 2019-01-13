@@ -2,10 +2,20 @@ import imgSrc from './issue-hate-speech-censorship.png';
 
 export default {
   title: "Hate Speech Censorship",
-  problem_statement: "Should hate speech be censored",
+  problem_statement: "Should Hate Speech be Censored?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Censoring Hate Speech",
+        against_statement: "AGAINST Censoring Hate Speech",
+    },
+    against: {
+        for_statement: "FOR Free Speech",
+        against_statement: "AGAINST Free Speech",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "Recently, the United States has seen a major political polarization; in fact, it seems like at no other point in history has the nation been more divided. One of the issues specifically concerns freedom of speech. On the one hand, free speech is encouraged, and is a significant point in liberal ideology. On the other hand, there is the question of whether groups such as Neo-Nazis and alt-right should be allowed a voice and freedom to express their beliefs online and in public. Freedom of speech for “hate speech” vs. censorship of “hate speech” is a hot topic of debate. Here are some arguments FOR and AGAINST censoring hate speech."
+    "Recently, the United States has seen a major political polarization. In fact, it seems like at no other point in history has the nation been more divided. One of the issues specifically concerns freedom of speech. On the one hand, free speech is encouraged, and is a significant point in liberal ideology. On the other hand, there is the question of whether groups such as Neo-Nazis and alt-right should be allowed a voice and freedom to express their beliefs online and in public. Freedom of speech for “hate speech” vs. censorship of “hate speech” is a hot topic of debate. Here are a few arguments FOR and AGAINST censoring hate speech."
   ],
   pros: [
     "It protects certain groups from being maligned.",

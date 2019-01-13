@@ -2,10 +2,20 @@ import imgSrc from './issue-legalization-of-euthanasia.jpg';
 
 export default {
   title: "Legalization of Euthanasia",
-  problem_statement: "Should euthanasia be a legal option for voluntary death?",
+  problem_statement: "Should Euthanasia be a Legal Option for Voluntary Death?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Legalizing Euthanasia",
+        against_statement: "AGAINST Legalizing Euthanasia",
+    },
+    against: {
+        for_statement: "FOR Continued Care of the Ill",
+        against_statement: "AGAINST Continued Care of the Ill",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "Euthanasia, or physician assisted suicide, is the practice of ending an ill person's life upon their request to relieve intractable suffering. Euthanasia is legal in Canada as of 2016 for terminally ill adults. However, it requires repeated explicit consent, including right at the moment before death. There are many arguments for and against legalizing euthanasia, such that it is illegal in most countries in the world."    
+    "Euthanasia, or physician assisted suicide, is the practice of ending an ill person's life upon their request to relieve intractable suffering. Euthanasia is legal in Canada as of 2016 for terminally ill adults. However, it requires repeated explicit consent, including right at the moment before death. There are many arguments for and against legalizing euthanasia, such that it is illegal in most countries in the world. Here are a few arguments FOR and AGAINST legalizing euthanasia."    
   ],
   pros: [
     "Every patient has a right to choose when to die.",

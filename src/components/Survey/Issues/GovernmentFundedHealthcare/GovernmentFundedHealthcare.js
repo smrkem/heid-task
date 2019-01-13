@@ -2,10 +2,20 @@ import imgSrc from './issue-government-funded-healthcare.jpg';
 
 export default {
   title: "Government Funded Healthcare",
-  problem_statement: "Should the government provide universal healthcare to its citizens?",
+  problem_statement: "Should the Government Fund Universal Healthcare?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Free Healthcare",
+        against_statement: "AGAINST Free Healthcare",
+    },
+    against: {
+        for_statement: "FOR Private Healthcare",
+        against_statement: "FOR Private Healthcare",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "This topic focuses on whether healthcare is a basic human right, whether should be provided by the government, and to what extent should the government provide free healthcare. In Canada, universal healthcare coverage extends to Canadian citizens and lawful residents. It does not cover prescription drugs, home care, long-term care, physiotherapy, psychological care, or dental care. Certain provinces provide additional healthcare benefits for youth, low-income families, and seniors. Employers may provide additional health insurance. Canada employs a single payer system, where most healthcare is provided by private healthcare professionals. The cost of the entire fee is paid for by the government at a fixed rate. Hospitals are publicly funded."
+    "This topic focuses on whether healthcare is a basic human right, whether should be provided/funded by the government, and to what extent should the government provide free healthcare. Here are a few arguments FOR and AGAINST government funded healthcare."
   ],
   pros: [
     "Privatizing healthcare will increase prices and cause economic strain on families. In 2007, about 62% of US bankruptcies were related to medical expenses.",

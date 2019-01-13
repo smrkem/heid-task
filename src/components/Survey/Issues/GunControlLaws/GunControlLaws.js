@@ -2,10 +2,20 @@ import imgSrc from './issue-gun-control-laws.png';
 
 export default {
   title: "Gun Control Laws",
-  problem_statement: "Should gun laws be more strictly enforced by law?",
+  problem_statement: "Should Gun Laws be more Strictly Enforced by Law?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Strict Gun Control",
+        against_statement: "AGAINST Strict Gun Control",
+    },
+    against: {
+        for_statement: "FOR Right to Bear Arms",
+        against_statement: "FOR Right to Bear Arms",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "The United States has 88.8 guns per 100 people, or about 270,000,000 guns, which is the highest total and per capita number in the world. 22% of Americans own one or more guns (35% of men and 12% of women). America's pervasive gun culture stems in part from its colonial history, revolutionary roots, frontier expansion, and the Second Amendment, which states: \"A well regulated militia, being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed.\""
+    "The United States has 88.8 guns per 100 people, or about 270,000,000 guns, which is the highest total and per capita number in the world. 22% of Americans own one or more guns (35% of men and 12% of women). America's pervasive gun culture stems in part from its colonial history, revolutionary roots, frontier expansion, and the Second Amendment, which states: \"A well regulated militia, being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed. Here are a few arguments FOR and AGAINST enforcing stricter gun control laws.\""
   ],
   pros: [
     "The Second Amendment was intended for militia, not domestic/personal use.",

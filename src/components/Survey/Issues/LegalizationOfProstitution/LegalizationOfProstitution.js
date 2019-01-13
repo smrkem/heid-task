@@ -2,10 +2,20 @@ import imgSrc from './issue-legalization-of-prostitution.jpg';
 
 export default {
   title: "Legalization of Prostitution",
-  problem_statement: "Should sex work be legalized?",
+  problem_statement: "Should Sex Work be Legalized?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Legalizing Prostitution",
+        against_statement: "AGAINST Legalizing Prostitution",
+    },
+    against: {
+        for_statement: "FOR Preventing Prostitution",
+        against_statement: "AGAINST Preventing Prostitution",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "Prostitution is the act of performing sexual services for financial compensation. Females working in this industry are more likely to be victims of crime such as abuse and human trafficking. Due to its association with criminal activity, religious violations and general stigmatization, there is debate on whether the practice should be legal. Legalizing prostitution has implications for economics, health, safety, and human rights."
+    "Prostitution is the act of performing sexual services for financial compensation. Females working in this industry are more likely to be victims of crime such as abuse and human trafficking. Due to its association with criminal activity, religious violations and general stigmatization, there is debate on whether the practice should be legal. Legalizing prostitution has implications for economics, health, safety, and human rights. Here are a few arguments FOR and AGAINST legalizing Prostitution."
   ],
   pros: [
     "Sex workers would be better protected because they would be more comfortable in approaching law enforcement.",

@@ -49,6 +49,7 @@ const dataFromIssue = (iss) => {
   delete iss.pros;
   delete iss.cons;
   delete iss.position_statement;
+  delete iss.position_statements;
   return iss;
 }
 

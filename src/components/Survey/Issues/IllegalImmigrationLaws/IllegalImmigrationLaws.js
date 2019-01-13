@@ -2,10 +2,20 @@ import imgSrc from './issue-illegal-immigration-laws.jpg';
 
 export default {
   title: "Illegal Immigration Laws",
-  problem_statement: "Should illegal immigrant laws be more strictly enforced?",
+  problem_statement: "Should Illegal Immigrant Laws be more Strictly Enforced?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Stopping Illegal Immigration",
+        against_statement: "AGAINST Stopping Illegal Immigration",
+    },
+    against: {
+        for_statement: "FOR Immigrant Rights",
+        against_statement: "AGAINST Immigrant Rights",
+    },
+  },
   image_src: imgSrc,
   description: [    
-    "Illegal immigration is on the rise in Canada. In 2017, 50440 asylum claims were made. It should be noted that seeking asylum applies to legal application processes of immigration as well, but currently Canada has more illegal applicants than legal. A major reason for this is the deportation of illegal immigrants in the USA. Controversy stems from whether illegal immigrants are an economic burden or asset, as well as concerns on the leniency of government policy."    
+    "Illegal immigration is on the rise in Canada. In 2017, 50440 asylum claims were made. It should be noted that seeking asylum applies to legal application processes of immigration as well, but currently Canada has more illegal applicants than legal. A major reason for this is the deportation of illegal immigrants in the USA. Controversy stems from whether illegal immigrants are an economic burden or asset, as well as concerns on the leniency of government policy. Here are a few arguments FOR and AGAINST strict enforcing strict illegal immigration laws."    
   ],
   pros: [
     "Providing legal status will allow illegal immigrants to get higher paying jobs, and consequently boost the economy.",

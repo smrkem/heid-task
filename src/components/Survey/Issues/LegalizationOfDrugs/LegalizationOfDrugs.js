@@ -2,10 +2,20 @@ import imgSrc from './issue-legalization-of-drugs.png';
 
 export default {
   title: "Legalization of Drugs",
-  problem_statement: "Should all drugs be legal?",
+  problem_statement: "Should All Drugs be Legalized?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Legalization of Drugs",
+        against_statement: "AGAINST Legalization of Drugs",
+    },
+    against: {
+        for_statement: "FOR Preventing Drug Use",
+        against_statement: "AGAINST Preventing Drug Use",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "On October 17, 2018, Canada became the 2nd country in the world, and the first G7 country to legalize marijuana. The call for legalization comes after the realization that prohibition did little to stop people, especially youth, from getting the drugs. Now, however, there is conversation surrounding the legalization of all drugs, which has created major controversy as both sides are voicing their opinions. Here are some arguments FOR and AGAINST the legalization of all drugs."
+    "The call for legalization of all drugs comes after the realization that prohibition does little to stop people, especially youth, from getting the drugs. Here are a few arguments FOR and AGAINST the legalization of all drugs."
   ],
   pros: [
     "There is evidence around the world that the war on drugs is a failure, and the law enforcement approach doesn’t do anything to deter addicts and users; instead, users are stigmatized, which in turn prevents them from seeking help.",

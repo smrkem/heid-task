@@ -2,10 +2,20 @@ import imgSrc from './issue-legalization-of-marijuana.jpg';
 
 export default {
   title: "Legalization of Marijuana",
-  problem_statement: "Should the use of recreational marijuana be legal?",
+  problem_statement: "Should Recreational Marijuana be Legal?",
+  position_statements: {
+    for: {
+        for_statement: "FOR Legalizing Marijuana",
+        against_statement: "AGAINST Legalizing Marijuana",
+    },
+    against: {
+        for_statement: "FOR Preventing Marijuana Use",
+        against_statement: "AGAINST Preventing Marijuana Use",
+    },
+  },
   image_src: imgSrc,
   description: [
-    "Marijuana legalization refers to the practice of allowing and regulating the production, distribution, sale, and possession of cannabis so that marijuana use within the established rules is no longer a crime. There are different models of legalization, ranging from allowing people to grow their own marijuana to nonprofit co-ops to for-profit commercialization with retail sales. People differ on their position on whether marijuana should be legalized."
+    "Marijuana legalization refers to the practice of allowing and regulating the production, distribution, sale, and possession of cannabis so that marijuana use within the established rules is no longer a crime. There are different models of legalization, ranging from allowing people to grow their own marijuana to nonprofit co-ops to for-profit commercialization with retail sales. People differ on their position on whether marijuana should be legalized. Here are a few arguments FOR and AGAINST legalizing marijuana use."
   ],
   pros: [
     "Add billions to the economy and create hundreds of thousands of jobs.",

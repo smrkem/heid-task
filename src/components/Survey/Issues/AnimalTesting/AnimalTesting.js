@@ -2,10 +2,20 @@ import imgSrc from './issue-animal-testing.jpg';
 
 export default {
   title: "Animal Testing",
-  problem_statement: "Should animals be used for scientific and commercial testing in laboratories?",
+  problem_statement: "Should Animals be Used for Scientific and Commercial Testing in Laboratories?",
+  position_statements: {
+    for: {
+      for_statement: "FOR Animal Testing",
+      against_statement: "AGAINST Animal Testing"
+    },
+    against: {
+      for_statement: "FOR Animal Rights",
+      against_statement: "AGAINST Animal Rights"
+    }
+  },
   image_src: imgSrc,
   description: [
-    "Approximately 26 million animals are used every year in the United States for commercial or scientific testing. Animals are used in commercial and scientific testing as a way to determine the safety of biomedical, commercial or healthcare products. Scientifically, animals have also been used in various behavioural experiments as well."    
+    "Approximately 26 million animals are used every year in the United States for commercial or scientific testing. Animals are used in commercial and scientific testing as a way to determine the safety of biomedical, commercial or healthcare products. Scientifically, animals have also been used in various behavioural experiments as well. Here are a few arguments FOR and AGAINST animal testing."    
   ],
   pros: [
     "Research involving animal testing has overall provided improved healthcare for animals and humans alike.",
