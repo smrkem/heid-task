@@ -9,6 +9,7 @@
   padding: 2rem;
   font-size: 0.9rem;
 }
+
 .instructions-response {
     height: 200px;
     font-size: 0.9rem;
@@ -67,7 +68,8 @@
     max-width: 800px;
 }
 .endHAQ .question,
-.midEAQ .question {
+.midEAQ .question-header {
+    max-width: 800px;
     font-size: 2rem;
     margin: 2rem 0;
 }
@@ -81,6 +83,17 @@
 
 
     /* NUMBERED SCALE */
+#ms-selection-response-stimulus {
+    font-weight: bold;
+    font-size: 1.4rem;
+    max-width: 720px;
+}
+#ms-selection-response-prompt {
+    margin-top: 3rem;
+}
+#ms-selection-response-prompt p {
+    margin-top: 1rem;
+}
 
 .numbered-scale {
     position: relative;
@@ -90,9 +103,10 @@
     width: 400px;
     border-bottom: 1px solid #aaa;
 
-    bottom: 40px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
 }
 .numbered-scale .items {
     display: flex;
@@ -105,6 +119,18 @@
 }
 .numbered-scale .items div {
     width: 20%;
+    z-index: 10;
+}
+.numbered-scale-tick {
+    height: 25px;
+    width: 25px;
+    margin: auto;
+    font-size: 8px;
+}
+.numbered-scale-tick.selected {
+    background: #367ebd;
+    border-radius: 50%;
+    color: #367ebd
 }
 
 

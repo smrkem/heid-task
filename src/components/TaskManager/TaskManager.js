@@ -20,9 +20,9 @@ class TaskManager extends React.Component {
     // 'consent',
     // 'wellbeing',
     // 'break1',
-    'survey',
+    // 'survey',
     // 'break2',
-    'HEIDWelcome',
+    // 'HEIDWelcome',
     // 'practiceTrial',
     'experiment',
     'final',
@@ -37,7 +37,7 @@ class TaskManager extends React.Component {
       this.submitWellbeingData = this.submitWellbeingData.bind(this);
 
       this.state.socialIssue = {
-        name: "Abortion Laws",
+        name: "Abortion Rights",
         position: "for"
       }
   }

@@ -2,6 +2,7 @@ import React from 'react'
 import 'jspsych/jspsych'
 import 'jspsych/css/jspsych.css'
 import 'jspsych/plugins/jspsych-html-keyboard-response'
+import './jsPsychPlugins/ms-selection-response'
 import 'jspsych/plugins/jspsych-fullscreen'
 import { DbStaircase } from './staircase'
 import './ExperimentBlock.css'
@@ -47,86 +48,14 @@ class ExperimentBlock extends React.Component {
     results: {}
   }
 
-  midEAQ1 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="midEAQ">` + 
-        `<p class="question-header">To what extent do you feel the following?</p>` +
-        `<p class="question">I feel proud of what I did.</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {midEAQ1: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
+  conditionGoals = {
+    'self': '<span class="underline">WIN</span> money for yourself',
+    'charity': '<span class="underline">WIN</span> money for your social issue',
+    'anti-charity': '<span class="underline">AVOID LOSING</span> and risk donating money to a social issue you are against',
+    'game': '<span class="underline">WIN</span> for the sake of winning',
   }
-  midEAQ2 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="midEAQ">` + 
-        `<p class="question-header">To what extent do you feel the following?</p>` +
-        `<p class="question">I feel proud of who I am.</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {midEAQ2: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  midEAQ3 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="midEAQ">` + 
-        `<p class="question-header">To what extent do you feel the following?</p>` +
-        `<p class="question">I feel </p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {midEAQ3: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  midEAQ4 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="midEAQ">` + 
-        `<p class="question-header">To what extent do you feel the following?</p>` +
-        `<p class="question">I feel alert/aroused.</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {midEAQ4: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  midEAQ5 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="midEAQ">` + 
-        `<p class="question-header">To what extent do you feel the following?</p>` +
-        `<p class="question">I feel motivated to win.</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {midEAQ5: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
+
+  
 
   endHAQ1 = {
     type: "html-keyboard-response",
@@ -289,109 +218,6 @@ class ExperimentBlock extends React.Component {
     }
   }
 
-  instructionsMotivationQuestions = {
-    'charity': {
-      type: "html-keyboard-response",
-      choices: ['1', '2', '3', '4', '5'],
-      data: {motivationQuestion: true},
-      stimulus: () => {
-        let copy = ''
-        this.props.condition.copy.forEach(para => {
-          copy += `<p>${para}</p>`
-        })
-        return (
-          `<div class="instructions">` + 
-            `<div class="icon ${this.getIconClass()}"></div>` +
-            `<div class="copy">${copy}</div>` +
-          `</div>` +
-          `<div class="instructions-response">` +
-            `<p class="">How motivated are you at present to win money for this cause?</p>` +
-            scale +
-          "</div>"
-        )
-      },
-      on_finish: function(data) {
-        const response = String.fromCharCode(data.key_press)
-        data.response = response;
-      }
-    },
-    'anti-charity': {
-      type: "html-keyboard-response",
-      choices: ['1', '2', '3', '4', '5'],
-      data: {motivationQuestion: true},
-      stimulus: () => {
-        let copy = ''
-        this.props.condition.copy.forEach(para => {
-          copy += `<p>${para}</p>`
-        })
-        return (
-          `<div class="instructions">` + 
-            `<div class="icon ${this.getIconClass()}"></div>` +
-            `<div class="copy">${copy}</div>` +
-          `</div>` +
-          `<div class="instructions-response">` +
-            `<p class="">How motivated are you at present to win money for ANTI-CHARITY?</p>` +
-            scale +
-          "</div>"
-        )
-      },
-      on_finish: function(data) {
-        const response = String.fromCharCode(data.key_press)
-        data.response = response;
-      }
-    },
-    'game': {
-      type: "html-keyboard-response",
-      choices: ['1', '2', '3', '4', '5'],
-      data: {motivationQuestion: true},
-      stimulus: () => {
-        let copy = ''
-        this.props.condition.copy.forEach(para => {
-          copy += `<p>${para}</p>`
-        })
-        return (
-          `<div class="instructions">` + 
-            `<div class="icon ${this.getIconClass()}"></div>` +
-            `<div class="copy">${copy}</div>` +
-          `</div>` +
-          `<div class="instructions-response">` +
-            `<p class="">How motivated are you at present to win money for GAME?</p>` +
-            scale +
-          "</div>"
-        )
-      },
-      on_finish: function(data) {
-        const response = String.fromCharCode(data.key_press)
-        data.response = response;
-      }
-    },
-    'self': {
-      type: "html-keyboard-response",
-      choices: ['1', '2', '3', '4', '5'],
-      data: {motivationQuestion: true},
-      stimulus: () => {
-        let copy = ''
-        this.props.condition.copy.forEach(para => {
-          copy += `<p>${para}</p>`
-        })
-        return (
-          `<div class="instructions">` + 
-            `<div class="icon ${this.getIconClass()}"></div>` +
-            `<div class="copy">${copy}</div>` +
-          `</div>` +
-          `<div class="instructions-response">` +
-            `<p class="">How motivated are you at present to win money for SELF?</p>` +
-            scale +
-          "</div>"
-        )
-      },
-      on_finish: function(data) {
-        const response = String.fromCharCode(data.key_press)
-        data.response = response;
-      }
-    }
-  }
-
   instructions = {
     type: "html-keyboard-response",
     data: { instructions: true},
@@ -429,6 +255,173 @@ class ExperimentBlock extends React.Component {
     },
     button_label: "Begin"
   }
+
+  preMAQ1 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `How important is it for you right now to ${this.conditionGoals[this.props.condition.type]}?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {preMAQ1: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  preMAQ2 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `How motivated are you right now to ${this.conditionGoals[this.props.condition.type]}?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {preMAQ2: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+
+  midEAQintro = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="midEAQ">` + 
+        `<p class="question-header">Please rate the extent to which you feel the following emotions at the present moment.</p>` +
+        `<p class="">Press any key to begin.</p>` +
+      `</div>`
+    ),
+    data: {midEAQintro: true}
+  }
+  midEAQ1 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel a sense of meaning`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ1: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ2 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel inspired`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ2: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ3 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel morally elevated`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ3: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ4 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel connected with myself`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ4: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ5 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel engaged`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ5: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ6 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel authentic`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ6: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ7 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel pride`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ7: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ8 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel`;
+    },
+    labels: ['Negative Emotions', '', 'Neutral', '', 'Positive Emotions'],
+    data: {midEAQ8: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ9 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel carefree`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ9: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ10 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel satisfied`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ10: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ11 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel relaxed/comfortable`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ11: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  midEAQ12 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `I feel alert/aroused`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {midEAQ12: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  
 
   cue = {
     type: "html-keyboard-response",
@@ -532,20 +525,6 @@ class ExperimentBlock extends React.Component {
     trial_duration: 2000
   }
 
-  // feedback2 = {
-  //   type: "html-keyboard-response",
-  //   stimulus: () => {
-  //     const sign = (pointsTracker.currentTotal >= 0) ? '+' : ''
-  //     return (`
-  //       <div class="feedback icon ${this.getIconClass()}"></div>
-  //       <p>Total: ${sign}${pointsTracker.currentTotal}</p>
-  //     `)
-  //   },
-  //   data: { feedback2: true },
-  //   response_ends_trial: false,
-  //   trial_duration: 1000
-  // }
-
   constructor(props) {
     super(props)
     this.isAnti = props.condition.type === "anti-charity"
@@ -565,28 +544,37 @@ class ExperimentBlock extends React.Component {
   }
 
   getTimeline() {
-      const timeline = []
+    console.log(this.props.condition);
 
-      if (this.props.condition.assessment) {
-        timeline.push(this.instructionsMotivationQuestions[this.props.condition.type]);
-      }
-      
+      const timeline = []
 
       this.instructions.type = this.props.initialBlock ? 'fullscreen' : 'html-keyboard-response'
       if (DISABLE_FULLSCREEN) {this.instructions.type = 'html-keyboard-response'}
-
       this.instructions.fullscreen_mode = this.props.initialBlock ? true : false
 
       timeline.push(this.instructions)
+      if (this.props.condition.assessment) {
+        timeline.push(this.preMAQ1);
+        timeline.push(this.preMAQ2);
+      }
+      
 
       // timeline.push(this.midEA);
       const midEA = {
         timeline: [
+          this.midEAQintro,
           this.midEAQ1,
           this.midEAQ2,
           this.midEAQ3,
           this.midEAQ4,
-          this.midEAQ5
+          this.midEAQ5,
+          this.midEAQ6,
+          this.midEAQ7,
+          this.midEAQ8,
+          this.midEAQ9,
+          this.midEAQ10,
+          this.midEAQ11,
+          this.midEAQ12,
         ]
       }
       const test_procedure = {
@@ -719,12 +707,20 @@ class ExperimentBlock extends React.Component {
     const assessments = {};
     trialData.forEach( (trialPart) => {
       [
-        'motivationQuestion',
+        'preMAQ1',
+        'preMAQ2',
         'midEAQ1',
         'midEAQ2',
         'midEAQ3',
         'midEAQ4',
         'midEAQ5',
+        'midEAQ6',
+        'midEAQ7',
+        'midEAQ8',
+        'midEAQ9',
+        'midEAQ10',
+        'midEAQ11',
+        'midEAQ12',
         'endHAQ1',
         'endHAQ2',
         'endHAQ3',
