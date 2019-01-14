@@ -1,7 +1,6 @@
 import React from 'react'
 import { shuffle, conditionCopy, randomFromInterval } from '../../utils'
 import ExperimentBlock from '../ExperimentBlock/ExperimentBlock'
-import issues from '../Survey/Issues/Issues';
 
 
 class ExperimentManager extends React.Component {
@@ -70,7 +69,7 @@ class ExperimentManager extends React.Component {
       })
     })
 
-    return blocks.splice(0,3)
+    return blocks.splice(0,1)
     // return blocks
   }
 

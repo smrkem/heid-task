@@ -86,8 +86,8 @@ function conditionCopy(c, {name, position}) {
 
   const copy = {
     "game": [
-      "In this block, you will be playing to play. If you win, you will win points and increase your total score for this block. If you lose, you will lose points and reduce your total score.",
-      "Please take a few moments to think about why it is important for you to win."
+      `In this round, your goal is to <span class="bold underline">WIN</span> for the sake of winning!`,
+      `There is no money at stake in this round. The more points you win by hitting your target quickly, the more points you will accumulate and be this week’s fastest player!`
       ],
     "charity": [
       `In this round, your goal is to <span class="bold underline">WIN</span> money for <span class="bold">your social issue</span>.`,

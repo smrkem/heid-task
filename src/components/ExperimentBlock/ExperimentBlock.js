@@ -16,31 +16,6 @@ let pointsTracker = new PointsTracker();
 let staircase = null;
 const DISABLE_FULLSCREEN = true;
 
-const scale = `
-  <p>Press keys 1 - 5 to respond</p>
-  <div class="numbered-scale">
-    <div class="grid-line"></div>
-    <div class="items">
-      <div>
-        <span>Not at all</span>
-        <span>|<br />1</span>
-      </div>
-      <div>
-        <span>|<br />2</span>
-      </div>
-      <div>
-        <span>|<br />3</span>
-      </div>
-      <div>
-        <span>|<br />4</span>
-      </div>
-      <div>
-        <span>Very Much</span>
-        <span>|<br />5</span>
-      </div>
-    </div>
-  </div>
-`;
 
 class ExperimentBlock extends React.Component {
   state = {
@@ -53,169 +28,6 @@ class ExperimentBlock extends React.Component {
     'charity': '<span class="underline">WIN</span> money for your social issue',
     'anti-charity': '<span class="underline">AVOID LOSING</span> and risk donating money to a social issue you are against',
     'game': '<span class="underline">WIN</span> for the sake of winning',
-  }
-
-  
-
-  endHAQ1 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking relaxation?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ1: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ2 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking to develop a skill, learn, or gain insight into something?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ2: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ3 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking to do what you believe in?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ3: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ4 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking pleasure?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ4: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ5 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking to pursue excellence or a personal ideal?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ5: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ6 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking enjoyment?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ6: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ7 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking to take it easy?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ7: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ8 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking to use the best in yourself?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ8: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ9 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking fun?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ9: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
-  }
-  endHAQ10 = {
-    type: "html-keyboard-response",
-    stimulus: () => (
-      `<div class="endHAQ">` + 
-        `<p class="question-header">To what degree did you approach <em>this run of trials</em> with each of the following intentions, whether or not you actually achieve your aim?</p>` +
-        `<p class="question">Seeking to contribute to others or the surrounding world?</p>` +
-        scale +
-      `</div>`
-    ),
-    choices: ['1', '2', '3', '4', '5'],
-    data: {endHAQ10: true},
-    on_finish: function(data) {
-      const response = String.fromCharCode(data.key_press)
-      data.response = response;
-    }
   }
 
   instructions = {
@@ -421,6 +233,127 @@ class ExperimentBlock extends React.Component {
       data.response = data.selection;
     }
   }
+
+  endHAQintro = {
+    type: "html-keyboard-response",
+    stimulus: () => (
+      `<div class="endHAQ">` + 
+        `<p class="question-header">To what degree did you approach this game round ( to ${this.conditionGoals[this.props.condition.type]} ) with each of the following intentions, whether or not you actually achieved your aim?</p>` +
+        `<p class="">Press any key to begin.</p>` +
+      `</div>`
+    ),
+    data: {midEAQintro: true}
+  }
+  endHAQ1 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking relaxation?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ1: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ2 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking to develop a skill, learn, or gain insight into something?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ2: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ3 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking to do what you believe in?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ3: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ4 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking pleasure?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ4: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ5 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking to pursue excellence or a personal Ideal?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ5: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ6 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking enjoyment?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ6: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ7 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking to take it easy?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ7: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ8 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking to use the best in yourself?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ8: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ9 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking fun?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ9: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
+  endHAQ10 = {
+    type: "ms-selection-response",
+    prompt: () => {
+      return `Seeking to contribute to others or the surrounding world?`;
+    },
+    labels: ['Not at all', '', '', '', 'Very much'],
+    data: {endHAQ10: true},
+    on_finish: function(data) {
+      data.response = data.selection;
+    }
+  }
   
 
   cue = {
@@ -511,12 +444,13 @@ class ExperimentBlock extends React.Component {
       const incr = ( (targetData.hit && !this.isAnti) || (!targetData.hit && this.isAnti))
       pointsTracker.setNextValue(incr)
 
-      const direction = incr ? 'up' : 'down';
+      const sign = incr ? '+' : '-';
+      const message = targetData.hit ? "WIN!" : "LOSE";
       const pointVal = targetData.point_value;
       return (
         `<div class="feedback">` +
-          `<div class="icon moneybag"></div>` +
-          this.pointsArrow(direction, pointVal) +
+          `<div class="feedback-message">${message}</div>` +
+          `<div class="feedback-points">${sign} ${pointVal}</div>` +
         `</div>`
       )
     },
@@ -590,6 +524,7 @@ class ExperimentBlock extends React.Component {
       }
       const endHA = {
         timeline: [
+          this.endHAQintro,
           this.endHAQ1,
           this.endHAQ2,
           this.endHAQ3,
@@ -795,20 +730,20 @@ class ExperimentBlock extends React.Component {
     return trials
   }
 
-  pointsArrow(direction, pointVal) {
-    const height = 20 + Math.floor((pointVal/1000) * 100);
-    let arrow = `<div class="feedback-arrow" style="height: ${height}px">`;
-    if (direction === 'up') {
-      arrow += `<div class="arrowhead-up"></div>`;
-      arrow += `<div class="arrowshaft"></div>`;
-    }
-    else {
-      arrow += `<div class="arrowshaft"></div>`;
-      arrow += `<div class="arrowhead-down"></div>`;
-    }
-    arrow += `</div>`;
-    return arrow;
-  }
+  // pointsArrow(direction, pointVal) {
+  //   const height = 20 + Math.floor((pointVal/1000) * 100);
+  //   let arrow = `<div class="feedback-arrow" style="height: ${height}px">`;
+  //   if (direction === 'up') {
+  //     arrow += `<div class="arrowhead-up"></div>`;
+  //     arrow += `<div class="arrowshaft"></div>`;
+  //   }
+  //   else {
+  //     arrow += `<div class="arrowshaft"></div>`;
+  //     arrow += `<div class="arrowhead-down"></div>`;
+  //   }
+  //   arrow += `</div>`;
+  //   return arrow;
+  // }
 
 }
 
