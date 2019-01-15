@@ -9,22 +9,67 @@
   padding: 2rem;
   font-size: 0.9rem;
 }
+.instructions.charity,
+.instructions.anti-charity {
+    flex-direction: row;
+}
 
 .instructions-response {
     height: 200px;
     font-size: 0.9rem;
 }
-.instructions .icon {
-    width: 140px;
-    height: 100px;
+
+.icon.charity,
+.icon.anti-charity {
+    background-size: 310px;
+    background-position: -25px -30px;
+    height: 360px;
+    width: 320px;
+    position: relative;
 }
 
 .icon.charity {
-    background-image: url('/images/protestor-icon.png');
+    background-image: url('/images/protestor-smile.png');
 }
 .icon.anti-charity {
-    background-image: url('/images/anti-protestor-icon.png');
+    background-image: url('/images/protestor-frown.png');
 }
+
+.icon .protest-sign  {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    position: absolute;
+    height: 130px;
+    width: 165px;
+    top: 21px;
+    left: 50px;
+    font-size: 1.3rem;
+    transform: rotateZ(1deg);
+}
+
+.protest-sign .protest-sign-position {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+@media screen and (min-width: 840px) {
+    .icon .protest-sign  {
+        display: flex;
+    }
+}
+/* .icon.anti-charity:after {
+    content: "FOR \A Something!!!!";
+    white-space: pre;
+    font-weight: bold;
+    color: #aaa;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
+
 .icon.game {
     background-image: url('/images/game-icon.png');
 }
@@ -44,8 +89,12 @@
     }
     
     .instructions .icon {
-        width: 280px;
-        height: 200px;
+        /* width: 280px;
+        height: 200px; */
+
+        /* height: 200px;
+        width: 350px;
+        background-color: #bada55; */
     }
 }
 

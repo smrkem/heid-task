@@ -7,6 +7,7 @@ import 'jspsych/plugins/jspsych-fullscreen'
 import { DbStaircase } from './staircase'
 import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
+import issues from '../Survey/Issues/Issues';
 
 // const NUM_TRIALS = 25;
 const NUM_TRIALS = 3;
@@ -14,7 +15,7 @@ const jsPsych = window.jsPsych;
 let keyLogger = new KeyLogger();
 let pointsTracker = new PointsTracker();
 let staircase = null;
-const DISABLE_FULLSCREEN = true;
+const DISABLE_FULLSCREEN = false;
 
 
 class ExperimentBlock extends React.Component {
@@ -30,35 +31,46 @@ class ExperimentBlock extends React.Component {
     'game': '<span class="underline">WIN</span> for the sake of winning',
   }
 
+  instructionsStimuli = () => {
+    const { condition } = this.props;
+    let copy = ''
+    condition.copy.forEach(para => {
+      copy += `<p>${para}</p>`
+    });
+    
+    const position = condition.socialIssue.position;
+
+    let out = `<div class="instructions ${condition.type}">`;
+    out += `<div class="icon ${this.getIconClass()}">`;
+    
+    if (condition.type === 'charity') {
+      const signCopy = this.positionStatements[position].for_statement.replace("FOR ", "");
+      out += `<div class="protest-sign"><div><span class="protest-sign-position">FOR</span> ${signCopy}</div></div>`;
+    }
+    else if (condition.type === 'anti-charity') {
+      const signCopy = this.positionStatements[position].against_statement.replace("AGAINST ", "");
+      out += `<div class="protest-sign"><div><span class="protest-sign-position">AGAINST</span> ${signCopy}</div></div>`;
+    }
+
+    out += `</div>`;
+    out += `<div class="copy">${copy}</div>`;
+    out += `</div>`;
+
+    return out;
+  }
+
   instructions = {
     type: "html-keyboard-response",
     data: { instructions: true},
     stimulus: () => {
-      let copy = ''
-      this.props.condition.copy.forEach(para => {
-        copy += `<p>${para}</p>`
-      })
-      return (
-        `<div class="instructions">` + 
-          `<div class="icon ${this.getIconClass()}"></div>` +
-          `<div class="copy">${copy}</div>` +
-        `</div>` +
+      return (this.instructionsStimuli() +
         `<div class="instructions-response">` +
           `<p class="continue-btn">Press any key to continue.</p>` +
         "</div>"
       )
     },
     message: () => {
-      let copy = ''
-      this.props.condition.copy.forEach(para => {
-        copy += `<p>${para}</p>`
-      })
-      return (
-        `<div class="instructions">` + 
-          `<div class="icon ${this.getIconClass()}"></div>` +
-          `<div class="copy">${copy}</div>` +
-        "</div>"
-      )
+      return this.instructionsStimuli();
     },
     on_finish: function(data) {
       const elem = document.getElementById('jspsych-experiment')
@@ -462,6 +474,12 @@ class ExperimentBlock extends React.Component {
   constructor(props) {
     super(props)
     this.isAnti = props.condition.type === "anti-charity"
+
+    if (props.condition.socialIssue) {
+      this.selectedIssue = issues.filter(iss => iss.title === props.condition.socialIssue.name)[0];
+      this.positionStatements = this.selectedIssue.position_statements;
+    }
+    
     staircase = new DbStaircase({
       firstVal: props.starting_duration,
       down: 2,
@@ -478,7 +496,8 @@ class ExperimentBlock extends React.Component {
   }
 
   getTimeline() {
-    console.log(this.props.condition);
+    // const { block } = this.props.condition;
+    console.log('block: ', this.props);
 
       const timeline = []
 

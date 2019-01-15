@@ -14,6 +14,31 @@ class ExperimentManager extends React.Component {
 
       this.state.blocks = this.randomizeBlocks()
 
+
+      // DEBUG
+      // const type = "self";
+      // const type = "game";
+      // const type = "charity";
+      const type = "anti-charity";
+
+      const issue = {
+        name: "Mandatory Child Vaccinations",
+        position: "for"
+      } 
+      this.state.blocks[0].condition = {
+        copy: conditionCopy(type, issue),
+        socialIssue: issue,
+        type: type,
+        assessment: true
+      }
+      // this.state.blocks[1].condition = {
+      //   assessment: true,
+      //   copy: conditionCopy("anti-charity", issue),
+      //   socialIssue: issue,
+      //   type: "anti-charity"
+      // }
+
+
       this.showNextBlock = this.showNextBlock.bind(this)
       this.updateBlock = this.updateBlock.bind(this)
   }
@@ -69,7 +94,7 @@ class ExperimentManager extends React.Component {
       })
     })
 
-    return blocks.splice(0,1)
+    return blocks.splice(0,2)
     // return blocks
   }
 
