@@ -59,7 +59,7 @@ class PracticeBlock extends React.Component {
       point_value: () => pointsTracker.getCurrentValue() 
     },
     response_ends_trial: false,
-    trial_duration: 1000
+    trial_duration: 1650
   }
 
   fixation = {
@@ -133,19 +133,23 @@ class PracticeBlock extends React.Component {
         jsPsych.data.getLastTimelineData().filter({target: true}).json()
       ).pop();
 
-      pointsTracker.setNextValue(targetData.hit)
+      // increment if hit (decrement if anti-charity)
+      const incr = ( (targetData.hit && !this.isAnti) || (!targetData.hit && this.isAnti))
+      pointsTracker.setNextValue(incr)
 
-      const msg = targetData.hit ? 'Win!' : 'Lose'
-      const sign = targetData.hit ? '+' : '-'
-      return (`
-        <div class="feedback icon game"></div>
-        <p>${msg}</p>
-        <p>${sign}${targetData.point_value} Points</p>
-      `)
+      const sign = incr ? '+' : '-';
+      const message = targetData.hit ? "WIN!" : "LOSE";
+      const pointVal = targetData.point_value;
+      return (
+        `<div class="feedback">` +
+          `<div class="feedback-message">${message}</div>` +
+          `<div class="feedback-points">${sign} ${pointVal}</div>` +
+        `</div>`
+      )
     },
     data: { feedback1: true },
     response_ends_trial: false,
-    trial_duration: 1650
+    trial_duration: 2000
   }
 
   feedback2 = {
@@ -182,7 +186,6 @@ class PracticeBlock extends React.Component {
           this.target,
           this.blank1,
           this.feedback1,
-          this.feedback2,
           this.blank2
         ],
         repetitions: 40
@@ -274,7 +277,7 @@ class PracticeBlock extends React.Component {
 
 
 
-        ['cue', 'fixation', 'target', 'blank1', 'feedback1', 'feedback2', 'blank2'].forEach((n) => {
+        ['cue', 'fixation', 'target', 'blank1', 'feedback1', 'blank2'].forEach((n) => {
           if (trialPart[n]) {
             currentTrial[`${n}_time_elapsed`] = trialPart.time_elapsed
           }

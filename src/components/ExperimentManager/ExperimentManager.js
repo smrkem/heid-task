@@ -19,18 +19,18 @@ class ExperimentManager extends React.Component {
       // const type = "self";
       // const type = "game";
       // const type = "charity";
-      const type = "anti-charity";
+      // const type = "anti-charity";
 
-      const issue = {
-        name: "Mandatory Child Vaccinations",
-        position: "for"
-      } 
-      this.state.blocks[0].condition = {
-        copy: conditionCopy(type, issue),
-        socialIssue: issue,
-        type: type,
-        assessment: true
-      }
+      // const issue = {
+      //   name: "Mandatory Child Vaccinations",
+      //   position: "for"
+      // } 
+      // this.state.blocks[0].condition = {
+      //   copy: conditionCopy(type, issue),
+      //   socialIssue: issue,
+      //   type: type,
+      //   assessment: true
+      // }
       // this.state.blocks[1].condition = {
       //   assessment: true,
       //   copy: conditionCopy("anti-charity", issue),
@@ -94,8 +94,8 @@ class ExperimentManager extends React.Component {
       })
     })
 
-    return blocks.splice(0,2)
-    // return blocks
+    // return blocks.splice(0,2)
+    return blocks
   }
 
   updateBlock(blockData) {
@@ -131,7 +131,7 @@ class ExperimentManager extends React.Component {
   }
 
     render() {
-      console.log('blocks:', this.state.blocks);
+      // console.log('blocks:', this.state.blocks);
         return (
             <div id="exp-manager">
               <ExperimentBlock 

@@ -27,6 +27,10 @@
     width: 320px;
     position: relative;
 }
+.icon.cue.charity,
+.icon.cue.anti-charity {
+    background-position: 0px -30px;
+}
 
 .icon.charity {
     background-image: url('/images/protestor-smile.png');
@@ -47,6 +51,10 @@
     left: 50px;
     font-size: 1.3rem;
     transform: rotateZ(1deg);
+}
+.icon.cue.charity .protest-sign,
+.icon.cue.anti-charity .protest-sign{
+    left: 76px;
 }
 
 .protest-sign .protest-sign-position {
@@ -108,7 +116,7 @@
     height: 33px;
 }
 .instructions + #jspsych-fullscreen-btn {
-    margin-top: 67px;
+    /* margin-top: 67px; */
     margin-bottom: 100px;
     height: 33px;
 }
@@ -202,6 +210,16 @@
 .feedback-points {
     margin: 2rem 0;
     font-size: 1.5rem;
+}
+
+@media screen and (min-width: 1060px) {
+    .feedback-message {
+        font-size: 4rem;
+    }
+    .feedback-points {
+        margin: 4rem 0;
+        font-size: 3rem;
+    }   
 }
 
 

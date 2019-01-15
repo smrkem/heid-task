@@ -17,13 +17,13 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    // 'consent',
-    // 'wellbeing',
-    // 'break1',
-    // 'survey',
-    // 'break2',
-    // 'HEIDWelcome',
-    // 'practiceTrial',
+    'consent',
+    'wellbeing',
+    'break1',
+    'survey',
+    'break2',
+    'HEIDWelcome',
+    'practiceTrial',
     'experiment',
     'final',
     'goodbye'
@@ -36,10 +36,11 @@ class TaskManager extends React.Component {
       this.submitSocialIssue = this.submitSocialIssue.bind(this);
       this.submitWellbeingData = this.submitWellbeingData.bind(this);
 
-      this.state.socialIssue = {
-        name: "Abortion Rights",
-        position: "for"
-      }
+      // console.log('setting social issue');
+      // this.state.socialIssue = {
+      //   name: "Abortion Rights",
+      //   position: "for"
+      // }
   }
 
   showNextStep(blockData=false) {

@@ -9,8 +9,8 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
 import issues from '../Survey/Issues/Issues';
 
-// const NUM_TRIALS = 25;
-const NUM_TRIALS = 3;
+const NUM_TRIALS = 25;
+// const NUM_TRIALS = 3;
 const jsPsych = window.jsPsych;
 let keyLogger = new KeyLogger();
 let pointsTracker = new PointsTracker();
@@ -33,21 +33,22 @@ class ExperimentBlock extends React.Component {
 
   instructionsStimuli = () => {
     const { condition } = this.props;
+
     let copy = ''
     condition.copy.forEach(para => {
       copy += `<p>${para}</p>`
     });
-    
-    const position = condition.socialIssue.position;
 
     let out = `<div class="instructions ${condition.type}">`;
     out += `<div class="icon ${this.getIconClass()}">`;
     
     if (condition.type === 'charity') {
+      const position = condition.socialIssue.position;
       const signCopy = this.positionStatements[position].for_statement.replace("FOR ", "");
       out += `<div class="protest-sign"><div><span class="protest-sign-position">FOR</span> ${signCopy}</div></div>`;
     }
     else if (condition.type === 'anti-charity') {
+      const position = condition.socialIssue.position;
       const signCopy = this.positionStatements[position].against_statement.replace("AGAINST ", "");
       out += `<div class="protest-sign"><div><span class="protest-sign-position">AGAINST</span> ${signCopy}</div></div>`;
     }
@@ -371,11 +372,23 @@ class ExperimentBlock extends React.Component {
   cue = {
     type: "html-keyboard-response",
     stimulus: () => {
-      const pointVal = pointsTracker.getCurrentValue()
-      return (`
-        <p>${pointVal} Points</p>
-        <div class="cue icon ${this.getIconClass()}"></div>
-      `)
+      const { condition } = this.props;
+      const pointVal = pointsTracker.getCurrentValue();
+      let out = `<p>${pointVal} Points</p><div class="cue icon ${this.getIconClass()}">`;
+
+      if (condition.type === 'charity') {
+        const position = condition.socialIssue.position;
+        const signCopy = this.positionStatements[position].for_statement.replace("FOR ", "");
+        out += `<div class="protest-sign"><div><span class="protest-sign-position">FOR</span> ${signCopy}</div></div>`;
+      }
+      else if (condition.type === 'anti-charity') {
+        const position = condition.socialIssue.position;
+        const signCopy = this.positionStatements[position].against_statement.replace("AGAINST ", "");
+        out += `<div class="protest-sign"><div><span class="protest-sign-position">AGAINST</span> ${signCopy}</div></div>`;
+      }
+
+      out += `</div>`;
+      return out
     },
     data: { 
       cue: true,

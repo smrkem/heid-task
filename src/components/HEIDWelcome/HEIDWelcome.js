@@ -7,10 +7,10 @@ import img3src from './heid-welcome-3.png';
 
 const HEIDWelcome = ({socialIssue, advanceStep}) => {
   // temp for dev work
-  socialIssue = {
-    name: "Abortion Rights",
-    position: "for"
-  }
+  // socialIssue = {
+  //   name: "Abortion Rights",
+  //   position: "for"
+  // }
 
   
   const selectedIssue = issues.filter(iss => iss.title === socialIssue.name)[0];
