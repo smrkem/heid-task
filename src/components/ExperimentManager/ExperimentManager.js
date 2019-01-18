@@ -131,7 +131,7 @@ class ExperimentManager extends React.Component {
   }
 
     render() {
-      // console.log('blocks:', this.state.blocks);
+      console.log('blocks:', this.state.blocks);
         return (
             <div id="exp-manager">
               <ExperimentBlock 
