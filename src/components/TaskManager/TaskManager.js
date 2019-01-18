@@ -20,9 +20,9 @@ class TaskManager extends React.Component {
     // 'consent',
     // 'wellbeing',
     // 'break1',
-    // 'survey',
+    'survey',
     // 'break2',
-    // 'HEIDWelcome',
+    'HEIDWelcome',
     'practiceTrial',
     'experiment',
     'final',
@@ -125,7 +125,7 @@ class TaskManager extends React.Component {
                 { (this.showing() === 'experiment') && (
                     <ExperimentManager 
                       socialIssue={this.state.socialIssue}
-                      starting_duration={this.state.practiceData.calculated_duration || 320}
+                      starting_duration={this.state.practiceData.calculated_duration2 || 320}
                       advanceStep={this.showNextStep} />
                 )}
                 { (this.showing() === 'final') && (
