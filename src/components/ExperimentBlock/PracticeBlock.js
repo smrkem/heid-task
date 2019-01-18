@@ -8,8 +8,9 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker, closeFullscreen, getMeanForLast } from '../../utils'
 
 const jsPsych = window.jsPsych
-const NUM_REVERSALS = 8
-// const NUM_REVERSALS = 3
+const NUM_REVERSALS = 8;
+const NUM_TRIALS = 3;
+const MISSED_TRIAL_MODIFIER = 200;
 let keyLogger = new KeyLogger()
 let pointsTracker = new PointsTracker()
 let staircase = null
@@ -170,7 +171,7 @@ class PracticeBlock extends React.Component {
     super(props)
     staircase = new DbStaircase({
       firstVal: 400,
-      down: 2,
+      down: 1,
       stepSizes: [8, 4, 4, 2, 2, 1]
     })
   }
@@ -188,7 +189,7 @@ class PracticeBlock extends React.Component {
           this.feedback1,
           this.blank2
         ],
-        repetitions: 40
+        repetitions: NUM_TRIALS
     }
     timeline.push(test_procedure)
 
@@ -248,9 +249,16 @@ class PracticeBlock extends React.Component {
         jsPsych.data.get().json()
     )
     const data = this.collectTrials(trialData)
+    
+    let rt_sum = 0;
+    data.forEach(trial => {
+      rt_sum += trial.overall_rt || (MISSED_TRIAL_MODIFIER + trial.target_presentation_duration);
+    });
+
     const results = {
       points: pointsTracker.currentTotal,
       calculated_duration: getMeanForLast(staircase.stairs.values, 5),
+      calculated_duration2: rt_sum /  data.length,
       point_values: pointsTracker.values.splice(0, pointsTracker.values.length - 1),
       final_duration: data[data.length - 1].target_presentation_duration,
       data: data,
@@ -297,6 +305,10 @@ class PracticeBlock extends React.Component {
           currentTrial.responded_late = trialPart.rt || false
           currentTrial.suspect_cheating = ( trialPart.keylog.length > 2)
           currentTrial.num_responses = trialPart.keylog.length
+          currentTrial.overall_rt = currentTrial.rt;
+          if (!currentTrial.overall_rt && currentTrial.responded_late) {
+            currentTrial.overall_rt = currentTrial.target_presentation_duration + currentTrial.responded_late;
+          }
         }
 
         if (trialPart.point_value) {
