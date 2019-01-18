@@ -130,3 +130,33 @@ pre {
 
 
 
+
+
+
+
+
+    /* IMAGE PRELOADING */
+#preloaded_images { 
+    /* border: 1px solid #333; */
+    z-index: 100000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+
+    width: 100px;
+    background: url('/images/issues-bg.png'),
+                url('/images/game-icon.png'),
+                url('/images/self-icon.png'),
+                url('/images/protestor-frown.png'),
+                url('/images/protestor-smile.png');
+    background-size: 10px auto, 10px auto, 10px auto, 10px auto, 10px auto;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+
+    
+}
+
+#preloaded_images img {
+    width: 20px;
+    height: auto;
+}
