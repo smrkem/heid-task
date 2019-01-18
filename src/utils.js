@@ -21,6 +21,9 @@ const randomFromInterval = (min, max, step=1) => {
 }
 
 const getMeanForLast = (arr, n) => {
+  if (arr.length < n) {
+    n = arr.length;
+  }
   var data = arr.slice(-n);
   var sum = 0;
   for (var i = 0; i < data.length; i++) {
