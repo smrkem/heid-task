@@ -625,6 +625,13 @@ class ExperimentBlock extends React.Component {
     keyLogger = new KeyLogger()
     pointsTracker = new PointsTracker()
     this.isAnti = this.props.condition.type === "anti-charity"
+
+    if (this.props.condition.socialIssue) {
+      this.selectedIssue = issues.filter(iss => iss.title === this.props.condition.socialIssue.name)[0];
+      this.positionStatements = this.selectedIssue.position_statements;
+    }
+    
+
     this.setState({ results: {} })
     staircase = new DbStaircase({
       firstVal: this.props.starting_duration,

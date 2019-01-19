@@ -41,6 +41,11 @@ class TaskManager extends React.Component {
       //   name: "Abortion Rights",
       //   position: "for"
       // }
+
+      // this.state.socialIssue = {
+      //   name: "Legalization of Same-Sex Marriage",
+      //   position: "against"
+      // }
   }
 
   showNextStep(blockData=false) {
