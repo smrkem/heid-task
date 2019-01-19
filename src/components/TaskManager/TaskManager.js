@@ -20,10 +20,10 @@ class TaskManager extends React.Component {
     // 'consent',
     // 'wellbeing',
     // 'break1',
-    // 'survey',
+    'survey',
     // 'break2',
-    // 'HEIDWelcome',
-    // 'practiceTrial',
+    'HEIDWelcome',
+    'practiceTrial',
     'experiment',
     'final',
     'goodbye'
@@ -42,10 +42,10 @@ class TaskManager extends React.Component {
       //   position: "for"
       // }
 
-      this.state.socialIssue = {
-        name: "Legalization of Same-Sex Marriage",
-        position: "against"
-      }
+      // this.state.socialIssue = {
+      //   name: "Legalization of Same-Sex Marriage",
+      //   position: "against"
+      // }
   }
 
   showNextStep(blockData=false) {
