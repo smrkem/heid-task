@@ -138,8 +138,8 @@ class SurveySection1 extends React.Component {
         <div className="surveySection">
           <div className="survey-black-bg"></div>
 
-          {/* <button onClick={() => this.autoCategorize() } 
-          className="debug">categorize auto</button> */}
+          <button onClick={() => this.autoCategorize() } 
+          className="debug">categorize auto</button>
   
           <IssueView
             issue={this.state.issues[this.state.issueIndex]}

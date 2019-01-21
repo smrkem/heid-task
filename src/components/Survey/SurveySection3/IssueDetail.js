@@ -86,7 +86,7 @@ class IssueDetail extends React.Component {
               <p>
                   <span className="input-prefix">
                     <span className="input-prefix-label">AGAINST</span>
-                    <span className="input-prefix-cue">◀</span>
+                    <span className="input-prefix-cue"></span>
                   </span>
                   <input 
                       name="forAgainst"
@@ -94,7 +94,7 @@ class IssueDetail extends React.Component {
                       onChange={this.handlePositionChange} 
                       type="range" min={-100} max={100} step="5" />
                   <span className="input-suffix">
-                    <span className="input-suffix-cue">▶</span>
+                    <span className="input-suffix-cue"></span>
                     <span className="input-suffix-label">FOR</span>
                   </span>
               </p>
@@ -108,7 +108,7 @@ class IssueDetail extends React.Component {
               <p>
                   <span className="input-prefix">
                     <span className="input-prefix-label">NOT AT ALL IMPORTANT</span>
-                    <span className="input-prefix-cue">◀</span>
+                    <span className="input-prefix-cue"></span>
                   </span>
                   <input 
                       name="motivation"
@@ -116,7 +116,7 @@ class IssueDetail extends React.Component {
                       onChange={this.handleMotivationChange} 
                       type="range" min={0} max={100} />
                   <span className="input-suffix">
-                    <span className="input-suffix-cue">▶</span>
+                    <span className="input-suffix-cue"></span>
                     <span className="input-suffix-label">VERY IMPORTANT</span>
                   </span>
               </p>

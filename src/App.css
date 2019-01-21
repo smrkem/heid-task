@@ -149,9 +149,10 @@ pre {
                 url('/images/game-icon.png'),
                 url('/images/self-icon.png'),
                 url('/images/protestor-frown.png'),
+                url('/images/arrow-blue.svg'),
                 url('/images/protestor-smile.png');
-    background-size: 10px auto, 10px auto, 10px auto, 10px auto, 10px auto;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 10px auto, 10px auto, 10px auto, 10px auto, 10px auto, 10px auto;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 
     
 }
