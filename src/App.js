@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import AppRouter from './components/AppRouter/AppRouter';
 
 
 class App extends Component {
@@ -7,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-body">
-          my app
+          <AppRouter />
         </div>
       </div>
     );
