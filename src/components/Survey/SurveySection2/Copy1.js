@@ -1,4 +1,5 @@
 import React from 'react'
+import informationIcon from '../components/InformationIcon/information_blue.svg'
 
 const Copy1 = () => (
 <div>
@@ -22,7 +23,11 @@ const Copy1 = () => (
   </div>
 
   <p>
-    You will get the chance to read more about the social issues you think are important to you in Section III.  Just try your best in determining how important each social issue is for you. 
+  If you wish for more information on the social issue presented, please click the 
+  &nbsp;
+    <img src={informationIcon} alt="information icon" height="20" width="20" style={{verticalAlign: 'text-bottom'}} />
+    &nbsp;
+  button presented with each social issue.
   </p>
 </div>
 )

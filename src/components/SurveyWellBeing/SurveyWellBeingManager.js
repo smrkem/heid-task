@@ -6,6 +6,7 @@ import HEMAR from './HEMAR';
 import PWB from './PWB';
 import BDI2 from './BDI2';
 import SHAPS from './SHAPS';
+import PPQ from './PPQ';
 import { shuffle } from '../../utils';
 import ProgressBar from './components/ProgressBar'
 
@@ -30,16 +31,9 @@ class SurveyWellBeingManager extends React.Component {
       <HEMAR key="HEMAR" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
       <PWB key="PWB" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
       <BDI2 key="BDI2" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
-      <SHAPS key="SHAPS" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />
+      <SHAPS key="SHAPS" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
+      <PPQ key="PPQ" submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />
     ]);
-
-    // Temp for determined order for dev work:
-    // this.state.questionnaires = [
-    //   <HEMAR submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
-    //   <PWB submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
-    //   <BDI2 submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />,
-    //   <SHAPS submitResults={this.addResults.bind(this)} finishStep={this.advanceQuestionnaire.bind(this)} />
-    // ];
 
   }
 
@@ -63,7 +57,6 @@ class SurveyWellBeingManager extends React.Component {
 
   advanceStep() {
     if (this.state.stepIndex === this.state.steps.length - 1) {
-      console.log('Done With Well being');
       this.props.submitWellbeingData(this.state.results);
       this.props.onFinish();
     }

@@ -1,15 +1,13 @@
 import React from 'react'
+import informationIcon from '../components/InformationIcon/information_blue.svg'
+
 
 const Copy2 = () => (
   <div>
     <h2 className="sec1-inner-h2">Social Values Task - Section I</h2>      
     <p>
-      In this section, you will be presented with a short description of 19 controversial social issue.
+    In this section, you will be presented with a short description of 20 controversial social issues.
     </p>
-    <p>
-      The goal is to determine which of these social issues are most important to you and what you believe in. 
-    </p>
-      
     <div>
       <p>
         <b>Your Task:</b><br />
@@ -23,7 +21,11 @@ const Copy2 = () => (
     </div>
 
     <p>
-      You will get the chance to read more about the social issues you think are important to you in Section III.  Just try your best in determining how important each social issue is for you. 
+    If you wish for more information on the social issue presented, please click the 
+    &nbsp;
+    <img src={informationIcon} alt="information icon" height="20" width="20" style={{verticalAlign: 'text-bottom'}} />
+    &nbsp;
+     icon presented with each social issue (in the top right corner).
     </p>
   </div>
 )

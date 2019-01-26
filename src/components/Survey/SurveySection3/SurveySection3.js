@@ -115,7 +115,7 @@ class SurveySection3 extends React.Component {
                   className="btn btn-info"
                 >Go Back</button>
               </p>
-              <p>In this Section III, the goal is to clarify your views on these issues. Please answer each question as best as you can.</p>
+              <p>In this Section III, the goal is to clarify your views on these issues. You will be provided with a description of the controversial social issue and a list of some arguments for each opposing positions. You are not required to read these sections if you feel familiar with the topic. Your task is to answer each question presented at the end of these descriptions as best as you can.</p>
             </div>
             <button
               className="btn btn-black btn-large"

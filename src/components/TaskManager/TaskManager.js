@@ -17,13 +17,13 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    // 'consent',
+    'consent',
     // 'wellbeing',
     // 'break1',
     'survey',
-    'break2',
+    // 'break2',
     'HEIDWelcome',
-    'practiceTrial',
+    // 'practiceTrial',
     'experiment',
     'final',
     'goodbye'
@@ -42,10 +42,10 @@ class TaskManager extends React.Component {
       //   position: "for"
       // }
 
-      // this.state.socialIssue = {
-      //   name: "Legalization of Same-Sex Marriage",
-      //   position: "against"
-      // }
+      this.state.socialIssue = {
+        name: "Legalization of Same-Sex Marriage",
+        position: "against"
+      }
   }
 
   showNextStep(blockData=false) {
