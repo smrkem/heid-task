@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Route } from "react-router-dom";
+import WelcomeManager from '../Welcome/WelcomeManager';
 
 class Index extends Component {
   state = {
-    data: null
+    consented: null
   }
+
 
   componentDidMount() {
     let data = localStorage.getItem('HEID_data');
@@ -15,7 +18,11 @@ class Index extends Component {
   render() {
 
     return (
-      <div className="index"></div>
+      <div className="index">
+        <Route path="/welcome/" component={() => (
+          <WelcomeManager />
+        )} />
+      </div>
     )
   }
 }
