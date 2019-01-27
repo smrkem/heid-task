@@ -4,7 +4,9 @@ import SurveyIntro from '../SurveyIntro/SurveyIntro'
 import SurveySection1 from '../SurveySection1/SurveySection1'
 import SurveySection2 from '../SurveySection2/SurveySection2'
 import SurveySection3 from '../SurveySection3/SurveySection3'
-import SurveyFinal from '../SurveyFinal/SurveyFinal'
+import { dataFromIssue } from '../../../utils';
+// import SurveyFinal from '../SurveyFinal/SurveyFinal'
+
 
 
 class SurveyManager extends React.Component {
@@ -15,8 +17,7 @@ class SurveyManager extends React.Component {
       'section1',
       'section2',
       'section3',
-      'finalIssues',
-      'goodbye'
+      'results'
     ],
     stepIndex: 0,
     section2Step: null
@@ -44,16 +45,25 @@ class SurveyManager extends React.Component {
   }
 
   submitFinalIssues(finalIssues) {
+    console.log("Submitting final Issues: ", finalIssues);
+    
     const issues = JSON.parse(JSON.stringify(this.state.issues));
     finalIssues.forEach(finalIssue => {
       const index = issues.findIndex(iss => iss.title === finalIssue.title);
       issues[index].position = finalIssue.position;
       if (finalIssue.selectedIssue) {
         issues[index].selectedIssue = true;
+        issues[index].position = finalIssue.position;
         issues[index].userDescription = finalIssue.userDescription;
+        issues[index].svt3_q1 = finalIssue.svt3_q1;
+        issues[index].svt3_q2 = finalIssue.svt3_q2;
+        issues[index].svt3_q3 = finalIssue.svt3_q3;
+        issues[index].svt3_q4 = finalIssue.svt3_q4;
       }
     })
     this.setState({issues});
+    
+    // this.finishSurvey();
   }
 
   finishSurvey() {
@@ -99,15 +109,36 @@ class SurveyManager extends React.Component {
       )
     }
 
-
-    if (this.showing() === 'finalIssues') {
+    if (this.showing() === 'results') {
+      let issues = JSON.parse(JSON.stringify(this.state.issues))
+      const issueData = issues.map(iss => dataFromIssue(iss));
       return (
-        <SurveyFinal 
-          issues={this.state.issues}
-          finishSurvey={this.finishSurvey.bind(this)}
-        />
+        <div className="surveySection exp-results">
+          <div className="survey-green-bg"></div>
+
+          <div className="sec1-inner copy1" ref={e => this.contentWrap = e}>
+            <h1 className="topBanner">SVT 3 Results</h1>
+            <div className="social-values-copy-modal">
+              <p>SVT completed by user.</p>
+              <p>What data do we want to store at this point?</p>
+              <p>Data from this section shown below:</p>
+              <div className="exp-data">
+                <pre>{JSON.stringify(issueData, null, 3)}</pre>
+              </div>
+            </div>
+            <button
+              className="btn btn-black btn-large"
+              onClick={this.finishSurvey.bind(this)}
+            >
+              Continue</button>
+          </div>
+          
+        </div>
       )
     }
+
+    
+
   }
 }
 

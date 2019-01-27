@@ -130,6 +130,7 @@
     height: 175%;
     transform: rotateY(180deg);
 }
+
 .figure_pondering {
     position: absolute;
     height: 210px;
@@ -154,7 +155,33 @@
 }
 
 
+.figure_protesting {
+    width: 300px;
+}
+.figure_protesting img {
+    width: 100%;
+}
 
+.sec3_figure_protesting {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sec3_figure_protesting .figure_protesting_banner {
+    position: absolute;
+    top: 50px;
+    left: 72px;
+    font-size: 1.3rem;
+    width: 160px;
+    color: #666;
+    height: 124px;
+    -webkit-transform: rotateZ(1deg);
+    transform: rotateZ(1deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
@@ -766,7 +793,10 @@
 
 
 
-
+.sec3-finalChoice-finalIssue .continueButton {
+    text-align: center;
+    margin: 1rem 0;
+}
 
 .btn.finalIssueSelection {
     margin: 1rem;
@@ -777,6 +807,94 @@
     width: 100%;
     height: 150px;
 }
+
+
+
+
+
+
+
+
+
+/*
+SVT3
+*/
+.surveySection.sec3.finalDetails .social-values-copy-modal {
+    background: #f4f4f0;
+    margin: 4rem 4rem 2rem 334px;
+    max-width: none;
+}
+
+
+
+@media screen and (min-width: 1330px) {
+    .surveySection.sec3.finalDetails .social-values-copy-modal {
+        background: #f4f4f0;
+        margin: 4rem auto 2rem;
+        max-width: 720px;
+    }
+    
+}
+/*
+SVT3 HEMA-LIKE RADIOS
+*/
+.svt3_q {
+    margin: 1rem 0 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #aaa;
+}
+.svt3_q .form-legend {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    font-size: 0.8rem;
+}
+.svt3_q .radioRange {
+    width: 310px;
+}
+
+.svt3_q .radioRange ul {
+    margin-left: 10px;
+}
+
+.svt3_q .radioRange li {
+    width: 40px;
+    height: 40px;
+}
+
+.svt3_q .radioRange input {
+    opacity: 0;
+}
+.svt3_q .radioRange li label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #666;
+}
+.svt3_q .radioRange input:checked ~ label {
+    color: #fff;
+    background: #007bff;
+    border: 1px solid #043973;
+}
+.svt3_q p {
+    margin-bottom: 0.5rem;
+}
+
+
+
+
+
+
+
+
+
 
 .surveyFinal .issue-row {
     height: auto;    

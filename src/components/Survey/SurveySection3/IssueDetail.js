@@ -33,7 +33,6 @@ class IssueDetail extends React.Component {
   
   render() {
     const issue = this.props.issue;
-    console.log("issue: ", issue);
 
     return (
       <div className="sec3-issueDetail">
@@ -108,34 +107,7 @@ class IssueDetail extends React.Component {
               </p>
               {/* <p>{issue.problem_statement}</p> */}
             </div>
-            <div className="motivation">
-              <p>
-                How important is this issue to you and what you believe in?
-              </p>
-              <div className="sec3-motivation-range">
-              <p>
-                  <span className="input-prefix">
-                    <span className="input-prefix-label">NOT AT ALL IMPORTANT</span>
-                    <span className="input-prefix-cue"></span>
-                  </span>
-                  <input 
-                      name="motivation"
-                      value={this.state.motivation}
-                      onChange={this.handleMotivationChange} 
-                      type="range" min={0} max={100} />
-                  <span className="input-suffix">
-                    <span className="input-suffix-cue"></span>
-                    <span className="input-suffix-label">VERY IMPORTANT</span>
-                  </span>
-              </p>
-            
-              <div className="sec3-motivation-feedback">
-                <p>{this.state.motivation} %</p>
-              </div>
-            
-            </div>
-            </div>
-            
+
             <div>
               <button 
                 className="btn btn-black btn-large"
