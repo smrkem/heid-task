@@ -6,11 +6,11 @@ export default {
   position_statements: {
     for: {
         for_statement: "FOR Death Penalty",
-        against_statement: "AGAINST Death Penalty",
+        against_statement: "AGAINST Abolishing Death Penalty",
     },
     against: {
-        for_statement: "FOR Prisoner Rights",
-        against_statement: "AGAINST Prisoner Rights",
+        for_statement: "FOR Abolishing Death Penalty",
+        against_statement: "AGAINST Death Penalty",
     },
   },
   image_src: imgSrc,

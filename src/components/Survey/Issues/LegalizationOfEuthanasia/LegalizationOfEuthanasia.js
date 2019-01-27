@@ -6,11 +6,11 @@ export default {
   position_statements: {
     for: {
         for_statement: "FOR Legalizing Euthanasia",
-        against_statement: "AGAINST Legalizing Euthanasia",
+        against_statement: "AGAINST Criminalizing Euthanasia",
     },
     against: {
-        for_statement: "FOR Continued Care of the Ill",
-        against_statement: "AGAINST Continued Care of the Ill",
+        for_statement: "FOR Criminalizing Euthanasia",
+        against_statement: "AGAINST Legalizing Euthanasia",
     },
   },
   image_src: imgSrc,

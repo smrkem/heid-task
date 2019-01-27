@@ -6,16 +6,16 @@ export default {
   position_statements: {
     for: {
       for_statement: "FOR Banning Burqa",
-      against_statement: "AGAINST Banning Burqa"
+      against_statement: "AGAINST Wearing Burqa"
     },
     against: {
-      for_statement: "FOR Muslim Rights",
-      against_statement: "AGAINST Muslim Rights"
+      for_statement: "FOR Wearing Burqa",
+      against_statement: "AGAINST Banning Burqa"
     }
   },
   image_src: imgSrc,
   description: [
-    "The burqa is a garment for women that completely covers the body and face, allowing space only for the eyes to see. It originates from islamic traditions in order to preserve the modesty of a woman. Controversy over whether the burqa should be banned has been debated due concerns of safety, religious freedom, and women’s rights. Here are a few arguments FOR and AGAINST banning the burqa."
+    "The burqa is a garment for women that completely covers the body and face, allowing space only for the eyes to see. It originates from Islamic traditions, historically, to preserve the modesty of a woman. There is considerable debate as to whether wearing the burqa should be banned in Western countries due to concerns for safety, religious freedom, and women’s rights. Here are a few arguments presented by opposite sides of the debate."
   ],
   pros: [
     "Burqas are an oppressive symbol of women's subjugation to men and of viewing women as second-class citizens.",

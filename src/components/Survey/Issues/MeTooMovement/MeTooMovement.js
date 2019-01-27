@@ -6,11 +6,11 @@ export default {
   position_statements: {
     for: {
         for_statement: "FOR MeToo Movement",
-        against_statement: "AGAINST MeToo Movement",
+        against_statement: "AGAINST Private Reporting Only",
     },
     against: {
-        for_statement: "FOR Reporting Assault to Justice System",
-        against_statement: "AGAINST Reporting Assault to Justice System",
+        for_statement: "FOR Private Reporting Only",
+        against_statement: "AGAINST MeToo Movement",
     },
   },
   image_src: imgSrc,

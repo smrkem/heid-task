@@ -6,11 +6,11 @@ export default {
   position_statements: {
     for: {
         for_statement: "FOR Censoring Hate Speech",
-        against_statement: "AGAINST Censoring Hate Speech",
+        against_statement: "AGAINST Free Speech",
     },
     against: {
         for_statement: "FOR Free Speech",
-        against_statement: "AGAINST Free Speech",
+        against_statement: "AGAINST Censoring Hate Speech",
     },
   },
   image_src: imgSrc,

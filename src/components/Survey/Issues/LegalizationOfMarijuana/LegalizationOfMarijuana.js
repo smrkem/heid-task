@@ -6,11 +6,11 @@ export default {
   position_statements: {
     for: {
         for_statement: "FOR Legalizing Marijuana",
-        against_statement: "AGAINST Legalizing Marijuana",
+        against_statement: "AGAINST Criminalizing Marijuana",
     },
     against: {
-        for_statement: "FOR Preventing Marijuana Use",
-        against_statement: "AGAINST Preventing Marijuana Use",
+        for_statement: "FOR Criminalizing Marijuana",
+        against_statement: "AGAINST Legalizing Marijuana",
     },
   },
   image_src: imgSrc,

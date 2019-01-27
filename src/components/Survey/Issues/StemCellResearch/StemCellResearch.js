@@ -6,11 +6,11 @@ export default {
   position_statements: {
     for: {
         for_statement: "FOR Stem Cell Research",
-        against_statement: "AGAINST Stem Cell Research",
+        against_statement: "AGAINST Protection of Embryos",
     },
     against: {
-        for_statement: "FOR Protection of Human Life",
-        against_statement: "AGAINST Protection of Human Life",
+        for_statement: "FOR Protection of Embryos",
+        against_statement: "AGAINST Stem Cell Research",
     },
   },
   image_src: imgSrc,

@@ -6,11 +6,11 @@ export default {
   position_statements: {
     for: {
         for_statement: "FOR Stopping Illegal Immigration",
-        against_statement: "AGAINST Stopping Illegal Immigration",
+        against_statement: "AGAINST Illegal Immigrant Rights",
     },
     against: {
-        for_statement: "FOR Immigrant Rights",
-        against_statement: "AGAINST Immigrant Rights",
+        for_statement: "FOR Illegal Immigrant Rights",
+        against_statement: "AGAINST Stopping Illegal Immigration",
     },
   },
   image_src: imgSrc,
