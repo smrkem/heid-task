@@ -4,6 +4,8 @@ export default {
   title: "Legalization of Prostitution",
   problem_statement: "Should Sex Work be Legalized?",
   position_statements: {
+    for_statement: "Legalizing Prostitution",
+    alternate_statement: "Preventing Prostitution",
     for: {
         for_statement: "FOR Legalizing Prostitution",
         against_statement: "AGAINST Legalizing Prostitution",

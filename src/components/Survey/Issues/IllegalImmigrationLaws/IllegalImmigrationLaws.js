@@ -4,6 +4,8 @@ export default {
   title: "Illegal Immigration Laws",
   problem_statement: "Should Illegal Immigrant Laws be more Strictly Enforced?",
   position_statements: {
+    for_statement: "Stopping Illegal Immigration",
+    alternate_statement: "Illegal Immigrant Rights",
     for: {
         for_statement: "FOR Stopping Illegal Immigration",
         against_statement: "AGAINST Illegal Immigrant Rights",

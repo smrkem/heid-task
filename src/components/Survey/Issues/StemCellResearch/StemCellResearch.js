@@ -4,6 +4,8 @@ export default {
   title: "Stem Cell Research",
   problem_statement: "Should Embryonic Stem Cell Research Be Allowed?",
   position_statements: {
+    for_statement: "Stem Cell Research",
+    alternate_statement: "Protection of Embryos",
     for: {
         for_statement: "FOR Stem Cell Research",
         against_statement: "AGAINST Protection of Embryos",

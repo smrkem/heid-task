@@ -4,6 +4,8 @@ export default {
   title: "Vegetarianism",
   problem_statement: "Should Everyone Be Making a Move Towards Vegetarianism?",
   position_statements: {
+    for_statement: "Vegetarianism",
+    alternate_statement: "Eating Meat",
     for: {
         for_statement: "FOR Vegetarianism",
         against_statement: "AGAINST Eating Meat",

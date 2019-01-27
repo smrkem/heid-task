@@ -4,6 +4,8 @@ export default {
   title: "Mandatory Child Vaccinations",
   problem_statement: "Should the Government Impose Mandatory Vaccinations on Children?",
   position_statements: {
+    for_statement: "Mandatory Child Vaccinations",
+    alternate_statement: "Protecting Children from Vaccinations",
     for: {
         for_statement: "FOR Mandatory Child Vaccinations",
         against_statement: "AGAINST Mandatory Child Vaccinations",

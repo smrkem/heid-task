@@ -4,6 +4,8 @@ export default {
   title: "Legalization of Marijuana",
   problem_statement: "Should Recreational Marijuana be Legal?",
   position_statements: {
+    for_statement: "Legalizing Marijuana",
+    alternate_statement: "Criminalizing Marijuana",
     for: {
         for_statement: "FOR Legalizing Marijuana",
         against_statement: "AGAINST Criminalizing Marijuana",

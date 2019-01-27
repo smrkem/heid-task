@@ -4,6 +4,8 @@ export default {
   title: "Government Funded Healthcare",
   problem_statement: "Should the Government Fund Universal Healthcare?",
   position_statements: {
+    for_statement: "Public Healthcare",
+    alternate_statement: "Private Healthcare",
     for: {
         for_statement: "FOR Public Healthcare",
         against_statement: "AGAINST Private Healthcare",

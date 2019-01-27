@@ -4,6 +4,8 @@ export default {
   title: "Abortion Rights",
   problem_statement: "Should Women Have the Right to an Abortion?",
   position_statements: {
+    for_statement: "Pro-Choice",
+    alternate_statement: "Pro-Life",
     for: {
       for_statement: "FOR Pro-Choice",
       against_statement: "AGAINST Pro-Life"

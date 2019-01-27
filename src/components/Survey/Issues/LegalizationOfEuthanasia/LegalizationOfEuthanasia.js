@@ -4,6 +4,8 @@ export default {
   title: "Legalization of Euthanasia",
   problem_statement: "Should Euthanasia be a Legal Option for Voluntary Death?",
   position_statements: {
+    for_statement: "Legalizing Euthanasia",
+    alternate_statement: "Criminalizing Euthanasia",
     for: {
         for_statement: "FOR Legalizing Euthanasia",
         against_statement: "AGAINST Criminalizing Euthanasia",

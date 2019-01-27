@@ -4,6 +4,8 @@ export default {
   title: "Banning The Burqa",
   problem_statement: "Should Women Have the Right to Wear the Burqa?",
   position_statements: {
+    for_statement: "Banning Burqa",
+    alternate_statement: "Wearing Burqa",
     for: {
       for_statement: "FOR Banning Burqa",
       against_statement: "AGAINST Wearing Burqa"

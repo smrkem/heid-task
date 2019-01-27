@@ -4,6 +4,8 @@ export default {
   title: "Gender Wage Equality",
   problem_statement: "Should There be Legislation to Ensure that Men and Women are Paid Equally?",
   position_statements: {
+    for_statement: "Affirmative Action",
+    alternate_statement: "Merit-Based System",
     for: {
       for_statement: "FOR Affirmative Action",
       against_statement: "AGAINST Merit-Based System"

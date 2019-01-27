@@ -4,6 +4,8 @@ export default {
   title: "Black Lives Matter Movement",
   problem_statement: "Is Protesting for #BlackLivesMatter Necessary and Good for America (and other countries)?",
   position_statements: {
+    for_statement: "Black Lives Matter",
+    alternate_statement: "All Lives Matter",
     for: {
       for_statement: "FOR Black Lives Matter",
       against_statement: "AGAINST All Lives Matter"

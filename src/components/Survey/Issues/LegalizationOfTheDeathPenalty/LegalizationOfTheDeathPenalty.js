@@ -4,6 +4,8 @@ export default {
   title: "Legalization of the Death Penalty",
   problem_statement: "Should Some Prisoners be Sentenced to the Death Penalty for Their Crimes?",
   position_statements: {
+    for_statement: "Death Penalty",
+    alternate_statement: "Abolishing Death Penalty",
     for: {
         for_statement: "FOR Death Penalty",
         against_statement: "AGAINST Abolishing Death Penalty",

@@ -4,6 +4,8 @@ export default {
   title: "Animal Testing",
   problem_statement: "Should Animals be Used for Scientific and Commercial Testing in Laboratories?",
   position_statements: {
+    for_statement: "Animal Testing",
+    alternate_statement: "Animal Rights",
     for: {
       for_statement: "FOR Animal Testing",
       against_statement: "AGAINST Animal Testing"

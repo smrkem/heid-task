@@ -4,6 +4,8 @@ export default {
   title: "Climate Change",
   problem_statement: "Should Policy be Implemented to Reduce Human-Caused Environmental Damage",
   position_statements: {
+    for_statement: "Stopping Global Warming",
+    alternate_statement: "Global Warming is a Hoax",
     for: {
       for_statement: "FOR Stopping Global Warming",
       against_statement: "AGAINST Global Warming is a Hoax"

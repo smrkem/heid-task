@@ -4,6 +4,8 @@ export default {
   title: "Gun Control Laws",
   problem_statement: "Should More Gun Control Laws be Enacted?",
   position_statements: {
+    for_statement: "Strict Gun Control",
+    alternate_statement: "Right to Bear Arms",
     for: {
         for_statement: "FOR Strict Gun Control",
         against_statement: "AGAINST Right to Bear Arms",
