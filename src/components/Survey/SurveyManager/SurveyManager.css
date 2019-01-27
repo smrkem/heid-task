@@ -491,7 +491,7 @@
 /* Custom handles */
 .sec3-motivation-range,
 .sec3-position-range {
-    max-width: 800px;
+    max-width: 1070px;
     margin: auto;
 }
 .sec3-motivation-range p,
@@ -745,17 +745,15 @@
 .sec3-position-range .input-prefix-label,
 .sec3-position-range .input-suffix-label {
     width: 120px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 .sec3-motivation-range .input-prefix-label,
 .sec3-position-range .input-prefix-label {
-    text-align: right;
     margin-right: 5px;
 }
 .sec3-motivation-range .input-suffix-label,
 .sec3-position-range .input-suffix-label {
-    text-align: left;
     margin-left: 5px;
 }
 

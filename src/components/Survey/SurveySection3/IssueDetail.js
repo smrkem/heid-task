@@ -33,6 +33,8 @@ class IssueDetail extends React.Component {
   
   render() {
     const issue = this.props.issue;
+    console.log("issue: ", issue);
+
     return (
       <div className="sec3-issueDetail">
         <div className="sec3-issue-copy">
@@ -48,7 +50,7 @@ class IssueDetail extends React.Component {
               ))}
             </div>
             <div>
-              <h4>FOR Arguments:</h4>
+              <h4>FOR {issue.position_statements.for_statement}:</h4>
               <ul>
                 {issue.pros.map((p, i) => (
                   <li key={i}>{p}</li>
@@ -56,7 +58,7 @@ class IssueDetail extends React.Component {
               </ul>
             </div>
             <div>
-              <h4>AGAINST Arguments:</h4>
+              <h4>FOR {issue.position_statements.alternate_statement}:</h4>
               <ul>
                 {issue.cons.map((c, i) => (
                   <li key={i}>{c}</li>
@@ -71,21 +73,27 @@ class IssueDetail extends React.Component {
             <div>
               <p><b>{issue.position_statement}</b></p>
               <p>
-                The slider provided below ranges from -100 (100% AGAINST) to +100 (100% FOR). For instance, -75 (75% AGAINST) would represent some understanding/agreement with arguments FOR.  If you have a neutral stance on the topic, please set the slider to 0.
+                The slider provided below ranges from being 100% FOR one side of the debate ---- to ---- 100% FOR the other side of the debate.
               </p>
               <p>
-                Please indicate below your beliefs about <em>{issue.title}</em> by indicating the DEGREE to which you are:
+                Please indicate which side of the debate you lean on and how strong your opinion is on this topic.
+              </p>
+              <p>
+                For instance, the position 75% FOR Same-Sex Marriage would represent being FOR gay couple's right to marry, but with some hesitations or understanding/agreement with the opposing view on this issue (e.g., reserving marital rights to heterosexual couples).
+              </p>
+              <p>
+                You cannot be “neutral” on this issue, and will have to decide which side of the debate you are on.
               </p>
             </div>
             <div className="range-feedback">
-              { parseInt(this.state.position) < 0 && (<span>AGAINST {-1 * this.state.position}%</span>)}
+              { parseInt(this.state.position) < 0 && (<span>FOR {issue.position_statements.alternate_statement} {-1 * this.state.position}%</span>)}
               { parseInt(this.state.position) === 0 && (<span>NEUTRAL</span>)}
-              { parseInt(this.state.position) > 0 && (<span>FOR {this.state.position}%</span>)}
+              { parseInt(this.state.position) > 0 && (<span>FOR {issue.position_statements.for_statement} {this.state.position}%</span>)}
             </div>
             <div className="sec3-position-range">
               <p>
                   <span className="input-prefix">
-                    <span className="input-prefix-label">AGAINST</span>
+                    <span className="input-prefix-label">FOR <br />{issue.position_statements.alternate_statement}</span>
                     <span className="input-prefix-cue"></span>
                   </span>
                   <input 
@@ -95,10 +103,10 @@ class IssueDetail extends React.Component {
                       type="range" min={-100} max={100} step="5" />
                   <span className="input-suffix">
                     <span className="input-suffix-cue"></span>
-                    <span className="input-suffix-label">FOR</span>
+                    <span className="input-suffix-label">FOR <br />{issue.position_statements.for_statement}</span>
                   </span>
               </p>
-              <p>{issue.problem_statement}</p>
+              {/* <p>{issue.problem_statement}</p> */}
             </div>
             <div className="motivation">
               <p>
