@@ -1,6 +1,7 @@
 import React from 'react'
 
 const IssueInfoModal = ({issue, onCancel}) => {
+  
   return (
     <div onClick={onCancel} className="issueInfoModal">
       <div className="social-values-copy-modal" onClick={e => e.stopPropagation()}>
@@ -19,7 +20,7 @@ const IssueInfoModal = ({issue, onCancel}) => {
             ))}
           </div>
           <div>
-            <h4>FOR Arguments:</h4>
+            <h4>FOR {issue.position_statements.for_statement}:</h4>
             <ul>
               {issue.pros.map((p, i) => (
                 <li key={i}>{p}</li>
@@ -27,7 +28,7 @@ const IssueInfoModal = ({issue, onCancel}) => {
             </ul>
           </div>
           <div>
-            <h4>AGAINST Arguments:</h4>
+            <h4>FOR {issue.position_statements.alternate_statement}:</h4>
             <ul>
               {issue.cons.map((c, i) => (
                 <li key={i}>{c}</li>

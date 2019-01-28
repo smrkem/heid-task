@@ -9,8 +9,8 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
 import issues from '../Survey/Issues/Issues';
 
-// const NUM_TRIALS = 25;
-const NUM_TRIALS = 3;
+const NUM_TRIALS = 25;
+// const NUM_TRIALS = 3;
 const jsPsych = window.jsPsych;
 let keyLogger = new KeyLogger();
 let pointsTracker = new PointsTracker();
