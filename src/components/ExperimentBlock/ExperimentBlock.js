@@ -9,8 +9,8 @@ import './ExperimentBlock.css'
 import { KeyLogger, randomFromInterval, PointsTracker } from '../../utils'
 import issues from '../Survey/Issues/Issues';
 
-const NUM_TRIALS = 25;
-// const NUM_TRIALS = 3;
+// const NUM_TRIALS = 25;
+const NUM_TRIALS = 3;
 const jsPsych = window.jsPsych;
 let keyLogger = new KeyLogger();
 let pointsTracker = new PointsTracker();
@@ -33,6 +33,9 @@ class ExperimentBlock extends React.Component {
 
   instructionsStimuli = () => {
     const { condition } = this.props;
+    console.log('condition: ', condition);
+    console.log('PS: ', this.positionStatements);
+    
 
     let copy = ''
     condition.copy.forEach(para => {
@@ -43,14 +46,17 @@ class ExperimentBlock extends React.Component {
     out += `<div class="icon ${this.getIconClass()}">`;
     
     if (condition.type === 'charity') {
-      const position = condition.socialIssue.position;
-      const signCopy = this.positionStatements[position].for_statement.replace("FOR ", "");
-      out += `<div class="protest-sign"><div><span class="protest-sign-position">FOR</span> ${signCopy}</div></div>`;
+      const charityStatement = condition.socialIssue.position > 0 ?
+        this.positionStatements.for_statement :
+        this.positionStatements.alternate_statement;
+
+      out += `<div class="protest-sign"><div><span class="protest-sign-position">FOR</span> ${charityStatement}</div></div>`;
     }
     else if (condition.type === 'anti-charity') {
-      const position = condition.socialIssue.position;
-      const signCopy = this.positionStatements[position].against_statement.replace("AGAINST ", "");
-      out += `<div class="protest-sign"><div><span class="protest-sign-position">AGAINST</span> ${signCopy}</div></div>`;
+      const anticharityStatement = condition.socialIssue.position > 0 ?
+        this.positionStatements.alternate_statement :
+        this.positionStatements.for_statement;
+      out += `<div class="protest-sign"><div><span class="protest-sign-position">AGAINST</span> ${anticharityStatement}</div></div>`;
     }
 
     out += `</div>`;
@@ -377,14 +383,18 @@ class ExperimentBlock extends React.Component {
       let out = `<p>${pointVal} Points</p><div class="cue icon ${this.getIconClass()}">`;
 
       if (condition.type === 'charity') {
-        const position = condition.socialIssue.position;
-        const signCopy = this.positionStatements[position].for_statement.replace("FOR ", "");
-        out += `<div class="protest-sign"><div><span class="protest-sign-position">FOR</span> ${signCopy}</div></div>`;
+        const charityStatement = condition.socialIssue.position > 0 ?
+          this.positionStatements.for_statement :
+          this.positionStatements.alternate_statement;
+
+        out += `<div class="protest-sign"><div><span class="protest-sign-position">FOR</span> ${charityStatement}</div></div>`;
       }
       else if (condition.type === 'anti-charity') {
-        const position = condition.socialIssue.position;
-        const signCopy = this.positionStatements[position].against_statement.replace("AGAINST ", "");
-        out += `<div class="protest-sign"><div><span class="protest-sign-position">AGAINST</span> ${signCopy}</div></div>`;
+        const anticharityStatement = condition.socialIssue.position > 0 ?
+          this.positionStatements.alternate_statement :
+          this.positionStatements.for_statement;
+
+        out += `<div class="protest-sign"><div><span class="protest-sign-position">AGAINST</span> ${anticharityStatement}</div></div>`;
       }
 
       out += `</div>`;

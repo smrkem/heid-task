@@ -43,7 +43,7 @@ class FinalDetails extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    console.log("SUBMITTING: ", this.state);
+    // console.log("SUBMITTING: ", this.state);
     this.props.finishFinalIssue(this.state);
   }
 

@@ -85,7 +85,7 @@ class SurveySection3 extends React.Component {
   // }
 
   finishFinalIssue(finalDetails) {
-    console.log('finishFinalIssue: ', finalDetails);
+    // console.log('finishFinalIssue: ', finalDetails);
     const issues = JSON.parse(JSON.stringify(this.state.issues));
     issues.forEach(iss => {
       if (iss.selectedIssue) {
