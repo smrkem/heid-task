@@ -4,13 +4,15 @@ export default {
   title: "Hate Speech Censorship",
   problem_statement: "Should Hate Speech be Censored?",
   position_statements: {
+    for_statement: "Censoring Hate Speech",
+    alternate_statement: "Free Speech",
     for: {
         for_statement: "FOR Censoring Hate Speech",
-        against_statement: "AGAINST Censoring Hate Speech",
+        against_statement: "AGAINST Free Speech",
     },
     against: {
         for_statement: "FOR Free Speech",
-        against_statement: "AGAINST Free Speech",
+        against_statement: "AGAINST Censoring Hate Speech",
     },
   },
   image_src: imgSrc,

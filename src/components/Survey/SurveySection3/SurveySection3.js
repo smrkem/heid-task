@@ -2,6 +2,8 @@ import React from 'react'
 import IssueDetail from './IssueDetail'
 import FigurePondering from '../components/FigurePondering/FigurePondering'
 import { dataFromIssue } from '../../../utils'
+import FinalChoice from './FinalChoice';
+import FinalDetails from './FinalDetails';
 
 class SurveySection3 extends React.Component {
   state = { 
@@ -9,6 +11,7 @@ class SurveySection3 extends React.Component {
       'copy1',
       'issues',
       'finalChoice',
+      'finalDetail',
       'showResults'
     ],
     stepIndex: 0,
@@ -22,6 +25,9 @@ class SurveySection3 extends React.Component {
   constructor(props) {
     super(props)
     this.state.issues = props.issues
+    this.setSelectedIssue = this.setSelectedIssue.bind(this);
+    // this.submitFinalIssue = this.submitFinalIssue.bind(this);
+    this.finishFinalIssue = this.finishFinalIssue.bind(this);
   }
 
   advanceStep() {
@@ -49,23 +55,8 @@ class SurveySection3 extends React.Component {
   sumbitIssue(issueData) {
     let issues = JSON.parse(JSON.stringify(this.state.issues))
     issues[this.state.issueIndex].position = issueData.position;
-    issues[this.state.issueIndex].motivation = issueData.motivation;
     this.setState({issues});
     this.advanceIssue();
-  }
-
-  selectFinal(issue) {
-    let issues = JSON.parse(JSON.stringify(this.state.issues));
-    issues.forEach(iss => {
-      delete iss.selectedIssue;
-      if (iss.title === issue.title) {
-        iss.selectedIssue = true;
-      }
-    })
-    this.setState({
-      issues,
-      finalIssueDescription: ""
-    });
   }
 
   selectedIssue() {
@@ -76,15 +67,33 @@ class SurveySection3 extends React.Component {
     return null;
   }
 
-  handleFinalIssueDescriptionChange(event) {
-    this.setState({finalIssueDescription: event.target.value})
+  setSelectedIssue(issue) {
+    let issues = JSON.parse(JSON.stringify(this.state.issues));
+    issues.forEach(iss => {
+      delete iss.selectedIssue;
+      if (iss.title === issue.title) {
+        iss.selectedIssue = true;
+      }
+    })
+    this.setState({issues});
+
+    this.advanceStep();
   }
 
-  finishFinalIssue() {
+  // handleFinalIssueDescriptionChange(event) {
+  //   this.setState({finalIssueDescription: event.target.value})
+  // }
+
+  finishFinalIssue(finalDetails) {
+    // console.log('finishFinalIssue: ', finalDetails);
     const issues = JSON.parse(JSON.stringify(this.state.issues));
     issues.forEach(iss => {
       if (iss.selectedIssue) {
-        iss.userDescription = this.state.finalIssueDescription;
+        iss.userDescription = finalDetails.finalIssueDescription;
+        iss.svt3_q1 = finalDetails.svt3_q1;
+        iss.svt3_q2 = finalDetails.svt3_q2;
+        iss.svt3_q3 = finalDetails.svt3_q3;
+        iss.svt3_q4 = finalDetails.svt3_q4;
       }
     });
     this.setState({issues});
@@ -115,7 +124,7 @@ class SurveySection3 extends React.Component {
                   className="btn btn-info"
                 >Go Back</button>
               </p>
-              <p>In this Section III, the goal is to clarify your views on these issues. Please answer each question as best as you can.</p>
+              <p>In this Section III, the goal is to clarify your views on these issues. You will be provided with a description of the controversial social issue and a list of some arguments for each opposing positions. You are not required to read these sections if you feel familiar with the topic. Your task is to answer each question presented at the end of these descriptions as best as you can.</p>
             </div>
             <button
               className="btn btn-black btn-large"
@@ -148,70 +157,24 @@ class SurveySection3 extends React.Component {
     }
 
     if (this.showing() === 'finalChoice') {
-      const finalIssue = this.selectedIssue();
-      let finalIssuePosition;
-      if (finalIssue) {
-        finalIssuePosition = finalIssue.position > 0 ? 'FOR' : 'AGAINST';
-        if (parseInt(finalIssue.position) === 0) {
-          finalIssuePosition = 'NEUTRAL';
-        }
-      }
 
       return (
-        <div className="surveySection sec3">
-          <div className="survey-black-bg"></div>
-
-          <div className="sec1-inner copy1" ref={e => this.contentWrap = e}>
-            <div className="social-values-copy-modal">
-              <p>In the next task, you will have the opportunity to fight for one of these causes (i.e., donate $75 towards it). Please carefully select the cause you would be MOST MOTIVATED to fight for in the next task by clicking one of these options:</p>
-              <ul>
-                {this.state.issues.map(iss => {
-                  let pos = iss.position < 0 ? 'AGAINST' : 'FOR';
-                  if (parseInt(iss.position) === 0) {
-                    pos = 'NEUTRAL';
-                  }
-                  return (
-                    <li key={iss.title}>
-                      <button
-                        className="btn btn-primary finalIssueSelection"
-                        disabled={iss.selectedIssue}
-                        onClick={() => this.selectFinal(iss)}
-                      >{pos} {iss.title}</button>
-                    </li>)
-                })}
-              </ul>
-              
-              {finalIssue && (
-                <div className="finalIssue-description">
-                  <p>Amazing! You have decided to fight <b>{finalIssuePosition} {finalIssue.title}</b></p>
-                  <p>In this section, please write in 5 sentences or less WHY you chose this social issue (e.g., what do you believe in and/or why it is motivating to fight for): </p>
-                  <p>
-                    <textarea 
-                      className="finalIssue-textarea"
-                      value={this.state.finalIssueDescription} 
-                      onChange={this.handleFinalIssueDescriptionChange.bind(this)} 
-                      maxLength={500} />
-                    <small>{500 - this.state.finalIssueDescription.length} remaining</small>
-                  </p>
-                  <p style={{textAlign: 'right'}}>
-                    <button
-                      className="btn btn-primary"
-                      disabled={this.state.finalIssueDescription.length < 1}
-                      onClick={() => this.finishFinalIssue()}
-                    >Finish</button>
-                  </p>
-                </div>
-              )}
-
-            </div>
-          </div>
-
-          
-
-          <FigurePondering classNames="figure_pondering_left_bottom" />
-        </div>
+        <FinalChoice
+          setSelectedIssue={this.setSelectedIssue}
+          issues={this.state.issues}
+        />
       )
     }
+
+    if (this.showing() === 'finalDetail') {
+      return (
+        <FinalDetails
+         issue={this.selectedIssue()}
+         finishFinalIssue={this.finishFinalIssue}
+         />
+      )
+    }
+
 
     if (this.showing() === 'showResults') {
       let issues = JSON.parse(JSON.stringify(this.state.issues))

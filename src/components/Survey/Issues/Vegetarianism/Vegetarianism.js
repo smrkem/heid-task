@@ -4,13 +4,15 @@ export default {
   title: "Vegetarianism",
   problem_statement: "Should Everyone Be Making a Move Towards Vegetarianism?",
   position_statements: {
+    for_statement: "Vegetarianism",
+    alternate_statement: "Eating Meat",
     for: {
         for_statement: "FOR Vegetarianism",
-        against_statement: "AGAINST Vegetarianism",
+        against_statement: "AGAINST Eating Meat",
     },
     against: {
-        for_statement: "FOR Dietary Freedom",
-        against_statement: "AGAINST Dietary Freedom",
+        for_statement: "FOR Eating Meat",
+        against_statement: "AGAINST Vegetarianism",
     },
   },
   image_src: imgSrc,

@@ -4,13 +4,15 @@ export default {
   title: "Stem Cell Research",
   problem_statement: "Should Embryonic Stem Cell Research Be Allowed?",
   position_statements: {
+    for_statement: "Stem Cell Research",
+    alternate_statement: "Protection of Embryos",
     for: {
         for_statement: "FOR Stem Cell Research",
-        against_statement: "AGAINST Stem Cell Research",
+        against_statement: "AGAINST Protection of Embryos",
     },
     against: {
-        for_statement: "FOR Protection of Human Life",
-        against_statement: "AGAINST Protection of Human Life",
+        for_statement: "FOR Protection of Embryos",
+        against_statement: "AGAINST Stem Cell Research",
     },
   },
   image_src: imgSrc,

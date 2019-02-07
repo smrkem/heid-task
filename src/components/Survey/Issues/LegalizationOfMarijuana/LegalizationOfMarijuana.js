@@ -4,13 +4,15 @@ export default {
   title: "Legalization of Marijuana",
   problem_statement: "Should Recreational Marijuana be Legal?",
   position_statements: {
+    for_statement: "Legalizing Marijuana",
+    alternate_statement: "Criminalizing Marijuana",
     for: {
         for_statement: "FOR Legalizing Marijuana",
-        against_statement: "AGAINST Legalizing Marijuana",
+        against_statement: "AGAINST Criminalizing Marijuana",
     },
     against: {
-        for_statement: "FOR Preventing Marijuana Use",
-        against_statement: "AGAINST Preventing Marijuana Use",
+        for_statement: "FOR Criminalizing Marijuana",
+        against_statement: "AGAINST Legalizing Marijuana",
     },
   },
   image_src: imgSrc,

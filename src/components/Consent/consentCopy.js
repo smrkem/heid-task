@@ -22,16 +22,16 @@ const getConsentCopy = () => {
         </p>
         <div>
           <ol>
-            <li>I will fill in some questionnaires on depression and wellbeing (15 minutes);</li>
-            <li>I will complete a Social Values Task involving the selection of a social issue that is viewed as personally meaningful and important to me (15 minutes);</li>
+            <li>I will fill in some questionnaires on depression and wellbeing (6 minutes);</li>
+            <li>I will complete a Social Values Task involving the selection of a social issue that is viewed as personally meaningful and important to me (10 minutes);</li>
             <li>
-              I will complete a reward task (35 minutes) wherein I will be working towards hitting a target within a narrow window of time to win additional money (up to 225 CAD in total) for:
+              I will complete a reward task (44 minutes) wherein I will be working towards hitting a target within a narrow window of time to win additional money (up to 225 USD in total) for:
               <ol type="a">
-                <li><b>Self:</b> winning 75 CAD for yourself that you can spend on anything you like.</li>
-                <li><b>Charity:</b> winning 75 CAD to donate to a charity that fights for a social issue you believe in (e.g., marriage equality, gun rights).</li>
-                <li><b>Anti-Charity:</b> avoid donating money for a social cause that is antithetic to my beliefs.</li>
+                <li><b>Self:</b> Winning 75 USD for yourself that you can spend on anything you like.</li>
+                <li><b>Charity:</b> Winning 75 USD to donate to a charity that fights for a social issue you believe in (e.g., marriage equality, gun rights).</li>
+                <li><b>Anti-Charity:</b> Avoid donating money for a social cause that is antithetic to your beliefs.</li>
               </ol>
-              For instance, if I believe in stem cell research, then I am fighting to win 75 CAD for myself, 75 CAD for a charity that donates to stem cell research, AND fighting to NOT donate 75 CAD to a charity that is trying to abolish stem cell research (if I lose the anti-charity trials of this task, I will be forced to donate 75 CAD to this cause). This will be explained in greater detail during the task.
+              For instance, if I believe in stem cell research, then I am fighting to win 75 USD for myself, 75 USD for a charity that donates to stem cell research, AND fighting to NOT donate 75 USD to a charity that is trying to abolish stem cell research (if I lose the anti-charity trials of this task, I will be forced to donate 75 USD to this cause). This will be explained in greater detail during the task.
             </li>
             <li>During both the Social Values Task and reward task, I will be answering questions on my current emotional state and motivation.</li>
           </ol>
@@ -49,7 +49,7 @@ const getConsentCopy = () => {
         <div>
           <ol>
             <li>momentary increases in positive emotions and positive mood;</li>
-            <li>satisfaction from entering a weekly competition wherein the top 10 participants with the greatest score for each condition (i.e., self, charity, anti-charity) will win 75 CAD. As such, if you are in the top 10 participants for the Charity condition, you will win 75 CAD to donate to your charity of choice, based on the social issue you selected as important. If you are in the top 10 participants in the Self condition, you will win 75 CAD for yourself as pocket money (sent to your MTurk account).</li>
+            <li>satisfaction from entering a weekly competition wherein the top 10 participants with the greatest score for each condition (i.e., self, charity, anti-charity) will win 75 USD. As such, if you are in the top 10 participants for the Charity condition, you will win 75 USD to donate to your charity of choice, based on the social issue you selected as important. If you are in the top 10 participants in the Self condition, you will win 75 USD for yourself as pocket money (sent to your MTurk account).</li>
             <li>an opportunity to contribute to scientific research on emotions and affective neuroscience.</li>
           </ol>
         </div>

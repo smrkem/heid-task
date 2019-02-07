@@ -5,17 +5,16 @@ import img1src from './heid-welcome-1.png';
 import img2src from './heid-welcome-2.png';
 import img3src from './heid-welcome-3.png';
 
-const HEIDWelcome = ({socialIssue, advanceStep}) => {
-  // temp for dev work
-  // socialIssue = {
-  //   name: "Abortion Rights",
-  //   position: "for"
-  // }
-
-  
+const HEIDWelcome = ({socialIssue, advanceStep}) => {  
   const selectedIssue = issues.filter(iss => iss.title === socialIssue.name)[0];
-  const positionStatements = selectedIssue.position_statements[socialIssue.position];
   
+  const position = parseInt(socialIssue.position);
+
+  const forStatement = selectedIssue.position_statements.for_statement;
+  const alternateStatement = selectedIssue.position_statements.alternate_statement;
+  const promoteStatement =  position > 0 ? forStatement : alternateStatement;
+  const preventStatement = position > 0 ? alternateStatement : forStatement;
+
   return (
     <div className="HEIDWelcome">
       <div>
@@ -32,11 +31,11 @@ const HEIDWelcome = ({socialIssue, advanceStep}) => {
           More specifically, you will have the opportunity to compete in a weekly competition to:
         </p>
         <ol>
-          <li><b>WIN $75 USD for yourself</b> to spend on fun, relaxing activities, or anything of your choosing.</li>
-          <li><b>WIN $75 USD that will be donated to a charity that is consistent with your beliefs</b> about {selectedIssue.title} and fights {positionStatements.for_statement}.</li>
-          <li><b>AVOID LOSING and be forced to donate $75 USD to a charity that is opposed to your beliefs</b> about {selectedIssue.title} and fights {positionStatements.against_statement}.</li>
+          <li><b>WIN for yourself:</b> Win $75 USD for yourself to spend on fun, relaxing activities, or anything of your choosing.</li>
+          <li><b>WIN to promote FOR {promoteStatement}:</b> Win $75 USD that will be donated to a charity that supports {promoteStatement}</li>
+          <li><b>WIN to prevent {preventStatement}:</b> Win and avoid donating $75 USD to a charity that supports {preventStatement}</li>
         </ol>
-        <p><b>The winner of the weekly competition is the top scorer within each category (1-3). You will be informed by Monday of the following week if you have won!</b></p>
+        <p><b>To win, you need to win as many points as possible in each game round. The winner of the weekly competition is the top scorer within each category (1-3). You will be informed within a week if you have won!</b></p>
 
         <h3 className="underlined-heading">Specific Instructions:</h3>
         <p>
@@ -56,22 +55,23 @@ const HEIDWelcome = ({socialIssue, advanceStep}) => {
           This fixation cross will then quickly and randomly change into the Grey Circle Target. Your goal is to press ENTER when you see this target as quickly as possible. <b>To win (or avoid losing)</b>, you need to press <b>ENTER</b> on your keyboard when the Grey Circle target appears and BEFORE it disappears. The grey circle target will remain on the screen for less than 250 milliseconds on average, so you will need to respond as quickly as you can. 
         </p>
         <p>
-          Of note, <b>you cannot hit the ENTER key BEFORE seeing the target or multiple times</b>, this will result in points being removed from your total score. Hit the enter key only once you see the target.
+          <b>Of note, you cannot hit the SPACE bar BEFORE seeing the target or multiple times, this will result in points being removed from your total score. Hit the space bar only once you see the target.</b>
         </p>
-        <p>
-          In addition, the faster you hit the target, the quicker you will finish this task! 
-        </p>
+        
         <p className="welcome-inner-image">
           <img src={img2src} alt="" />
         </p>
         <p>
-          Following, you will see a money bag and arrow that will display whether you won or lost this trial, and by how much. A larger arrow upwards suggests a big win (smaller arrow upwards- small win) and a larger arrow downward suggest a big loss (smaller arrow downward - small loss). 
+          Following, you will be informed of whether you won or lost that trial and how many points you have won or lost respectively.
         </p>
         <p className="welcome-inner-image">
           <img src={img3src} alt="" />
         </p>
         <p>
-          <b>You will complete a number of trials in a row where your goal is to win as many points as possible, and then move on to the next game round.</b>
+          You will complete a number of trials in a row where your goal is to win as many points as possible, and then move on to the next game round. Each game round should last between 3 - 7 minutes depending on how fast you are going. The faster you hit the target, the quicker you will finish this task!
+        </p>
+        <p>
+          At the end of each game round, you will be asked some new questions about how you are feeling.
         </p>
         <p>
           <button

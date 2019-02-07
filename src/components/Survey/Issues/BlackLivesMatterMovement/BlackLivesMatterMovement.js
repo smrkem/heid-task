@@ -4,18 +4,20 @@ export default {
   title: "Black Lives Matter Movement",
   problem_statement: "Is Protesting for #BlackLivesMatter Necessary and Good for America (and other countries)?",
   position_statements: {
+    for_statement: "Black Lives Matter",
+    alternate_statement: "All Lives Matter",
     for: {
       for_statement: "FOR Black Lives Matter",
-      against_statement: "AGAINST Black Lives Matter"
+      against_statement: "AGAINST All Lives Matter"
     },
     against: {
       for_statement: "FOR All Lives Matter",
-      against_statement: "AGAINST All Lives Matter"
+      against_statement: "AGAINST Black Lives Matter"
     }
   },
   image_src: imgSrc,
   description: [
-    "Black Lives Matter is an international activist movement originating in the United States that campaigns against violence and systemic racism towards black people. The movement began with the use of the hashtag #BlackLivesMatter on social media after the acquittal of George Zimmerman in the shooting of Trayvon Martin, a black teenager, in February 2012. Since, there have been over 2000 #BlackLivesMatter protests worldwide, including the U.S., England, Canada, Australia, and Ghana, as well as several high-profile statements, such as professional athletes sitting during the national anthem, as opposed to the tradition of standing (a symbol of national pride), in solidarity with the Black Lives Matter movement. The protests and these types of acts have generated mixed reactions. Here are a few arguments FOR and AGAINST whether the Black Lives Movement is “good” for America and other countries."
+    "Black Lives Matter is an international activist movement originating in the United States that campaigns against violence and systemic racism towards black people. The movement began with the use of the hashtag #BlackLivesMatter on social media after the acquittal of George Zimmerman in the shooting of Trayvon Martin, a black teenager, in February 2012. Since, there have been over 2000 #BlackLivesMatter protests worldwide, as well as several high-profile statements, such as professional athletes sitting during the national anthem, as opposed to the tradition of standing (a symbol of national pride), in solidarity with the movement. The protests and these types of acts have generated mixed reactions and debates on whether this movement is helpful or harmful for America and other countries. Here are a few arguments presented by opposite sides of the debate."
   ],
   pros: [
     "There is evidence of systemic, discriminatory practices in law enforcement wherein black males are twice as likely to be shot or arrested for drug offences than white males.",

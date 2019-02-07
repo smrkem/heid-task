@@ -17,9 +17,9 @@ class TaskManager extends React.Component {
   }
 
   steps = [
-    // 'consent',
-    // 'wellbeing',
-    // 'break1',
+    'consent',
+    'wellbeing',
+    'break1',
     'survey',
     'break2',
     'HEIDWelcome',
@@ -43,8 +43,8 @@ class TaskManager extends React.Component {
       // }
 
       // this.state.socialIssue = {
-      //   name: "Legalization of Same-Sex Marriage",
-      //   position: "against"
+      //   name: "Climate Change",
+      //   position: "32"
       // }
   }
 
@@ -62,7 +62,7 @@ class TaskManager extends React.Component {
   }
 
   submitSocialIssue(issue) {
-    let position = issue.position < 0 ? "against" : "for";
+    let position = issue.position;
     this.setState({
       socialIssue: {
         name: issue.title,

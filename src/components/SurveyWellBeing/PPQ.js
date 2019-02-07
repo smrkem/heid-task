@@ -1,24 +1,28 @@
 import React from 'react';
 import RadioRange from './components/RadioRange';
-import HEMARItems from './components/HEMARItems';
+import PPQItems from './components/PPQItems';
 
-const Legend = () => (
+const Legend = (props) => (
   <div className="form-legend">
-    <div>Not at all</div>
-    <div>Very Much</div>
+    <div>Strongly disagree</div>
+    <div>Moderately disagree</div>
+    <div>Slightly disagree</div>
+    <div>Slightly agree</div>
+    <div>Moderately agree</div>
+    <div>Strongly agree</div>
   </div>
 )
 
-export default class HEMAR extends React.Component {
-  name = "HEMAR";
-
+export default class PPQ extends React.Component {
+  name = 'PPQ';
+  
   constructor(props) {
     super(props);
     if (props.formData) {
       this.state = props.formData;
     } else {
       let state = {};
-      Object.keys(HEMARItems).forEach(key => {
+      Object.keys(PPQItems).forEach(key => {
         state[key] = null;
       });
       this.state = state;
@@ -43,44 +47,54 @@ export default class HEMAR extends React.Component {
   }
 
   render() {
-    let formItems = [];
     let disabled = true;
+    let formItems = [];
+    let i = 1;
     Object.keys(this.state).forEach(item => {
       if (this.state[item] !== null) {
         disabled = false;
       }
-
-      formItems.push(<Legend key={`${item}-legend`} />);
       formItems.push(
-          <div key={item} className="hemar-item">
-            <p>{HEMARItems[item]}</p>
+          <div key={item} className="pwb-item">
+            <p>{PPQItems[item].prompt}</p>
             <RadioRange
               handleRadioChange={this.handleFieldChange}
               currentValue={this.state[item]}
               name={item}
               rangeMin={1}
-              rangeMax={7}
+              rangeMax={6}
+              reversed={PPQItems[item].reversed}
             />
           </div>
       )
+      // if (i % 3 === 0 && i !== Object.keys(this.state).length) {
+      //   formItems.push(<Legend key={`${item}-legend`} />)
+      // }
+      i++;
     });
-    
     return (
-      <div className="inner-copy hemar">
-        <h2>HEMA-R</h2>
+      <div className="inner-copy pwb">
+        <h2>PPQ</h2>
 
-        <p>To what degree do you typically approach your activities (e.g., spending time with friends/family, hobbies, working) with each of the following intentions, whether or not you actually achieve your aim?</p>
+        <p>Please indicate your degree of agreement to the following sentences:</p>
         <form onSubmit={this.handleFormSubmit}>
-
+          <div className="grid-lines"></div>
           <div className="form-group">
+            <div className="form-legend">
+              <div>Strongly disagree</div>
+              <div>Moderately disagree</div>
+              <div>Slightly disagree</div>
+              <div>Slightly agree</div>
+              <div>Moderately agree</div>
+              <div>Strongly agree</div>
+            </div>
             {formItems}
           </div>
           
-
           <div className="submit-button">
             <button
-            disabled={disabled}
-            className="btn btn-primary"
+              disabled={disabled}
+              className="btn btn-primary"
             >
             Next</button>
           </div>

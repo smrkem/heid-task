@@ -4,6 +4,8 @@ export default {
   title: "Legalization of Drugs",
   problem_statement: "Should All Drugs be Legalized?",
   position_statements: {
+    for_statement: "Legalization of Drugs",
+    alternate_statement: "Preventing Drug Use",
     for: {
         for_statement: "FOR Legalization of Drugs",
         against_statement: "AGAINST Legalization of Drugs",

@@ -2,21 +2,23 @@ import imgSrc from './issue-gun-control-laws.png';
 
 export default {
   title: "Gun Control Laws",
-  problem_statement: "Should Gun Laws be more Strictly Enforced by Law?",
+  problem_statement: "Should More Gun Control Laws be Enacted?",
   position_statements: {
+    for_statement: "Strict Gun Control",
+    alternate_statement: "Right to Bear Arms",
     for: {
         for_statement: "FOR Strict Gun Control",
-        against_statement: "AGAINST Strict Gun Control",
+        against_statement: "AGAINST Right to Bear Arms",
     },
     against: {
         for_statement: "FOR Right to Bear Arms",
-        against_statement: "FOR Right to Bear Arms",
+        against_statement: "FOR Strict Gun Control",
     },
   },
   image_src: imgSrc,
   description: [
-    "The United States has 88.8 guns per 100 people, or about 270,000,000 guns, which is the highest total and per capita number in the world. 22% of Americans own one or more guns (35% of men and 12% of women). America's pervasive gun culture stems in part from its colonial history, revolutionary roots, frontier expansion, and the Second Amendment, which states: \"A well regulated militia, being necessary to the security of a free State, the right of the people to keep and bear Arms, shall not be infringed. Here are a few arguments FOR and AGAINST enforcing stricter gun control laws.\""
-  ],
+    "Gun control (or firearms regulation) is the set of laws or policies that regulate the manufacture, sale, transfer, possession, or use of firearms by civilians. Most countries have a restrictive firearm guiding policy; however, in some countries, such as the United States (U.S.), the right to bear arms is constitutionally protected, resulting in an elevated rate of gun possession in the U.S. compared to other countries (88.8 guns per 100 people). There is significant debate as to whether more gun control laws should be enacted in order to reduce availability of weapons and potential violence. Here are a few arguments presented by opposite sides of the debate."
+    ],
   pros: [
     "The Second Amendment was intended for militia, not domestic/personal use.",
     "Mass shootings, impulsive gun violence (e.g., shooting someone out of anger), and accidental deaths (e.g., children playing with guns) would be significantly reduced if guns were less easily available.",

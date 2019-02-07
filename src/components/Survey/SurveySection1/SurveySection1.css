@@ -13,7 +13,7 @@
 .social-values-sec1-issue-modal {
     max-width: 570px;
 }
-@media only screen and (min-width: 860px) {
+@media only screen and (min-width: 960px) {
     .social-values-sec1-issue-modal {
         max-width: none;
         margin-left: 200px;
@@ -75,6 +75,8 @@
     color: #fff;
     background-color: #17a2b8;
     border-color: #17a2b8;
+    max-width: 155px;
+    white-space: normal;
 }
 .sec1-issue-selections .btn:hover {
     background-color: #138496;
@@ -83,11 +85,13 @@
 .sec1-issue-selections .btn:not(:disabled):not(.disabled):active {
     background-color: #17a2b8;
     border-color: #17a2b8;
-} 
+}
+
 @media screen and (min-width: 1210px) {
     .sec1-issue-selections .btn {
         padding: 1rem 2rem;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        max-width: 200px;
     }
 }
 

@@ -4,13 +4,15 @@ export default {
   title: "Me Too Movement",
   problem_statement: "Should Accusations of Sexual Assault Be Broadcasted on Social Media Platforms?",
   position_statements: {
+    for_statement: "MeToo Movement",
+    alternate_statement: "Private Reporting Only",
     for: {
         for_statement: "FOR MeToo Movement",
-        against_statement: "AGAINST MeToo Movement",
+        against_statement: "AGAINST Private Reporting Only",
     },
     against: {
-        for_statement: "FOR Reporting Assault to Justice System",
-        against_statement: "AGAINST Reporting Assault to Justice System",
+        for_statement: "FOR Private Reporting Only",
+        against_statement: "AGAINST MeToo Movement",
     },
   },
   image_src: imgSrc,

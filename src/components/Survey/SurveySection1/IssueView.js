@@ -44,15 +44,15 @@ class IssueView extends React.Component {
               <button
                 className="btn"
                 onClick={() => categorizeIssue(issue, 'not-important')}
-                >NOT<br /> IMPORTANT</button>
+                >NOT IMPORTANT TO ME</button>
               <button
                 className="btn"
                 onClick={() => categorizeIssue(issue, 'somewhat-important')}
-                >SOMEWHAT<br /> IMPORTANT</button>
+                >SOMEWHAT IMPORTANT TO ME</button>
               <button
                 className="btn"
                 onClick={() => categorizeIssue(issue, 'important')}
-                >IMPORTANT</button>
+                >IMPORTANT TO ME</button>
             </div>
           </div>
            

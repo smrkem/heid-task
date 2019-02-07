@@ -4,13 +4,15 @@ export default {
   title: "Legalization of Same-Sex Marriage",
   problem_statement: "Should Gay Couples be Allowed to Marry?",
   position_statements: {
+    for_statement: "Marriage Equality",
+    alternate_statement: "Traditional Marriage",
     for: {
         for_statement: "FOR Marriage Equality",
-        against_statement: "AGAINST Marriage Equality",
+        against_statement: "AGAINST Traditional Marriage",
     },
     against: {
-        for_statement: "FOR Protecting Traditional Marriage",
-        against_statement: "AGAINST Protecting Traditional Marriage",
+        for_statement: "FOR Traditional Marriage",
+        against_statement: "AGAINST Marriage Equality",
     },
   },
   image_src: imgSrc,

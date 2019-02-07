@@ -4,18 +4,20 @@ export default {
   title: "Climate Change",
   problem_statement: "Should Policy be Implemented to Reduce Human-Caused Environmental Damage",
   position_statements: {
+    for_statement: "Stopping Global Warming",
+    alternate_statement: "Global Warming is a Hoax",
     for: {
       for_statement: "FOR Stopping Global Warming",
-      against_statement: "AGAINST Stopping Global Warming"
+      against_statement: "AGAINST Global Warming is a Hoax"
     },
     against: {
-      for_statement: "FOR Stopping Global Warming Hoax",
-      against_statement: "AGAINST Stopping Global Warming Hoax"
+      for_statement: "FOR Global Warming is a Hoax",
+      against_statement: "AGAINST Stopping Global Warming"
     }
   },
   image_src: imgSrc,
   description: [
-    "Climate change is controversial because of the implications it has for policy, business, and environment. Temperatures have increased globally. This has created significant change globally. Many ecosystems, such as coral reefs or polar ice caps, are failing. The melting of the ice caps also creates a rise in sea levels, leading to flooding. There is also an increase in extreme weather. These are a few implications of climate change. The degree to which human activity influences climate change is debated. Here are a few arguments FOR and AGAINST implementing more policy to reduce the human impact on global warming."
+    "Temperatures have increased globally, creating significant changes in many ecosystems. For instance, these temperature changes have exacerbated the melting of the ice caps, resulting in rising sea levels and more frequent flooding. The degree to which human activity influences climate change and whether the world requires stricter environmental policies to reduce this potentially human-caused damage is debated. Here are a few arguments presented by opposite sides of the debate."
   ],
   pros: [
     "In 2010 a study found that 97%-98% climate researchers most actively publishing in their field agreed that human activity is responsible for climate change.",

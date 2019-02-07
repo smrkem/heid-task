@@ -21,6 +21,7 @@
 
 .icon.charity,
 .icon.anti-charity {
+    background-image: url('/images/protestor.png');
     background-size: 310px;
     background-position: -25px -30px;
     height: 360px;
@@ -30,13 +31,6 @@
 .icon.cue.charity,
 .icon.cue.anti-charity {
     background-position: 0px -30px;
-}
-
-.icon.charity {
-    background-image: url('/images/protestor-smile.png');
-}
-.icon.anti-charity {
-    background-image: url('/images/protestor-frown.png');
 }
 
 .icon .protest-sign  {
@@ -198,7 +192,7 @@
 
 .feedback {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translateX(-50%);
 }

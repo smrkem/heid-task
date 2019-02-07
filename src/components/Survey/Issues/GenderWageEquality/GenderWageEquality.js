@@ -4,18 +4,20 @@ export default {
   title: "Gender Wage Equality",
   problem_statement: "Should There be Legislation to Ensure that Men and Women are Paid Equally?",
   position_statements: {
+    for_statement: "Affirmative Action",
+    alternate_statement: "Merit-Based System",
     for: {
-      for_statement: "FOR Gender Wage Equality",
-      against_statement: "AGAINST Gender Wage Equality"
+      for_statement: "FOR Affirmative Action",
+      against_statement: "AGAINST Merit-Based System"
     },
     against: {
       for_statement: "FOR Merit-Based System",
-      against_statement: "AGAINST Merit-Based System"
+      against_statement: "AGAINST Affirmative Action"
     }
   },
   image_src: imgSrc,
   description: [
-    "The gender wage gap is the difference in earnings between men and women in the workplace. In general, reports suggest that women earn an average of 87 cents to every dollar a male earns, and there is a disproportionate amount of women in lower paying jobs than men. Debate on this topic extends to beliefs on reasons why the gap exists, whether there is in fact equal opportunity for all, and whether affirmative action (giving women preferential treatment in employment) is fair/justified. Here are a few arguments FOR and AGAINST imposing legislation to ensure gender wage equality."
+    "The gender wage gap is the difference in earnings between men and women in the workplace. In general, reports suggest that women earn an average of 87 cents to every dollar a male earns, and there is a disproportionate amount of women in lower paying jobs than men. Debate on this topic extends to beliefs on reasons why the gap exists, whether there is in fact unequal opportunities between genders, and whether legislation – such as affirmative action (giving women preferential treatment in employment) – should replace merit-based systems where employment and salaries are based on performance not gender. Here are a few arguments presented by opposite sides of the debate."
   ],
   pros: [
     "Differences in earnings for men and women are founded in systematic, discriminatory practices.",
