@@ -62,6 +62,8 @@ class IssuesView extends React.Component {
   render() {
     const { issues, finishedSorting } = this.props;
 
+    console.log('issues:', issues);
+
     const issueCards = {
       uncategorized: [],
       most_important: [],
@@ -83,6 +85,8 @@ class IssuesView extends React.Component {
         </div>
       )
     })
+
+    console.log('issueCards:', issueCards);
 
     if (this.state.showInstructions) {
       return (
@@ -143,32 +147,30 @@ class IssuesView extends React.Component {
               </div>
             </div>
         </div>
-        <div className="issue-queue">
+
+        <div className="showInstructions">
           <button
-            onClick={this.showInstructions} 
-            className="showInstructionsButton"
-            >Show Instructions</button>
-
-          <div className="issue-row">
-            {issueCards.uncategorized}
-            {!issueCards.uncategorized.length && (
-              <div className="tray-buttons">
-                <button
-                  onClick={this.props.resetIssues}
-                  className="btn btn-large btn-grey finishedButton"
-                  >Start Over
-                  </button>
-
-                <button
-                  onClick={finishedSorting}
-                  disabled={!issueCards.most_important.length}
-                  className="btn btn-large btn-primary finishedButton"
-                  >I'm Finished
-                  </button>
-              </div>
-            )}
-          </div>
+              onClick={this.showInstructions} 
+              className="showInstructionsButton"
+              >Show Instructions</button>
         </div>
+
+        <div className="some-buttons">
+          <button
+            onClick={this.props.resetIssues}
+            className="btn btn-large btn-grey finishedButton"
+            >Start Over
+            </button>
+
+          <button
+            onClick={finishedSorting}
+            disabled={!issueCards.most_important.length}
+            className="btn btn-large btn-primary finishedButton"
+            >I'm Finished
+            </button>
+        </div>
+
+  
       </div>
     )
   }

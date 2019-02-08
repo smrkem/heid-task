@@ -3,6 +3,7 @@ import Copy1 from './Copy1'
 import IssuesView from './IssuesView';
 import FigurePondering from '../components/FigurePondering/FigurePondering'
 import { dataFromIssue } from '../../../utils'
+import './SurveySection2.css';
 
 
 class SurveySection2 extends React.Component {
@@ -18,7 +19,7 @@ class SurveySection2 extends React.Component {
 
   constructor(props) {
     super(props)
-    props.issues.forEach(iss => { iss.importance2 = 'uncategorized'} )
+    props.issues.forEach(iss => { iss.importance2 = 'less_important'} )
 
     if (props.step) {
       this.state.stepIndex = this.state.steps.indexOf(props.step);
@@ -41,7 +42,7 @@ class SurveySection2 extends React.Component {
   resetIssues() {
     let issues = JSON.parse(JSON.stringify(this.state.issues))
     issues.forEach(i => {
-        i.importance2 = 'uncategorized'
+        i.importance2 = 'less_important'
     })
     this.setState({issues}) 
   }
