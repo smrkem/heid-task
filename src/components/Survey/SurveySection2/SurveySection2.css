@@ -115,21 +115,7 @@
 }
 
 /* TODO - NAME THIS - BUTTONS TEMP */
-.showInstructionsButton,
-.figureButton {
-    box-shadow: inset -2px -3px 5px #aaa;
-    font-size: 0.8rem;
-    cursor: pointer;
-    background: white;
-    height: 40px;
-    border-radius: 40px;
-    padding: 0 20px 0;
-    overflow: hidden;
-}
 
-.figureButton {
-    padding: 0 0 0 40px; 
-}
 .some-buttons {
     position: absolute;
     bottom: 0;
@@ -155,44 +141,14 @@
     left: 15px;
 }
 
-.showInstructions .figureButton,
-.goBack .figureButton {
-    width: 40px;
-    transition: width .25s ease;
-}
-.showInstructions .figureButton:hover {
+.showInstructions .iconExpandingButton:hover {
     width: 160px;
 }
-.goBack .figureButton:hover {
+.goBack .iconExpandingButton:hover {
     width: 100px;
 }
 
-.showInstructions .btn_icon,
-.goBack .btn_icon {
-    height: 30px;
-    width: 30px;
-    background-size: 30px 30px;
-    background-repeat: no-repeat;
-    display: block;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-}
 
-.figureButton .left_icon_blue {
-    background-image: url(/images/left_icon_blue.png);
-    opacity: 0.6;
-}
-.figureButton .question_icon_blue {
-    background-image: url(/images/question_icon_blue.png);
-    opacity: 0.8;
-}
-.figureButton .button_text {
-    white-space: nowrap;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
 
 /* .goBack button {
     padding-left: 40px;

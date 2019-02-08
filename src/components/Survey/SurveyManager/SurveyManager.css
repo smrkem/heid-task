@@ -31,6 +31,55 @@
     SURVEY BUTTONS
 
 */
+.whitePillButton {
+    box-shadow: inset -2px -3px 5px #aaa;
+    font-size: 0.8rem;
+    cursor: pointer;
+    background: white;
+    height: 40px;
+    border-radius: 40px;
+    padding: 0 20px 0;
+    overflow: hidden;
+}
+.iconExpandingButton {
+    padding: 0 0 0 40px;
+    overflow: hidden;
+    position: relative;
+    width: 40px;
+    transition: width .25s ease;
+}
+
+.btn_icon {
+    height: 30px;
+    width: 30px;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.iconExpandingButton .left_icon_blue {
+    background-image: url(/images/left_icon_blue.png);
+    opacity: 0.6;
+}
+.iconExpandingButton .right_icon_blue {
+    background-image: url(/images/left_icon_blue.png);
+    transform: rotateZ(180deg);
+    opacity: 0.6;
+}
+.iconExpandingButton .question_icon_blue {
+    background-image: url(/images/question_icon_blue.png);
+    opacity: 0.8;
+}
+.iconExpandingButton .button_text {
+    white-space: nowrap;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .btn-black {
     color: #fff;
     background-color: #333;

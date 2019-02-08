@@ -106,8 +106,36 @@
 
 
 
+.card .issue-navigation{
+    margin-top: 2rem;
+    overflow: hidden;
+}
 
+.issues-back {
+    float: left;
+}
+.issues-next {
+    float: right;
+}
 
+.issues-next .iconExpandingButton,
+.issues-back .iconExpandingButton {
+    width: auto;
+}
+.issues-next .iconExpandingButton:hover,
+.issues-back .iconExpandingButton:hover {
+    transform: scale(1.02);
+}
+.issues-back .iconExpandingButton {
+    padding: 0 15px 0 40px;
+}
+.issues-next .iconExpandingButton {
+    padding: 0 40px 0 15px;
+}
+.issues-next .iconExpandingButton .btn_icon {
+    right: 5px;
+    left: auto;
+}
 
 
 

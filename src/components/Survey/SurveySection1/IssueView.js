@@ -14,7 +14,7 @@ class IssueView extends React.Component {
   }
 
   render() {
-    const {issue, categorizeIssue} = this.props; 
+    const {issue, categorizeIssue, children} = this.props; 
     return (
       <div className="">
         {this.state.issueDetail && (
@@ -56,6 +56,9 @@ class IssueView extends React.Component {
             </div>
           </div>
            
+          <div className="issue-navigation">
+            {children}
+          </div>
         </div>
       </div>
     )

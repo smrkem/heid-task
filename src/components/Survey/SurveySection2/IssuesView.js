@@ -92,7 +92,7 @@ class IssuesView extends React.Component {
       return (
         <div className="section2-instructions">
           <button
-            className="showInstructionsButton"
+            className="whitePillButton"
             onClick={() => this.showInstructions(false)}
             >Hide Instructions</button>
           
@@ -149,14 +149,14 @@ class IssuesView extends React.Component {
         </div>
 
         <div className="showInstructions">
-          <div onClick={this.showInstructions} className="figureButton">
+          <div onClick={this.showInstructions} className="whitePillButton iconExpandingButton">
               <div className="question_icon_blue btn_icon"></div>
               <span className="button_text">Show Instructions</span>
             </div>
         </div>
 
         <div className="goBack">
-          <div onClick={this.props.goBack} className="figureButton">
+          <div onClick={this.props.goBack} className="whitePillButton iconExpandingButton">
               <div className="left_icon_blue btn_icon"></div>
               <span className="button_text">Go Back</span>
           </div>
