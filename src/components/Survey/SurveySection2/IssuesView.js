@@ -149,18 +149,21 @@ class IssuesView extends React.Component {
         </div>
 
         <div className="showInstructions">
-          <button
-              onClick={this.showInstructions} 
-              className="showInstructionsButton"
-              >Show Instructions</button>
+          <div onClick={this.showInstructions} className="figureButton">
+              <div className="question_icon_blue btn_icon"></div>
+              <span className="button_text">Show Instructions</span>
+            </div>
+        </div>
+
+        <div className="goBack">
+          <div onClick={this.props.goBack} className="figureButton">
+              <div className="left_icon_blue btn_icon"></div>
+              <span className="button_text">Go Back</span>
+          </div>
         </div>
 
         <div className="some-buttons">
-          <button
-            onClick={this.props.resetIssues}
-            className="btn btn-large btn-grey finishedButton"
-            >Start Over
-            </button>
+          
 
           <button
             onClick={finishedSorting}

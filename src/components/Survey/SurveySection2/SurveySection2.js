@@ -39,12 +39,8 @@ class SurveySection2 extends React.Component {
     return this.state.steps[this.state.stepIndex]
   }
 
-  resetIssues() {
-    let issues = JSON.parse(JSON.stringify(this.state.issues))
-    issues.forEach(i => {
-        i.importance2 = 'less_important'
-    })
-    this.setState({issues}) 
+  goBack() {
+    console.log("GOING BACK")
   }
 
   onIssueDrop(droppedIssue, cat) {
@@ -84,7 +80,7 @@ class SurveySection2 extends React.Component {
           <IssuesView 
             onIssueDrop={this.onIssueDrop.bind(this)}
             finishedSorting={() => this.advanceStep()}
-            resetIssues={() => this.resetIssues()}
+            goBack={() => this.goBack()}
             issues={this.state.issues}
           />
           <FigurePondering classNames="figure_pondering_left_bottom" />
