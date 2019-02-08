@@ -41,6 +41,7 @@ class SurveySection2 extends React.Component {
 
   goBack() {
     console.log("GOING BACK")
+    this.props.goBackSection1();
   }
 
   onIssueDrop(droppedIssue, cat) {

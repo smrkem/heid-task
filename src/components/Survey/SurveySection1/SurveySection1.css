@@ -78,10 +78,18 @@
     max-width: 155px;
     white-space: normal;
 }
+
+
 .sec1-issue-selections .btn:hover {
-    background-color: #138496;
-    border-color: #117a8b;
+    background-color: #139660;
 }
+.sec1-issue-selections .btn.previously-selected {
+    background-color: #03bd03;
+}
+.sec1-issue-selections .btn.previously-selected:hover {
+    background-color: #03bd03;
+}
+
 .sec1-issue-selections .btn:not(:disabled):not(.disabled):active {
     background-color: #17a2b8;
     border-color: #17a2b8;

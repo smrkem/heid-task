@@ -24,9 +24,19 @@ class SurveySection1 extends React.Component {
 
   constructor(props) {
     super(props);
-    let theIssues = shuffle(issues);
 
-    this.state.issues = theIssues;
+    if (props.step) {
+      this.state.stepIndex = this.state.steps.indexOf(props.step);
+    }
+
+    if (props.issues.length) {
+      this.state.issues = props.issues;  
+    }
+    else {
+      let theIssues = shuffle(issues);
+      this.state.issues = theIssues;
+    }
+    
 
     this.categorizeIssue = this.categorizeIssue.bind(this);
 

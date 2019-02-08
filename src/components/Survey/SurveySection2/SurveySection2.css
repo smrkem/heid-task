@@ -115,6 +115,7 @@
 }
 
 /* TODO - NAME THIS - BUTTONS TEMP */
+.showInstructionsButton,
 .figureButton {
     box-shadow: inset -2px -3px 5px #aaa;
     font-size: 0.8rem;
@@ -122,8 +123,12 @@
     background: white;
     height: 40px;
     border-radius: 40px;
-    padding-left: 40px;
+    padding: 0 20px 0;
     overflow: hidden;
+}
+
+.figureButton {
+    padding: 0 0 0 40px; 
 }
 .some-buttons {
     position: absolute;
@@ -166,7 +171,6 @@
 .goBack .btn_icon {
     height: 30px;
     width: 30px;
-    background-image: url(/images/left_icon_blue.png);
     background-size: 30px 30px;
     background-repeat: no-repeat;
     display: block;
