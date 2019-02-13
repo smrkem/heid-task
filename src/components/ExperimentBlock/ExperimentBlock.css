@@ -197,6 +197,10 @@
     transform: translateX(-50%);
 }
 
+.feedback.multiple-presses {
+    color: #961212;
+}
+
 .feedback-message {
     font-weight: bold;
     font-size: 2rem;

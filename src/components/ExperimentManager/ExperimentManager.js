@@ -136,6 +136,7 @@ class ExperimentManager extends React.Component {
             <div id="exp-manager">
               <ExperimentBlock 
                 {...this.state.blocks[this.state.blockIndex] } 
+                settings={this.props.settings}
                 onBlockFinish={this.updateBlock}
                 initialBlock={this.state.blockIndex === 0}
                 finalBlock={this.state.blockIndex === this.state.blocks.length - 1}
