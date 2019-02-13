@@ -56,6 +56,7 @@ class SurveySection2 extends React.Component {
   }
 
   render() {
+
     if (this.showing() === 'copy1') {
       return (
         <div className="surveySection sec2">

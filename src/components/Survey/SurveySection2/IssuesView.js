@@ -62,15 +62,21 @@ class IssuesView extends React.Component {
   render() {
     const { issues, finishedSorting } = this.props;
 
-    console.log('issues:', issues);
-
     const issueCards = {
       uncategorized: [],
       most_important: [],
       less_important: []
     }
 
-    issues.filter(i => i.importance1 === 'important').forEach(i => {
+    let theIssues = issues.filter(i => i.importance1 === 'important');
+    if (theIssues.length < 1) {
+      theIssues = issues.filter(i => i.importance1 === "somewhat-important");
+    }
+    if (theIssues.length < 1) {
+      theIssues = issues.filter(i => i.importance1 === "not-important");
+    }
+
+    theIssues.forEach(i => {
       issueCards[i.importance2].push(
         <div 
           draggable
@@ -84,9 +90,7 @@ class IssuesView extends React.Component {
           />
         </div>
       )
-    })
-
-    console.log('issueCards:', issueCards);
+    });
 
     if (this.state.showInstructions) {
       return (

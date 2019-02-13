@@ -32,7 +32,7 @@ class TaskManager extends React.Component {
     // 'survey',
     // 'break2',
     'HEIDWelcome',
-    // 'practiceTrial',
+    'practiceTrial',
     'experiment',
     'final',
     'goodbye'
@@ -45,16 +45,16 @@ class TaskManager extends React.Component {
       this.submitSocialIssue = this.submitSocialIssue.bind(this);
       this.submitWellbeingData = this.submitWellbeingData.bind(this);
 
-      // console.log('setting social issue');
-      // this.state.socialIssue = {
-      //   name: "Abortion Rights",
-      //   position: "for"
-      // }
-
+      console.log('setting social issue');
       this.state.socialIssue = {
-        name: "Climate Change",
-        position: "32"
+        name: "Abortion Rights",
+        position: "-33"
       }
+
+      // this.state.socialIssue = {
+      //   name: "Climate Change",
+      //   position: "32"
+      // }
   }
 
   componentDidMount() {
