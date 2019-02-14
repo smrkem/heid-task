@@ -49,6 +49,7 @@
 }
 .cat.most_important .dropWrapper {
     text-align: center;
+    overflow-y: hidden;
 }
 
 
