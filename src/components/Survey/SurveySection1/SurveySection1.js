@@ -24,9 +24,19 @@ class SurveySection1 extends React.Component {
 
   constructor(props) {
     super(props);
-    let theIssues = shuffle(issues);
 
-    this.state.issues = theIssues;
+    if (props.step) {
+      this.state.stepIndex = this.state.steps.indexOf(props.step);
+    }
+
+    if (props.issues.length) {
+      this.state.issues = props.issues;  
+    }
+    else {
+      let theIssues = shuffle(issues);
+      this.state.issues = theIssues;
+    }
+    
 
     this.categorizeIssue = this.categorizeIssue.bind(this);
 
@@ -44,6 +54,9 @@ class SurveySection1 extends React.Component {
 
   advanceIssue() {
     this.setState({issueIndex: this.state.issueIndex + 1})
+  }
+  backIssue() {
+    this.setState({issueIndex: this.state.issueIndex - 1})
   }
 
   categorizeIssue(issue, cat) {
@@ -134,17 +147,52 @@ class SurveySection1 extends React.Component {
     }
 
     if (this.showing() === 'issues') {
+      let backButton = this.state.issueIndex > 0
+        && this.state.issues[this.state.issueIndex - 1].importance1;
+      if (backButton) {
+        let buttonText = this.state.issues[this.state.issueIndex - 1].title;
+        backButton = (
+          <div className="issues-back">
+            <div 
+              onClick={() => this.backIssue()} 
+              className="whitePillButton iconExpandingButton">
+                <div className="left_icon_blue btn_icon"></div>
+                <span className="button_text">{buttonText}</span>
+            </div>
+          </div>
+        );
+      }
+
+      let nextButton = this.state.issueIndex < (this.state.issues.length - 1)
+        && this.state.issues[this.state.issueIndex].importance1;
+      if (nextButton) {
+        let buttonText = this.state.issues[this.state.issueIndex + 1].title;
+        nextButton = (
+          <div className="issues-next">
+            <div 
+              onClick={() => this.advanceIssue()} 
+              className="whitePillButton iconExpandingButton">
+                <span className="button_text">{buttonText}</span>
+                <div className="right_icon_blue btn_icon"></div>
+            </div>
+          </div>
+        );
+      }
+
       return (
         <div className="surveySection">
           <div className="survey-black-bg"></div>
 
-          {/* <button onClick={() => this.autoCategorize() } 
-          className="debug">categorize auto</button> */}
+          <button onClick={() => this.autoCategorize() } 
+          className="debug">categorize auto</button>
   
           <IssueView
             issue={this.state.issues[this.state.issueIndex]}
             categorizeIssue={this.categorizeIssue}
-          />
+          >
+            {backButton}
+            {nextButton}
+          </IssueView>
 
           <FigurePondering classNames="figure_pondering_left_bottom" />
         </div>

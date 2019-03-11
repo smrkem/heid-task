@@ -68,7 +68,15 @@ class IssuesView extends React.Component {
       less_important: []
     }
 
-    issues.filter(i => i.importance1 === 'important').forEach(i => {
+    let theIssues = issues.filter(i => i.importance1 === 'important');
+    if (theIssues.length < 1) {
+      theIssues = issues.filter(i => i.importance1 === "somewhat-important");
+    }
+    if (theIssues.length < 1) {
+      theIssues = issues.filter(i => i.importance1 === "not-important");
+    }
+
+    theIssues.forEach(i => {
       issueCards[i.importance2].push(
         <div 
           draggable
@@ -82,13 +90,13 @@ class IssuesView extends React.Component {
           />
         </div>
       )
-    })
+    });
 
     if (this.state.showInstructions) {
       return (
         <div className="section2-instructions">
           <button
-            className="showInstructionsButton"
+            className="whitePillButton"
             onClick={() => this.showInstructions(false)}
             >Hide Instructions</button>
           
@@ -143,32 +151,33 @@ class IssuesView extends React.Component {
               </div>
             </div>
         </div>
-        <div className="issue-queue">
-          <button
-            onClick={this.showInstructions} 
-            className="showInstructionsButton"
-            >Show Instructions</button>
 
-          <div className="issue-row">
-            {issueCards.uncategorized}
-            {!issueCards.uncategorized.length && (
-              <div className="tray-buttons">
-                <button
-                  onClick={this.props.resetIssues}
-                  className="btn btn-large btn-grey finishedButton"
-                  >Start Over
-                  </button>
+        <div className="showInstructions">
+          <div onClick={this.showInstructions} className="whitePillButton iconExpandingButton">
+              <div className="question_icon_blue btn_icon"></div>
+              <span className="button_text">Show Instructions</span>
+            </div>
+        </div>
 
-                <button
-                  onClick={finishedSorting}
-                  disabled={!issueCards.most_important.length}
-                  className="btn btn-large btn-primary finishedButton"
-                  >I'm Finished
-                  </button>
-              </div>
-            )}
+        <div className="goBack">
+          <div onClick={this.props.goBack} className="whitePillButton iconExpandingButton">
+              <div className="left_icon_blue btn_icon"></div>
+              <span className="button_text">Go Back</span>
           </div>
         </div>
+
+        <div className="some-buttons">
+          
+
+          <button
+            onClick={finishedSorting}
+            disabled={!issueCards.most_important.length}
+            className="btn btn-large btn-primary finishedButton"
+            >I'm Finished
+            </button>
+        </div>
+
+  
       </div>
     )
   }

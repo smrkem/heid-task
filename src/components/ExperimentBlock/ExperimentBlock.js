@@ -405,8 +405,7 @@ class ExperimentBlock extends React.Component {
       beginTrial: true, 
       point_value: () => pointsTracker.getCurrentValue() 
     },
-    response_ends_trial: false,
-    trial_duration: 1650
+    response_ends_trial: false
   }
 
   fixation = {
@@ -414,14 +413,14 @@ class ExperimentBlock extends React.Component {
     stimulus: '<div style="font-size: 60px;">+</div>',
     response_ends_trial: false,
     data: {fixation: true},
-    trial_duration: function() { 
-      return randomFromInterval(2000, 2500) 
-    },
     on_start: function(data) {
       keyLogger.keyLog = []
       document.addEventListener("keyup", keyLogger.logger)
     },
     on_finish: function(data) {
+      if (keyLogger.keyLog.length) {
+        data.responded_early = true;
+      }
       data.presentation_duration = this.trial_duration
     }
   }
@@ -444,9 +443,6 @@ class ExperimentBlock extends React.Component {
     type: "html-keyboard-response",
     stimulus: '<div></div>',
     response_ends_trial: false,
-    trial_duration: function() { 
-      return randomFromInterval(1500, 3000) 
-    },
     data: {blank1: true},
     on_finish: function(data) {
       data.presentation_duration = this.trial_duration
@@ -459,9 +455,6 @@ class ExperimentBlock extends React.Component {
     type: "html-keyboard-response",
     stimulus: '<div></div>',
     response_ends_trial: false,
-    trial_duration: function() { 
-      return randomFromInterval(1500, 3000) 
-    },
     data: {blank2: true},
     on_finish: function(data) {
       data.presentation_duration = this.trial_duration
@@ -471,31 +464,45 @@ class ExperimentBlock extends React.Component {
   feedback1 = {
     type: "html-keyboard-response",
     stimulus: () => {
+      const timelineData = jsPsych.data.getLastTimelineData();
+      const fixationData = JSON.parse(
+        timelineData.filter({fixation: true}).json()
+      ).pop();
       const targetData = JSON.parse(
-        jsPsych.data.getLastTimelineData().filter({target: true}).json()
+        timelineData.filter({target: true}).json()
+      ).pop();
+      const blank1Data = JSON.parse(
+        timelineData.filter({blank1: true}).json()
       ).pop();
 
+      const autoLose = (fixationData.responded_early) || (blank1Data.keylog.length > 2)
+
       // increment if hit (decrement if anti-charity)
-      const incr = ( (targetData.hit && !this.isAnti) || (!targetData.hit && this.isAnti))
+      let incr = ( (targetData.hit && !this.isAnti) || (!targetData.hit && this.isAnti))
+      if (autoLose) {
+        incr = false;
+      }
       pointsTracker.setNextValue(incr)
 
       const sign = incr ? '+' : '-';
-      const message = targetData.hit ? "WIN!" : "LOSE";
+      let message = targetData.hit ? "WIN!" : "LOSE";
+      if (autoLose) {
+        message = "LOSE";
+      }
       const pointVal = targetData.point_value;
       return (
-        `<div class="feedback">` +
+        `<div class="feedback ${autoLose ? 'multiple-presses' : ''}">` +
           `<div class="feedback-message">${message}</div>` +
           `<div class="feedback-points">${sign} ${pointVal}</div>` +
         `</div>`
       )
     },
     data: { feedback1: true },
-    response_ends_trial: false,
-    trial_duration: 2000
+    response_ends_trial: false
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.isAnti = props.condition.type === "anti-charity"
 
     if (props.condition.socialIssue) {
@@ -521,6 +528,17 @@ class ExperimentBlock extends React.Component {
   getTimeline() {
     // const { block } = this.props.condition;
     console.log('block: ', this.props);
+    const { experimentTimings } = this.props.settings;
+
+    this.cue.trial_duration = experimentTimings.cue;
+    this.fixation.trial_duration = function() { 
+      return randomFromInterval(experimentTimings.fixation[0], experimentTimings.fixation[1]) 
+    };
+    this.blank1.trial_duration = function() { 
+      return randomFromInterval(experimentTimings.blank1[0], experimentTimings.blank1[1]) 
+    };
+    this.feedback1.trial_duration = experimentTimings.feedback1;
+    this.blank2.trial_duration = experimentTimings.blank2;
 
       const timeline = []
 

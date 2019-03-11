@@ -13,13 +13,22 @@ class TaskManager extends React.Component {
     blockData: [],
     practiceData: {},
     socialIssue: {},
-    wellbeingData: {}
+    wellbeingData: {},
+    settings: {
+      experimentTimings: {
+        cue: 1000,
+        fixation: [2000, 2500],
+        blank1: [1500, 3000],
+        feedback1: 1650,
+        blank2: 500
+      }
+    }
   }
 
   steps = [
-    'consent',
-    'wellbeing',
-    'break1',
+    // 'consent',
+    // 'wellbeing',
+    // 'break1',
     'survey',
     'break2',
     'HEIDWelcome',
@@ -39,13 +48,22 @@ class TaskManager extends React.Component {
       // console.log('setting social issue');
       // this.state.socialIssue = {
       //   name: "Abortion Rights",
-      //   position: "for"
+      //   position: "-33"
       // }
 
       // this.state.socialIssue = {
       //   name: "Climate Change",
       //   position: "32"
       // }
+  }
+
+  componentDidMount() {
+    window.addEventListener("beforeunload", (e) => {
+      console.log("unoading!!!", e);
+
+      e.preventDefault();
+      e.returnValue = '';
+    });
   }
 
   showNextStep(blockData=false) {
@@ -86,6 +104,7 @@ class TaskManager extends React.Component {
   }
 
     render() {
+      
 
         return (
             <div className="task-manager">
@@ -123,12 +142,14 @@ class TaskManager extends React.Component {
                 )}
                 { (this.showing() === 'practiceTrial') && (
                     <PracticeBlock
+                      settings={this.state.settings}
                       advanceStep={this.showNextStep} 
                       finishPractice={this.setPracticeData}
                       />
                 )}
                 { (this.showing() === 'experiment') && (
                     <ExperimentManager 
+                      settings={this.state.settings}
                       socialIssue={this.state.socialIssue}
                       starting_duration={this.state.practiceData.calculated_duration2 || 320}
                       advanceStep={this.showNextStep} />

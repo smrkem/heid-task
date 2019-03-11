@@ -14,7 +14,7 @@ class IssueView extends React.Component {
   }
 
   render() {
-    const {issue, categorizeIssue} = this.props; 
+    const {issue, categorizeIssue, children} = this.props; 
     return (
       <div className="">
         {this.state.issueDetail && (
@@ -42,20 +42,23 @@ class IssueView extends React.Component {
           <div className="sec1-issue-selections-wr">
             <div className="sec1-issue-selections">
               <button
-                className="btn"
+                className={`btn ${issue.importance1 === "not-important" ? "previously-selected" : ""}`}
                 onClick={() => categorizeIssue(issue, 'not-important')}
                 >NOT IMPORTANT TO ME</button>
               <button
-                className="btn"
+                className={`btn ${issue.importance1 === "somewhat-important" ? "previously-selected" : ""}`}
                 onClick={() => categorizeIssue(issue, 'somewhat-important')}
                 >SOMEWHAT IMPORTANT TO ME</button>
               <button
-                className="btn"
+                className={`btn ${issue.importance1 === "important" ? "previously-selected" : ""}`}
                 onClick={() => categorizeIssue(issue, 'important')}
                 >IMPORTANT TO ME</button>
             </div>
           </div>
            
+          <div className="issue-navigation">
+            {children}
+          </div>
         </div>
       </div>
     )

@@ -20,6 +20,7 @@ class SurveyManager extends React.Component {
       'results'
     ],
     stepIndex: 0,
+    section1Step: null,
     section2Step: null
   }
 
@@ -35,6 +36,18 @@ class SurveyManager extends React.Component {
 
   submitIssues(issues) {
     this.setState({issues})
+  }
+
+  goBackSection1() {
+    const issues = [...this.state.issues];
+    issues.forEach(i => {
+      delete i.importance2;
+    });
+    this.setState({
+      issues,
+      stepIndex: this.state.steps.indexOf('section1'),
+      section1Step: 'issues'
+    });
   }
 
   goBackSection2() {
@@ -81,6 +94,8 @@ class SurveyManager extends React.Component {
     if (this.showing() === 'section1') {
       return (
         <SurveySection1
+          issues={this.state.issues}
+          step={this.state.section1Step}
           submitIssues={this.submitIssues.bind(this)}
           onFinish={this.advanceStep.bind(this)}
           />
@@ -93,6 +108,7 @@ class SurveyManager extends React.Component {
           issues={this.state.issues}
           step={this.state.section2Step}
           submitIssues={this.submitIssues.bind(this)}
+          goBackSection1={this.goBackSection1.bind(this)}
           onFinish={this.advanceStep.bind(this)}
           />
       )
